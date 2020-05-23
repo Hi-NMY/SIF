@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_bar"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="#FBFBFB"
+    android:layout_height="@dimen/biaotilan_gaodu">
+
+    <RelativeLayout
+        android:layout_centerHorizontal="true"
+        android:layout_width="330dp"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/activitybar_left"
+            android:layout_width= "25dp"
+            android:layout_height="25dp"
+            android:layout_centerVertical="true"
+            android:visibility="invisible"></TextView>
+
+        <TextView
+            android:id="@+id/activitybar_right"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:textColor="#363636"
+            android:textSize="@dimen/biaotilan_teshu"
+            android:visibility="invisible" />
+
+        <View
+            android:id="@+id/view_noticemessage"
+            android:visibility="invisible"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/red_messagenotice"
+            android:layout_width="10dp"
+            android:layout_height="10dp"/>
+
+        <TextView
+            android:id="@+id/activitybar_textright"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:textColor="@color/ziti"
+            android:textSize="@dimen/biaotilan_teshu"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/activitybar_right1"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/activitybar_right"
+            android:textColor="#363636"
+            android:textSize="@dimen/biaotilan_teshu"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
+
+        <RelativeLayout
+            android:id="@+id/biaoti_R"
+            android:layout_marginRight="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true">
+            <TextView
+                android:id="@+id/activitybar_title"
+                android:visibility="invisible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:textSize="@dimen/biaotilan_title"
+                android:textColor="#363636" />
+
+            <View
+                android:id="@+id/activitybar_title_circle"
+                android:background="@drawable/qiehuan_circle_ui"
+                android:layout_below="@+id/activitybar_title"
+                android:visibility="invisible"
+                android:layout_centerHorizontal="true"
+                android:layout_width="5dp"
+                android:layout_height="5dp"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/biaoti_R1"
+            android:layout_toRightOf="@+id/biaoti_R"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/activitybar_title2"
+                android:visibility="invisible"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="@dimen/biaotilan_title"
+                android:textColor="#363636" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_toRightOf="@id/biaoti_R1"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/activitybar_title1"
+                android:visibility="invisible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:textSize="@dimen/biaotilan_title"
+                android:textColor="#363636" />
+
+            <View
+                android:id="@+id/activitybar_title_circle1"
+                android:visibility="invisible"
+                android:background="@drawable/qiehuan_circle_ui"
+                android:layout_below="@+id/activitybar_title1"
+                android:layout_centerHorizontal="true"
+                android:layout_width="5dp"
+                android:layout_height="5dp"/>
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

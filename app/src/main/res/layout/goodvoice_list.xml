@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/tools"
+    android:id="@+id/gv_Rzong"
+    xmlns:ImageViewPlus="http://schemas.android.com/apk/res-auto"
+    app:ignore="NamespaceTypo">
+
+    <RelativeLayout
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/gv_message_R"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.example.sif.Lei.NiceImageView.CircleImageView
+                android:id="@+id/gv_userimage"
+                android:layout_centerVertical="true"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@color/qianbai"/>
+
+            <TextView
+                android:id="@+id/gv_username"
+                android:text="啊哈哈哈哈"
+                android:textSize="@dimen/biaotilan_xiaozi"
+                android:textColor="@color/beijing"
+                android:layout_marginLeft="@dimen/guangchangimage_left"
+                android:layout_toRightOf="@id/gv_userimage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/gv_usersex"
+                android:layout_below="@id/gv_username"
+                android:layout_marginLeft="@dimen/guangchangimage_left"
+                android:layout_toRightOf="@id/gv_userimage"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/boy"
+                android:layout_width="15dp"
+                android:layout_height="15dp"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:clipChildren="false"
+            android:layout_marginTop="15dp"
+            android:layout_below="@id/gv_message_R"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.example.sif.Lei.NiceImageView.SolidImageView
+                android:id="@+id/ib_list_image"
+                android:src="@color/lightgray"
+                android:layout_width="match_parent"
+                android:layout_height="360dp"
+                android:layout_centerHorizontal="true"
+                ImageViewPlus:type="rounded_rect"
+                ImageViewPlus:rectRoundRadius="20dp"
+                />
+
+            <Button
+                android:id="@+id/label_name"
+                android:background="@drawable/blue_label"
+                style="?android:attr/borderlessButtonStyle"
+                android:text=""
+                android:textSize="11sp"
+                android:layout_margin="20dp"
+                android:textColor="@color/beijing"
+                android:layout_width="53dp"
+                android:layout_height="20dp"/>
+
+            <ImageView
+                android:id="@+id/gv_start_stop"
+                android:layout_margin="20dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/voicestart"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
+
+            <RelativeLayout
+                android:id="@+id/circle_a"
+                android:layout_marginTop="90dp"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <View
+                    android:alpha="0.5"
+                    android:background="@drawable/voice_bg_white"
+                    android:layout_width="170dp"
+                    android:layout_height="170dp"/>
+
+                <com.example.sif.Lei.NiceImageView.CircleImageView
+                    android:id="@+id/voice_image"
+                    android:layout_width="116dp"
+                    android:layout_height="114dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/ceshi" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/bottom_white"
+                android:background="@drawable/voice_botton_bg"
+                android:layout_marginTop="70dp"
+                android:layout_below="@id/circle_a"
+                android:layout_width="match_parent"
+                android:clipChildren="false"
+                android:layout_height="100dp">
+
+                <com.sackcentury.shinebuttonlib.ShineButton
+                    android:id="@+id/voice_thumb"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/voice_thumb"
+                    ImageViewPlus:allow_random_color="true" />
+
+                <TextView
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/voice_thumb"
+                    android:textColor="@color/gray"
+                    android:text="Bui"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/voice_report"
+                android:alpha="0.3"
+                android:layout_marginTop="-60dp"
+                android:layout_marginRight="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/bottom_white"
+                android:background="@drawable/report_gray"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/>
+
+            <TextView
+                android:layout_marginTop="2dp"
+                android:gravity="center"
+                android:layout_below="@id/voice_report"
+                android:layout_alignLeft="@id/voice_report"
+                android:layout_alignRight="@id/voice_report"
+                android:textSize="12sp"
+                android:textColor="@color/ziti"
+                android:alpha="0.3"
+                android:text="举报"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

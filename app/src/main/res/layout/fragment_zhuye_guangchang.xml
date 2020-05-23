@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@color/qianbai"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/guangchang_fresh_lt"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srlEnablePreviewInEditMode="true">
+        <RelativeLayout
+            android:id="@+id/guangchang_Rt"
+            android:background="@color/qianbai"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/smarttext"
+                android:layout_marginTop="10dp"
+                android:textSize="10dp"
+                android:textColor="@color/darkgrey"
+                android:gravity="center"
+                android:text="下拉刷新   发现更多..."
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/guangchang_gif"
+                android:layout_below="@+id/smarttext"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/xiala_break"
+                android:layout_width="40dp"
+                android:layout_height="40dp"/>
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/guangchang_zhu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <RelativeLayout
+            android:id="@+id/guangchang_Rt1"
+            android:background="@color/qianbai"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/guangchang_text"
+                android:gravity="center"
+                android:text="...正在加载..."
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"/>
+        </RelativeLayout>
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+</RelativeLayout>

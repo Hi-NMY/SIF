@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <fragment
+        android:id="@+id/ib_search_fragment"
+        android:name="com.example.sif.Lei.SearchFragment.SearchFragment"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/search_height"/>
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/ib_refresh"
+        android:visibility="invisible"
+        app:srlEnableLoadMore="false"
+        android:layout_below="@id/ib_search_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/ib_refresh_Rt"
+            android:background="@color/beijing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/smarttext"
+                android:textSize="10dp"
+                android:layout_marginTop="10dp"
+                android:lineSpacingMultiplier="1.5"
+                android:textColor="@color/darkgrey"
+                android:gravity="center"
+                android:text="正在刷新街区\n请稍后..."
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/guangchang_gif"
+                android:layout_below="@+id/smarttext"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/loading3"
+                android:layout_width="40dp"
+                android:layout_height="40dp"/>
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/ib_recyclerView"
+            android:layout_below="@id/ib_search_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <RelativeLayout
+            android:id="@+id/ib_refresh_R"
+            android:background="@color/beijing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/smarttext2"
+                android:gravity="center"
+                android:text="...正在加载..."
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"/>
+        </RelativeLayout>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+
+    <TextView
+        android:id="@+id/null_frush"
+        android:visibility="invisible"
+        android:textColor="@color/lightgray"
+        android:textSize="@dimen/biaotilan_dazi"
+        android:gravity="center"
+        android:text="点我刷新"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

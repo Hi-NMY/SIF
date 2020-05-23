@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipChildren="false"
+    xmlns:ImageViewPlus="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/official_time"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/lightgray"
+        android:gravity="center"
+        android:text=""
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <RelativeLayout
+        android:layout_below="@id/official_time"
+        android:clipChildren="false"
+        android:layout_marginTop="@dimen/guangchangimage_left"
+        android:layout_marginBottom="@dimen/guangchangimage_left"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/official_notice_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.example.sif.Lei.NiceImageView.CircleImageView
+            android:id="@+id/i2"
+            android:layout_marginLeft="-8dp"
+            android:layout_marginTop="-8dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_round"
+            ImageViewPlus:borderColor="@color/weilan"
+            ImageViewPlus:borderWidth="1.5dp" />
+
+        <TextView
+            android:id="@+id/official_notice"
+            android:layout_margin="16dp"
+            android:textSize="@dimen/biaotilan_chaoxiao"
+            android:textColor="@color/ziti"
+            android:lineSpacingMultiplier="1.5"
+            android:text=""
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

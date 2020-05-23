@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/concern_R"
+        android:layout_margin="@dimen/guangchangimage_left"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.example.sif.Lei.NiceImageView.CircleImageView
+            android:id="@+id/concern_headimage"
+            android:layout_centerVertical="true"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:src="@color/qianbai"/>
+
+        <LinearLayout
+            android:layout_marginLeft="@dimen/guangchangimage_left"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/concern_headimage"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/concern_name"
+                android:gravity="left|center"
+                android:text="null"
+                android:textSize="@dimen/biaotilan_title"
+                android:layout_weight="2"
+                android:textColor="@color/gray"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/concern_sex"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/boy"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"/>
+
+                <TextView
+                    android:id="@+id/concern_hello"
+                    android:gravity="left|center"
+                    android:text="null"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/darkgray"
+                    android:layout_centerVertical="true"
+                    android:textSize="@dimen/biaotilan_title"
+                    android:layout_toRightOf="@+id/concern_sex"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <View
+        android:layout_marginRight="@dimen/guangchangimage_left"
+        android:layout_marginLeft="@dimen/guangchangimage_left"
+        android:alpha="0.2"
+        android:layout_below="@id/concern_R"
+        android:background="@color/lightgray"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"/>
+</RelativeLayout>

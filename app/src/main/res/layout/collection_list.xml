@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:clipChildren="false"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/collection_cardview"
+        app:cardElevation="2dp"
+        app:cardMaxElevation="4dp"
+        app:cardCornerRadius="20dp"
+        android:clipChildren="false"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/collection_RZong"
+            android:gravity="bottom"
+            android:orientation="vertical"
+            android:layout_gravity="bottom"
+            android:clipChildren="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.example.sif.Lei.NiceImageView.CircleImageView
+                android:id="@+id/collect_headimage"
+                android:layout_marginTop="-30dp"
+                android:layout_gravity="center"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@color/qianbai" />
+
+            <TextView
+                android:id="@+id/collection_uname"
+                android:textSize="@dimen/biaotilan_teshu"
+                android:textColor="@color/gray"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:layout_below="@+id/collect_headimage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/collection_message"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/collection_uname"
+                android:textColor="@color/ziti"
+                android:textSize="@dimen/biaotilan_xiaozi"
+                android:lineSpacingMultiplier="1.5"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/collection_image"
+                android:visibility="invisible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="25dp"
+                android:maxWidth="200dp"
+                android:maxHeight="200dp" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

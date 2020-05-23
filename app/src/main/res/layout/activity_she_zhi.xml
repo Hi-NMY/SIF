@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/SheZhi_R"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SheZhi">
+
+    <fragment
+        android:id="@+id/SheZhi_Avtivitybar"
+        android:name="com.example.sif.Lei.ShowActivityBar.FragmentActivityBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/biaotilan_gaodu"/>
+
+    <View
+        android:id="@+id/v1"
+        android:layout_below="@id/SheZhi_Avtivitybar"
+        android:alpha="0.4"
+        android:background="@color/lightgray"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_below="@id/v1"
+        android:background="@color/qianbai"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:background="@color/beijing"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:id="@+id/account_safe"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/beijing"
+                    android:paddingLeft="@dimen/guangchangimage_left"
+                    android:paddingRight="@dimen/guangchangimage_left"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp">
+
+                    <ImageView
+                        android:id="@+id/text1"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/account"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"/>
+
+                    <TextView
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@id/text1"
+                        android:text="账户与安全"
+                        android:textSize="@dimen/biaotilan_xiaozi"
+                        android:textColor="@color/ziti"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:id="@+id/img"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/right_grey"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"/>
+                </RelativeLayout>
+
+                <View
+                    android:layout_marginLeft="@dimen/guangchangimage_left"
+                    android:layout_marginRight="@dimen/guangchangimage_left"
+                    android:background="@color/yinbai"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"/>
+
+                <RelativeLayout
+                    android:id="@+id/privacy_settings"
+                    android:background="@color/beijing"
+                    android:paddingLeft="@dimen/guangchangimage_left"
+                    android:paddingRight="@dimen/guangchangimage_left"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp">
+
+                    <ImageView
+                        android:id="@+id/text2"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/privacy"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"/>
+
+                    <TextView
+                        android:layout_toRightOf="@id/text2"
+                        android:layout_marginLeft="10dp"
+                        android:text="隐私设置"
+                        android:textSize="@dimen/biaotilan_xiaozi"
+                        android:textColor="@color/ziti"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:id="@+id/img1"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/right_grey"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"/>
+                </RelativeLayout>
+                <View
+                    android:layout_marginLeft="@dimen/guangchangimage_left"
+                    android:layout_marginRight="@dimen/guangchangimage_left"
+                    android:background="@color/yinbai"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"/>
+
+                <RelativeLayout
+                    android:id="@+id/message_notification"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/beijing"
+                    android:paddingLeft="@dimen/guangchangimage_left"
+                    android:paddingRight="@dimen/guangchangimage_left"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp">
+
+                    <ImageView
+                        android:id="@+id/text3"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/messagenotification"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"/>
+
+                    <TextView
+                        android:layout_toRightOf="@id/text3"
+                        android:layout_marginLeft="10dp"
+                        android:text="消息通知"
+                        android:textSize="@dimen/biaotilan_xiaozi"
+                        android:textColor="@color/ziti"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:id="@+id/img2"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/right_grey"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"/>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="25dp"
+                android:background="@color/beijing"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:id="@+id/help"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/beijing"
+                    android:paddingLeft="@dimen/guangchangimage_left"
+                    android:paddingRight="@dimen/guangchangimage_left"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp">
+
+                    <ImageView
+                        android:id="@+id/text5"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/help"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"/>
+
+                    <TextView
+                        android:layout_toRightOf="@id/text5"
+                        android:layout_marginLeft="10dp"
+                        android:text="帮助"
+                        android:textSize="@dimen/biaotilan_xiaozi"
+                        android:textColor="@color/ziti"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:id="@+id/img3"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/right_grey"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"/>
+                </RelativeLayout>
+
+                <View
+                    android:layout_marginLeft="@dimen/guangchangimage_left"
+                    android:layout_marginRight="@dimen/guangchangimage_left"
+                    android:background="@color/yinbai"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"/>
+
+                <RelativeLayout
+                    android:id="@+id/version"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/beijing"
+                    android:paddingLeft="@dimen/guangchangimage_left"
+                    android:paddingRight="@dimen/guangchangimage_left"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp">
+
+                    <ImageView
+                        android:id="@+id/text6"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/newversion"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"/>
+
+                    <TextView
+                        android:layout_toRightOf="@id/text6"
+                        android:layout_marginLeft="10dp"
+                        android:text="检查新版本"
+                        android:textSize="@dimen/biaotilan_xiaozi"
+                        android:textColor="@color/ziti"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:id="@+id/img4"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/right_grey"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"/>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="25dp"
+                android:background="@color/beijing"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:id="@+id/tuichu_button"
+                    android:layout_gravity="center"
+                    android:background="@color/beijing"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp">
+
+                    <TextView
+                        android:text="退出登录"
+                        android:textSize="@dimen/biaotilan_xiaozi"
+                        android:textColor="@color/yanghong"
+                        android:layout_centerInParent="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</RelativeLayout>

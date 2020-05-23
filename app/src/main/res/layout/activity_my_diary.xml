@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/udiary_r"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MyDiary">
+
+    <fragment
+        android:id="@+id/diary_bar"
+        android:name="com.example.sif.Lei.ShowActivityBar.FragmentActivityBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/biaotilan_gaodu"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/diary_list"
+        android:background="@color/qianbai"
+        android:layout_below="@id/diary_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <com.melnykov.fab.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="20dp"
+        android:src="@mipmap/ic_add_black"
+        fab:fab_colorNormal="@color/beijing"
+        fab:fab_colorPressed="@color/beijing" />
+
+</RelativeLayout>

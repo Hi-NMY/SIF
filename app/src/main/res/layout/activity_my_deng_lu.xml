@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/DengLu1_R"
+    android:background="@drawable/denglu3"
+    >
+
+    <ImageView
+        android:src="@drawable/denglu3"
+        android:scaleType="centerCrop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <fragment
+        android:id="@+id/Denglu_Frag_ActivityBar"
+        android:name="com.example.sif.Lei.ShowActivityBar.FragmentActivityBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/biaotilan_gaodu"/>
+
+    <RelativeLayout
+        android:layout_below="@+id/Denglu_Frag_ActivityBar"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/t1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="请输入学号/账号"
+            android:gravity="center_horizontal"
+            android:textStyle="bold"
+            android:textColor="#fff"
+            android:textSize="@dimen/biaotilan_title"/>
+        <TextView
+            android:id="@+id/t2"
+            android:layout_below="@+id/t1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="我一定不会泄漏你的账号的"
+            android:layout_centerHorizontal="true"
+            android:textColor="#fff"
+            android:textSize="13sp"/>
+        <RelativeLayout
+            android:id="@+id/R1"
+            android:layout_below="@+id/t2"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/zhanghaobackground"
+            android:layout_centerHorizontal="true"
+            android:layout_width="250dp"
+            android:layout_height="45dp">
+            <RelativeLayout
+                android:id="@+id/r1"
+                android:layout_width="60dp"
+                android:layout_height="50dp">
+
+                <ImageView
+                    android:src="@drawable/wode_red"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"/>
+
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/denglu_XueHao"
+                android:layout_toRightOf="@id/r1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="20dp"
+                android:background="@color/beijing"
+                android:textColor="@color/ziti"
+                android:letterSpacing="0.1"
+                android:maxLines="1"
+                android:maxLength="9"
+                android:digits="G1234567890"
+                />
+
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/denglu_ZhuCe"
+            android:layout_below="@+id/R1"
+            android:layout_alignRight="@+id/R1"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/shiqing"
+            android:textSize="12sp"
+            android:text="点击这里注册>"
+            />
+
+        <RelativeLayout
+            android:layout_below="@+id/R1"
+            android:layout_marginTop="60dp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/xiayibu"
+                android:layout_width="250dp"
+                android:layout_height="60dp"
+                android:alpha="0.3"
+                android:background="@drawable/denglubackground"
+                android:textStyle="bold"
+                android:stateListAnimator="@null"
+                android:text="下一步"
+                android:textSize="18sp"
+                android:textColor="@color/jingbai" />
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

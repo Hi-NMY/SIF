@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    xmlns:ImageViewPlus="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="15dp">
+
+        <RelativeLayout
+            android:id="@+id/ib_R_List"
+            android:layout_width="160dp"
+            android:layout_height="140dp"
+            android:layout_centerHorizontal="true">
+
+            <com.example.sif.Lei.NiceImageView.SolidImageView
+                android:id="@+id/ib_list_image"
+                android:scaleType="fitXY"
+                android:src="@color/beijing"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:background="@color/beijing"
+                ImageViewPlus:type="rounded_rect"
+                ImageViewPlus:rectRoundRadius="20dp"
+             />
+
+            <View
+                android:id="@+id/ib_list_black"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:alpha="0.2"
+                android:background="@drawable/ib_black" />
+
+            <TextView
+                android:id="@+id/ib_name"
+                android:lineSpacingMultiplier="1.5"
+                android:textColor="@color/black"
+                android:textSize="@dimen/biaotilan_teshu"
+                android:maxLines="3"
+                android:ellipsize="end"
+                android:text=""
+                android:maxHeight="50dp"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp" />
+
+            <TextView
+                android:id="@+id/ib_date"
+                android:textSize="@dimen/biaotilan_xiaozi"
+                android:textColor="@color/black"
+                android:text=""
+                android:gravity="right|center"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="10dp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_below="@+id/ib_R_List"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/ib_num_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/ziti"
+                android:textSize="@dimen/biaotilan_title" />
+
+            <TextView
+                android:text=" 人关注"
+                android:textColor="@color/ziti"
+                android:textSize="@dimen/biaotilan_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

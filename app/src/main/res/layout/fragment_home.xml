@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/home_coorlayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/home_appbarlayout"
+        app:elevation="0dp"
+        android:background="@color/qianbai"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/home_collapsinglayout"
+            android:layout_width="match_parent"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/fun_button_llt"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0.7"
+                android:background="@color/qianbai"
+                android:paddingTop="5dp"
+                android:paddingBottom="10dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageButton
+                        android:id="@+id/button1"
+                        android:background="@drawable/educationaladministration"
+                        android:layout_centerInParent="true"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"/>
+
+                    <TextView
+                        android:layout_marginTop="25dp"
+                        android:text="校教务"
+                        android:layout_below="@id/button1"
+                        android:layout_centerHorizontal="true"
+                        android:gravity="center"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/biaotilan_teshu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageButton
+                        android:id="@+id/button2"
+                        android:layout_marginTop="24dp"
+                        android:background="@drawable/goodvoice"
+                        android:layout_centerInParent="true"
+                        android:layout_width="57dp"
+                        android:layout_height="57dp"/>
+                    <TextView
+                        android:text="美一声"
+                        android:layout_below="@id/button2"
+                        android:layout_centerHorizontal="true"
+                        android:gravity="center"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/biaotilan_teshu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageButton
+                        android:id="@+id/button3"
+                        android:background="@drawable/block"
+                        android:layout_centerInParent="true"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"/>
+                    <TextView
+                        android:layout_marginTop="25dp"
+                        android:text="趣街区"
+                        android:layout_below="@id/button3"
+                        android:layout_centerHorizontal="true"
+                        android:gravity="center"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/biaotilan_teshu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageButton
+                        android:id="@+id/button4"
+                        android:background="@drawable/shop"
+                        android:layout_centerInParent="true"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"/>
+                    <TextView
+                        android:layout_marginTop="25dp"
+                        android:text="淘商店"
+                        android:layout_below="@id/button4"
+                        android:layout_centerHorizontal="true"
+                        android:gravity="center"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/biaotilan_teshu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        <com.lihang.ShadowLayout
+            app:hl_cornerRadius="20dp"
+            app:hl_topShow="true"
+            app:hl_leftShow="false"
+            app:hl_bottomShow="false"
+            app:hl_rightShow="false"
+            app:hl_isSym="false"
+            app:hl_shadowLimit="10dp"
+            app:hl_shadowColor="@color/gray"
+            app:hl_shadowBackColor="@color/ghostwhite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/home_R2"
+                android:background="@drawable/my_space_background"
+                android:paddingTop="20dp"
+                android:paddingLeft="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <net.lucode.hackware.magicindicator.MagicIndicator
+                    android:id="@+id/home_magic_indicator"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp" />
+            </RelativeLayout>
+
+        </com.lihang.ShadowLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/home_scrollview"
+        android:fillViewport="true"
+        android:background="@color/beijing"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/home_viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

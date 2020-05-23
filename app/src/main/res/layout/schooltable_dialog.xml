@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/r1"
+        android:layout_centerInParent="true"
+        android:paddingTop="30dp"
+        android:paddingBottom="30dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/table_close"
+            android:background="@drawable/close_black"
+            android:layout_alignParentRight="true"
+            android:layout_width="25dp"
+            android:layout_height="25dp"/>
+
+        <TextView
+            android:id="@+id/schooltable_dialog_title"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/ziti"
+            android:textSize="@dimen/biaotilan_teshu"
+            android:text="课程"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/schooltable_dialog_time"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/biaotilan_xiaozi"
+            android:text="14:00 - 21:00"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/schooltable_dialog_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/schooltable_dialog_message"
+            android:maxWidth="230dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/biaotilan_teshu"
+            android:text="而发生大的所得税政策中心撒大声地城哇第三次上次 啊按时吃输出真行政中心"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/schooltable_dialog_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/more_one"
+            android:text=""
+            android:gravity="center"
+            android:textColor="@color/gray"
+            android:layout_alignTop="@+id/more_two"
+            android:layout_toLeftOf="@id/more_two"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentLeft="true"
+            android:textSize="@dimen/biaotilan_xiaozi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/more_two"
+            android:text=""
+            android:gravity="center"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/biaotilan_xiaozi"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="-40dp"
+            android:layout_alignBottom="@+id/schooltable_dialog_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/more_three"
+            android:maxLines="1"
+            android:text=""
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/gray"
+            android:layout_alignTop="@id/more_two"
+            android:textSize="@dimen/biaotilan_xiaozi"
+            android:layout_toRightOf="@+id/more_two"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

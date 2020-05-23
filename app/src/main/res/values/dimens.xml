@@ -1,0 +1,21 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="biaotilan_gaodu">44dp</dimen>
+    <dimen name="biaotilan_dazi">21dp</dimen>
+    <dimen name="biaotilan_title">17dp</dimen>
+    <dimen name="biaotilan_teshu">16dp</dimen>
+    <dimen name="biaotilan_xiaozi">14dp</dimen>
+    <dimen name="biaotilan_chaoxiao">12dp</dimen>
+    <dimen name="celan_geren">340dp</dimen>
+    <dimen name="guangchangimage_left">14dp</dimen>
+    <dimen name="guangchangimage_top">15dp</dimen>
+    <dimen name="margin_very">20dp</dimen>
+
+
+    <dimen name="search_height">40dp</dimen>
+
+
+</resources>

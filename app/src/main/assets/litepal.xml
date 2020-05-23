@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<litepal>
+    <dbname value="NMY"></dbname>
+    <version value="17"></version>
+
+    <list>
+        <mapping class="com.example.sif.NeiBuLei.GuangChangUserXinXi"></mapping>
+        <mapping class="com.example.sif.NeiBuLei.UserSpace"></mapping>
+        <mapping class="com.example.sif.NeiBuLei.MyThumb"></mapping>
+        <mapping class="com.example.sif.NeiBuLei.NoticeClass"></mapping>
+    </list>
+</litepal>

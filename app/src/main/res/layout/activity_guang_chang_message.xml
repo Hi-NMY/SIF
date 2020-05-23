@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/GuangChang_R"
+    android:fitsSystemWindows="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GuangChangMessage">
+
+    <fragment
+        android:id="@+id/guangchang_message_frag"
+        android:name="com.example.sif.Lei.ShowActivityBar.FragmentActivityBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/biaotilan_gaodu"/>
+    <View
+        android:id="@+id/view"
+        android:background="@color/yinbai"
+        android:layout_below="@+id/guangchang_message_frag"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <EditText
+        android:id="@+id/guangchang_message_content"
+        android:layout_below="@id/view"
+        android:hint="点点滴滴，分享给懂你的人........."
+        android:maxLength="900"
+        android:paddingTop="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:gravity="left|top"
+        android:textSize="@dimen/biaotilan_xiaozi"
+        android:background="@color/beijing"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"/>
+
+    <RelativeLayout
+        android:id="@+id/message_r"
+        android:background="@drawable/guangchang_sendmessage_bottom"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <ImageButton
+            android:id="@+id/dynamic_message_image"
+            android:layout_marginLeft="40dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/guangchang_image"
+            android:scaleType="centerCrop"
+            android:background="@null"
+            android:layout_width="35dp"
+            android:layout_height="35dp"/>
+
+    </RelativeLayout>
+
+    <com.zhy.view.flowlayout.TagFlowLayout
+        android:id="@+id/id_flowlayout"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="60dp"
+        android:layout_alignBottom="@id/message_r"
+        app:max_select="2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </com.zhy.view.flowlayout.TagFlowLayout>
+
+    <com.zhy.view.flowlayout.TagFlowLayout
+        android:id="@+id/ib_select"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="25dp"
+        android:layout_alignBottom="@id/id_flowlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </com.zhy.view.flowlayout.TagFlowLayout>
+
+    <ImageView
+        android:id="@+id/dynamic_message_image_two"
+        android:visibility="invisible"
+        android:layout_alignTop="@+id/ib_select"
+        android:layout_marginTop="-130dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"/>
+
+</RelativeLayout>

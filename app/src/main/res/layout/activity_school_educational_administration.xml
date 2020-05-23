@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/school_educational_administration_R"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SchoolEducationalAdministration">
+
+    <fragment
+        android:id="@+id/school_educational_administration_bar"
+        android:name="com.example.sif.Lei.ShowActivityBar.FragmentActivityBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/biaotilan_gaodu"/>
+
+    <WebView
+        android:id="@+id/school_educational_administration"
+        android:layout_below="@id/school_educational_administration_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</RelativeLayout>

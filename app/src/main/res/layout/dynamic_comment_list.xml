@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/comment_R"
+        android:layout_marginLeft="@dimen/guangchangimage_left"
+        android:layout_marginRight="@dimen/guangchangimage_left"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.example.sif.Lei.NiceImageView.CircleImageView
+            android:id="@+id/dynamic_comment_headimage"
+            android:layout_marginTop="10dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@color/qianbai" />
+
+        <LinearLayout
+            android:id="@+id/dynamic_llt"
+            android:layout_alignTop="@+id/dynamic_comment_headimage"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/dynamic_comment_headimage"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="35dp">
+
+            <TextView
+                android:id="@+id/dynamic_comment_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:text="null"
+                android:textColor="@color/lightgray"
+                android:textSize="@dimen/biaotilan_xiaozi"/>
+
+            <TextView
+                android:id="@+id/dynamic_comment_time"
+                android:layout_marginTop="2dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:text="null"
+                android:textColor="@color/lightgray"
+                android:textSize="8dp"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/dynamic_comment_message"
+            android:textColor="@color/ziti"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:lineSpacingMultiplier="1.5"
+            android:layout_toRightOf="@+id/dynamic_comment_headimage"
+            android:layout_below="@+id/dynamic_llt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/dynamic_comment_message_floor"
+            android:layout_alignTop="@+id/dynamic_comment_message"
+            android:textColor="@color/lightgray"
+            android:gravity="center"
+            android:textSize="10dp"
+            android:text=""
+            android:layout_below="@+id/dynamic_comment_headimage"
+            android:layout_toLeftOf="@+id/dynamic_comment_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+    <View
+        android:layout_below="@id/comment_R"
+        android:background="@color/lightgray"
+        android:layout_width="match_parent"
+        android:alpha="0.3"
+        android:layout_height="0.5dp"/>
+
+</RelativeLayout>

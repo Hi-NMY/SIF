@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/jinru1"
+    tools:context=".JinRuYe">
+
+        <RelativeLayout
+            android:id="@+id/RL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true">
+
+            <TextView
+                android:id="@+id/SIF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="SIF"
+                android:textColor="#fff"
+                android:textSize="48dp" />
+
+            <TextView
+                android:id="@+id/SchoolIsFamily"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/SIF"
+                android:layout_centerHorizontal="true"
+                android:text="School Is Family"
+                android:textColor="#fff"
+                android:textSize="32dp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/XiaYiBu1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/RL"
+            android:visibility="invisible"
+            android:layout_centerHorizontal="true">
+
+            <ImageView
+                android:id="@+id/XiaYiBu2"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:alpha="0"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/xiayibu" />
+        </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/beijing"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/notive_rzong"
+        android:background="@color/beijing"
+        android:layout_marginLeft="@dimen/guangchangimage_left"
+        android:layout_marginRight="@dimen/guangchangimage_left"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="75dp">
+
+        <com.example.sif.Lei.NiceImageView.CircleImageView
+            android:id="@+id/notice_userimage"
+            android:layout_centerVertical="true"
+            android:src="@color/lightgray"
+            android:layout_width="48dp"
+            android:layout_height="48dp"/>
+
+        <TextView
+            android:id="@+id/notice_message"
+            android:textColor="@color/ziti"
+            android:textSize="@dimen/biaotilan_teshu"
+            android:lineSpacingMultiplier="1.2"
+            android:layout_marginLeft="@dimen/guangchangimage_left"
+            android:text=""
+            android:layout_toRightOf="@id/notice_userimage"
+            android:layout_centerVertical="true"
+            android:maxLines="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

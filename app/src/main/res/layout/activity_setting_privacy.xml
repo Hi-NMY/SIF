@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/privacy_r"
+    tools:context=".SettingPrivacy">
+
+    <fragment
+        android:id="@+id/setting_privacy_bar"
+        android:name="com.example.sif.Lei.ShowActivityBar.FragmentActivityBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/biaotilan_gaodu"/>
+
+    <TextView
+        android:id="@+id/hint"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_below="@+id/setting_privacy_bar"
+        android:gravity="center"
+        android:textSize="9sp"
+        android:textColor="@color/lightgray"
+        android:text="*返回后设置生效*"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_below="@+id/hint"
+        android:background="@color/qianbai"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:background="@color/beijing"
+            android:paddingLeft="@dimen/guangchangimage_left"
+            android:paddingRight="@dimen/guangchangimage_left"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_marginTop="25dp"
+                android:layout_centerVertical="true"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:text="是否展示院系"
+                    android:textSize="@dimen/biaotilan_xiaozi"
+                    android:textColor="@color/ziti"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="关闭后，其他人将无法查看你的院系信息"
+                    android:textSize="@dimen/biaotilan_chaoxiao"
+                    android:textColor="@color/lightgray"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <Switch
+                android:id="@+id/yuanxi_switch"
+                android:switchMinWidth="40dp"
+                android:checked="true"
+                android:track="@drawable/setting_bg"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:showText="false" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_marginLeft="@dimen/guangchangimage_left"
+            android:layout_marginRight="@dimen/guangchangimage_left"
+            android:background="@color/yinbai"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"/>
+
+        <RelativeLayout
+            android:background="@color/beijing"
+            android:paddingLeft="@dimen/guangchangimage_left"
+            android:paddingRight="@dimen/guangchangimage_left"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_marginTop="25dp"
+                android:layout_centerVertical="true"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:text="是否展示专业"
+                    android:textSize="@dimen/biaotilan_xiaozi"
+                    android:textColor="@color/ziti"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="关闭后，其他人将无法查看你的专业信息"
+                    android:textSize="@dimen/biaotilan_chaoxiao"
+                    android:textColor="@color/lightgray"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <Switch
+                android:id="@+id/zhuanye_switch"
+                android:switchMinWidth="40dp"
+                android:checked="true"
+                android:track="@drawable/setting_bg"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:showText="false" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_marginLeft="@dimen/guangchangimage_left"
+            android:layout_marginRight="@dimen/guangchangimage_left"
+            android:background="@color/yinbai"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"/>
+
+        <RelativeLayout
+            android:background="@color/beijing"
+            android:paddingLeft="@dimen/guangchangimage_left"
+            android:paddingRight="@dimen/guangchangimage_left"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_marginTop="25dp"
+                android:layout_centerVertical="true"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:text="是否展示年级"
+                    android:textSize="@dimen/biaotilan_xiaozi"
+                    android:textColor="@color/ziti"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="关闭后，其他人将无法查看你的年级信息"
+                    android:textSize="@dimen/biaotilan_chaoxiao"
+                    android:textColor="@color/lightgray"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <Switch
+                android:id="@+id/nianji_switch"
+                android:switchMinWidth="40dp"
+                android:checked="true"
+                android:track="@drawable/setting_bg"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:showText="false" />
+
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

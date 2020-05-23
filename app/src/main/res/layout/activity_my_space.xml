@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/MySpace_Coor"
+    xmlns:ImageViewPlus="http://schemas.android.com/apk/res-auto"
+    tools:context=".MySpace">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="280dp">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/mySpace_CollLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/beijing"
+            app:collapsedTitleGravity="left"
+            app:contentScrim="@color/beijing"
+            app:expandedTitleGravity="left|bottom"
+            app:expandedTitleMarginBottom="10dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:titleEnabled="false">
+
+            <ImageView
+                android:id="@+id/my_space_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ceshi"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0.7" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/mySpace_Toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:minHeight="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:title="@null">
+
+                <ImageView
+                    android:id="@+id/mySpace_Toolbar_FanHui"
+                    android:background="@drawable/zuo_black"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"/>
+
+                <TextView
+                    android:id="@+id/mySpace_Toolbar_title"
+                    android:visibility="invisible"
+                    android:textColor="@color/gray"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text=""
+                    android:textSize="16dp" />
+
+                <ImageView
+                    android:id="@+id/mySpace_Toolbar_follow"
+                    android:visibility="invisible"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="55dp"
+                    android:layout_height="25dp"/>
+
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/myspace_nestedscrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="-44dp"
+        android:background="@drawable/my_space_background"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <RelativeLayout
+            android:id="@+id/mySpace_Message_R"
+            android:minHeight="480dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/R"
+                android:layout_marginTop="60dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/MySpace_UserName"
+                    android:text=""
+                    android:textColor="@color/ziti"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="@dimen/biaotilan_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <ImageView
+                    android:id="@+id/MySpace_UserSEX"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@id/MySpace_UserName"
+                    android:background="@drawable/boy"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"/>
+
+                <RelativeLayout
+                    android:id="@+id/Myspace_R"
+                    android:layout_marginTop="8dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/MySpace_UserName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:id="@+id/privacy_yuan"
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/yuan"
+                            android:text="院系："
+                            android:textSize="@dimen/biaotilan_xiaozi"
+                            android:gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:id="@+id/MySpace_UserYuan"
+                            android:text=""
+                            android:gravity="center"
+                            android:layout_toRightOf="@id/yuan"
+                            android:textSize="@dimen/biaotilan_xiaozi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/privacy_zhuan"
+                        android:visibility="gone"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@id/privacy_yuan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/zhuanye"
+                            android:text="专业："
+                            android:textSize="@dimen/biaotilan_xiaozi"
+                            android:gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:id="@+id/MySpace_UserZhuanYe"
+                            android:text=""
+                            android:gravity="center"
+                            android:layout_toRightOf="@id/zhuanye"
+                            android:textSize="@dimen/biaotilan_xiaozi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/privacy_ban"
+                        android:visibility="gone"
+                        android:layout_marginTop="10dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_below="@+id/privacy_zhuan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/ban"
+                            android:text="年级："
+                            android:textSize="@dimen/biaotilan_xiaozi"
+                            android:gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:id="@+id/MySpace_UserBan"
+                            android:text=""
+                            android:gravity="center"
+                            android:layout_toRightOf="@id/ban"
+                            android:textSize="@dimen/biaotilan_xiaozi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </RelativeLayout>
+
+                </RelativeLayout>
+                <TextView
+                    android:id="@+id/MySpace_UserZhaoHu"
+                    android:text=""
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:background="@drawable/myspace_geqian_background"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/Myspace_R"
+                    android:textSize="@dimen/biaotilan_xiaozi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"/>
+
+                <ImageView
+                    android:id="@+id/down_image2"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@id/MySpace_UserZhaoHu"
+                    android:background="@color/beijing"
+                    android:src="@drawable/down_gray"
+                    android:scaleType="centerInside"
+                    android:layout_width="match_parent"
+                    android:layout_height="13dp"/>
+
+            </RelativeLayout>
+
+            <com.scwang.smartrefresh.layout.SmartRefreshLayout
+                android:id="@+id/smart"
+                android:layout_marginTop="10dp"
+                android:descendantFocusability="blocksDescendants"
+                android:layout_below="@id/R"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srlHeaderHeight="50dp">
+                <RelativeLayout
+                    android:id="@+id/guangchang_Rt"
+                    android:background="@color/beijing"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/smarttext"
+                        android:textSize="10dp"
+                        android:textColor="@color/darkgrey"
+                        android:gravity="center"
+                        android:text="下拉刷新   发现更多..."
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <pl.droidsonroids.gif.GifImageView
+                        android:id="@+id/guangchang_gif"
+                        android:layout_below="@id/smarttext"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/xiala_break"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"/>
+                </RelativeLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/my_space_list_message"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:background="@color/beijing"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+                <RelativeLayout
+                    android:id="@+id/guangchang_Rt1"
+                    android:background="@color/beijing"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/guangchang_text"
+                        android:gravity="center"
+                        android:text="...正在加载..."
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"/>
+                </RelativeLayout>
+
+            </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+            <View
+                android:id="@+id/view.."
+                android:layout_alignTop="@+id/smart"
+                android:alpha="0.1"
+                android:background="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+
+            <RelativeLayout
+                android:id="@+id/Mypace_null"
+                android:visibility="invisible"
+                android:layout_alignParentBottom="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/iiiii"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/kongbox"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"/>
+                <TextView
+                    android:id="@+id/Mypace_null1"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@id/iiiii"
+                    android:gravity="center"
+                    android:text="还没有动态呢"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/Mypace_null2"
+                    android:layout_below="@id/Mypace_null1"
+                    android:gravity="center"
+                    android:text="刷新或发个动态看看吧....."
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <RelativeLayout
+        android:id="@+id/private_r"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:background="@drawable/myspace_bottom_bg"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="-10dp"
+            android:layout_marginRight="-10dp"
+            android:layout_marginBottom="-1dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <Button
+                android:id="@+id/private_user_button"
+                android:layout_centerInParent="true"
+                style="?android:attr/borderlessButtonStyle"
+                android:background="@drawable/ib_detailed_button"
+                android:text="私聊"
+                android:textColor="@color/white"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <com.example.sif.Lei.NiceImageView.CircleImageView
+        android:id="@+id/my_space_user_image"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@color/qianbai"
+        android:layout_gravity="center"
+        app:layout_anchor="@id/myspace_nestedscrollview"
+        app:layout_anchorGravity="center|top"/>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

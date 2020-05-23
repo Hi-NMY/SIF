@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/beijing"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/ib_search"
+        android:focusable="true"
+        android:layout_marginTop="5dp"
+        android:focusableInTouchMode="true"
+        android:layout_marginLeft="@dimen/guangchangimage_left"
+        android:layout_marginRight="@dimen/guangchangimage_left"
+        android:layout_centerInParent="true"
+        android:background="@drawable/search_bg"
+        android:layout_width="match_parent"
+        android:layout_height="30dp">
+
+        <ImageView
+            android:id="@+id/search_image"
+            android:layout_marginLeft="5dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/search"
+            android:layout_width="20dp"
+            android:layout_height="20dp"/>
+
+        <EditText
+            android:id="@+id/search_message"
+            android:textSize="@dimen/biaotilan_chaoxiao"
+            android:hint="请搜索街区"
+            android:maxLines="1"
+            android:maxLength="25"
+            android:inputType="text"
+            android:textColor="@color/ziti"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="15dp"
+            android:layout_toRightOf="@id/search_image"
+            android:background="@null"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

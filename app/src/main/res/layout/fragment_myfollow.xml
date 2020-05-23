@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/myfollolist_refresh"
+        android:visibility="invisible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/follow_refresh_Rt"
+            android:background="@color/beijing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/smarttext"
+                android:textSize="10dp"
+                android:layout_marginTop="10dp"
+                android:lineSpacingMultiplier="1.5"
+                android:textColor="@color/darkgrey"
+                android:gravity="center"
+                android:text="我来看看\n有没有更多的人关注你..."
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/guangchang_gif"
+                android:layout_below="@+id/smarttext"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/loading3"
+                android:layout_width="40dp"
+                android:layout_height="40dp"/>
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/follow_me_ReView"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <RelativeLayout
+            android:id="@+id/follow_refresh_R"
+            android:background="@color/beijing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/smarttext2"
+                android:gravity="center"
+                android:text="...正在加载..."
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"/>
+        </RelativeLayout>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/follow_list_null"
+        android:visibility="invisible"
+        android:layout_marginTop="120dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/image1"
+            android:src="@drawable/myfollow"
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitCenter"
+            android:layout_width="150dp"
+            android:layout_height="150dp"/>
+
+        <TextView
+            android:lineSpacingMultiplier="1.5"
+            android:gravity="center"
+            android:text="你的眼光好高啊\n点击刷新 或 快去发现有趣的人吧"
+            android:layout_below="@id/image1"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

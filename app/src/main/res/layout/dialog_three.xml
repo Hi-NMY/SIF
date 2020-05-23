@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/dialog_text"
+            android:gravity="center"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/biaotilan_title"
+            android:layout_marginBottom="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/button_one"
+            android:layout_below="@id/dialog_text"
+            android:textSize="@dimen/biaotilan_title"
+            android:text=""
+            style="?android:attr/borderlessButtonStyle"
+            android:background="@drawable/daohang"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"/>
+
+        <Button
+            android:id="@+id/button_two"
+            android:text=""
+            android:textSize="@dimen/biaotilan_title"
+            android:textColor="@color/ziti"
+            android:layout_marginTop="30dp"
+            android:stateListAnimator="@null"
+            android:layout_below="@id/button_one"
+            android:background="@drawable/daohang"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"/>
+
+        <Button
+            android:id="@+id/button_three"
+            android:text="取消"
+            android:textSize="@dimen/biaotilan_title"
+            android:textColor="@color/bilan"
+            android:layout_marginTop="30dp"
+            android:stateListAnimator="@null"
+            android:layout_below="@id/button_two"
+            android:background="@null"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

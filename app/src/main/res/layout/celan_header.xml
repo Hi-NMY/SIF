@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ImageViewPlus="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/celan_R1"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/celan_geren"
+    android:background="@drawable/celan_geren">
+
+    <ImageView
+        android:id="@+id/celan_guanbi"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/close_white"
+        android:layout_width="25dp"
+        android:layout_height="25dp"/>
+    <ImageView
+        android:id="@+id/celan_xiugai"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="35dp"
+        android:layout_toLeftOf="@+id/celan_guanbi"
+        android:background="@drawable/xiugai_gerenxinxi"
+        android:layout_width="23dp"
+        android:layout_height="23dp"/>
+
+    <RelativeLayout
+        android:id="@+id/celan_R"
+        android:layout_width="280dp"
+        android:layout_height="140dp"
+        android:layout_below="@+id/celan_guanbi"
+        android:layout_alignParentRight="true">
+
+        <com.example.sif.Lei.NiceImageView.CircleImageView
+            android:id="@+id/celan_touxiang"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@color/qianbai"
+            ImageViewPlus:borderColor="@color/beijing"
+            ImageViewPlus:borderWidth="2dp" />
+
+        <TextView
+            android:id="@+id/celan_userName"
+            android:textColor="@color/ziti"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_alignTop="@+id/celan_touxiang"
+            android:layout_marginTop="-5dp"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/celan_touxiang"
+            android:gravity="left|center"
+            android:textSize="@dimen/biaotilan_title" />
+
+        <TextView
+            android:id="@+id/celan_Name"
+            android:layout_width="match_parent"
+            android:layout_height="22dp"
+            android:layout_below="@id/celan_userName"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/celan_touxiang"
+            android:gravity="left|center"
+            android:textColor="@color/ziti"
+            android:textSize="@dimen/biaotilan_teshu" />
+        <TextView
+            android:id="@+id/celan_banji"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:layout_below="@id/celan_Name"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/celan_touxiang"
+            android:gravity="left|center"
+            android:textColor="@color/ziti"
+            android:textSize="@dimen/biaotilan_xiaozi" />
+        <TextView
+            android:id="@+id/celan_xibu"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_below="@id/celan_Name"
+            android:layout_toRightOf="@+id/celan_banji"
+            android:gravity="left|center"
+            android:textColor="@color/ziti"
+            android:textSize="@dimen/biaotilan_xiaozi" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/celan_geqian"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@id/celan_R"
+        android:gravity="center"
+        android:text="Hello SIF Welcome欢迎来到SIF"
+        android:textSize="@dimen/biaotilan_title" />
+
+    <RelativeLayout
+        android:id="@+id/celan_R2"
+        android:background="@drawable/celan_background"
+        android:layout_below="@+id/celan_geqian"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true">
+
+        <RelativeLayout
+            android:layout_centerHorizontal="true"
+            android:layout_width="220dp"
+            android:layout_height="80dp">
+
+            <RelativeLayout
+                android:id="@+id/header_shoucang"
+                android:layout_marginLeft="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true">
+
+                <ImageView
+                    android:id="@+id/celan_shoucang"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/shoucang_black" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/celan_shoucang"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="收藏"
+                    android:textColor="@color/ziti"
+                    android:textSize="@dimen/biaotilan_xiaozi" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/header_friendma"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true">
+
+                <ImageView
+                    android:id="@+id/celan_erweima"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/erweima" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/celan_erweima"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="好友码"
+                    android:textColor="@color/ziti"
+                    android:textSize="@dimen/biaotilan_xiaozi" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/header_myspace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true">
+
+                <ImageView
+                    android:id="@+id/celan_wode_kongjian"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/kongjian" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/celan_wode_kongjian"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="我的空间"
+                    android:textColor="@color/ziti"
+                    android:textSize="@dimen/biaotilan_xiaozi" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/recret_r"
+    tools:context=".RecretProtection">
+
+    <fragment
+        android:id="@+id/recret_protection_bar"
+        android:name="com.example.sif.Lei.ShowActivityBar.FragmentActivityBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/biaotilan_gaodu"/>
+
+    <LinearLayout
+        android:layout_below="@id/recret_protection_bar"
+        android:background="@color/qianbai"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/t1"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="默认密保为：默认问题1 + 自己学号"
+            android:textSize="@dimen/biaotilan_xiaozi"
+            android:textColor="@color/lightgray"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/t2"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="！注：新注册用户请立刻更改密保"
+            android:textSize="@dimen/biaotilan_xiaozi"
+            android:textColor="@color/lightgray"
+            android:layout_below="@id/t1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <org.angmarch.views.NiceSpinner
+            android:id="@+id/recret_spinner"
+            android:layout_marginLeft="@dimen/guangchangimage_left"
+            android:layout_marginRight="@dimen/guangchangimage_left"
+            android:layout_marginTop="15dp"
+            android:layout_below="@id/t2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"/>
+
+        <LinearLayout
+            android:id="@+id/change_llt"
+            android:layout_marginTop="40dp"
+            android:background="@color/beijing"
+            android:layout_below="@id/recret_spinner"
+            android:layout_marginLeft="@dimen/guangchangimage_left"
+            android:layout_marginRight="@dimen/guangchangimage_left"
+            android:layout_width="match_parent"
+            android:layout_height="55dp">
+
+            <EditText
+                android:id="@+id/change_Text"
+                android:textSize="@dimen/biaotilan_teshu"
+                android:paddingLeft="15dp"
+                android:background="@null"
+                android:maxLines="1"
+                android:maxLength="20"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_below="@id/RLL_zong_zhuce"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="20dp"
+            android:text="*请勿输入空格"
+            android:gravity="right"
+            android:textSize="11sp"
+            android:textColor="@color/silver"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="20dp"
+            android:layout_gravity="right"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/change_number"
+                android:textSize="@dimen/biaotilan_xiaozi"
+                android:text="0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/change_tv"
+                android:text=" / 20"
+                android:textSize="@dimen/biaotilan_xiaozi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/recret_check"
+            app:elevation="0dp"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:borderWidth="0dp"
+            android:backgroundTint="@color/bilan"
+            android:src="@drawable/check_white"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
+
