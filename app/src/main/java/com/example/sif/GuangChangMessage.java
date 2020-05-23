@@ -26,6 +26,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.signature.MediaStoreSignature;
+import com.example.sif.Lei.MyToolClass.MyDateClass;
 import com.example.sif.Lei.MyToolClass.MyVeryDiaLog;
 import com.example.sif.Lei.MyToolClass.SelectImage;
 import com.example.sif.Lei.MyToolClass.ToastZong;
@@ -173,12 +174,13 @@ public class GuangChangMessage extends BaseActivity implements View.OnLayoutChan
         mIbSelect = (TagFlowLayout) findViewById(R.id.ib_select);
     }
 
-    private String imageName = getMyXueHao() + "GuangChang.png";
+    private String imageName = "";
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.dynamic_message_image:
+                imageName = getMyXueHao() + MyDateClass.showNowDate() + ".png";
                 SelectImage selectImage = new SelectImage(this);
                 selectImage.showSelectImage(1, imageName);
                 break;
@@ -218,8 +220,6 @@ public class GuangChangMessage extends BaseActivity implements View.OnLayoutChan
             }
         }
     }
-
-    private int i = 0;
 
     private void smallImage(String m) {
         Luban.with(GuangChangMessage.this)

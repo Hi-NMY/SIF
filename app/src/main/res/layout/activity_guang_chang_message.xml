@@ -75,6 +75,15 @@
         android:layout_height="wrap_content">
     </com.zhy.view.flowlayout.TagFlowLayout>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/image_list"
+        android:visibility="invisible"
+        android:layout_alignTop="@+id/ib_select"
+        android:layout_marginTop="-130dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"/>
+
     <ImageView
         android:id="@+id/dynamic_message_image_two"
         android:visibility="invisible"
