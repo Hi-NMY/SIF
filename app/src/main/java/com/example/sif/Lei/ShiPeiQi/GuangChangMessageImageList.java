@@ -1,9 +1,6 @@
 package com.example.sif.Lei.ShiPeiQi;
 
 import android.app.Activity;
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,18 +13,15 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.signature.MediaStoreSignature;
 import com.example.sif.GuangChangMessage;
 import com.example.sif.Lei.MyToolClass.MyDateClass;
-import com.example.sif.Lei.MyToolClass.ToastZong;
 import com.example.sif.MyApplication;
 import com.example.sif.NeiBuLei.DouBleImagePath;
 import com.example.sif.R;
-import com.tamsiree.rxui.view.dialog.RxDialog;
-import com.tamsiree.rxui.view.dialog.RxDialogScaleView;
 
 import java.util.List;
 
 public class GuangChangMessageImageList extends RecyclerView.Adapter<GuangChangMessageImageList.ViewHolder> {
 
-    public List<DouBleImagePath> douBleImagePaths;
+    private List<DouBleImagePath> douBleImagePaths;
     private Activity activity;
     private GuangChangMessage guangChangMessage;
     private View view;
@@ -47,17 +41,22 @@ public class GuangChangMessageImageList extends RecyclerView.Adapter<GuangChangM
     public GuangChangMessageImageList(Activity a,GuangChangMessage g, List<DouBleImagePath> d) {
         this.activity = a;
         this.guangChangMessage = g;
+        if (douBleImagePaths != null){
+            douBleImagePaths.clear();
+        }
         this.douBleImagePaths = d;
+        notifyDataSetChanged();
     }
 
     public void addNewImage(DouBleImagePath d){
-        this.douBleImagePaths.add(0, d);
-        notifyItemInserted(0);
+        douBleImagePaths.add(0, d);
+       // notifyItemInserted(0);
         notifyItemRangeChanged(0, douBleImagePaths.size() + 1);
     }
 
     public void removeImage(int position){
-        this.douBleImagePaths.remove(position);
+     //   this.douBleImagePaths.remove(position);
+        //notifyItemRemoved(position);
         notifyItemRangeChanged(position, douBleImagePaths.size() + 1);
     }
 
@@ -70,25 +69,7 @@ public class GuangChangMessageImageList extends RecyclerView.Adapter<GuangChangM
     }
 
     private DouBleImagePath douBleImagePath;
-    private RxDialog rxDialog;
-    private RxDialogScaleView rxDialogScaleView;
-    private Handler bitMapHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            rxDialog.dismiss();
-            if (msg.obj != null) {
-                if (msg.what == 1) {
-                    ToastZong.ShowToast(MyApplication.getContext(), "图片加载错误");
-                    rxDialogScaleView.setImage((Bitmap) msg.obj);
-                } else {
-                    rxDialogScaleView.setImage((Bitmap) msg.obj);
-                }
-            } else {
-                ToastZong.ShowToast(MyApplication.getContext(), "错误");
-            }
-        }
-    };
+
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         douBleImagePath = douBleImagePaths.get(position);
@@ -101,16 +82,14 @@ public class GuangChangMessageImageList extends RecyclerView.Adapter<GuangChangM
         holder.mImageItemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //接口回调查看图片
-
+                guangChangMessage.lookPicture(position);
             }
         });
 
         holder.mImageClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //接口回调进行删除
-
+                guangChangMessage.removeList(position);
             }
         });
     }

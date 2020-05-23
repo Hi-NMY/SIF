@@ -23,15 +23,18 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.signature.MediaStoreSignature;
 import com.example.sif.Lei.MyToolClass.MyDateClass;
 import com.example.sif.Lei.MyToolClass.MyVeryDiaLog;
 import com.example.sif.Lei.MyToolClass.SelectImage;
 import com.example.sif.Lei.MyToolClass.ToastZong;
 import com.example.sif.Lei.MyToolClass.VeryPopupWindow;
+import com.example.sif.Lei.ShiPeiQi.GuangChangMessageImageList;
 import com.example.sif.Lei.ShowActivityBar.FragmentActivityBar;
+import com.example.sif.NeiBuLei.DouBleImagePath;
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.entity.LocalMedia;
@@ -60,6 +63,7 @@ public class GuangChangMessage extends BaseActivity implements View.OnLayoutChan
     private IntentFilter intentFilter;
     private LabelListener labelListener;
     private TagFlowLayout mIbSelect;
+    private RecyclerView mImageList;
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
@@ -110,7 +114,7 @@ public class GuangChangMessage extends BaseActivity implements View.OnLayoutChan
             public boolean onTagClick(View view, int position, FlowLayout parent) {
                 if (position == 1) {
                     hideKeyboard(mGuangchangMessageContent, 1);
-                    VeryPopupWindow veryPopupWindow = new VeryPopupWindow(MyApplication.getContext(),strings);
+                    VeryPopupWindow veryPopupWindow = new VeryPopupWindow(MyApplication.getContext(), strings);
                     veryPopupWindow.showAtLocation(findViewById(R.id.id_flowlayout), Gravity.CENTER, 0, 0);
                 }
                 return true;
@@ -172,6 +176,7 @@ public class GuangChangMessage extends BaseActivity implements View.OnLayoutChan
         mIdFlowlayout.setOnClickListener(this);
         mGuangchangMessageContent = (EditText) findViewById(R.id.guangchang_message_content);
         mIbSelect = (TagFlowLayout) findViewById(R.id.ib_select);
+        mImageList = (RecyclerView) findViewById(R.id.image_list);
     }
 
     private String imageName = "";
@@ -264,66 +269,108 @@ public class GuangChangMessage extends BaseActivity implements View.OnLayoutChan
             }
         }
     };
+
+    private List<DouBleImagePath> ds;
+    private GuangChangMessageImageList guangChangMessageImageList;
+    private LinearLayoutManager linearLayoutManager;
+    private DouBleImagePath douBleImagePath;
     private void sendSmallImage(String path) {
+        if (ds == null){
+            ds = new ArrayList<>();
+        }
         if (path != null) {
             imagepath = path;
-            updateTime = String.valueOf(System.currentTimeMillis());
-            mDynamicMessageImageTwo.setVisibility(View.VISIBLE);
-            Glide.with(MyApplication.getContext())
-                    .load(imagepath)
-                    .signature(new MediaStoreSignature(updateTime, 1, 1))
-                    .into(mDynamicMessageImageTwo);
-            mDynamicMessageImageTwo.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    rxDialogScaleView = new RxDialogScaleView(GuangChangMessage.this);
-              //      rxDialogScaleView.setContentView(LayoutInflater.from(MyApplication.getContext()).inflate(R.layout.tipes_gv,null));
-                    rxDialog = new RxDialog(GuangChangMessage.this, R.style.tran_dialog);
-                    rxDialog.setCanceledOnTouchOutside(false);
-                    MyVeryDiaLog.veryImageDiaLog(rxDialogScaleView, imagepath, bitMapHandler);
-                    MyVeryDiaLog.transparentDiaLog(GuangChangMessage.this, rxDialog);
-                }
-            });
+            if (ds.size() < 4){
+                douBleImagePath = new DouBleImagePath();
+                douBleImagePath.setMinPath(imagepath);
+                douBleImagePath.setMaxPath(imageApath);
+                ds.add(0,douBleImagePath);
+                mImageList.setVisibility(View.VISIBLE);
+                linearLayoutManager = new LinearLayoutManager(this);
+                linearLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
+                mImageList.setLayoutManager(linearLayoutManager);
+                guangChangMessageImageList = new GuangChangMessageImageList(this,GuangChangMessage.this,ds);
+                mImageList.setAdapter(guangChangMessageImageList);
+                ((DefaultItemAnimator)mImageList.getItemAnimator()).setSupportsChangeAnimations(false);
+            }
+
+           // updateTime = String.valueOf(System.currentTimeMillis());
+
+
+//            Glide.with(MyApplication.getContext())
+//                    .load(imagepath)
+//                    .signature(new MediaStoreSignature(updateTime, 1, 1))
+//                    .into(mDynamicMessageImageTwo);
+//            mDynamicMessageImageTwo.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    rxDialogScaleView = new RxDialogScaleView(GuangChangMessage.this);
+//                    //      rxDialogScaleView.setContentView(LayoutInflater.from(MyApplication.getContext()).inflate(R.layout.tipes_gv,null));
+//                    rxDialog = new RxDialog(GuangChangMessage.this, R.style.tran_dialog);
+//                    rxDialog.setCanceledOnTouchOutside(false);
+//                    MyVeryDiaLog.veryImageDiaLog(rxDialogScaleView, imagepath, bitMapHandler);
+//                    MyVeryDiaLog.transparentDiaLog(GuangChangMessage.this, rxDialog);
+//                }
+//            });
         } else {
             ToastZong.ShowToast(GuangChangMessage.this, "图片加载失败,请重新选择");
         }
     }
 
+    public void removeList(int position){
+        ds.remove(position);
+        if (ds == null || ds.size() <= 0 ){
+            mImageList.setVisibility(View.INVISIBLE);
+        }else {
+            guangChangMessageImageList.removeImage(position);
+        }
+    }
+
+    public void lookPicture(int position){
+        rxDialogScaleView = new RxDialogScaleView(GuangChangMessage.this);
+        //      rxDialogScaleView.setContentView(LayoutInflater.from(MyApplication.getContext()).inflate(R.layout.tipes_gv,null));
+        rxDialog = new RxDialog(GuangChangMessage.this, R.style.tran_dialog);
+        rxDialog.setCanceledOnTouchOutside(false);
+        MyVeryDiaLog.veryImageDiaLog(rxDialogScaleView, ds.get(position).getMaxPath(), bitMapHandler);
+        MyVeryDiaLog.transparentDiaLog(GuangChangMessage.this, rxDialog);
+    }
+
     public StringBuffer stringBuffer;
-    public void sendMySelectIb(List<String> strings){
+    public void sendMySelectIb(List<String> strings) {
         LayoutInflater layoutInflater = LayoutInflater.from(this);
         stringBuffer = new StringBuffer();
-        if (strings.size() != 0){
-            for (String f:strings){
-                stringBuffer.append(f+",");
+        if (strings.size() != 0) {
+            for (String f : strings) {
+                stringBuffer.append(f + ",");
             }
-        }else {
+        } else {
             stringBuffer.append("");
         }
 
         mIbSelect.setAdapter(new TagAdapter<String>(strings) {
             @Override
             public View getView(FlowLayout parent, int position, String o) {
-                View view = layoutInflater.inflate(R.layout.label_list1,mIbSelect,false);
-                TextView t = (TextView)view.findViewById(R.id.text);
+                View view = layoutInflater.inflate(R.layout.label_list1, mIbSelect, false);
+                TextView t = (TextView) view.findViewById(R.id.text);
                 t.setText(o);
                 return view;
             }
         });
     }
 
-    public void removeAllList(){
+    public void removeAllList() {
         mIbSelect.removeAllViews();
     }
 
     private List<String> strings;
+
     class LabelListener extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
             strings = intent.getStringArrayListExtra("B");
-            if (strings != null && strings.size() != 0){
+            if (strings != null && strings.size() != 0) {
                 sendMySelectIb(strings);
-            }else {
+            } else {
                 stringBuffer.append("");
                 removeAllList();
             }
