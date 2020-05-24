@@ -78,7 +78,7 @@ public class GuangChangMessageImageList extends RecyclerView.Adapter<GuangChangM
                 .load(douBleImagePath.getMaxPath())
                 .override(70, 70)
                 .centerCrop()
-                .transform(new GlideRoundTransform(5))
+                .transform(new GlideRoundTransform(2))
                 .signature(new MediaStoreSignature(updateTime, 1, 1))
                 .into(holder.mImageItemView);
 
