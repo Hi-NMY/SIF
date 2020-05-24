@@ -31,12 +31,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".SchoolShop"></activity>
         <activity
             android:name=".PrivateUserMessage"
-            android:windowSoftInputMode="adjustResize" >
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data
                     android:host="com.example.sif"
                     android:pathPrefix="/conversation"
@@ -94,7 +97,9 @@
             android:label="@string/title_activity_my_zhu_ye">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data
                     android:host="com.example.sif"
                     android:pathPrefix="/conversationlist"

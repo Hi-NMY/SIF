@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/r1"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_marginTop="30dp"
+            android:textColor="@color/ziti"
+            android:layout_centerHorizontal="true"
+            android:text="淘商店使用规则"
+            android:textSize="@dimen/biaotilan_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/t1"
+            android:lineSpacingMultiplier="1.3"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/title"
+            android:textSize="@dimen/biaotilan_xiaozi"
+            android:text="1.淘商店 为各位Sifer提供了一个 互相转卖商品的场所"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/t2"
+            android:lineSpacingMultiplier="1.3"
+            android:layout_marginTop="30dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/t1"
+            android:textSize="@dimen/biaotilan_xiaozi"
+            android:text="2.禁止 虚标价格、欺诈、与实物不符等影响正常交易情况，如发现，请及时举报！"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/t3"
+            android:layout_marginTop="30dp"
+            android:lineSpacingMultiplier="1.3"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/t2"
+            android:textSize="@dimen/biaotilan_xiaozi"
+            android:text="3.商品发布后将会永久保留，如已卖出或因某些原因不想出售，请及时更新商品状态"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/tips_button"
+            android:background="@drawable/ib_detailed_button"
+            android:textColor="@color/beijing"
+            android:text="同 意"
+            android:textSize="@dimen/biaotilan_title"
+            android:textStyle="bold"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_marginTop="30dp"
+            android:layout_below="@id/t3"
+            android:layout_centerHorizontal="true"
+            android:layout_width="200dp"
+            android:layout_height="45dp"/>
+
+        <ImageView
+            android:id="@+id/close_tips"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="25dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/tips_button"
+            android:background="@drawable/closecircle"
+            android:layout_width="30dp"
+            android:layout_height="30dp"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

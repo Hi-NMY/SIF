@@ -35,6 +35,7 @@ import com.example.sif.MyApplication;
 import com.example.sif.MyZhuYe;
 import com.example.sif.R;
 import com.example.sif.SchoolEducationalAdministration;
+import com.example.sif.SchoolShop;
 import com.example.sif.ui.dashboard.FragmentViewPageAdapter;
 import com.example.sif.ui.home2.FragmentFollowMe;
 import com.example.sif.ui.home2.FragmentMyFollow;
@@ -249,7 +250,26 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener{
                 myZhuYe.startActivity(intent1);
                 break;
             case R.id.button4:
-
+                View view1 = LayoutInflater.from(myZhuYe).inflate(R.layout.schoolshop_tips, null);
+                ShowDiaLog showDiaLog1 = new ShowDiaLog(myZhuYe, R.style.AlertDialog_qr, view1);
+                showDiaLog1.logWindow(new ColorDrawable(Color.TRANSPARENT));
+                showDiaLog1.showMyDiaLog();
+                Button button1 = (Button)view1.findViewById(R.id.tips_button);
+                ImageView imageView1 = (ImageView)view1.findViewById(R.id.close_tips);
+                button1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        showDiaLog1.closeMyDiaLog();
+                        Intent intent2 = new Intent(MyApplication.getContext(), SchoolShop.class);
+                        myZhuYe.startActivity(intent2);
+                    }
+                });
+                imageView1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        showDiaLog1.closeMyDiaLog();
+                    }
+                });
                 break;
         }
     }
