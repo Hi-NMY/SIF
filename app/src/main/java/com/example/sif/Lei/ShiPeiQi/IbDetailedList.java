@@ -4,7 +4,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -25,7 +24,6 @@ public class IbDetailedList extends RecyclerView.Adapter<IbDetailedList.ViewHold
         TextView gcUserXinXi;
         TextView gcUserThumb;
         TextView gcUserComment;
-        ImageView imageView;
         ImageButton gcUserZan;
         ImageButton gcUserC;
         CircleImageView gcUserImage;
@@ -39,7 +37,6 @@ public class IbDetailedList extends RecyclerView.Adapter<IbDetailedList.ViewHold
             gcUserImage = (CircleImageView) itemView.findViewById(R.id.guangchang_user_tou_image);
             gcUserZan = (ImageButton) itemView.findViewById(R.id.guangchang_user_dianzan);
             gcUserThumb = (TextView) itemView.findViewById(R.id.guangchang_user_thumb);
-            imageView = (ImageView) itemView.findViewById(R.id.guangchang_user_messageimage);
             recyclerView = (RelativeLayout) itemView.findViewById(R.id.GuangChang_Message_detailed);
             gcUserComment = (TextView) itemView.findViewById(R.id.guangchang_user_message);
             gcUserC = (ImageButton) itemView.findViewById(R.id.guangchang_user_pinglun);

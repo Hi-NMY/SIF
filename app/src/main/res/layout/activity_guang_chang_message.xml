@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:ImageViewPlus="http://schemas.android.com/apk/res-auto"
     android:id="@+id/GuangChang_R"
     android:fitsSystemWindows="true"
     android:layout_width="match_parent"
@@ -79,18 +79,22 @@
         android:id="@+id/image_list"
         android:visibility="invisible"
         android:layout_alignTop="@+id/ib_select"
-        android:layout_marginTop="-130dp"
+        android:layout_marginTop="-100dp"
         android:layout_marginLeft="20dp"
         android:layout_width="wrap_content"
-        android:layout_height="100dp"/>
+        android:layout_height="wrap_content"/>
 
-    <ImageView
+    <com.example.sif.Lei.NiceImageView.SolidImageView
         android:id="@+id/dynamic_message_image_two"
-        android:visibility="invisible"
+        android:visibility="gone"
         android:layout_alignTop="@+id/ib_select"
-        android:layout_marginTop="-130dp"
-        android:layout_marginLeft="20dp"
-        android:layout_width="100dp"
-        android:layout_height="100dp"/>
+        android:src="@drawable/addimage"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="-93dp"
+        android:layout_toRightOf="@+id/image_list"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        ImageViewPlus:type="rounded_rect"
+        ImageViewPlus:rectRoundRadius="5dp"/>
 
 </RelativeLayout>

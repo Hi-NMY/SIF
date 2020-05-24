@@ -53,22 +53,20 @@
                 android:layout_height="wrap_content">
             </TextView>
 
-            <ImageView
-                android:id="@+id/userspace_messageimage"
-                android:visibility="invisible"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/userspace_messageimagelist"
+                android:visibility="gone"
                 android:layout_below="@id/MySpace_List_Message"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="15dp"
-                android:maxWidth="200dp"
-                android:maxHeight="200dp" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
             <com.zhy.view.flowlayout.TagFlowLayout
                 android:id="@+id/userspace_ib"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/userspace_messageimage"
+                android:layout_below="@+id/guangchang_user_messageimagelist"
                 android:layout_marginLeft="11dp"
                 android:layout_marginTop="20dp">
 

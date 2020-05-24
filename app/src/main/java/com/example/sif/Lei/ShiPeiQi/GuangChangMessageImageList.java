@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.signature.MediaStoreSignature;
 import com.example.sif.GuangChangMessage;
+import com.example.sif.Lei.MyToolClass.GlideRoundTransform;
 import com.example.sif.Lei.MyToolClass.MyDateClass;
 import com.example.sif.MyApplication;
 import com.example.sif.NeiBuLei.DouBleImagePath;
@@ -26,7 +27,6 @@ public class GuangChangMessageImageList extends RecyclerView.Adapter<GuangChangM
     private GuangChangMessage guangChangMessage;
     private View view;
     private ViewHolder viewHolder;
-
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView mImageItemView;
@@ -76,6 +76,9 @@ public class GuangChangMessageImageList extends RecyclerView.Adapter<GuangChangM
         String updateTime = MyDateClass.showNowDate();
         Glide.with(MyApplication.getContext())
                 .load(douBleImagePath.getMaxPath())
+                .override(70, 70)
+                .centerCrop()
+                .transform(new GlideRoundTransform(5))
                 .signature(new MediaStoreSignature(updateTime, 1, 1))
                 .into(holder.mImageItemView);
 

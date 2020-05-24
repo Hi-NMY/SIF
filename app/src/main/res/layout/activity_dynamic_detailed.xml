@@ -84,22 +84,20 @@
                 android:textSize="@dimen/biaotilan_xiaozi"
                 android:lineSpacingMultiplier="1.5"/>
 
-            <ImageView
-                android:id="@+id/dynamic_detailed_image"
-                android:layout_marginLeft="5dp"
-                android:visibility="invisible"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/dynamic_detailed_messageimagelist"
+                android:visibility="gone"
                 android:layout_below="@id/dynamic_detailed_message"
-                android:layout_marginTop="20dp"
-                android:maxWidth="200dp"
-                android:maxHeight="200dp" />
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
             <com.zhy.view.flowlayout.TagFlowLayout
                 android:id="@+id/dynamic_detailed_ib"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/dynamic_detailed_image"
+                android:layout_below="@+id/dynamic_detailed_messageimagelist"
                 android:layout_marginTop="25dp">
 
             </com.zhy.view.flowlayout.TagFlowLayout>

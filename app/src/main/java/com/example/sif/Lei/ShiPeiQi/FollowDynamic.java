@@ -15,25 +15,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.signature.MediaStoreSignature;
 import com.example.sif.DynamicDetailed;
 import com.example.sif.IbDetailed;
 import com.example.sif.Lei.MyBroadcastReceiver.BroadcastRec;
 import com.example.sif.Lei.MyToolClass.DynamicMessageDetailed;
-import com.example.sif.Lei.MyToolClass.GlideRoundTransform;
+import com.example.sif.Lei.MyToolClass.GuangChangImageToClass;
 import com.example.sif.Lei.MyToolClass.MyDateClass;
-import com.example.sif.Lei.MyToolClass.MyVeryDiaLog;
 import com.example.sif.Lei.MyToolClass.ObtainUser;
 import com.example.sif.Lei.MyToolClass.SendGeTuiMessage;
 import com.example.sif.Lei.MyToolClass.ShowDiaLog;
@@ -87,13 +85,14 @@ public class FollowDynamic extends RecyclerView.Adapter<FollowDynamic.ViewHolder
         TextView gcUserXinXi;
         TextView gcUserThumb;
         TextView gcUserComment;
-        ImageView imageView;
         ImageButton gcUserZan;
         ImageButton gcUserC;
         CircleImageView gcUserImage;
         RelativeLayout recyclerView;
         TagFlowLayout mGuangchangIb;
         ImageButton mGuangchangUsesGengduo;
+        RecyclerView mGuangchangUserMessageimagelist;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             gcUserName = (TextView)itemView.findViewById(R.id.guangchang_user_name);
@@ -102,12 +101,12 @@ public class FollowDynamic extends RecyclerView.Adapter<FollowDynamic.ViewHolder
             gcUserImage = (CircleImageView) itemView.findViewById(R.id.guangchang_user_tou_image);
             gcUserZan = (ImageButton)itemView.findViewById(R.id.guangchang_user_dianzan);
             gcUserThumb = (TextView)itemView.findViewById(R.id.guangchang_user_thumb);
-            imageView = (ImageView)itemView.findViewById(R.id.guangchang_user_messageimage);
             recyclerView = (RelativeLayout)itemView.findViewById(R.id.GuangChang_Message_detailed);
             gcUserComment = (TextView)itemView.findViewById(R.id.guangchang_user_message);
             gcUserC = (ImageButton)itemView.findViewById(R.id.guangchang_user_pinglun);
             mGuangchangIb = (TagFlowLayout)itemView.findViewById(R.id.guangchang_ib);
             mGuangchangUsesGengduo = (ImageButton)itemView.findViewById(R.id.guangchang_uses_gengduo);
+            mGuangchangUserMessageimagelist = (RecyclerView) itemView.findViewById(R.id.guangchang_user_messageimagelist);
         }
     }
 
@@ -249,25 +248,14 @@ public class FollowDynamic extends RecyclerView.Adapter<FollowDynamic.ViewHolder
                 holder.gcUserImage.setTag(userSpaces.get(position).getUser_xuehao());
             }
 
-            if (!userSpace.getUser_image_url().equals(holder.imageView.getTag())){
-                holder.imageView.setTag(null);
+
                 if (!userSpaces.get(position).getUser_image_url().equals("")){
-                    holder.imageView.setVisibility(View.VISIBLE);
-                    Glide.with(activity)
-                            .load("http://nmy1206.natapp1.cc/"+userSpace.getUser_image_url())
-                            .signature(new MediaStoreSignature(updateTime,1,1))
-                            .placeholder(R.drawable.nostartimage_two)
-                            .fallback(R.drawable.nostartimage_two)
-                            .error(R.drawable.nostartimage_two)
-                            .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
-                            .override(300,300)
-                            .centerCrop()
-                            .transition(DrawableTransitionOptions.withCrossFade())
-                            .transform(new GlideRoundTransform(6))
-                            .into(holder.imageView);
-                    holder.imageView.setTag(userSpace.getUser_image_url());
+                    holder.mGuangchangUserMessageimagelist.setVisibility(View.VISIBLE);
+                    GridLayoutManager gridLayoutManager = new GridLayoutManager(activity, 2);
+                    holder.mGuangchangUserMessageimagelist.setLayoutManager(gridLayoutManager);
+                    GuangChangImageAdapter guangChangImageAdapter = new GuangChangImageAdapter(activity, GuangChangImageToClass.imageToClass(userSpace.getUser_image_url(),userSpace.getUser_xuehao()));
+                    holder.mGuangchangUserMessageimagelist.setAdapter(guangChangImageAdapter);
                 }
-            }
 
         }else {
             if (!userSpace.getUser_image_url().equals(holder.gcUserImage.getTag())){
@@ -284,23 +272,13 @@ public class FollowDynamic extends RecyclerView.Adapter<FollowDynamic.ViewHolder
                 holder.gcUserImage.setTag(userSpace.getUser_image_url());
             }
 
-            if (!userSpace.getUser_image_url().equals(holder.imageView.getTag())){
-                holder.imageView.setTag(null);
                 if (!userSpaces.get(position).getUser_image_url().equals("")){
-                    holder.imageView.setVisibility(View.VISIBLE);
-                    Glide.with(activity)
-                            .load("http://nmy1206.natapp1.cc/"+userSpace.getUser_image_url())
-                            .placeholder(R.drawable.nostartimage_two)
-                            .fallback(R.drawable.nostartimage_two)
-                            .error(R.drawable.nostartimage_two)
-                            .override(300,300)
-                            .centerCrop()
-                            .transition(DrawableTransitionOptions.withCrossFade())
-                            .transform(new GlideRoundTransform(6))
-                            .into(holder.imageView);
-                    holder.imageView.setTag(userSpace.getUser_image_url());
+                    holder.mGuangchangUserMessageimagelist.setVisibility(View.VISIBLE);
+                    GridLayoutManager gridLayoutManager = new GridLayoutManager(activity, 2);
+                    holder.mGuangchangUserMessageimagelist.setLayoutManager(gridLayoutManager);
+                    GuangChangImageAdapter guangChangImageAdapter = new GuangChangImageAdapter(activity, GuangChangImageToClass.imageToClass(userSpace.getUser_image_url(),userSpace.getUser_xuehao()));
+                    holder.mGuangchangUserMessageimagelist.setAdapter(guangChangImageAdapter);
                 }
-            }
         }
 
 
@@ -404,19 +382,6 @@ public class FollowDynamic extends RecyclerView.Adapter<FollowDynamic.ViewHolder
             }
         });
 
-        holder.imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                rxDialogScaleView = new RxDialogScaleView(activity);
-                rxDialog = new RxDialog(activity,R.style.tran_dialog);
-                rxDialog.setCanceledOnTouchOutside(false);
-                String name = String.valueOf(userSpaces.get(position).getUser_image_url()).substring(39);
-                String NewName = "http://nmy1206.natapp1.cc/UserImageServer/"+userSpaces.get(position).getUser_xuehao()+"/ADynamicImage/"+name;
-                String path1 = "http://nmy1206.natapp1.cc/"+userSpaces.get(position).getUser_image_url();
-                MyVeryDiaLog.veryImageDiaLog(rxDialogScaleView,NewName,path1,bitMapHandler);
-                MyVeryDiaLog.transparentDiaLog(activity,rxDialog);
-            }
-        });
 
         holder.mGuangchangUsesGengduo.setOnClickListener(new View.OnClickListener() {
             @Override

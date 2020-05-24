@@ -20,22 +20,20 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.core.widget.NestedScrollView;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
-import com.example.sif.Lei.MyToolClass.GlideRoundTransform;
+import com.example.sif.Lei.MyToolClass.GuangChangImageToClass;
 import com.example.sif.Lei.MyToolClass.MyDateClass;
-import com.example.sif.Lei.MyToolClass.MyVeryDiaLog;
 import com.example.sif.Lei.MyToolClass.ObtainUser;
 import com.example.sif.Lei.MyToolClass.SendGeTuiMessage;
 import com.example.sif.Lei.MyToolClass.ToastZong;
@@ -44,6 +42,7 @@ import com.example.sif.Lei.MyToolClass.UserDynamicComment;
 import com.example.sif.Lei.MyToolClass.UserDynamicThumb;
 import com.example.sif.Lei.NiceImageView.CircleImageView;
 import com.example.sif.Lei.ShiPeiQi.CommentList;
+import com.example.sif.Lei.ShiPeiQi.GuangChangImageAdapter;
 import com.example.sif.Lei.ShowActivityBar.FragmentActivityBar;
 import com.example.sif.NeiBuLei.CommentMessage;
 import com.example.sif.NeiBuLei.UserSpace;
@@ -64,7 +63,6 @@ public class DynamicDetailed extends BaseActivity implements View.OnClickListene
     private TextView mDynamicDetailedUname;
     private TextView mDynamicDetailedTime;
     private TextView mDynamicDetailedMessage;
-    private ImageView mDynamicDetailedImage;
     private TextView mDynamicDetailedShareText;
     private ImageButton mDynamicDetailedShare;
     private TextView mDynamicDetailedCommentText;
@@ -100,6 +98,7 @@ public class DynamicDetailed extends BaseActivity implements View.OnClickListene
     private deleteUserComment deleteUserComment;
     private LocalBroadcastManager localBroadcastManager;
     private TagFlowLayout mDynamicDetailedIb;
+    private RecyclerView mDynamicDetailedMessageimagelist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,7 +132,7 @@ public class DynamicDetailed extends BaseActivity implements View.OnClickListene
             xieru();
             huoquComment();
         }
-       // ZTL();
+        // ZTL();
         //增加padding  避免状态栏遮挡
 //        RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.dynamic_R);
 //        setPadding(this, relativeLayout);
@@ -201,7 +200,7 @@ public class DynamicDetailed extends BaseActivity implements View.OnClickListene
                         mCommentUsersendText.setText("");
                         hideKeyboard(mDynamicR, 1);
                         if (!uxuehao.equals(getMyXueHao())) {
-                            SendGeTuiMessage.sendGeTuiMessage(1, uxuehao,getMyXueHao(),"1",userSpace.getUser_dynamic_id(),1);
+                            SendGeTuiMessage.sendGeTuiMessage(1, uxuehao, getMyXueHao(), "1", userSpace.getUser_dynamic_id(), 1);
                         }
                     }
                     break;
@@ -340,10 +339,10 @@ public class DynamicDetailed extends BaseActivity implements View.OnClickListene
         mDynamicDetailedTime.setText(MyDateClass.showDateClass(userSpace.getUser_shijian()));
         mDynamicDetailedMessage.setText(userSpace.getUser_xinxi());
         LayoutInflater layoutInflater = LayoutInflater.from(this);
-        if (userSpace.getBlock() != null && !userSpace.getBlock().equals("")){
+        if (userSpace.getBlock() != null && !userSpace.getBlock().equals("")) {
             List<String> strings = new ArrayList<>();
             String[] s = userSpace.getBlock().split(",");
-            for (int a = 0;a < s.length;a++){
+            for (int a = 0; a < s.length; a++) {
                 strings.add(s[a]);
             }
             mDynamicDetailedIb.setAdapter(new TagAdapter<String>(strings) {
@@ -358,9 +357,9 @@ public class DynamicDetailed extends BaseActivity implements View.OnClickListene
             mDynamicDetailedIb.setOnTagClickListener(new TagFlowLayout.OnTagClickListener() {
                 @Override
                 public boolean onTagClick(View view, int position, FlowLayout parent) {
-                    TextView t = (TextView)view.findViewById(R.id.text);
+                    TextView t = (TextView) view.findViewById(R.id.text);
                     Intent intent = new Intent(MyApplication.getContext(), IbDetailed.class);
-                    intent.putExtra("ibname",t.getText().toString());
+                    intent.putExtra("ibname", t.getText().toString());
                     startActivity(intent);
                     return true;
                 }
@@ -380,18 +379,11 @@ public class DynamicDetailed extends BaseActivity implements View.OnClickListene
         }
 
         if (!userSpace.getUser_image_url().equals("")) {
-            mDynamicDetailedImage.setVisibility(View.VISIBLE);
-            Glide.with(DynamicDetailed.this)
-                    .load("http://nmy1206.natapp1.cc/" + userSpace.getUser_image_url())
-                    .placeholder(R.drawable.nostartimage_two)
-                    .fallback(R.drawable.nostartimage_two)
-                    .error(R.drawable.nostartimage_two)
-                    .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
-                    .override(400, 400)
-                    .centerCrop()
-                    .transition(DrawableTransitionOptions.withCrossFade())
-                    .transform(new GlideRoundTransform(6))
-                    .into(mDynamicDetailedImage);
+            mDynamicDetailedMessageimagelist.setVisibility(View.VISIBLE);
+            GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
+            mDynamicDetailedMessageimagelist.setLayoutManager(gridLayoutManager);
+            GuangChangImageAdapter guangChangImageAdapter = new GuangChangImageAdapter(this, GuangChangImageToClass.imageToClass(userSpace.getUser_image_url(),userSpace.getUser_xuehao()));
+            mDynamicDetailedMessageimagelist.setAdapter(guangChangImageAdapter);
         }
 
 
@@ -428,7 +420,6 @@ public class DynamicDetailed extends BaseActivity implements View.OnClickListene
         mDynamicDetailedUname = (TextView) findViewById(R.id.dynamic_detailed_uname);
         mDynamicDetailedTime = (TextView) findViewById(R.id.dynamic_detailed_time);
         mDynamicDetailedMessage = (TextView) findViewById(R.id.dynamic_detailed_message);
-        mDynamicDetailedImage = (ImageView) findViewById(R.id.dynamic_detailed_image);
         mDynamicDetailedShareText = (TextView) findViewById(R.id.dynamic_detailed_share_text);
         mDynamicDetailedShare = (ImageButton) findViewById(R.id.dynamic_detailed_share);
         mDynamicDetailedCommentText = (TextView) findViewById(R.id.dynamic_detailed_comment_text);
@@ -441,7 +432,6 @@ public class DynamicDetailed extends BaseActivity implements View.OnClickListene
         fragment = findViewById(R.id.dynamic_detailed_bar);
 
         mDynamicDetailedHeadimage.setOnClickListener(this);
-        mDynamicDetailedImage.setOnClickListener(this);
         mDynamicDetailedCollection.setOnClickListener(this);
         mDynamicDetailedThumb.setOnClickListener(this);
         mDynamicDetailedComment.setOnClickListener(this);
@@ -466,6 +456,8 @@ public class DynamicDetailed extends BaseActivity implements View.OnClickListene
 
         mDynamicDetailedIb = (TagFlowLayout) findViewById(R.id.dynamic_detailed_ib);
 
+        mDynamicDetailedMessageimagelist = (RecyclerView) findViewById(R.id.dynamic_detailed_messageimagelist);
+        mDynamicDetailedMessageimagelist.setOnClickListener(this);
     }
 
     private Handler thumbHandler = new Handler() {
@@ -481,8 +473,8 @@ public class DynamicDetailed extends BaseActivity implements View.OnClickListene
                             mDynamicDetailedThumbText.setText(String.valueOf(Integer.parseInt(mDynamicDetailedThumbText.getText().toString()) + 1));
                         }
                         mDynamicDetailedThumb.setImageResource(R.drawable.yidianzan);
-                        if (!uxuehao.equals(getMyXueHao())){
-                            SendGeTuiMessage.sendGeTuiMessage(1, uxuehao,getMyXueHao(),"1", userSpace.getUser_dynamic_id(),0);
+                        if (!uxuehao.equals(getMyXueHao())) {
+                            SendGeTuiMessage.sendGeTuiMessage(1, uxuehao, getMyXueHao(), "1", userSpace.getUser_dynamic_id(), 0);
                         }
                     }
                     if (msg.obj.equals("10")) {
@@ -574,16 +566,6 @@ public class DynamicDetailed extends BaseActivity implements View.OnClickListene
                 if (uxuehao != null) {
                     ObtainUser.obtainUser(this, uxuehao, handlerspace);
                 }
-                break;
-            case R.id.dynamic_detailed_image:
-                rxDialogScaleView = new RxDialogScaleView(this);
-                rxDialog = new RxDialog(this, R.style.tran_dialog);
-                rxDialog.setCanceledOnTouchOutside(false);
-                String name = String.valueOf(userSpace.getUser_image_url()).substring(39);
-                String NewName = "http://nmy1206.natapp1.cc/UserImageServer/" + uxuehao + "/ADynamicImage/" + name;
-                String path1 = "http://nmy1206.natapp1.cc/" + userSpace.getUser_image_url();
-                MyVeryDiaLog.veryImageDiaLog(rxDialogScaleView, NewName, path1, bitMapHandler);
-                MyVeryDiaLog.transparentDiaLog(this, rxDialog);
                 break;
             case R.id.dynamic_detailed_collection:
                 if (userSpace != null && userSpace.getUser_dynamic_id() != null) {

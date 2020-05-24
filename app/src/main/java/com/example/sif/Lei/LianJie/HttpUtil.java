@@ -2,7 +2,10 @@ package com.example.sif.Lei.LianJie;
 
 import android.text.TextUtils;
 
+import com.example.sif.NeiBuLei.DouBleImagePath;
+
 import java.io.File;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.FormBody;
@@ -28,13 +31,13 @@ public class HttpUtil {
         client.newCall(request).enqueue(callback);
     }
 
-    public static void cunGuangChangMessage(int id,String path,String imagePath,String imageApath,String userName,String messageShiJian,String message,String xuehao,int thumb,int comment,StringBuffer block,String ip,okhttp3.Callback callback){
+    public static void cunGuangChangMessage(int id, String path, List<DouBleImagePath> imagePath, String userName, String messageShiJian, String message, String xuehao, int thumb, int comment, StringBuffer block, String ip, okhttp3.Callback callback){
         RequestBody requestBody = null;
         if (id == 1){
-           File file = new File(imagePath);
-           File file1 = new File(imageApath);
-           MultipartBody.Builder builder = new MultipartBody.Builder()
-                   .setType(MultipartBody.FORM)
+//           File file = new File(imagePath);
+//           File file1 = new File(imageApath);
+           MultipartBody.Builder builder = new MultipartBody.Builder();
+                   builder.setType(MultipartBody.FORM)
                    .addFormDataPart("id", String.valueOf(id))
                    .addFormDataPart("userName",userName)
                    .addFormDataPart("messageTime",messageShiJian)
@@ -42,9 +45,13 @@ public class HttpUtil {
                    .addFormDataPart("thumb",String.valueOf(thumb))
                    .addFormDataPart("comment",String.valueOf(comment))
                    .addFormDataPart("xuehao",xuehao)
-                   .addFormDataPart("block",String.valueOf(block))
-                   .addFormDataPart("img",file.getName(),RequestBody.create(MediaType.parse("image/png"),file))
-                   .addFormDataPart("imgA",file1.getName(),RequestBody.create(MediaType.parse("image/png"),file1));
+                   .addFormDataPart("block",String.valueOf(block));
+            for(DouBleImagePath d : imagePath){
+                File file = new File(d.getMinPath());
+                File file1 = new File(d.getMaxPath());
+                builder.addFormDataPart("img[]",file.getName(),RequestBody.create(MediaType.parse("image/png"),file))
+                        .addFormDataPart("imgA[]",file1.getName(),RequestBody.create(MediaType.parse("image/png"),file1));
+            }
            requestBody = builder.build();
        }
        if (id == 0){

@@ -23,7 +23,6 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -160,8 +159,10 @@ public class GuangChangMessage extends BaseActivity implements View.OnLayoutChan
     @Override
     public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
         if (oldBottom != 0 && bottom != 0 && (oldBottom - bottom > keyHeight)) {
+            mImageList.setVisibility(View.INVISIBLE);
             mDynamicMessageImageTwo.setVisibility(View.INVISIBLE);
         } else if (oldBottom != 0 && bottom != 0 && (bottom - oldBottom > keyHeight)) {
+            mImageList.setVisibility(View.VISIBLE);
             mDynamicMessageImageTwo.setVisibility(View.VISIBLE);
         }
     }
@@ -169,7 +170,7 @@ public class GuangChangMessage extends BaseActivity implements View.OnLayoutChan
     private void initView() {
         mDynamicMessageImage = (ImageButton) findViewById(R.id.dynamic_message_image);
         mDynamicMessageImageTwo = (ImageView) findViewById(R.id.dynamic_message_image_two);
-
+        mDynamicMessageImageTwo.setOnClickListener(this);
 
         mDynamicMessageImage.setOnClickListener(this);
         mIdFlowlayout = (TagFlowLayout) findViewById(R.id.id_flowlayout);
@@ -188,6 +189,11 @@ public class GuangChangMessage extends BaseActivity implements View.OnLayoutChan
                 imageName = getMyXueHao() + MyDateClass.showNowDate() + ".png";
                 SelectImage selectImage = new SelectImage(this);
                 selectImage.showSelectImage(1, imageName);
+                break;
+            case R.id.dynamic_message_image_two:
+                imageName = getMyXueHao() + MyDateClass.showNowDate() + ".png";
+                SelectImage selectImage1 = new SelectImage(this);
+                selectImage1.showSelectImage(1, imageName);
                 break;
         }
     }
@@ -270,48 +276,32 @@ public class GuangChangMessage extends BaseActivity implements View.OnLayoutChan
         }
     };
 
-    private List<DouBleImagePath> ds;
+    public List<DouBleImagePath> ds;
     private GuangChangMessageImageList guangChangMessageImageList;
     private LinearLayoutManager linearLayoutManager;
     private DouBleImagePath douBleImagePath;
     private void sendSmallImage(String path) {
         if (ds == null){
             ds = new ArrayList<>();
+            linearLayoutManager = new LinearLayoutManager(this);
+            linearLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
+            mImageList.setLayoutManager(linearLayoutManager);
         }
         if (path != null) {
             imagepath = path;
             if (ds.size() < 4){
+                mImageList.setVisibility(View.VISIBLE);
+                mDynamicMessageImageTwo.setVisibility(View.VISIBLE);
                 douBleImagePath = new DouBleImagePath();
                 douBleImagePath.setMinPath(imagepath);
                 douBleImagePath.setMaxPath(imageApath);
                 ds.add(0,douBleImagePath);
-                mImageList.setVisibility(View.VISIBLE);
-                linearLayoutManager = new LinearLayoutManager(this);
-                linearLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
-                mImageList.setLayoutManager(linearLayoutManager);
                 guangChangMessageImageList = new GuangChangMessageImageList(this,GuangChangMessage.this,ds);
                 mImageList.setAdapter(guangChangMessageImageList);
-                ((DefaultItemAnimator)mImageList.getItemAnimator()).setSupportsChangeAnimations(false);
+                if (ds.size() == 4){
+                    mDynamicMessageImageTwo.setVisibility(View.GONE);
+                }
             }
-
-           // updateTime = String.valueOf(System.currentTimeMillis());
-
-
-//            Glide.with(MyApplication.getContext())
-//                    .load(imagepath)
-//                    .signature(new MediaStoreSignature(updateTime, 1, 1))
-//                    .into(mDynamicMessageImageTwo);
-//            mDynamicMessageImageTwo.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    rxDialogScaleView = new RxDialogScaleView(GuangChangMessage.this);
-//                    //      rxDialogScaleView.setContentView(LayoutInflater.from(MyApplication.getContext()).inflate(R.layout.tipes_gv,null));
-//                    rxDialog = new RxDialog(GuangChangMessage.this, R.style.tran_dialog);
-//                    rxDialog.setCanceledOnTouchOutside(false);
-//                    MyVeryDiaLog.veryImageDiaLog(rxDialogScaleView, imagepath, bitMapHandler);
-//                    MyVeryDiaLog.transparentDiaLog(GuangChangMessage.this, rxDialog);
-//                }
-//            });
         } else {
             ToastZong.ShowToast(GuangChangMessage.this, "图片加载失败,请重新选择");
         }
@@ -321,7 +311,9 @@ public class GuangChangMessage extends BaseActivity implements View.OnLayoutChan
         ds.remove(position);
         if (ds == null || ds.size() <= 0 ){
             mImageList.setVisibility(View.INVISIBLE);
+            mDynamicMessageImageTwo.setVisibility(View.GONE);
         }else {
+            mDynamicMessageImageTwo.setVisibility(View.VISIBLE);
             guangChangMessageImageList.removeImage(position);
         }
     }

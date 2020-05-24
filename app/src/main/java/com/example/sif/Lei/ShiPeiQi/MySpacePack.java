@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
@@ -14,24 +13,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.Priority;
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
-import com.bumptech.glide.signature.MediaStoreSignature;
 import com.example.sif.DynamicDetailed;
 import com.example.sif.IbDetailed;
 import com.example.sif.Lei.LianJie.HttpUtil;
 import com.example.sif.Lei.MyBroadcastReceiver.BroadcastRec;
 import com.example.sif.Lei.MyToolClass.DynamicMessageDetailed;
-import com.example.sif.Lei.MyToolClass.GlideRoundTransform;
-import com.example.sif.Lei.MyToolClass.MyVeryDiaLog;
+import com.example.sif.Lei.MyToolClass.GuangChangImageToClass;
 import com.example.sif.Lei.MyToolClass.SendGeTuiMessage;
 import com.example.sif.Lei.MyToolClass.ShowDiaLog;
 import com.example.sif.Lei.MyToolClass.ToastZong;
@@ -39,8 +33,6 @@ import com.example.sif.Lei.MyToolClass.UserDynamicThumb;
 import com.example.sif.MyApplication;
 import com.example.sif.NeiBuLei.UserSpace;
 import com.example.sif.R;
-import com.tamsiree.rxui.view.dialog.RxDialog;
-import com.tamsiree.rxui.view.dialog.RxDialogScaleView;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
 import com.zhy.view.flowlayout.TagFlowLayout;
@@ -78,11 +70,12 @@ public class MySpacePack extends RecyclerView.Adapter<MySpacePack.ViewHolder> {
         TextView myThumb;
         TextView myComment;
         RelativeLayout Rzong;
-        ImageView imageView;
         ImageButton myZan;
         ImageButton imageButton;
         ImageButton myC;
         TagFlowLayout mUserspaceIb;
+        RecyclerView mUserspaceMessageimagelist;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -91,11 +84,11 @@ public class MySpacePack extends RecyclerView.Adapter<MySpacePack.ViewHolder> {
             myThumb = (TextView) itemView.findViewById(R.id.MySpace_thumb);
             myZan = (ImageButton) itemView.findViewById(R.id.MySpace_List_dianzan);
             imageButton = (ImageButton) itemView.findViewById(R.id.MySpace_GengDuo_Button);
-            imageView = (ImageView) itemView.findViewById(R.id.userspace_messageimage);
             myComment = (TextView) itemView.findViewById(R.id.MySpace_message);
             Rzong = (RelativeLayout) itemView.findViewById(R.id.myspace_RZong);
             myC = (ImageButton) itemView.findViewById(R.id.MySpace_List_pinglun);
             mUserspaceIb = (TagFlowLayout) itemView.findViewById(R.id.userspace_ib);
+            mUserspaceMessageimagelist = (RecyclerView)itemView.findViewById(R.id.userspace_messageimagelist);
         }
     }
 
@@ -149,25 +142,6 @@ public class MySpacePack extends RecyclerView.Adapter<MySpacePack.ViewHolder> {
     private String updateTime;
     private UserDynamicThumb userDynamicThumb;
     private int key;
-    private RxDialogScaleView rxDialogScaleView;
-    private RxDialog rxDialog;
-    private Handler bitMapHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            rxDialog.dismiss();
-            if (msg.obj != null) {
-                if (msg.what == 1) {
-                    ToastZong.ShowToast(activity, "图片加载错误");
-                    rxDialogScaleView.setImage((Bitmap) msg.obj);
-                } else {
-                    rxDialogScaleView.setImage((Bitmap) msg.obj);
-                }
-            } else {
-                ToastZong.ShowToast(activity, "错误");
-            }
-        }
-    };
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
@@ -209,45 +183,18 @@ public class MySpacePack extends RecyclerView.Adapter<MySpacePack.ViewHolder> {
         }
 
         if (frush == 1) {
-            if (!userSpace.getUser_image_url().equals(holder.imageView.getTag())) {
-                holder.imageView.setTag(null);
-                if (!userSpace.getUser_image_url().equals("")) {
-                    holder.imageView.setVisibility(View.VISIBLE);
-                    updateTime = String.valueOf(System.currentTimeMillis());
-                    Glide.with(MyApplication.getContext())
-                            .load("http://nmy1206.natapp1.cc/" + userSpace.getUser_image_url())
-                            .signature(new MediaStoreSignature(updateTime, 1, 1))
-                            .placeholder(R.drawable.nostartimage_two)
-                            .fallback(R.drawable.nostartimage_two)
-                            .error(R.drawable.nostartimage_two)
-                            .priority(Priority.LOW)
-                            .override(300, 300)
-                            .centerCrop()
-                            .transition(DrawableTransitionOptions.withCrossFade())
-                            .transform(new GlideRoundTransform(6))
-                            .into(holder.imageView);
-                    holder.imageView.setTag(userSpace.getUser_image_url());
-                }
+            if (!userSpace.getUser_image_url().equals("")) {
+                holder.mUserspaceMessageimagelist.setVisibility(View.VISIBLE);
+                holder.mUserspaceMessageimagelist.setLayoutManager(GuangChangImageToClass.newView(activity,userSpace.getUser_image_url(),userSpace.getUser_xuehao()));
+                GuangChangImageAdapter guangChangImageAdapter = new GuangChangImageAdapter(activity, GuangChangImageToClass.imageToClass(userSpace.getUser_image_url(), userSpace.getUser_xuehao()));
+                holder.mUserspaceMessageimagelist.setAdapter(guangChangImageAdapter);
             }
-
         } else {
-            if (!userSpace.getUser_image_url().equals(holder.imageView.getTag())) {
-                holder.imageView.setTag(null);
-                if (!userSpace.getUser_image_url().equals("")) {
-                    holder.imageView.setVisibility(View.VISIBLE);
-                    Glide.with(MyApplication.getContext())
-                            .load("http://nmy1206.natapp1.cc/" + userSpace.getUser_image_url())
-                            .placeholder(R.drawable.nostartimage_two)
-                            .fallback(R.drawable.nostartimage_two)
-                            .error(R.drawable.nostartimage_two)
-                            .priority(Priority.LOW)
-                            .override(300, 300)
-                            .centerCrop()
-                            .transition(DrawableTransitionOptions.withCrossFade())
-                            .transform(new GlideRoundTransform(6))
-                            .into(holder.imageView);
-                    holder.imageView.setTag(userSpace.getUser_image_url());
-                }
+            if (!userSpace.getUser_image_url().equals("")) {
+                holder.mUserspaceMessageimagelist.setVisibility(View.VISIBLE);
+                holder.mUserspaceMessageimagelist.setLayoutManager(GuangChangImageToClass.newView(activity,userSpace.getUser_image_url(),userSpace.getUser_xuehao()));
+                GuangChangImageAdapter guangChangImageAdapter = new GuangChangImageAdapter(activity, GuangChangImageToClass.imageToClass(userSpace.getUser_image_url(), userSpace.getUser_xuehao()));
+                holder.mUserspaceMessageimagelist.setAdapter(guangChangImageAdapter);
             }
         }
 
@@ -268,7 +215,7 @@ public class MySpacePack extends RecyclerView.Adapter<MySpacePack.ViewHolder> {
                             holder.myThumb.setText(String.valueOf(Integer.parseInt(holder.myThumb.getText().toString()) + 1));
                             holder.myZan.setImageResource(R.drawable.yidianzan);
                             if (!xuehao.equals(myXueHao)) {
-                                SendGeTuiMessage.sendGeTuiMessage(1, xuehao,myXueHao,"1", userSpaces.get(position).getUser_dynamic_id(),0);
+                                SendGeTuiMessage.sendGeTuiMessage(1, xuehao, myXueHao, "1", userSpaces.get(position).getUser_dynamic_id(), 0);
                             }
                         }
                         if (msg.obj.equals("10")) {
@@ -354,20 +301,6 @@ public class MySpacePack extends RecyclerView.Adapter<MySpacePack.ViewHolder> {
                 key = 2;
             }
         });
-
-        holder.imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                rxDialogScaleView = new RxDialogScaleView(activity);
-                rxDialog = new RxDialog(activity, R.style.tran_dialog);
-                rxDialog.setCanceledOnTouchOutside(false);
-                String name = String.valueOf(userSpaces.get(position).getUser_image_url()).substring(39);
-                String NewName = "http://nmy1206.natapp1.cc/UserImageServer/" + userSpaces.get(position).getUser_xuehao() + "/ADynamicImage/" + name;
-                String path1 = "http://nmy1206.natapp1.cc/" + userSpaces.get(position).getUser_image_url();
-                MyVeryDiaLog.veryImageDiaLog(rxDialogScaleView, NewName, path1, bitMapHandler);
-                MyVeryDiaLog.transparentDiaLog(activity, rxDialog);
-            }
-        });
     }
 
     private Handler handler = new Handler() {
@@ -386,7 +319,7 @@ public class MySpacePack extends RecyclerView.Adapter<MySpacePack.ViewHolder> {
                             activity.findViewById(R.id.Mypace_null).setVisibility(View.VISIBLE);
                         }
                         notifyItemRangeChanged(msg.arg1, userSpaces.size() - msg.arg1);
-                        BroadcastRec.sendReceiver(MyApplication.getContext(),"deleteDynamic",0,udynamicid);
+                        BroadcastRec.sendReceiver(MyApplication.getContext(), "deleteDynamic", 0, udynamicid);
                         showDiaLog.closeMyDiaLog();
                     }
                     break;
@@ -441,7 +374,7 @@ public class MySpacePack extends RecyclerView.Adapter<MySpacePack.ViewHolder> {
                 deleteDynamic.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ToastZong.ShowToast(activity,"举报成功");
+                        ToastZong.ShowToast(activity, "举报成功");
                         showDiaLog.closeMyDiaLog();
                     }
                 });

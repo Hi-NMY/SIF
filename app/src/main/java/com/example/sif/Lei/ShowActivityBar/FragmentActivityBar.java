@@ -219,19 +219,17 @@ public class FragmentActivityBar extends BaseFragment {
                         String M = gcMessage.trim();
                         sharedPreferences1 = MyApplication.getContext().getSharedPreferences("userSchool", Context.MODE_PRIVATE);
                         xuehao = sharedPreferences1.getString("xuehao", null);
-                        String imagePath = message1.imagepath;
-                        String imageApath = message1.imageApath;
                         StringBuffer stringBuffer = message1.stringBuffer;
                         if (stringBuffer == null) {
                             stringBuffer.append("");
                         }
-                        if (imagePath != null) {
+                        if (message1.ds != null && message1.ds.size() > 0) {
                             i = 1;
                         } else {
                             i = 0;
                         }
                         if (mingzi != null && shijian != null && (!TextUtils.isEmpty(M) || i != 0) && xuehao != null) {
-                            HttpUtil.cunGuangChangMessage(i, path, imagePath, imageApath, mingzi, shijian, gcMessage, xuehao, 0, 0, stringBuffer, null, new Callback() {
+                            HttpUtil.cunGuangChangMessage(i, path, message1.ds, mingzi, shijian, gcMessage, xuehao, 0, 0, stringBuffer, null, new Callback() {
                                 @Override
                                 public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                                     String a = response.body().string();

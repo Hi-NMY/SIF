@@ -15,16 +15,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.signature.MediaStoreSignature;
 import com.example.sif.DynamicDetailed;
@@ -32,9 +31,8 @@ import com.example.sif.IbDetailed;
 import com.example.sif.Lei.LianJie.HttpUtil;
 import com.example.sif.Lei.MyBroadcastReceiver.BroadcastRec;
 import com.example.sif.Lei.MyToolClass.DynamicMessageDetailed;
-import com.example.sif.Lei.MyToolClass.GlideRoundTransform;
+import com.example.sif.Lei.MyToolClass.GuangChangImageToClass;
 import com.example.sif.Lei.MyToolClass.MyDateClass;
-import com.example.sif.Lei.MyToolClass.MyVeryDiaLog;
 import com.example.sif.Lei.MyToolClass.ObtainUser;
 import com.example.sif.Lei.MyToolClass.SendGeTuiMessage;
 import com.example.sif.Lei.MyToolClass.ShowDiaLog;
@@ -92,13 +90,13 @@ public class GuangChang extends RecyclerView.Adapter<GuangChang.ViewHolder> {
         TextView gcUserXinXi;
         TextView gcUserThumb;
         TextView gcUserComment;
-        ImageView imageView;
         ImageButton gcUserZan;
         ImageButton gcUserC;
         CircleImageView gcUserImage;
         RelativeLayout recyclerView;
         TagFlowLayout mGuangchangIb;
         ImageButton mGuangchangUsesGengduo;
+        RecyclerView mGuangchangUserMessageimagelist;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -108,12 +106,12 @@ public class GuangChang extends RecyclerView.Adapter<GuangChang.ViewHolder> {
             gcUserImage = (CircleImageView) itemView.findViewById(R.id.guangchang_user_tou_image);
             gcUserZan = (ImageButton) itemView.findViewById(R.id.guangchang_user_dianzan);
             gcUserThumb = (TextView) itemView.findViewById(R.id.guangchang_user_thumb);
-            imageView = (ImageView) itemView.findViewById(R.id.guangchang_user_messageimage);
             recyclerView = (RelativeLayout) itemView.findViewById(R.id.GuangChang_Message_detailed);
             gcUserComment = (TextView) itemView.findViewById(R.id.guangchang_user_message);
             gcUserC = (ImageButton) itemView.findViewById(R.id.guangchang_user_pinglun);
             mGuangchangIb = (TagFlowLayout) itemView.findViewById(R.id.guangchang_ib);
-            mGuangchangUsesGengduo = (ImageButton)itemView.findViewById(R.id.guangchang_uses_gengduo);
+            mGuangchangUsesGengduo = (ImageButton) itemView.findViewById(R.id.guangchang_uses_gengduo);
+            mGuangchangUserMessageimagelist = (RecyclerView) itemView.findViewById(R.id.guangchang_user_messageimagelist);
         }
     }
 
@@ -151,7 +149,8 @@ public class GuangChang extends RecyclerView.Adapter<GuangChang.ViewHolder> {
     }
 
     private UserFollow userFollow;
-    public void sendUserFollow(UserFollow u){
+
+    public void sendUserFollow(UserFollow u) {
         this.userFollow = u;
     }
 
@@ -167,10 +166,10 @@ public class GuangChang extends RecyclerView.Adapter<GuangChang.ViewHolder> {
         this.userDynamicThumb = u;
     }
 
-    public void deleteDynamicMy(String id){
+    public void deleteDynamicMy(String id) {
         int a = 0;
-        for (GuangChangUserXinXi g:guangChangUserXinXis){
-            if (g.getGc_user_dynamic_id().equals(id)){
+        for (GuangChangUserXinXi g : guangChangUserXinXis) {
+            if (g.getGc_user_dynamic_id().equals(id)) {
                 guangChangUserXinXis.remove(g);
                 notifyItemRangeChanged(a, guangChangUserXinXis.size() + 1);
                 notifyItemInserted(a);
@@ -209,6 +208,7 @@ public class GuangChang extends RecyclerView.Adapter<GuangChang.ViewHolder> {
             }
         }
     };
+
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
@@ -271,24 +271,11 @@ public class GuangChang extends RecyclerView.Adapter<GuangChang.ViewHolder> {
                 holder.gcUserImage.setTag(guangChangUserXinXis.get(position).getGc_user_xuehao());
             }
 
-            if (!guangChangUserXinXi.getGc_user_image_url().equals(holder.imageView.getTag())) {
-                holder.imageView.setTag(null);
-                if (!guangChangUserXinXis.get(position).getGc_user_image_url().equals("")) {
-                    holder.imageView.setVisibility(View.VISIBLE);
-                    Glide.with(activity)
-                            .load("http://nmy1206.natapp1.cc/" + guangChangUserXinXi.getGc_user_image_url())
-                            .signature(new MediaStoreSignature(updateTime, 1, 1))
-                            .placeholder(R.drawable.nostartimage_two)
-                            .fallback(R.drawable.nostartimage_two)
-                            .error(R.drawable.nostartimage_two)
-                            .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
-                            .override(300, 300)
-                            .centerCrop()
-                            .transition(DrawableTransitionOptions.withCrossFade())
-                            .transform(new GlideRoundTransform(6))
-                            .into(holder.imageView);
-                    holder.imageView.setTag(guangChangUserXinXi.getGc_user_image_url());
-                }
+            if (!guangChangUserXinXis.get(position).getGc_user_image_url().equals("")) {
+                holder.mGuangchangUserMessageimagelist.setVisibility(View.VISIBLE);
+                holder.mGuangchangUserMessageimagelist.setLayoutManager(GuangChangImageToClass.newView(activity,guangChangUserXinXi.getGc_user_image_url(),guangChangUserXinXi.getGc_user_xuehao()));
+                GuangChangImageAdapter guangChangImageAdapter = new GuangChangImageAdapter(activity, GuangChangImageToClass.imageToClass(guangChangUserXinXi.getGc_user_image_url(),guangChangUserXinXi.getGc_user_xuehao()));
+                holder.mGuangchangUserMessageimagelist.setAdapter(guangChangImageAdapter);
             }
 
         } else {
@@ -306,22 +293,11 @@ public class GuangChang extends RecyclerView.Adapter<GuangChang.ViewHolder> {
                 holder.gcUserImage.setTag(guangChangUserXinXi.getGc_user_image_url());
             }
 
-            if (!guangChangUserXinXi.getGc_user_image_url().equals(holder.imageView.getTag())) {
-                holder.imageView.setTag(null);
-                if (!guangChangUserXinXis.get(position).getGc_user_image_url().equals("")) {
-                    holder.imageView.setVisibility(View.VISIBLE);
-                    Glide.with(activity)
-                            .load("http://nmy1206.natapp1.cc/" + guangChangUserXinXi.getGc_user_image_url())
-                            .placeholder(R.drawable.nostartimage_two)
-                            .fallback(R.drawable.nostartimage_two)
-                            .error(R.drawable.nostartimage_two)
-                            .override(300, 300)
-                            .centerCrop()
-                            .transition(DrawableTransitionOptions.withCrossFade())
-                            .transform(new GlideRoundTransform(6))
-                            .into(holder.imageView);
-                    holder.imageView.setTag(guangChangUserXinXi.getGc_user_image_url());
-                }
+            if (!guangChangUserXinXis.get(position).getGc_user_image_url().equals("")) {
+                holder.mGuangchangUserMessageimagelist.setVisibility(View.VISIBLE);
+                holder.mGuangchangUserMessageimagelist.setLayoutManager(GuangChangImageToClass.newView(activity,guangChangUserXinXi.getGc_user_image_url(),guangChangUserXinXi.getGc_user_xuehao()));
+                GuangChangImageAdapter guangChangImageAdapter = new GuangChangImageAdapter(activity, GuangChangImageToClass.imageToClass(guangChangUserXinXi.getGc_user_image_url(),guangChangUserXinXi.getGc_user_xuehao()));
+                holder.mGuangchangUserMessageimagelist.setAdapter(guangChangImageAdapter);
             }
         }
 
@@ -336,7 +312,7 @@ public class GuangChang extends RecyclerView.Adapter<GuangChang.ViewHolder> {
                             holder.gcUserThumb.setText(String.valueOf(Integer.parseInt(holder.gcUserThumb.getText().toString()) + 1));
                             holder.gcUserZan.setImageResource(R.drawable.yidianzan);
                             if (!guangChangUserXinXis.get(position).getGc_user_xuehao().equals(myXueHao)) {
-                                SendGeTuiMessage.sendGeTuiMessage(1, guangChangUserXinXis.get(position).getGc_user_xuehao(),myXueHao,"1", guangChangUserXinXis.get(position).getGc_user_dynamic_id(),0);
+                                SendGeTuiMessage.sendGeTuiMessage(1, guangChangUserXinXis.get(position).getGc_user_xuehao(), myXueHao, "1", guangChangUserXinXis.get(position).getGc_user_dynamic_id(), 0);
                             }
                         }
                         if (msg.obj.equals("10")) {
@@ -428,26 +404,12 @@ public class GuangChang extends RecyclerView.Adapter<GuangChang.ViewHolder> {
             }
         });
 
-        holder.imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                rxDialogScaleView = new RxDialogScaleView(activity);
-                rxDialog = new RxDialog(activity, R.style.tran_dialog);
-                rxDialog.setCanceledOnTouchOutside(false);
-                String name = String.valueOf(guangChangUserXinXis.get(position).getGc_user_image_url()).substring(39);
-                String NewName = "http://nmy1206.natapp1.cc/UserImageServer/" + guangChangUserXinXis.get(position).getGc_user_xuehao() + "/ADynamicImage/" + name;
-                String path1 = "http://nmy1206.natapp1.cc/" + guangChangUserXinXis.get(position).getGc_user_image_url();
-                MyVeryDiaLog.veryImageDiaLog(rxDialogScaleView, NewName, path1, bitMapHandler);
-                MyVeryDiaLog.transparentDiaLog(activity, rxDialog);
-            }
-        });
-
         holder.mGuangchangUsesGengduo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 follColoXueHao = guangChangUserXinXis.get(position).getGc_user_xuehao();
                 deleteId = guangChangUserXinXis.get(position).getGc_user_dynamic_id();
-                if (follColoXueHao.equals(myXueHao)){
+                if (follColoXueHao.equals(myXueHao)) {
                     View view = LayoutInflater.from(activity).inflate(R.layout.dialog_two, null);
                     view.setVerticalFadingEdgeEnabled(true);
                     showDiaLog = new ShowDiaLog(activity, R.style.AlertDialog_Function, view);
@@ -456,8 +418,8 @@ public class GuangChang extends RecyclerView.Adapter<GuangChang.ViewHolder> {
                     Button followDynamic = (Button) view.findViewById(R.id.delete_GuangChang_Dynamic);
                     Button Cancel = (Button) view.findViewById(R.id.delete_cancel);
                     followDynamic.setText("删除");
-                    startButton(1,followDynamic,Cancel,null);
-                }else if (userFollow.noYesFollow(follColoXueHao) == true) {
+                    startButton(1, followDynamic, Cancel, null);
+                } else if (userFollow.noYesFollow(follColoXueHao) == true) {
                     View view = LayoutInflater.from(activity).inflate(R.layout.dialog_two, null);
                     view.setVerticalFadingEdgeEnabled(true);
                     showDiaLog = new ShowDiaLog(activity, R.style.AlertDialog_Function, view);
@@ -466,36 +428,38 @@ public class GuangChang extends RecyclerView.Adapter<GuangChang.ViewHolder> {
                     Button followDynamic = (Button) view.findViewById(R.id.delete_GuangChang_Dynamic);
                     Button Cancel = (Button) view.findViewById(R.id.delete_cancel);
                     followDynamic.setText("举报");
-                    startButton(3,followDynamic,Cancel,null);
-                }else {
-                        View view = LayoutInflater.from(activity).inflate(R.layout.dialog_three,null);
-                        showDiaLog = new ShowDiaLog(activity,R.style.AlertDialog_Function,view);
-                        showDiaLog.logWindow(new ColorDrawable(Color.TRANSPARENT));
-                        showDiaLog.showMyDiaLog();
-                        TextView title = (TextView)view.findViewById(R.id.dialog_text);
-                        Button buttonOne = (Button)view.findViewById(R.id.button_one);
-                        Button buttonTwo = (Button)view.findViewById(R.id.button_two);
-                        Button buttonThree = (Button)view.findViewById(R.id.button_three);
-                        title.setVisibility(View.GONE);
-                        buttonOne.setText("举报");
-                        buttonTwo.setText("关注");
-                        startButton(2,buttonOne,buttonThree,buttonTwo);
+                    startButton(3, followDynamic, Cancel, null);
+                } else {
+                    View view = LayoutInflater.from(activity).inflate(R.layout.dialog_three, null);
+                    showDiaLog = new ShowDiaLog(activity, R.style.AlertDialog_Function, view);
+                    showDiaLog.logWindow(new ColorDrawable(Color.TRANSPARENT));
+                    showDiaLog.showMyDiaLog();
+                    TextView title = (TextView) view.findViewById(R.id.dialog_text);
+                    Button buttonOne = (Button) view.findViewById(R.id.button_one);
+                    Button buttonTwo = (Button) view.findViewById(R.id.button_two);
+                    Button buttonThree = (Button) view.findViewById(R.id.button_three);
+                    title.setVisibility(View.GONE);
+                    buttonOne.setText("举报");
+                    buttonTwo.setText("关注");
+                    startButton(2, buttonOne, buttonThree, buttonTwo);
                 }
             }
         });
+
 
         //--------------------------------------------------------------------------------------------------------------------
     }
 
     private ShowDiaLog showDiaLog;
     private String follColoXueHao;
-    private void startButton(int i,Button b1,Button b2,Button b3){
+
+    private void startButton(int i, Button b1, Button b2, Button b3) {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(i != 1){
+                if (i != 1) {
                     reportDynamic();
-                }else {
+                } else {
                     deleteMyDynamic();
                 }
             }
@@ -508,7 +472,7 @@ public class GuangChang extends RecyclerView.Adapter<GuangChang.ViewHolder> {
             }
         });
 
-        if (i == 2){
+        if (i == 2) {
             b3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -518,16 +482,16 @@ public class GuangChang extends RecyclerView.Adapter<GuangChang.ViewHolder> {
         }
     }
 
-    private Handler followHander = new Handler(){
+    private Handler followHander = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            switch (msg.what){
+            switch (msg.what) {
                 case 1:
-                    if (msg.obj.equals("10")){
+                    if (msg.obj.equals("10")) {
                         showDiaLog.closeMyDiaLog();
-                        SendGeTuiMessage.sendGeTuiMessage(1,follColoXueHao,myXueHao,"1","-1",2);
-                        BroadcastRec.sendReceiver(MyApplication.getContext(),"noyesFollowUser",0,null);
+                        SendGeTuiMessage.sendGeTuiMessage(1, follColoXueHao, myXueHao, "1", "-1", 2);
+                        BroadcastRec.sendReceiver(MyApplication.getContext(), "noyesFollowUser", 0, null);
                         // userFollow.userFollowPeople.add();
                     }
                     break;
@@ -536,7 +500,7 @@ public class GuangChang extends RecyclerView.Adapter<GuangChang.ViewHolder> {
     };
 
     private void reportDynamic() {
-        ToastZong.ShowToast(activity,"举报成功");
+        ToastZong.ShowToast(activity, "举报成功");
         showDiaLog.closeMyDiaLog();
     }
 
@@ -557,10 +521,11 @@ public class GuangChang extends RecyclerView.Adapter<GuangChang.ViewHolder> {
 
     private String deleteId;
     private String path = "http://nmy1206.natapp1.cc/deleteDynamic.php";
-    private void deleteMyDynamic(){
-        if (deleteId != null){
+
+    private void deleteMyDynamic() {
+        if (deleteId != null) {
             deleteDynamicMy(deleteId);
-            BroadcastRec.sendReceiver(MyApplication.getContext(),"refreshMySpace",0,null);
+            BroadcastRec.sendReceiver(MyApplication.getContext(), "refreshMySpace", 0, null);
             HttpUtil.deleteDynamic(path, deleteId, myXueHao, new Callback() {
                 @Override
                 public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
@@ -570,6 +535,7 @@ public class GuangChang extends RecyclerView.Adapter<GuangChang.ViewHolder> {
                     message.obj = a;
                     deletehandler.sendMessage(message);
                 }
+
                 @Override
                 public void onFailure(@NotNull Call call, @NotNull IOException e) {
 
@@ -578,11 +544,11 @@ public class GuangChang extends RecyclerView.Adapter<GuangChang.ViewHolder> {
         }
     }
 
-    private void followDynamic(){
-        userFollow.sendmyFollow(follColoXueHao,followHander);
+    private void followDynamic() {
+        userFollow.sendmyFollow(follColoXueHao, followHander);
     }
 
-    private void closeDialog(){
+    private void closeDialog() {
         showDiaLog.closeMyDiaLog();
     }
 
