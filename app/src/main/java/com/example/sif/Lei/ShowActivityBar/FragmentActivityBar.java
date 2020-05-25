@@ -31,6 +31,7 @@ import com.example.sif.ChangeInformation;
 import com.example.sif.GuangChangMessage;
 import com.example.sif.Lei.LianJie.HttpUtil;
 import com.example.sif.Lei.MyToolClass.MyDateClass;
+import com.example.sif.Lei.MyToolClass.SchoolShopPopupWindow;
 import com.example.sif.Lei.MyToolClass.SelectImage;
 import com.example.sif.Lei.MyToolClass.ToastZong;
 import com.example.sif.MessageNotice;
@@ -471,6 +472,10 @@ public class FragmentActivityBar extends BaseFragment {
                         Intent intent1 = new Intent(activity, MessageNotice.class);
                         intent1.putExtra("ofkey", myZhuYe.offKey);
                         activity.startActivity(intent1);
+                        break;
+                    case 3:
+                        SchoolShopPopupWindow schoolShopPopupWindow = new SchoolShopPopupWindow(MyApplication.getContext());
+                        schoolShopPopupWindow.showAtLocation(activity.findViewById(R.id.schoolshop_bar), Gravity.CENTER, 0, 0);
                         break;
                     default:
                         break;

@@ -29,8 +29,10 @@ public class SchoolShop extends BaseActivity {
     private void showActivityBar() {
         FragmentActivityBar fragmentActivityBar = (FragmentActivityBar) getSupportFragmentManager().findFragmentById(R.id.schoolshop_bar);
         ShowActivityBars showActivityBars = new ShowActivityBars(this, fragmentActivityBar);
-        showActivityBars.showKongJian(true, false, true, false, false, false, false);
-        showActivityBars.showUI(R.drawable.zuo_black, null, "淘商店", null, 0, 0);
-        showActivityBars.uiFunction(1, 0, 0, 0, 0, 0, 0);
+        showActivityBars.showKongJian(true, false, true, false, false, true, true);
+        showActivityBars.showUI(R.drawable.zuo_black, null, "淘商店", null, R.drawable.toshop, R.drawable.shophistory);
+        showActivityBars.uiFunction(1, 0, 0, 0, 0, 3, 2);
     }
+
+
 }

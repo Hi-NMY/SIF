@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:ImageViewPlus="http://schemas.android.com/apk/res-auto"
+    android:paddingTop="250dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/shop_win"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:background="@drawable/celan_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/shop_top_r"
+            android:layout_width="27dp"
+            android:layout_height="5dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/nostartimage_three" />
+
+        <EditText
+            android:id="@+id/toshop_notice"
+            android:hint="请简单描述你的物品\n(最大支持300字，可添加表情)"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/ziti"
+            android:background="@null"
+            android:gravity="left|top"
+            android:lineSpacingMultiplier="1.4"
+            android:textSize="@dimen/biaotilan_teshu"
+            android:text=""
+            android:maxLength="300"
+            android:layout_below="@id/shop_top_r"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/toshop_image_list"
+            android:visibility="invisible"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/toshop_notice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.example.sif.Lei.NiceImageView.SolidImageView
+            android:id="@+id/toshop_addimage"
+            android:layout_alignTop="@+id/toshop_image_list"
+            android:src="@drawable/addpicture"
+            android:layout_marginLeft="7dp"
+            android:layout_toRightOf="@+id/toshop_image_list"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            ImageViewPlus:type="rounded_rect"
+            ImageViewPlus:rectRoundRadius="5dp"/>
+
+        <com.zhy.view.flowlayout.TagFlowLayout
+            android:id="@+id/toshop_label"
+            android:layout_width="wrap_content"
+            android:layout_height="27dp"
+            android:layout_below="@+id/toshop_notice"
+            android:layout_marginTop="110dp" />
+
+        <TextView
+            android:id="@+id/toshop_addlabel"
+            android:background="@drawable/toshop_addlabel"
+            android:layout_alignTop="@+id/toshop_label"
+            android:layout_toRightOf="@+id/toshop_label"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/biaotilan_chaoxiao"
+            android:text="添加标签"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/t1"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/toshop_label"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/biaotilan_teshu"
+            android:text="选择状态："
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/nowshop"
+            android:layout_alignTop="@+id/t1"
+            android:layout_toRightOf="@+id/t1"
+            android:textColor="@color/lightgray"
+            android:layout_marginLeft="20dp"
+            android:text="正售"
+            android:textSize="@dimen/biaotilan_teshu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/stopshop"
+            android:layout_alignTop="@+id/nowshop"
+            android:layout_toRightOf="@+id/nowshop"
+            android:textColor="@color/lightgray"
+            android:layout_marginLeft="20dp"
+            android:text="暂挂"
+            android:textSize="@dimen/biaotilan_teshu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/t1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/close_button"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/nostartimage_three"
+                android:textColor="@color/beijing"
+                android:text="取  消"
+                android:textSize="@dimen/biaotilan_title"
+                android:textStyle="bold"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_below="@id/newdiary_image"
+                android:layout_centerHorizontal="true"
+                android:layout_width="150dp"
+                android:layout_height="45dp"/>
+
+            <Button
+                android:id="@+id/right_button"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/ib_detailed_button"
+                android:textColor="@color/beijing"
+                android:text="发  布"
+                android:textSize="@dimen/biaotilan_title"
+                android:textStyle="bold"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_below="@id/newdiary_image"
+                android:layout_centerHorizontal="true"
+                android:layout_width="150dp"
+                android:layout_height="45dp"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

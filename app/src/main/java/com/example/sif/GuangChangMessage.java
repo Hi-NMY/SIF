@@ -114,7 +114,7 @@ public class GuangChangMessage extends BaseActivity implements View.OnLayoutChan
                 if (position == 1) {
                     hideKeyboard(mGuangchangMessageContent, 1);
                     VeryPopupWindow veryPopupWindow = new VeryPopupWindow(MyApplication.getContext(), strings);
-                    veryPopupWindow.showAtLocation(findViewById(R.id.id_flowlayout), Gravity.CENTER, 0, 0);
+                    veryPopupWindow.showAtLocation(findViewById(R.id.id_flowlayout), Gravity.BOTTOM, 0, 0);
                 }
                 return true;
             }
