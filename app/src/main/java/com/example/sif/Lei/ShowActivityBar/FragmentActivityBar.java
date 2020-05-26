@@ -41,6 +41,7 @@ import com.example.sif.MyZhuYe;
 import com.example.sif.PersonalInformation;
 import com.example.sif.QRactivity;
 import com.example.sif.R;
+import com.example.sif.SchoolShop;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -474,7 +475,10 @@ public class FragmentActivityBar extends BaseFragment {
                         activity.startActivity(intent1);
                         break;
                     case 3:
-                        SchoolShopPopupWindow schoolShopPopupWindow = new SchoolShopPopupWindow(MyApplication.getContext());
+                        baseActivity = (BaseActivity)getActivity();
+                        SchoolShopPopupWindow schoolShopPopupWindow = new SchoolShopPopupWindow(MyApplication.getContext(),activity,baseActivity);
+                        SchoolShop schoolShop = (SchoolShop) getActivity();
+                        schoolShop.setPopupWindow(schoolShopPopupWindow);
                         schoolShopPopupWindow.showAtLocation(activity.findViewById(R.id.schoolshop_bar), Gravity.CENTER, 0, 0);
                         break;
                     default:

@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/r1"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv1"
+            android:layout_marginTop="30dp"
+            android:textSize="@dimen/biaotilan_xiaozi"
+            android:text="类别："
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <CheckBox
+            android:id="@+id/lift"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/ziti"
+            android:textSize="@dimen/biaotilan_xiaozi"
+            android:layout_below="@id/tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="生活用品" />
+
+        <CheckBox
+            android:id="@+id/study"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/ziti"
+            android:textSize="@dimen/biaotilan_xiaozi"
+            android:layout_alignTop="@+id/lift"
+            android:layout_toRightOf="@+id/lift"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="学习用品" />
+
+        <CheckBox
+            android:id="@+id/game"
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/lift"
+            android:textColor="@color/ziti"
+            android:textSize="@dimen/biaotilan_xiaozi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="游戏" />
+
+        <CheckBox
+            android:id="@+id/electric"
+            android:layout_marginLeft="5dp"
+            android:layout_alignTop="@+id/game"
+            android:layout_toRightOf="@+id/game"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/ziti"
+            android:textSize="@dimen/biaotilan_xiaozi"
+            android:text="电器" />
+
+        <CheckBox
+            android:id="@+id/electronics"
+            android:layout_alignTop="@+id/electric"
+            android:layout_toRightOf="@+id/electric"
+            android:textColor="@color/ziti"
+            android:textSize="@dimen/biaotilan_xiaozi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="电子产品"/>
+
+        <TextView
+            android:id="@+id/tv2"
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/electronics"
+            android:textSize="@dimen/biaotilan_xiaozi"
+            android:text="小类："
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <CheckBox
+            android:id="@+id/chair"
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/tv2"
+            android:textColor="@color/ziti"
+            android:textSize="@dimen/biaotilan_xiaozi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="桌椅" />
+
+        <CheckBox
+            android:id="@+id/lamp"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/ziti"
+            android:textSize="@dimen/biaotilan_xiaozi"
+            android:layout_alignTop="@+id/chair"
+            android:layout_toRightOf="@+id/chair"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="台灯" />
+
+        <CheckBox
+            android:id="@+id/book"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/ziti"
+            android:textSize="@dimen/biaotilan_xiaozi"
+            android:layout_alignTop="@+id/lamp"
+            android:layout_toRightOf="@+id/lamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="书" />
+
+        <CheckBox
+            android:id="@+id/shoes"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/chair"
+            android:textColor="@color/ziti"
+            android:textSize="@dimen/biaotilan_xiaozi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="鞋类" />
+
+        <CheckBox
+            android:id="@+id/bag"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/ziti"
+            android:textSize="@dimen/biaotilan_xiaozi"
+            android:layout_alignTop="@+id/shoes"
+            android:layout_toRightOf="@+id/shoes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="包类" />
+
+        <CheckBox
+            android:id="@+id/clothes"
+            android:textColor="@color/ziti"
+            android:layout_marginLeft="5dp"
+            android:textSize="@dimen/biaotilan_xiaozi"
+            android:layout_alignTop="@+id/bag"
+            android:layout_toRightOf="@+id/bag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="衣物" />
+
+        <CheckBox
+            android:id="@+id/cosmetics"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/shoes"
+            android:textColor="@color/ziti"
+            android:textSize="@dimen/biaotilan_xiaozi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="化妆品" />
+
+        <CheckBox
+            android:id="@+id/phone"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/ziti"
+            android:textSize="@dimen/biaotilan_xiaozi"
+            android:layout_alignTop="@+id/cosmetics"
+            android:layout_toRightOf="@+id/cosmetics"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="手机" />
+
+        <CheckBox
+            android:id="@+id/watch"
+            android:layout_marginLeft="5dp"
+            android:layout_alignTop="@+id/phone"
+            android:layout_toRightOf="@+id/phone"
+            android:textColor="@color/ziti"
+            android:textSize="@dimen/biaotilan_xiaozi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="手表" />
+
+        <CheckBox
+            android:id="@+id/hair"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/ziti"
+            android:textSize="@dimen/biaotilan_xiaozi"
+            android:layout_below="@+id/cosmetics"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="吹风机" />
+
+        <CheckBox
+            android:id="@+id/other"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/ziti"
+            android:textSize="@dimen/biaotilan_xiaozi"
+            android:layout_alignTop="@+id/hair"
+            android:layout_toRightOf="@+id/hair"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="其他" />
+
+        <Button
+            android:id="@+id/label_button"
+            android:layout_margin="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/ib_detailed_button"
+            android:textColor="@color/beijing"
+            android:text="添  加"
+            android:textSize="@dimen/biaotilan_teshu"
+            android:textStyle="bold"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_below="@id/other"
+            android:layout_centerHorizontal="true"
+            android:layout_width="100dp"
+            android:layout_height="30dp"/>
+
+    </RelativeLayout>
+</RelativeLayout>

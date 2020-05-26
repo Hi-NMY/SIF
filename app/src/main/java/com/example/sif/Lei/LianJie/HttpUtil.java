@@ -8,6 +8,7 @@ import java.io.File;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Callback;
 import okhttp3.FormBody;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -747,6 +748,65 @@ public class HttpUtil {
     public static void sendUserToken(String path,String token,String xuehao, okhttp3.Callback callback){
         RequestBody requestBody = new FormBody.Builder()
                 .add("token", token)
+                .add("xuehao", xuehao)
+                .build();
+        OkHttpClient client = new OkHttpClient.Builder()
+                .retryOnConnectionFailure(true)
+                .connectTimeout(20, TimeUnit.SECONDS)
+                .readTimeout(20,TimeUnit.SECONDS)
+                .build();
+        Request request = new Request.Builder()
+                .url(path)
+                .post(requestBody)
+                .build();
+        client.newCall(request).enqueue(callback);
+    }
+
+    public static void sendAddNewShop(String path, List<DouBleImagePath> imagePath, String xuehao, String sendtime, StringBuffer label, String notice, int shopstate, Callback callback){
+        RequestBody requestBody = null;
+        MultipartBody.Builder builder = new MultipartBody.Builder();
+        builder.setType(MultipartBody.FORM)
+                .addFormDataPart("xuehao",xuehao)
+                .addFormDataPart("sendtime",sendtime)
+                .addFormDataPart("label", String.valueOf(label))
+                .addFormDataPart("notice",notice)
+                .addFormDataPart("shopstate",String.valueOf(shopstate));
+        for(DouBleImagePath d : imagePath){
+            File file = new File(d.getMinPath());
+            File file1 = new File(d.getMaxPath());
+            builder.addFormDataPart("img[]",file.getName(),RequestBody.create(MediaType.parse("image/png"),file))
+                    .addFormDataPart("imgA[]",file1.getName(),RequestBody.create(MediaType.parse("image/png"),file1));
+        }
+        requestBody = builder.build();
+        OkHttpClient client = new OkHttpClient.Builder()
+                .connectTimeout(20,TimeUnit.SECONDS)
+                .readTimeout(20,TimeUnit.SECONDS)
+                .build();
+        Request request = new Request.Builder()
+                .url(path)
+                .post(requestBody)
+                .build();
+        client.newCall(request).enqueue(callback);
+    }
+
+    public static void obtainSchoolShop(String path,String nowTime, okhttp3.Callback callback){
+        RequestBody requestBody = new FormBody.Builder()
+                .add("nowTime", nowTime)
+                .build();
+        OkHttpClient client = new OkHttpClient.Builder()
+                .retryOnConnectionFailure(true)
+                .connectTimeout(20, TimeUnit.SECONDS)
+                .readTimeout(20,TimeUnit.SECONDS)
+                .build();
+        Request request = new Request.Builder()
+                .url(path)
+                .post(requestBody)
+                .build();
+        client.newCall(request).enqueue(callback);
+    }
+
+    public static void obtainUserName(String path,String xuehao, okhttp3.Callback callback){
+        RequestBody requestBody = new FormBody.Builder()
                 .add("xuehao", xuehao)
                 .build();
         OkHttpClient client = new OkHttpClient.Builder()

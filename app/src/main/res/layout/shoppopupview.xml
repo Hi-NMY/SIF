@@ -2,9 +2,53 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:ImageViewPlus="http://schemas.android.com/apk/res-auto"
-    android:paddingTop="250dp"
+    android:paddingTop="240dp"
+    android:clipChildren="false"
+    android:clipToPadding="false"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tip"
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/biaotilan_xiaozi"
+        android:textColor="@color/beijing"
+        android:layout_marginTop="-100dp"
+        android:text="1.描述、图片、标签、状态都要添加哦"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tip2"
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/biaotilan_xiaozi"
+        android:textColor="@color/beijing"
+        android:layout_below="@+id/tip"
+        android:text="2.状态正售：正在售卖"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tip3"
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/biaotilan_xiaozi"
+        android:textColor="@color/beijing"
+        android:layout_below="@+id/tip2"
+        android:text="3.状态暂挂：发布但不进行售卖"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:gravity="center"
+        android:lineSpacingMultiplier="1.2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="40dp"
+        android:textSize="@dimen/biaotilan_xiaozi"
+        android:textColor="@color/beijing"
+        android:layout_below="@+id/tip3"
+        android:text="发布后如因某些原因无法正常售卖\n请及时更改状态为暂挂或已售出"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <RelativeLayout
         android:id="@+id/shop_win"
@@ -24,7 +68,7 @@
 
         <EditText
             android:id="@+id/toshop_notice"
-            android:hint="请简单描述你的物品\n(最大支持300字，可添加表情)"
+            android:hint="请简单描述你的物品\n(最大支持300字，可添加表情)\n(可多个物品一起发布哦)"
             android:layout_marginTop="20dp"
             android:textColor="@color/ziti"
             android:background="@null"
@@ -50,6 +94,7 @@
             android:layout_alignTop="@+id/toshop_image_list"
             android:src="@drawable/addpicture"
             android:layout_marginLeft="7dp"
+            android:layout_marginTop="7dp"
             android:layout_toRightOf="@+id/toshop_image_list"
             android:layout_width="70dp"
             android:layout_height="70dp"
@@ -68,11 +113,12 @@
             android:background="@drawable/toshop_addlabel"
             android:layout_alignTop="@+id/toshop_label"
             android:layout_toRightOf="@+id/toshop_label"
+            android:layout_marginTop="-2dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="10dp"
             android:textColor="@color/gray"
             android:textSize="@dimen/biaotilan_chaoxiao"
             android:text="添加标签"

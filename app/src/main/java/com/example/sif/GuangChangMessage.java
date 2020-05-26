@@ -320,7 +320,6 @@ public class GuangChangMessage extends BaseActivity implements View.OnLayoutChan
 
     public void lookPicture(int position){
         rxDialogScaleView = new RxDialogScaleView(GuangChangMessage.this);
-        //      rxDialogScaleView.setContentView(LayoutInflater.from(MyApplication.getContext()).inflate(R.layout.tipes_gv,null));
         rxDialog = new RxDialog(GuangChangMessage.this, R.style.tran_dialog);
         rxDialog.setCanceledOnTouchOutside(false);
         MyVeryDiaLog.veryImageDiaLog(rxDialogScaleView, ds.get(position).getMaxPath(), bitMapHandler);

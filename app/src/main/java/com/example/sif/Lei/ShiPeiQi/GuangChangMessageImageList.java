@@ -14,6 +14,7 @@ import com.bumptech.glide.signature.MediaStoreSignature;
 import com.example.sif.GuangChangMessage;
 import com.example.sif.Lei.MyToolClass.GlideRoundTransform;
 import com.example.sif.Lei.MyToolClass.MyDateClass;
+import com.example.sif.Lei.MyToolClass.SchoolShopPopupWindow;
 import com.example.sif.MyApplication;
 import com.example.sif.NeiBuLei.DouBleImagePath;
 import com.example.sif.R;
@@ -25,6 +26,7 @@ public class GuangChangMessageImageList extends RecyclerView.Adapter<GuangChangM
     private List<DouBleImagePath> douBleImagePaths;
     private Activity activity;
     private GuangChangMessage guangChangMessage;
+    private SchoolShopPopupWindow schoolShopPopupWindow;
     private View view;
     private ViewHolder viewHolder;
 
@@ -41,6 +43,16 @@ public class GuangChangMessageImageList extends RecyclerView.Adapter<GuangChangM
     public GuangChangMessageImageList(Activity a,GuangChangMessage g, List<DouBleImagePath> d) {
         this.activity = a;
         this.guangChangMessage = g;
+        if (douBleImagePaths != null){
+            douBleImagePaths.clear();
+        }
+        this.douBleImagePaths = d;
+        notifyDataSetChanged();
+    }
+
+    public GuangChangMessageImageList(Activity a, SchoolShopPopupWindow s, List<DouBleImagePath> d) {
+        this.activity = a;
+        this.schoolShopPopupWindow = s;
         if (douBleImagePaths != null){
             douBleImagePaths.clear();
         }
@@ -85,14 +97,24 @@ public class GuangChangMessageImageList extends RecyclerView.Adapter<GuangChangM
         holder.mImageItemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                guangChangMessage.lookPicture(position);
+                if (guangChangMessage != null){
+                    guangChangMessage.lookPicture(position);
+                }
+                if (schoolShopPopupWindow != null){
+                    schoolShopPopupWindow.lookPicture(position);
+                }
             }
         });
 
         holder.mImageClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                guangChangMessage.removeList(position);
+                if (guangChangMessage != null){
+                    guangChangMessage.removeList(position);
+                }
+                if (schoolShopPopupWindow != null){
+                    schoolShopPopupWindow.removeList(position);
+                }
             }
         });
     }

@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
@@ -20,7 +19,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -44,8 +42,6 @@ import com.example.sif.MyApplication;
 import com.example.sif.NeiBuLei.GuangChangUserXinXi;
 import com.example.sif.NeiBuLei.UserSpace;
 import com.example.sif.R;
-import com.tamsiree.rxui.view.dialog.RxDialog;
-import com.tamsiree.rxui.view.dialog.RxDialogScaleView;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
 import com.zhy.view.flowlayout.TagFlowLayout;
@@ -189,26 +185,6 @@ public class GuangChang extends RecyclerView.Adapter<GuangChang.ViewHolder> {
     private UserDynamicThumb userDynamicThumb;
     private int frush;
     private int key;
-    private RxDialogScaleView rxDialogScaleView;
-    private RxDialog rxDialog;
-    private Handler bitMapHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            rxDialog.dismiss();
-            if (msg.obj != null) {
-                if (msg.what == 1) {
-                    ToastZong.ShowToast(activity, "图片加载错误");
-                    rxDialogScaleView.setImage((Bitmap) msg.obj);
-                } else {
-                    rxDialogScaleView.setImage((Bitmap) msg.obj);
-                }
-            } else {
-                ToastZong.ShowToast(activity, "错误");
-            }
-        }
-    };
-
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
