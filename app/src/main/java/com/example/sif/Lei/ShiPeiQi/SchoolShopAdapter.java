@@ -92,6 +92,12 @@ public class SchoolShopAdapter extends RecyclerView.Adapter<SchoolShopAdapter.Vi
         }
     }
 
+    public void addNewShop(SchoolShopClass s) {
+        this.schoolShopClasses.add(0, s);
+        notifyItemInserted(0);
+        notifyItemRangeChanged(0, schoolShopClasses.size() + 1);
+    }
+
     public void addSchoolShopAdapter(List<SchoolShopClass> s) {
         s.remove(0);
         if (s.size() == 0) {
@@ -123,7 +129,14 @@ public class SchoolShopAdapter extends RecyclerView.Adapter<SchoolShopAdapter.Vi
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
-                holder.mShopUsername.setText(userNameClass.getUser_name());
+                switch (msg.what){
+                    case 0:
+                        holder.mShopUsername.setText(userNameClass.getUser_name());
+                        break;
+                    case 1:
+                        holder.mShopUsername.setText("");
+                        break;
+                }
             }
         };
 
@@ -131,13 +144,23 @@ public class SchoolShopAdapter extends RecyclerView.Adapter<SchoolShopAdapter.Vi
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 String a = response.body().string();
-                userNameClass = new Gson().fromJson(a,UserNameClass.class);
-                userNameHanlder.sendMessage(new Message());
+                try {
+                    userNameClass = new Gson().fromJson(a,UserNameClass.class);
+                    Message message = new Message();
+                    message.what = 0;
+                    userNameHanlder.sendMessage(message);
+                }catch (Exception e){
+                    Message message = new Message();
+                    message.what = 1;
+                    userNameHanlder.sendMessage(message);
+                }
             }
 
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
-
+                Message message = new Message();
+                message.what = 1;
+                userNameHanlder.sendMessage(message);
             }
         });
         holder.mShopNotice.setText(schoolShopClass.getNotice());

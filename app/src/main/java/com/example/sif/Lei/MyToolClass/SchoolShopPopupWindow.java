@@ -24,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sif.BaseActivity;
 import com.example.sif.Lei.LianJie.HttpUtil;
+import com.example.sif.Lei.MyBroadcastReceiver.BroadcastRec;
 import com.example.sif.Lei.NiceImageView.SolidImageView;
 import com.example.sif.Lei.ShiPeiQi.GuangChangMessageImageList;
 import com.example.sif.MyApplication;
@@ -291,14 +292,16 @@ public class SchoolShopPopupWindow extends PopupWindow implements View.OnClickLi
             super.handleMessage(msg);
             baseActivity.closeDiaLog();
             dissMissPopupwindow();
+            BroadcastRec.sendReceiver(context,"newSendShop",0,newShop);
         }
     };
 
+    private String newShop;
     private void sendNewShop() {
         HttpUtil.sendAddNewShop(path, ds, baseActivity.getMyXueHao(), MyDateClass.showNowDate(), stringLabels, mToshopNotice.getText().toString(), shopstate, new Callback() {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                String a = response.body().string();
+                newShop = response.body().string();
                 newShopHandler.sendMessage(new Message());
             }
 

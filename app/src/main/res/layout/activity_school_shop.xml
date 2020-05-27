@@ -30,7 +30,6 @@
                 android:id="@+id/guangchang_gif"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:layout_below="@+id/smarttext"
                 android:layout_centerHorizontal="true"
                 android:src="@drawable/shopfresh"
                 android:layout_width="40dp"

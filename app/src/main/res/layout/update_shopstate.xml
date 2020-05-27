@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/r1"
+        android:paddingTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/nowshop"
+            android:layout_alignTop="@+id/t1"
+            android:layout_toRightOf="@+id/t1"
+            android:textColor="@color/lightgray"
+            android:layout_marginLeft="20dp"
+            android:text="正售"
+            android:textSize="@dimen/biaotilan_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/outshop"
+            android:layout_alignTop="@+id/nowshop"
+            android:layout_toRightOf="@+id/nowshop"
+            android:textColor="@color/lightgray"
+            android:layout_marginLeft="20dp"
+            android:text="暂挂"
+            android:textSize="@dimen/biaotilan_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/stopshop"
+            android:layout_alignTop="@+id/outshop"
+            android:layout_toRightOf="@+id/outshop"
+            android:textColor="@color/lightgray"
+            android:layout_marginLeft="20dp"
+            android:text="暂挂"
+            android:layout_marginRight="20dp"
+            android:textSize="@dimen/biaotilan_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/right_state"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/ib_detailed_button"
+            android:textColor="@color/beijing"
+            android:text="确认"
+            android:textSize="@dimen/biaotilan_xiaozi"
+            android:textStyle="bold"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_marginTop="15dp"
+            android:layout_below="@id/nowshop"
+            android:layout_alignRight="@+id/usershop_labellist"
+            android:layout_marginBottom="20dp"
+            android:layout_width="80dp"
+            android:layout_height="30dp"/>
+    </RelativeLayout>
+
+</RelativeLayout>

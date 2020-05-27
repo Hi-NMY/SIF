@@ -1,5 +1,7 @@
 package com.example.sif;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -13,11 +15,13 @@ import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.sif.Lei.MyBroadcastReceiver.BroadcastRec;
 import com.example.sif.Lei.MyToolClass.MyDateClass;
 import com.example.sif.Lei.MyToolClass.ObtainShopList;
 import com.example.sif.Lei.MyToolClass.SchoolShopPopupWindow;
 import com.example.sif.Lei.ShiPeiQi.SchoolShopAdapter;
 import com.example.sif.Lei.ShowActivityBar.FragmentActivityBar;
+import com.example.sif.NeiBuLei.SchoolShopClass;
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.entity.LocalMedia;
@@ -62,11 +66,16 @@ public class SchoolShop extends BaseActivity {
     private RecyclerView mAllshopList;
     private SmartRefreshLayout mIbRefresh;
 
+    private NewSendShop newSendShop;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_school_shop);
         initView();
+
+        newSendShop = new NewSendShop();
+        BroadcastRec.obtainRecriver(MyApplication.getContext(),"newSendShop",newSendShop);
 
         //设置状态栏
         ZTL();
@@ -175,5 +184,27 @@ public class SchoolShop extends BaseActivity {
     private void initView() {
         mAllshopList = (RecyclerView) findViewById(R.id.allshop_list);
         mIbRefresh = (SmartRefreshLayout) findViewById(R.id.ib_refresh);
+    }
+
+    private void newShopMessage() {
+        schoolShopAdapter.addNewShop(schoolShopClass);
+        mAllshopList.setAdapter(schoolShopAdapter);
+    }
+
+    private SchoolShopClass schoolShopClass;
+    class NewSendShop extends BroadcastReceiver{
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String a = intent.getStringExtra("texttwo");
+            String[] s = a.split("&");
+            schoolShopClass = new SchoolShopClass();
+            schoolShopClass.setXuehao(s[0]);
+            schoolShopClass.setSendtime(s[1]);
+            schoolShopClass.setLabel(s[2]);
+            schoolShopClass.setNotice(s[3]);
+            schoolShopClass.setCommodityimage(s[4]);
+            schoolShopClass.setShopstate(Integer.valueOf(s[5]));
+            newShopMessage();
+        }
     }
 }

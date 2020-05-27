@@ -42,6 +42,7 @@ import com.example.sif.PersonalInformation;
 import com.example.sif.QRactivity;
 import com.example.sif.R;
 import com.example.sif.SchoolShop;
+import com.example.sif.UserHomeShop;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -501,7 +502,8 @@ public class FragmentActivityBar extends BaseFragment {
                         activity.startActivityForResult(intent, REQUEST_CODE);
                         break;
                     case 2:
-
+                        Intent intent1 = new Intent(activity, UserHomeShop.class);
+                        activity.startActivity(intent1);
                         break;
                     default:
                         break;

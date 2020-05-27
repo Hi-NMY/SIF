@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        app:cardCornerRadius="7dp"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/usershop_state"
+                android:layout_width="50dp"
+                android:layout_height="20dp"
+                android:layout_alignRight="@+id/usershop_tomessage"
+                android:layout_marginTop="@dimen/guangchangimage_top"
+                android:background="@drawable/shop_state_bg2">
+
+                <TextView
+                    android:id="@+id/usershopstate_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="已售出"
+                    android:textColor="@color/beijing"
+                    android:textSize="@dimen/biaotilan_xiaozi" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/usershop_notice"
+                android:layout_marginTop="15dp"
+                android:lineSpacingMultiplier="1.5"
+                android:text=""
+                android:paddingLeft="5dp"
+                android:layout_marginLeft="@dimen/guangchangimage_top"
+                android:textSize="@dimen/biaotilan_teshu"
+                android:layout_marginRight="@dimen/guangchangimage_top"
+                android:textColor="@color/ziti"
+                android:layout_below="@+id/usershop_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/usershop_imagelist"
+                android:visibility="gone"
+                android:layout_below="@id/usershop_notice"
+                android:layout_alignLeft="@id/usershop_notice"
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.zhy.view.flowlayout.TagFlowLayout
+                android:id="@+id/usershop_labellist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/usershop_imagelist"
+                android:layout_alignLeft="@id/usershop_notice"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="@dimen/guangchangimage_top"/>
+
+            <TextView
+                android:id="@+id/usershop_time"
+                android:layout_marginTop="10dp"
+                android:layout_alignLeft="@id/usershop_notice"
+                android:layout_alignBottom="@+id/usershop_tomessage"
+                android:layout_below="@+id/usershop_labellist"
+                android:text=""
+                android:gravity="bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/usershop_tomessage"
+                android:background="@drawable/ib_detailed_button"
+                android:textColor="@color/beijing"
+                android:text="修改状态"
+                android:textSize="@dimen/biaotilan_xiaozi"
+                android:textStyle="bold"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/usershop_labellist"
+                android:layout_alignRight="@+id/usershop_labellist"
+                android:layout_marginBottom="10dp"
+                android:layout_width="90dp"
+                android:layout_height="30dp"/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
