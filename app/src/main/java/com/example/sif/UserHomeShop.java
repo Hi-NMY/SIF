@@ -20,7 +20,7 @@ public class UserHomeShop extends BaseActivity {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            userShopAdapter = new UserShopAdapter(UserHomeShop.this, ObtainUserShop.schoolShopClasses);
+            userShopAdapter = new UserShopAdapter(UserHomeShop.this,ObtainUserShop.schoolShopClasses);
             mUserallshopList.setAdapter(userShopAdapter);
         }
     };

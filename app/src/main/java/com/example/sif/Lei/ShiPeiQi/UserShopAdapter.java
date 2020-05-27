@@ -56,10 +56,9 @@ public class UserShopAdapter extends RecyclerView.Adapter<UserShopAdapter.ViewHo
         }
     }
 
-    public UserShopAdapter(Activity a,BaseActivity b,List<SchoolShopClass> s){
+    public UserShopAdapter(Activity a,List<SchoolShopClass> s){
         this.activity = a;
         this.schoolShopClasses = s;
-        this.baseActivity = b;
         if (schoolShopClasses.size() > 0) {
             date = schoolShopClasses.get(schoolShopClasses.size() - 1).getSendtime();
         }
@@ -129,9 +128,9 @@ public class UserShopAdapter extends RecyclerView.Adapter<UserShopAdapter.ViewHo
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
-                oldState = schoolShopClass.getShopstate();
+                oldState = schoolShopClasses.get(position).getShopstate();
                 View view1 = LayoutInflater.from(activity).inflate(R.layout.update_shopstate, null);
-                initShopView(view1,schoolShopClass.getShopstate());
+                initShopView(view1,schoolShopClasses.get(position).getShopstate());
                 showDiaLog1 = new ShowDiaLog(activity, R.style.AlertDialog_qr, view1);
                 showDiaLog1.logWindow(new ColorDrawable(Color.TRANSPARENT));
                 showDiaLog1.showMyDiaLog();
@@ -150,7 +149,7 @@ public class UserShopAdapter extends RecyclerView.Adapter<UserShopAdapter.ViewHo
         t1 = (TextView)view1.findViewById(R.id.nowshop);
         t2 = (TextView)view1.findViewById(R.id.outshop);
         t3 = (TextView)view1.findViewById(R.id.stopshop);
-        right = (Button)view1.findViewById(R.id.right_button);
+        right = (Button)view1.findViewById(R.id.right_state);
         if (state == 0){
             t1.setTextColor(activity.getColor(R.color.ziti));
             t2.setTextColor(activity.getColor(R.color.lightgray));
@@ -195,9 +194,9 @@ public class UserShopAdapter extends RecyclerView.Adapter<UserShopAdapter.ViewHo
         right.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                baseActivity.showDiaLog(activity, R.drawable.loading2);
+               // baseActivity.showDiaLog(activity, R.drawable.loading2);
                 if (oldState == newState){
-                    baseActivity.closeDiaLog();
+                   // baseActivity.closeDiaLog();
                 }else {
 
                 }

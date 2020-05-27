@@ -31,7 +31,7 @@
             android:layout_toRightOf="@+id/nowshop"
             android:textColor="@color/lightgray"
             android:layout_marginLeft="20dp"
-            android:text="暂挂"
+            android:text="已售出"
             android:textSize="@dimen/biaotilan_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
