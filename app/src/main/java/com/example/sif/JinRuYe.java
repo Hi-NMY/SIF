@@ -194,7 +194,6 @@ public class JinRuYe extends BaseActivity {
                                     //回调成功
                                     @Override
                                     public void onSuccess(String s) {
-                                        ToastZong.ShowToast(MyApplication.getContext(),s);
                                         UserInfo userInfo = new UserInfo(getMyXueHao(), getMyUserName(), Uri.parse("http://nmy1206.natapp1.cc/UserImageServer/"+getMyXueHao()+"/HeadImage/myHeadImage.png"));
                                         RongIM.getInstance().setCurrentUserInfo(userInfo);
 //                                        RongIM.setUserInfoProvider(new RongIM.UserInfoProvider() {
