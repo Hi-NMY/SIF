@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:id="@+id/schsp_r"
     android:background="@color/qianbai"
     android:layout_width="match_parent"
@@ -37,11 +38,42 @@
 
         </RelativeLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/allshop_list"
-            android:background="@color/qianbai"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/img1"
+                android:visibility="gone"
+                android:layout_toLeftOf="@id/t1"
+                android:layout_alignBottom="@id/t1"
+                android:layout_alignTop="@id/t1"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="-3dp"
+                android:background="@drawable/returnleft_gray"
+                android:layout_width="25dp"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/t1"
+                android:visibility="gone"
+                android:paddingTop="5dp"
+                android:gravity="center"
+                android:layout_centerHorizontal="true"
+                android:textSize="@dimen/biaotilan_teshu"
+                android:textColor="@color/gray"
+                android:text="点击返回"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/allshop_list"
+                android:layout_below="@id/t1"
+                android:paddingTop="10dp"
+                android:background="@color/qianbai"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/ib_refresh_R"
@@ -59,4 +91,14 @@
         </RelativeLayout>
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
+    <com.melnykov.fab.FloatingActionButton
+        android:id="@+id/shop_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="20dp"
+        android:src="@mipmap/ic_search_shop"
+        fab:fab_colorNormal="@color/beijing"
+        fab:fab_colorPressed="@color/beijing" />
 </RelativeLayout>

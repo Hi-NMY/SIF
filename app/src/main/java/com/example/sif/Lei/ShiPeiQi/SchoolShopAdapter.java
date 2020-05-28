@@ -1,6 +1,8 @@
 package com.example.sif.Lei.ShiPeiQi;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Message;
 import android.view.LayoutInflater;
@@ -24,6 +26,7 @@ import com.example.sif.Lei.NiceImageView.CircleImageView;
 import com.example.sif.NeiBuLei.SchoolShopClass;
 import com.example.sif.NeiBuLei.UserNameClass;
 import com.example.sif.R;
+import com.example.sif.SchoolShop;
 import com.google.gson.Gson;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
@@ -35,6 +38,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.rong.imkit.RongIM;
+import io.rong.imlib.model.Conversation;
 import okhttp3.Call;
 import okhttp3.Response;
 
@@ -42,9 +47,11 @@ public class SchoolShopAdapter extends RecyclerView.Adapter<SchoolShopAdapter.Vi
 
     private List<SchoolShopClass> schoolShopClasses;
     private Activity activity;
+    private SchoolShop schoolShop;
     private View view;
     private ViewHolder viewHolder;
     public String date;
+    private String myXueHao;
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -84,12 +91,15 @@ public class SchoolShopAdapter extends RecyclerView.Adapter<SchoolShopAdapter.Vi
         }
     }
 
-    public SchoolShopAdapter(Activity a,List<SchoolShopClass> s){
+    public SchoolShopAdapter(Activity a,SchoolShop sp,List<SchoolShopClass> s){
         this.activity = a;
         this.schoolShopClasses = s;
+        this.schoolShop = sp;
         if (schoolShopClasses.size() > 0) {
             date = schoolShopClasses.get(schoolShopClasses.size() - 1).getSendtime();
         }
+        SharedPreferences sharedPreferences = activity.getSharedPreferences("userSchool", Context.MODE_PRIVATE);
+        myXueHao = sharedPreferences.getString("xuehao", "");
     }
 
     public void addNewShop(SchoolShopClass s) {
@@ -124,6 +134,12 @@ public class SchoolShopAdapter extends RecyclerView.Adapter<SchoolShopAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         schoolShopClass = schoolShopClasses.get(position);
+
+        if (schoolShopClass.getXuehao().equals(myXueHao)){
+            holder.mShopTomessage.setVisibility(View.INVISIBLE);
+        }else {
+            holder.mShopTomessage.setVisibility(View.VISIBLE);
+        }
 
         final Handler userNameHanlder = new Handler() {
             @Override
@@ -202,17 +218,14 @@ public class SchoolShopAdapter extends RecyclerView.Adapter<SchoolShopAdapter.Vi
                     selet.setText(o);
                     return view;
                 }
+
+                @Override
+                public void onSelected(int position, View view) {
+                    super.onSelected(position, view);
+                    TextView t = (TextView) view.findViewById(R.id.text);
+                    schoolShop.searchStart(t.getText().toString());
+                }
             });
-//            holder.mShopLabellist.setOnTagClickListener(new TagFlowLayout.OnTagClickListener() {
-//                @Override
-//                public boolean onTagClick(View view, int position, FlowLayout parent) {
-//                    TextView t = (TextView) view.findViewById(R.id.text);
-//                    Intent intent = new Intent(activity, IbDetailed.class);
-//                    intent.putExtra("ibname", t.getText().toString());
-//                    activity.startActivity(intent);
-//                    return true;
-//                }
-//            });
         }
 
         updateTime = String.valueOf(System.currentTimeMillis());
@@ -233,7 +246,8 @@ public class SchoolShopAdapter extends RecyclerView.Adapter<SchoolShopAdapter.Vi
         holder.mShopTomessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Conversation.ConversationType conversationType  = Conversation.ConversationType.PRIVATE;
+                RongIM.getInstance().startConversation(activity , conversationType, schoolShopClasses.get(position).getXuehao(), holder.mShopUsername.getText().toString());
             }
         });
 

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/r1"
+        android:paddingTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/t1"
+            android:layout_centerHorizontal="true"
+            android:textSize="@dimen/biaotilan_teshu"
+            android:textColor="@color/gray"
+            android:text="我想要买："
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/search_shopett"
+            android:textSize="@dimen/biaotilan_title"
+            android:text=""
+            android:hint="点击输入关键字"
+            android:layout_centerHorizontal="true"
+            android:background="@null"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/t1"
+            android:minWidth="100dp"
+            android:maxWidth="250dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/search_shop_btn"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/ib_detailed_button"
+            android:textColor="@color/beijing"
+            android:text="搜索"
+            android:textSize="@dimen/biaotilan_xiaozi"
+            android:textStyle="bold"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/search_shopett"
+            android:layout_alignRight="@+id/usershop_labellist"
+            android:layout_width="80dp"
+            android:layout_height="30dp"/>
+
+        <TextView
+            android:textColor="@color/lightgray"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="20dp"
+            android:layout_below="@+id/search_shop_btn"
+            android:textSize="@dimen/biaotilan_chaoxiao"
+            android:text="*搜索结果，仅展示最近30条发布信息"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+</RelativeLayout>

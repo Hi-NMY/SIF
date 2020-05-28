@@ -785,7 +785,9 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public void closeDiaLog(){
-        alertDialog.dismiss();
+        if (alertDialog != null){
+            alertDialog.dismiss();
+        }
     }
 
     public void cancelable(boolean c){

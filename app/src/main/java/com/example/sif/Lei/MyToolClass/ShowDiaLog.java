@@ -31,7 +31,9 @@ public class ShowDiaLog extends AlertDialog {
     }
 
     public void closeMyDiaLog(){
-        alertDialog.dismiss();
+        if (alertDialog != null){
+            alertDialog.dismiss();
+        }
     }
 
     public void bottomrView(){

@@ -1,9 +1,13 @@
 package com.example.sif.Lei.ShiPeiQi;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
+import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,16 +20,25 @@ import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sif.BaseActivity;
+import com.example.sif.Lei.LianJie.HttpUtil;
 import com.example.sif.Lei.MyToolClass.GuangChangImageToClass;
 import com.example.sif.Lei.MyToolClass.ShowDiaLog;
+import com.example.sif.Lei.MyToolClass.ToastZong;
+import com.example.sif.MyApplication;
 import com.example.sif.NeiBuLei.SchoolShopClass;
 import com.example.sif.R;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
 import com.zhy.view.flowlayout.TagFlowLayout;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.Call;
+import okhttp3.Response;
 
 public class UserShopAdapter extends RecyclerView.Adapter<UserShopAdapter.ViewHolder> {
 
@@ -66,6 +79,11 @@ public class UserShopAdapter extends RecyclerView.Adapter<UserShopAdapter.ViewHo
 
     public void addSchoolShopAdapter(List<SchoolShopClass> s) {
 
+    }
+
+    public void updateUserShop(int position) {
+        schoolShopClasses.get(position).setShopstate(newState);
+        notifyItemChanged(position);
     }
 
     @NonNull
@@ -128,14 +146,35 @@ public class UserShopAdapter extends RecyclerView.Adapter<UserShopAdapter.ViewHo
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
+                updatePosition = position;
                 oldState = schoolShopClasses.get(position).getShopstate();
                 View view1 = LayoutInflater.from(activity).inflate(R.layout.update_shopstate, null);
-                initShopView(view1,schoolShopClasses.get(position).getShopstate());
+                initShopView(view1,schoolShopClasses.get(position).getShopstate(),schoolShopClasses.get(position).getId());
                 showDiaLog1 = new ShowDiaLog(activity, R.style.AlertDialog_qr, view1);
                 showDiaLog1.logWindow(new ColorDrawable(Color.TRANSPARENT));
                 showDiaLog1.showMyDiaLog();
             }
         });
+
+        updateHanlder = new Handler(){
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                showDiaLog1.closeMyDiaLog();
+                switch (msg.what){
+                    case 0:
+                        ToastZong.ShowToast(MyApplication.getContext(),"状态已修改");
+                        if (updatePosition != -1){
+                            updateUserShop(updatePosition);
+                        }
+                        break;
+                    case 1:
+                        ToastZong.ShowToast(MyApplication.getContext(),"修改错误");
+                        break;
+                }
+            }
+        };
+
     }
 
     private TextView t1;
@@ -144,12 +183,17 @@ public class UserShopAdapter extends RecyclerView.Adapter<UserShopAdapter.ViewHo
     private Button right;
     private int oldState = -1;
     private int newState = -1;
+    private int updatePosition = -1;
+    private String path = "http://nmy1206.natapp1.cc/UpdateSchoolShop.php";
+    private Handler updateHanlder;
     @RequiresApi(api = Build.VERSION_CODES.M)
-    private void initShopView(View view1, int state) {
+    private void initShopView(View view1, int state,int id) {
         t1 = (TextView)view1.findViewById(R.id.nowshop);
         t2 = (TextView)view1.findViewById(R.id.outshop);
         t3 = (TextView)view1.findViewById(R.id.stopshop);
         right = (Button)view1.findViewById(R.id.right_state);
+        SharedPreferences sharedPreferences = activity.getSharedPreferences("userSchool", Context.MODE_PRIVATE);
+        String myXueHao = sharedPreferences.getString("xuehao", "");
         if (state == 0){
             t1.setTextColor(activity.getColor(R.color.ziti));
             t2.setTextColor(activity.getColor(R.color.lightgray));
@@ -194,11 +238,29 @@ public class UserShopAdapter extends RecyclerView.Adapter<UserShopAdapter.ViewHo
         right.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // baseActivity.showDiaLog(activity, R.drawable.loading2);
-                if (oldState == newState){
-                   // baseActivity.closeDiaLog();
-                }else {
+                if (oldState != newState) {
+                    Message message = new Message();
+                    HttpUtil.updateShopState(path,id,myXueHao,newState, new okhttp3.Callback() {
+                        @Override
+                        public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                            String a = response.body().string();
+                            if (a.equals("0")){
+                                message.what = 0;
+                                updateHanlder.sendMessage(message);
+                            }else {
+                                message.what = 1;
+                                updateHanlder.sendMessage(message);
+                            }
+                        }
 
+                        @Override
+                        public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                            message.what = 1;
+                            updateHanlder.sendMessage(message);
+                        }
+                    });
+                }else {
+                    showDiaLog1.closeMyDiaLog();
                 }
             }
         });
