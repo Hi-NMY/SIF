@@ -134,7 +134,8 @@ public class SchoolShopPopupWindow extends PopupWindow implements View.OnClickLi
 
                 break;
             case R.id.toshop_addimage:
-                imageName = baseActivity.getMyXueHao() + MyDateClass.showNowDate() + ".png";
+                imageName = System.currentTimeMillis() +
+                        (int) (Math.random() * 1000) + ".png";
                 SelectImage selectImage = new SelectImage(activity);
                 selectImage.showSelectImage(1, imageName);
                 break;

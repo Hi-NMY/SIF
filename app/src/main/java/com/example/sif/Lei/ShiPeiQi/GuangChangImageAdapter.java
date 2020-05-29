@@ -121,7 +121,7 @@ public class GuangChangImageAdapter extends RecyclerView.Adapter<GuangChangImage
                 rxDialogScaleView = new RxDialogScaleView(activity);
                 rxDialog = new RxDialog(activity, R.style.tran_dialog);
                 rxDialog.setCanceledOnTouchOutside(false);
-                MyVeryDiaLog.veryImageDiaLog(rxDialogScaleView, douBleImagePath.getMaxPath(), douBleImagePath.getMinPath(), bitMapHandler);
+                MyVeryDiaLog.veryImageDiaLog(rxDialogScaleView, douBleImagePaths.get(position).getMaxPath(), douBleImagePaths.get(position).getMinPath(), bitMapHandler);
                 MyVeryDiaLog.transparentDiaLog(activity, rxDialog);
             }
         });

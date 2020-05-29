@@ -26,7 +26,6 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.sif.Lei.MyToolClass.MyDateClass;
 import com.example.sif.Lei.MyToolClass.MyVeryDiaLog;
 import com.example.sif.Lei.MyToolClass.SelectImage;
 import com.example.sif.Lei.MyToolClass.ToastZong;
@@ -186,12 +185,14 @@ public class GuangChangMessage extends BaseActivity implements View.OnLayoutChan
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.dynamic_message_image:
-                imageName = getMyXueHao() + MyDateClass.showNowDate() + ".png";
+                imageName = System.currentTimeMillis() +
+                        (int) (Math.random() * 1000) + ".png";
                 SelectImage selectImage = new SelectImage(this);
                 selectImage.showSelectImage(1, imageName);
                 break;
             case R.id.dynamic_message_image_two:
-                imageName = getMyXueHao() + MyDateClass.showNowDate() + ".png";
+                imageName = System.currentTimeMillis() +
+                        (int) (Math.random() * 1000) + ".png";
                 SelectImage selectImage1 = new SelectImage(this);
                 selectImage1.showSelectImage(1, imageName);
                 break;
