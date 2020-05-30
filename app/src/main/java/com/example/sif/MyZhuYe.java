@@ -366,9 +366,9 @@ public class MyZhuYe extends BaseActivity implements View.OnClickListener {
                         Intent intent2 = new Intent(MyApplication.getContext(),MyDiary.class);
                         startActivity(intent2);
                         break;
-                    case R.id.funThree:
-
-                        break;
+//                    case R.id.funThree:
+//
+//                        break;
                 }
                 return true;
             }

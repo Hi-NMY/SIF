@@ -4,6 +4,6 @@
         android:title="我的日程" />
     <item android:id="@+id/funTwo"
         android:title="每日记" />
-    <item android:id="@+id/funThree"
-        android:title="功能3" />
+<!--    <item android:id="@+id/funThree"-->
+<!--        android:title="功能3" />-->
 </menu>
