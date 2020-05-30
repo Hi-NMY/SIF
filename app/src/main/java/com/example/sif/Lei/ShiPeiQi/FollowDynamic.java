@@ -20,7 +20,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -249,13 +248,12 @@ public class FollowDynamic extends RecyclerView.Adapter<FollowDynamic.ViewHolder
             }
 
 
-                if (!userSpaces.get(position).getUser_image_url().equals("")){
-                    holder.mGuangchangUserMessageimagelist.setVisibility(View.VISIBLE);
-                    GridLayoutManager gridLayoutManager = new GridLayoutManager(activity, 2);
-                    holder.mGuangchangUserMessageimagelist.setLayoutManager(gridLayoutManager);
-                    GuangChangImageAdapter guangChangImageAdapter = new GuangChangImageAdapter(activity, GuangChangImageToClass.imageToClass(userSpace.getUser_image_url(),userSpace.getUser_xuehao()));
-                    holder.mGuangchangUserMessageimagelist.setAdapter(guangChangImageAdapter);
-                }
+            if (!userSpaces.get(position).getUser_image_url().equals("")){
+                holder.mGuangchangUserMessageimagelist.setVisibility(View.VISIBLE);
+                holder.mGuangchangUserMessageimagelist.setLayoutManager(GuangChangImageToClass.newView(activity,userSpace.getUser_image_url(),userSpace.getUser_image_url()));
+                GuangChangImageAdapter guangChangImageAdapter = new GuangChangImageAdapter(activity, GuangChangImageToClass.imageToClass(userSpace.getUser_image_url(),userSpace.getUser_xuehao()));
+                holder.mGuangchangUserMessageimagelist.setAdapter(guangChangImageAdapter);
+            }
 
         }else {
             if (!userSpace.getUser_image_url().equals(holder.gcUserImage.getTag())){
@@ -272,13 +270,12 @@ public class FollowDynamic extends RecyclerView.Adapter<FollowDynamic.ViewHolder
                 holder.gcUserImage.setTag(userSpace.getUser_image_url());
             }
 
-                if (!userSpaces.get(position).getUser_image_url().equals("")){
-                    holder.mGuangchangUserMessageimagelist.setVisibility(View.VISIBLE);
-                    GridLayoutManager gridLayoutManager = new GridLayoutManager(activity, 2);
-                    holder.mGuangchangUserMessageimagelist.setLayoutManager(gridLayoutManager);
-                    GuangChangImageAdapter guangChangImageAdapter = new GuangChangImageAdapter(activity, GuangChangImageToClass.imageToClass(userSpace.getUser_image_url(),userSpace.getUser_xuehao()));
-                    holder.mGuangchangUserMessageimagelist.setAdapter(guangChangImageAdapter);
-                }
+            if (!userSpaces.get(position).getUser_image_url().equals("")){
+                holder.mGuangchangUserMessageimagelist.setVisibility(View.VISIBLE);
+                holder.mGuangchangUserMessageimagelist.setLayoutManager(GuangChangImageToClass.newView(activity,userSpace.getUser_image_url(),userSpace.getUser_image_url()));
+                GuangChangImageAdapter guangChangImageAdapter = new GuangChangImageAdapter(activity, GuangChangImageToClass.imageToClass(userSpace.getUser_image_url(),userSpace.getUser_xuehao()));
+                holder.mGuangchangUserMessageimagelist.setAdapter(guangChangImageAdapter);
+            }
         }
 
 

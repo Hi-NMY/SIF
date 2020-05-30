@@ -59,6 +59,8 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import io.rong.imlib.RongIMClient;
+
 public class MyZhuYe extends BaseActivity implements View.OnClickListener {
 
 //    BottomNavigationView navView;
@@ -77,6 +79,8 @@ public class MyZhuYe extends BaseActivity implements View.OnClickListener {
     private NewMessageNotice newMessageNotice;
     private boolean newNotice = false;
     private View mViewNoticemessage;
+    private View mViewUserprotection;
+    private NewUserProtection newUserProtection;
 
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -89,8 +93,10 @@ public class MyZhuYe extends BaseActivity implements View.OnClickListener {
 
         refreshMySpace = new RefreshMySpace();
         newMessageNotice = new NewMessageNotice();
+        newUserProtection = new NewUserProtection();
         BroadcastRec.obtainRecriver(MyApplication.getContext(), "refreshMySpace", refreshMySpace);
         BroadcastRec.obtainRecriver(MyApplication.getContext(), "newNotice", newMessageNotice);
+        BroadcastRec.obtainRecriver(MyApplication.getContext(), "newUserProtection", newUserProtection);
 
         NewVersion.inspectVerSion(MyZhuYe.this);
 
@@ -111,7 +117,7 @@ public class MyZhuYe extends BaseActivity implements View.OnClickListener {
 
         int nkey = getIntent().getIntExtra("key", 1);
         if (nkey == 0) {
-            BroadcastRec.sendReceiver(this,"newNotice",0,"");
+            BroadcastRec.sendReceiver(this, "newNotice", 0, "");
             Intent intent = new Intent(this, MessageNotice.class);
             startActivity(intent);
         }
@@ -205,6 +211,7 @@ public class MyZhuYe extends BaseActivity implements View.OnClickListener {
 
     private static int FONTSIZE = 19;
     private int fragmentKey = 0;
+
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private void showActivityBarHome() {
         biaoTi(fragmentActivityBar, this, "fonts/impact.ttf", FONTSIZE);
@@ -228,9 +235,9 @@ public class MyZhuYe extends BaseActivity implements View.OnClickListener {
         fragmentActivityBar.showUiFunction(2, 1, 0, 1, 0, 2, 0);
         fragmentActivityBar.barBackground(R.color.beijing);
         fragmentKey = 2;
-        if (newNotice){
+        if (newNotice) {
             fragmentActivityBar.messageNotice(true);
-        }else {
+        } else {
             fragmentActivityBar.messageNotice(false);
         }
     }
@@ -357,13 +364,13 @@ public class MyZhuYe extends BaseActivity implements View.OnClickListener {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()){
+                switch (menuItem.getItemId()) {
                     case R.id.funOne:
-                        Intent intent = new Intent(MyApplication.getContext(),SchoolTimeTable.class);
+                        Intent intent = new Intent(MyApplication.getContext(), SchoolTimeTable.class);
                         startActivity(intent);
                         break;
                     case R.id.funTwo:
-                        Intent intent2 = new Intent(MyApplication.getContext(),MyDiary.class);
+                        Intent intent2 = new Intent(MyApplication.getContext(), MyDiary.class);
                         startActivity(intent2);
                         break;
 //                    case R.id.funThree:
@@ -449,6 +456,19 @@ public class MyZhuYe extends BaseActivity implements View.OnClickListener {
                 .fallback(R.drawable.defaultheadimage)
                 .error(R.drawable.defaultheadimage)
                 .into(circleImageView);
+        RongIMClient.getInstance().getTotalUnreadCount(new RongIMClient.ResultCallback<Integer>() {
+            @Override
+            public void onSuccess(Integer integer) {
+                if (integer <= 0){
+                    BroadcastRec.sendReceiver(MyZhuYe.this,"newUserProtection",0,"");
+                }
+            }
+
+            @Override
+            public void onError(RongIMClient.ErrorCode errorCode) {
+
+            }
+        });
     }
 
 
@@ -536,6 +556,8 @@ public class MyZhuYe extends BaseActivity implements View.OnClickListener {
         version_name = (TextView) findViewById(R.id.version_name);
         version_name.setOnClickListener(this);
         mViewNoticemessage = (View) findViewById(R.id.view_noticemessagezong);
+        mViewUserprotection = (View) findViewById(R.id.view_userprotection);
+        mViewUserprotection.setOnClickListener(this);
     }
 
     //导航栏加号
@@ -589,10 +611,10 @@ public class MyZhuYe extends BaseActivity implements View.OnClickListener {
         });
     }
 
-    private void obtainNowNotice(){
-        if (newNotice){
+    private void obtainNowNotice() {
+        if (newNotice) {
             mViewNoticemessage.setVisibility(View.VISIBLE);
-        }else {
+        } else {
             mViewNoticemessage.setVisibility(View.INVISIBLE);
         }
     }
@@ -672,27 +694,40 @@ public class MyZhuYe extends BaseActivity implements View.OnClickListener {
     }
 
     public static boolean offKey = false;
-    class NewMessageNotice extends BroadcastReceiver{
+
+    class NewMessageNotice extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
-            int a = intent.getIntExtra("textone",-1);
-            if (a == 0 || a == 3){
+            int a = intent.getIntExtra("textone", -1);
+            if (a == 0 || a == 3) {
                 newNotice = true;
                 obtainNowNotice();
-                if (fragmentKey == 2){
+                if (fragmentKey == 2) {
                     fragmentActivityBar.messageNotice(true);
                 }
-                if (a == 3){
+                if (a == 3) {
                     offKey = true;
                 }
             }
-            if (a == 1){
+            if (a == 1) {
                 newNotice = false;
                 obtainNowNotice();
                 offKey = false;
-                if (fragmentKey == 2){
+                if (fragmentKey == 2) {
                     fragmentActivityBar.messageNotice(false);
                 }
+            }
+        }
+    }
+
+    class NewUserProtection extends BroadcastReceiver{
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            int viewKey = intent.getIntExtra("textone",0);
+            if (viewKey == 0){
+                mViewUserprotection.setVisibility(View.INVISIBLE);
+            }else {
+                mViewUserprotection.setVisibility(View.VISIBLE);
             }
         }
     }
