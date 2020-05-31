@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:clipChildren="false"
+    android:clipToPadding="false"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -12,6 +13,7 @@
         app:cardMaxElevation="4dp"
         app:cardCornerRadius="20dp"
         android:clipChildren="false"
+        android:clipToPadding="false"
         android:layout_marginTop="50dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
@@ -22,9 +24,11 @@
         <LinearLayout
             android:id="@+id/collection_RZong"
             android:gravity="bottom"
+            android:paddingBottom="25dp"
             android:orientation="vertical"
             android:layout_gravity="bottom"
             android:clipChildren="false"
+            android:clipToPadding="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -58,16 +62,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
-            <ImageView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/collection_image"
-                android:visibility="invisible"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="15dp"
-                android:layout_marginBottom="25dp"
-                android:maxWidth="200dp"
-                android:maxHeight="200dp" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
 

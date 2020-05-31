@@ -3,16 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/calendar_r"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MyCalendar">
 
-    <com.prolificinteractive.materialcalendarview.MaterialCalendarView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/calendarView"
+    <fragment
+        android:id="@+id/calendar_bar"
+        android:name="com.example.sif.Lei.ShowActivityBar.FragmentActivityBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:mcv_showOtherDates="all"
-        app:mcv_selectionColor="@color/bilan"/>
+        android:layout_height="@dimen/biaotilan_gaodu"/>
 
 </RelativeLayout>

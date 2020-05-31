@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.example.sif.Lei.MyToolClass.MyDateClass;
 import com.example.sif.Lei.MyToolClass.MyPopuoWindow;
@@ -145,9 +146,12 @@ public class CommentList extends RecyclerView.Adapter<CommentList.ViewHolder> {
                 .placeholder(R.drawable.nostartimage_three)
                 .fallback(R.drawable.defaultheadimage)
                 .error(R.drawable.defaultheadimage)
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .skipMemoryCache(true)//跳过内存缓存
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .circleCrop()
                 .into(holder.mDynamicCommentHeadimage);
+
         Handler handlerspace = new Handler(){
             @Override
             public void handleMessage(Message msg) {

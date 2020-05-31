@@ -31,6 +31,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.example.sif.Lei.MyToolClass.GuangChangImageToClass;
 import com.example.sif.Lei.MyToolClass.MyDateClass;
@@ -334,6 +335,8 @@ public class DynamicDetailed extends BaseActivity implements View.OnClickListene
                 .placeholder(R.drawable.nostartimage_three)
                 .fallback(R.drawable.defaultheadimage)
                 .error(R.drawable.defaultheadimage)
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .skipMemoryCache(true)//跳过内存缓存
                 .circleCrop()
                 .into(mDynamicDetailedHeadimage);
         mDynamicDetailedTime.setText(MyDateClass.showDateClass(userSpace.getUser_shijian()));

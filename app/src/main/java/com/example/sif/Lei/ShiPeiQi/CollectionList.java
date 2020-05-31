@@ -8,7 +8,6 @@ import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -21,7 +20,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.example.sif.DynamicDetailed;
 import com.example.sif.Lei.MyToolClass.DynamicMessageDetailed;
-import com.example.sif.Lei.MyToolClass.GlideRoundTransform;
+import com.example.sif.Lei.MyToolClass.GuangChangImageToClass;
 import com.example.sif.Lei.MyToolClass.ObtainUser;
 import com.example.sif.Lei.MyToolClass.ToastZong;
 import com.example.sif.Lei.MyToolClass.UserDynamicCollection;
@@ -44,7 +43,7 @@ public class CollectionList extends RecyclerView.Adapter<CollectionList.ViewHold
         CircleImageView mCollectHeadimage;
         TextView mCollectionUname;
         TextView mCollectionMessage;
-        ImageView mCollectionImage;
+        RecyclerView mGuangchangUserMessageimagelist;
         LinearLayout mCollectionRZong;
         CardView mCollectionCardview;
 
@@ -53,7 +52,7 @@ public class CollectionList extends RecyclerView.Adapter<CollectionList.ViewHold
             mCollectHeadimage = (CircleImageView)itemView.findViewById(R.id.collect_headimage);
             mCollectionUname = (TextView)itemView.findViewById(R.id.collection_uname);
             mCollectionMessage = (TextView)itemView.findViewById(R.id.collection_message);
-            mCollectionImage = (ImageView)itemView.findViewById(R.id.collection_image);
+            mGuangchangUserMessageimagelist = (RecyclerView)itemView.findViewById(R.id.collection_image);
             mCollectionRZong = (LinearLayout)itemView.findViewById(R.id.collection_RZong);
             mCollectionCardview = (CardView)itemView.findViewById(R.id.collection_cardview);
         }
@@ -140,24 +139,18 @@ public class CollectionList extends RecyclerView.Adapter<CollectionList.ViewHold
                     .placeholder(R.drawable.nostartimage_three)
                     .fallback(R.drawable.defaultheadimage)
                     .error(R.drawable.defaultheadimage)
+                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .skipMemoryCache(true)//跳过内
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .circleCrop()
                     .into(holder.mCollectHeadimage);
         }
 
         if (!userCollections.get(position).getImages().equals("")) {
-            holder.mCollectionImage.setVisibility(View.VISIBLE);
-            Glide.with(activity)
-                    .load("http://nmy1206.natapp1.cc/" + userCollections.get(position).getImages())
-                    .placeholder(R.drawable.nostartimage_two)
-                    .fallback(R.drawable.nostartimage_two)
-                    .error(R.drawable.nostartimage_two)
-                    .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
-                    .override(300, 300)
-                    .centerCrop()
-                    .transition(DrawableTransitionOptions.withCrossFade())
-                    .transform(new GlideRoundTransform(6))
-                    .into(holder.mCollectionImage);
+            holder.mGuangchangUserMessageimagelist.setVisibility(View.VISIBLE);
+            holder.mGuangchangUserMessageimagelist.setLayoutManager(GuangChangImageToClass.newView(activity,userCollections.get(position).getImages(),userCollections.get(position).getXuehao()));
+            GuangChangImageAdapter guangChangImageAdapter = new GuangChangImageAdapter(activity, GuangChangImageToClass.imageToClass(userCollections.get(position).getImages(),userCollections.get(position).getXuehao()));
+            holder.mGuangchangUserMessageimagelist.setAdapter(guangChangImageAdapter);
         }
 
         holder.mCollectionCardview.setOnClickListener(new View.OnClickListener() {

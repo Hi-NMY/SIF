@@ -161,11 +161,14 @@ public class PersonalInformation extends BaseActivity implements View.OnClickLis
                 .setSubmitText("保存")
                 .setTitleText("请选择出生日期")
                 .setTitleSize(16)
+                .setTitleBgColor(getResources().getColor(R.color.beijing))
+                .setBgColor(getResources().getColor(R.color.beijing))
+                .setCancelColor(getResources().getColor(R.color.gray))
                 .setTitleColor(getResources().getColor(R.color.gray))
-                .setSubmitColor(getResources().getColor(R.color.weilan))
+                .setSubmitColor(getResources().getColor(R.color.bilan))
                 .setRangDate(startDate, endDate)
                 .setDate(nowDate)
-                .setLabel("-", "-", null, null, null, null)
+                .setLabel("-", "-", " ", null, null, null)
                 .isCenterLabel(true)
                 .isDialog(true).build();
 

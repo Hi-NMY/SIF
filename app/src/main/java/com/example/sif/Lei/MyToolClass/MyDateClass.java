@@ -8,6 +8,30 @@ import java.util.Date;
 
 public class MyDateClass {
 
+    public static int showYear(){
+        Calendar c = Calendar.getInstance();
+        int year = c.get(Calendar.YEAR);
+        return year;
+    }
+
+    public static int showMonth(){
+        Calendar c = Calendar.getInstance();
+        int month = c.get(Calendar.MONTH);
+        return month+1;
+    }
+
+    public static int showMonthDay(){
+        Calendar c = Calendar.getInstance();
+        int monthDay = c.get(Calendar.MONDAY);
+        return monthDay;
+    }
+
+    public static int showMaxNowMonth(){
+        Calendar c = Calendar.getInstance();
+        int maxMonth = c.getActualMaximum(Calendar.DATE);
+        return maxMonth;
+    }
+
     public static String showNowDate(){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String nowTime = simpleDateFormat.format(System.currentTimeMillis());
