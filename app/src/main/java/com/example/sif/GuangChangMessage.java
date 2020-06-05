@@ -19,17 +19,14 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.sif.Lei.MyToolClass.MyVeryDiaLog;
-import com.example.sif.Lei.MyToolClass.SelectImage;
-import com.example.sif.Lei.MyToolClass.ToastZong;
-import com.example.sif.Lei.MyToolClass.VeryPopupWindow;
+import com.example.sif.Lei.GPSServer.MyLocationListener;
+import com.example.sif.Lei.MyBroadcastReceiver.BroadcastRec;
+import com.example.sif.Lei.MyToolClass.*;
 import com.example.sif.Lei.ShiPeiQi.GuangChangMessageImageList;
 import com.example.sif.Lei.ShowActivityBar.FragmentActivityBar;
 import com.example.sif.NeiBuLei.DouBleImagePath;
@@ -41,13 +38,12 @@ import com.tamsiree.rxui.view.dialog.RxDialogScaleView;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
 import com.zhy.view.flowlayout.TagFlowLayout;
+import top.zibin.luban.Luban;
+import top.zibin.luban.OnCompressListener;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
-import top.zibin.luban.Luban;
-import top.zibin.luban.OnCompressListener;
 
 public class GuangChangMessage extends BaseActivity implements View.OnLayoutChangeListener, View.OnClickListener {
 
@@ -62,12 +58,19 @@ public class GuangChangMessage extends BaseActivity implements View.OnLayoutChan
     private LabelListener labelListener;
     private TagFlowLayout mIbSelect;
     private RecyclerView mImageList;
+    private GPSVeryPopupwindow gpsVeryPopupwindow;
+    private ObtainPlace obtainPlace;
+    private SelectMyPlace selectMyPlace;
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guang_chang_message);
+        obtainPlace = new ObtainPlace();
+        selectMyPlace = new SelectMyPlace();
+        BroadcastRec.obtainRecriver(this,"selectPlace",selectMyPlace);
+        BroadcastRec.obtainRecriver(this,"nearbyPlace",obtainPlace);
         initView();
         strings = new ArrayList<>();
 
@@ -88,8 +91,10 @@ public class GuangChangMessage extends BaseActivity implements View.OnLayoutChan
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         windowHeight = metrics.heightPixels;
         keyHeight = windowHeight / 3;
+        gcMsgTag();
+    }
 
-
+    private void gcMsgTag(){
         LayoutInflater mInflater = LayoutInflater.from(this);
         mIdFlowlayout.setAdapter(new TagAdapter<String>(values) {
             @Override
@@ -97,8 +102,13 @@ public class GuangChangMessage extends BaseActivity implements View.OnLayoutChan
                 View v = mInflater.inflate(R.layout.lable_list, mIdFlowlayout, false);
                 TextView t = (TextView) v.findViewById(R.id.text);
                 ImageView i = (ImageView) v.findViewById(R.id.image);
-                if (o.equals("我的位置")) {
+                if (position == 0) {
                     i.setBackground(getDrawable(R.drawable.gps));
+                    if (!o.equals("我的位置")){
+                        t.setTextColor(getColor(R.color.navyblue));
+                    }else {
+                        t.setTextColor(getColor(R.color.gray));
+                    }
                 } else {
                     i.setBackground(getDrawable(R.drawable.blockimage));
                 }
@@ -110,6 +120,11 @@ public class GuangChangMessage extends BaseActivity implements View.OnLayoutChan
         mIdFlowlayout.setOnTagClickListener(new TagFlowLayout.OnTagClickListener() {
             @Override
             public boolean onTagClick(View view, int position, FlowLayout parent) {
+                if (position == 0){
+                    hideKeyboard(mGuangchangMessageContent, 1);
+                    gpsVeryPopupwindow = new GPSVeryPopupwindow(MyApplication.getContext(),GuangChangMessage.this);
+                    gpsVeryPopupwindow.showAtLocation(findViewById(R.id.id_flowlayout), Gravity.BOTTOM, 0, 0);
+                }
                 if (position == 1) {
                     hideKeyboard(mGuangchangMessageContent, 1);
                     VeryPopupWindow veryPopupWindow = new VeryPopupWindow(MyApplication.getContext(), strings);
@@ -366,6 +381,39 @@ public class GuangChangMessage extends BaseActivity implements View.OnLayoutChan
                 stringBuffer.append("");
                 removeAllList();
             }
+        }
+    }
+
+    private MyLocationListener myLocationListener;
+    private boolean gpsKey = false;
+    class ObtainPlace extends BroadcastReceiver{
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            int a = intent.getIntExtra("textone",0);
+            if (a == 1){
+                gpsVeryPopupwindow.stopToGps();
+                myLocationListener = gpsVeryPopupwindow.myGpsClient.obtainListener();
+                gpsVeryPopupwindow.addPlaceList(myLocationListener.msgGpsClasses);
+            }
+            if (a != 1){
+                gpsVeryPopupwindow.errorPlace();
+            }
+        }
+    }
+
+    public String placeString;
+    class SelectMyPlace extends BroadcastReceiver{
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            placeString = intent.getStringExtra("texttwo");
+            if (placeString.equals("") || placeString.equals("不显示位置信息")){
+                placeString = "";
+                values = new String[]{"我的位置", "选择街区"};
+            }else {
+                values = new String[]{placeString, "选择街区"};
+            }
+            gcMsgTag();
+            gpsVeryPopupwindow.dismissWindow();
         }
     }
 

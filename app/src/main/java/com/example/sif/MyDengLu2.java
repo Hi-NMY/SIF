@@ -15,28 +15,24 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import androidx.annotation.RequiresApi;
-
 import com.example.sif.Lei.LianJie.HttpUtil;
 import com.example.sif.Lei.LianJie.ShuJuLianJie;
 import com.example.sif.Lei.MyToolClass.SendUserIp;
 import com.example.sif.Lei.MyToolClass.ToastZong;
 import com.example.sif.Lei.ShowActivityBar.FragmentActivityBar;
 import com.tamsiree.rxui.view.dialog.RxDialogSure;
-
-import org.jetbrains.annotations.NotNull;
-
-import java.io.IOException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 import io.rong.imkit.RongIM;
 import io.rong.imlib.RongIMClient;
 import io.rong.imlib.model.UserInfo;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
+import org.jetbrains.annotations.NotNull;
+
+import java.io.IOException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class MyDengLu2 extends BaseActivity implements View.OnClickListener {
 
@@ -80,7 +76,6 @@ public class MyDengLu2 extends BaseActivity implements View.OnClickListener {
                                     editor.putString("userId",getMyXueHao());
                                     editor.putString("token",getMyToken());
                                     editor.commit();
-                                    ToastZong.ShowToast(MyApplication.getContext(),s);
                                     UserInfo userInfo = new UserInfo(getMyXueHao(), getMyUserName(), Uri.parse("http://nmy1206.natapp1.cc/UserImageServer/"+getMyXueHao()+"/HeadImage/myHeadImage.png"));
                                     RongIM.getInstance().setCurrentUserInfo(userInfo);
 //                                    RongIM.setUserInfoProvider(new RongIM.UserInfoProvider() {

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:minHeight="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <RelativeLayout
+            android:id="@+id/msggps_r"
+            android:paddingLeft="25dp"
+            android:paddingRight="@dimen/guangchangimage_top"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <ImageView
+                android:id="@+id/img"
+                android:layout_centerVertical="true"
+                android:background="@drawable/gps2"
+                android:layout_width="25dp"
+                android:layout_height="25dp"/>
+
+        <LinearLayout
+                android:layout_marginLeft="10dp"
+                android:layout_centerVertical="true"
+                android:orientation="vertical"
+                android:layout_toRightOf="@+id/img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            <TextView
+                    android:id="@+id/place_name"
+                    android:textColor="@color/ziti"
+                    android:text=""
+                    android:textSize="@dimen/biaotilan_teshu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <TextView
+                    android:id="@+id/place_detailed"
+                    android:visibility="gone"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/darkgray"
+                    android:textSize="@dimen/biaotilan_xiaozi"
+                    android:text=""
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <View
+        android:alpha="0.2"
+        android:layout_below="@id/msggps_r"
+        android:background="@color/lightgray"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"/>
+
+</RelativeLayout>
