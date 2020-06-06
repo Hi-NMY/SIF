@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.example.sif.Lei.MyBroadcastReceiver.BroadcastRec;
 import com.example.sif.Lei.MyToolClass.MyDateClass;
 import com.example.sif.Lei.MyToolClass.MyPopuoWindow;
 import com.example.sif.Lei.MyToolClass.ObtainUser;
@@ -24,6 +25,7 @@ import com.example.sif.Lei.NiceImageView.CircleImageView;
 import com.example.sif.MyApplication;
 import com.example.sif.NeiBuLei.CommentMessage;
 import com.example.sif.R;
+import com.tamsiree.rxkit.RxTextTool;
 
 import java.util.List;
 
@@ -133,12 +135,23 @@ public class CommentList extends RecyclerView.Adapter<CommentList.ViewHolder> {
     public int deleteId;
     public String commentTime;
     public String commentXueHao;
+    public String nowXueHao;
+    public String nowUserName;
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         commentMessage = commentMessages.get(position);
         holder.mDynamicCommentName.setText(commentMessage.getComment_username());
         holder.mDynamicCommentTime.setText(MyDateClass.showDateClass(commentMessage.getComment_time()));
-        holder.mDynamicCommentMessage.setText(commentMessage.getDynamic_comment());
+        if (!commentMessage.getTo_username().equals("")){
+            RxTextTool.getBuilder("")
+                    .append("回复")
+                    .append(commentMessage.getTo_username().substring(9))
+                    .setForegroundColor(activity.getColor(R.color.bilan))
+                    .append(":" + commentMessage.getDynamic_comment())
+                    .into(holder.mDynamicCommentMessage);
+        }else {
+            holder.mDynamicCommentMessage.setText(commentMessage.getDynamic_comment());
+        }
       //  holder.mDynamicCommentMessageFloor.setText(sendfloor()+"楼");
 
         Glide.with(activity)
@@ -166,6 +179,7 @@ public class CommentList extends RecyclerView.Adapter<CommentList.ViewHolder> {
                 }
             }
         };
+
         holder.mDynamicCommentHeadimage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -177,6 +191,7 @@ public class CommentList extends RecyclerView.Adapter<CommentList.ViewHolder> {
         holder.mCommentR.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
+                obtainNowUser(position);
                 MyPopuoWindow myPopuoWindow = new MyPopuoWindow(MyApplication.getContext());
                 myPopuoWindow.showAsDropDown(holder.mCommentR,-400,-150,Gravity.RIGHT);
                 removePosition = position;
@@ -196,12 +211,21 @@ public class CommentList extends RecyclerView.Adapter<CommentList.ViewHolder> {
             }
         });
 
+        holder.mCommentR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!commentMessages.get(position).getComment_xuehao().equals(myXueHao)){
+                    obtainNowUser(position);
+                    BroadcastRec.sendReceiver(MyApplication.getContext(),"replyComment",0,"");
+                }
+            }
+        });
     }
 
-//    private int sendfloor(){
-//        floor += 1;
-//        return floor-1;
-//    }
+    private void obtainNowUser(int position){
+        nowUserName = commentMessages.get(position).getComment_username();
+        nowXueHao = commentMessages.get(position).getComment_xuehao();
+    }
 
     @Override
     public int getItemCount() {

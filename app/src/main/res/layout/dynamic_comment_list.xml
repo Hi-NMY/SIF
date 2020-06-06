@@ -54,6 +54,7 @@
         <TextView
             android:id="@+id/dynamic_comment_message"
             android:textColor="@color/ziti"
+            android:text=""
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
             android:lineSpacingMultiplier="1.5"

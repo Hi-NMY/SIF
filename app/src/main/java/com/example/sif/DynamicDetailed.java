@@ -4,7 +4,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
@@ -27,6 +26,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.example.sif.Lei.MyBroadcastReceiver.BroadcastRec;
 import com.example.sif.Lei.MyToolClass.*;
 import com.example.sif.Lei.NiceImageView.CircleImageView;
 import com.example.sif.Lei.ShiPeiQi.CommentList;
@@ -37,8 +37,6 @@ import com.example.sif.NeiBuLei.UserSpace;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
-import com.tamsiree.rxui.view.dialog.RxDialog;
-import com.tamsiree.rxui.view.dialog.RxDialogScaleView;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
 import com.zhy.view.flowlayout.TagFlowLayout;
@@ -89,6 +87,7 @@ public class DynamicDetailed extends BaseActivity implements View.OnClickListene
     private RecyclerView mDynamicDetailedMessageimagelist;
     private LinearLayout mDynamicDetailedPlaceLlt;
     private TextView mDynamicDetailedPlace;
+    private ReplyUserComment replyUserComment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,6 +100,8 @@ public class DynamicDetailed extends BaseActivity implements View.OnClickListene
         intentFilter.addAction("deleteComment");
         deleteUserComment = new deleteUserComment();
         localBroadcastManager.registerReceiver(deleteUserComment, intentFilter);
+        replyUserComment = new ReplyUserComment();
+        BroadcastRec.obtainRecriver(this,"replyComment",replyUserComment);
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         //键盘
@@ -279,6 +280,8 @@ public class DynamicDetailed extends BaseActivity implements View.OnClickListene
     private void hideKeyboard(View v, int i) {
         InputMethodManager inputMethodManager = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         if (i == 1) {
+            mCommentUsersendText.setHint("请输入评论");
+            toComment = "";
             inputMethodManager.hideSoftInputFromWindow(v.getApplicationWindowToken(), 0);
         } else {
             inputMethodManager.showSoftInput(v, 0);
@@ -388,6 +391,8 @@ public class DynamicDetailed extends BaseActivity implements View.OnClickListene
 
 
         if (a == 2) {
+            toComment = "";
+            mCommentUsersendText.setHint("请输入评论");
             mCommentUsersendText.setFocusable(true);
             mCommentUsersendText.setFocusableInTouchMode(true);
             mCommentUsersendText.requestFocus();
@@ -543,26 +548,6 @@ public class DynamicDetailed extends BaseActivity implements View.OnClickListene
         }
     };
 
-    private RxDialogScaleView rxDialogScaleView;
-    private RxDialog rxDialog;
-    private Handler bitMapHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            rxDialog.dismiss();
-            if (msg.obj != null) {
-                if (msg.what == 1) {
-                    ToastZong.ShowToast(MyApplication.getContext(), "图片加载错误");
-                    rxDialogScaleView.setImage((Bitmap) msg.obj);
-                } else {
-                    rxDialogScaleView.setImage((Bitmap) msg.obj);
-                }
-            } else {
-                ToastZong.ShowToast(MyApplication.getContext(), "错误");
-            }
-        }
-    };
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -586,6 +571,8 @@ public class DynamicDetailed extends BaseActivity implements View.OnClickListene
                 }
                 break;
             case R.id.dynamic_detailed_comment:
+                toComment = "";
+                mCommentUsersendText.setHint("请输入评论");
                 mCommentUsersendText.setFocusable(true);
                 mCommentUsersendText.setFocusableInTouchMode(true);
                 mCommentUsersendText.requestFocus();
@@ -608,11 +595,11 @@ public class DynamicDetailed extends BaseActivity implements View.OnClickListene
                         message.setComment_xuehao(getMyXueHao());
                         message.setDynamic_comment(mCommentUsersendText.getText().toString());
                         message.setDynamic_id(userSpace.getUser_dynamic_id());
-                        message.setTo_username(null);
+                        message.setTo_username(toComment);
                         message.setUser_headimage_url(user_head_portrait);
                         message.setUser_ip(null);
                         c.add(message);
-                        userDynamicComment.sendComment(0, userSpace.getUser_dynamic_id(), mCommentUsersendText.getText().toString(), nowTime, user_name, null, user_head_portrait,
+                        userDynamicComment.sendComment(0, userSpace.getUser_dynamic_id(), mCommentUsersendText.getText().toString(), nowTime, user_name, toComment, user_head_portrait,
                                 getMyXueHao(), uxuehao, 0, commentHandler);
                     }
                 }
@@ -647,6 +634,19 @@ public class DynamicDetailed extends BaseActivity implements View.OnClickListene
                 userDynamicComment.sendComment(1, userSpace.getUser_dynamic_id(), "", "", "", "",
                         "", "", uxuehao, commentList.deleteId, deleteCommentHander);
             }
+        }
+    }
+
+    public String toComment = "";
+    class ReplyUserComment extends BroadcastReceiver{
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            toComment = commentList.nowXueHao + commentList.nowUserName;
+            mCommentUsersendText.setHint("回复:" + commentList.nowUserName);
+            mCommentUsersendText.setFocusable(true);
+            mCommentUsersendText.setFocusableInTouchMode(true);
+            mCommentUsersendText.requestFocus();
+            hideKeyboard(mCommentUsersendText, 0);
         }
     }
 }

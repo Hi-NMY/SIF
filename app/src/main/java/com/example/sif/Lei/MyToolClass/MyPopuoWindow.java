@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import com.example.sif.Lei.MyBroadcastReceiver.BroadcastRec;
 import com.example.sif.MyApplication;
 import com.example.sif.R;
 
@@ -63,16 +64,19 @@ public class MyPopuoWindow extends PopupWindow implements View.OnClickListener{
         });
     }
 
+    private int funKey = -1;
     public void textFunction(int i){
+        funKey = i;
         switch (i){
             case 1:
-                mPopuowindowText1.setVisibility(View.GONE);
+                mPopuowindowText1.setVisibility(View.VISIBLE);
                 mPopuowindowText2.setVisibility(View.VISIBLE);
-                mPopuowindowText2.setPadding(0,0,0,10);
+                mPopuowindowText1.setText("举报");
                 break;
             case 2:
                 mPopuowindowText1.setVisibility(View.VISIBLE);
-                mPopuowindowText2.setVisibility(View.VISIBLE);
+                mPopuowindowText2.setVisibility(View.GONE);
+                mPopuowindowText2.setPadding(0,0,0,10);
                 break;
         }
     }
@@ -81,13 +85,19 @@ public class MyPopuoWindow extends PopupWindow implements View.OnClickListener{
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.popuowindow_text1:
-                localBroadcastManager = LocalBroadcastManager.getInstance(MyApplication.getContext());
-                Intent intent = new Intent("deleteComment");
-                localBroadcastManager.sendBroadcast(intent);
+                if (funKey != 1){
+                    localBroadcastManager = LocalBroadcastManager.getInstance(MyApplication.getContext());
+                    Intent intent = new Intent("deleteComment");
+                    localBroadcastManager.sendBroadcast(intent);
+                }else {
+                    ToastZong.ShowToast(MyApplication.getContext(),"举报成功");
+                }
+
                 dismiss();
                 break;
             case R.id.popuowindow_text2:
-
+                dismiss();
+                BroadcastRec.sendReceiver(MyApplication.getContext(),"replyComment",0,"");
                 break;
         }
     }
