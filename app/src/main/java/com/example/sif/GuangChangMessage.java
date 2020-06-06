@@ -1,5 +1,6 @@
 package com.example.sif;
 
+import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -122,6 +123,7 @@ public class GuangChangMessage extends BaseActivity implements View.OnLayoutChan
             public boolean onTagClick(View view, int position, FlowLayout parent) {
                 if (position == 0){
                     hideKeyboard(mGuangchangMessageContent, 1);
+                    checkVoice(null, Manifest.permission.ACCESS_COARSE_LOCATION);
                     gpsVeryPopupwindow = new GPSVeryPopupwindow(MyApplication.getContext(),GuangChangMessage.this);
                     gpsVeryPopupwindow.showAtLocation(findViewById(R.id.id_flowlayout), Gravity.BOTTOM, 0, 0);
                 }
@@ -385,13 +387,11 @@ public class GuangChangMessage extends BaseActivity implements View.OnLayoutChan
     }
 
     private MyLocationListener myLocationListener;
-    private boolean gpsKey = false;
     class ObtainPlace extends BroadcastReceiver{
         @Override
         public void onReceive(Context context, Intent intent) {
             int a = intent.getIntExtra("textone",0);
             if (a == 1){
-                gpsVeryPopupwindow.stopToGps();
                 myLocationListener = gpsVeryPopupwindow.myGpsClient.obtainListener();
                 gpsVeryPopupwindow.addPlaceList(myLocationListener.msgGpsClasses);
             }
@@ -401,12 +401,12 @@ public class GuangChangMessage extends BaseActivity implements View.OnLayoutChan
         }
     }
 
-    public String placeString;
+    public String placeString = "";
     class SelectMyPlace extends BroadcastReceiver{
         @Override
         public void onReceive(Context context, Intent intent) {
             placeString = intent.getStringExtra("texttwo");
-            if (placeString.equals("") || placeString.equals("不显示位置信息")){
+            if (placeString.equals("不显示位置信息")){
                 placeString = "";
                 values = new String[]{"我的位置", "选择街区"};
             }else {

@@ -10,12 +10,10 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-
 import com.example.sif.BaseFragment;
 import com.example.sif.InterestingBlock;
 import com.example.sif.MyApplication;
@@ -68,28 +66,27 @@ public class SearchFragment extends BaseFragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                mSearchMessage.removeTextChangedListener(this);
-                mSearchMessage.setText(s.toString().replace("#",""));
-                mSearchMessage.setSelection(mSearchMessage.getText().length());
-                mSearchMessage.addTextChangedListener(this);
+                    mSearchMessage.removeTextChangedListener(this);
+                    mSearchMessage.setText(s.toString().replace("#",""));
+                    mSearchMessage.setSelection(mSearchMessage.getText().length());
+                    mSearchMessage.addTextChangedListener(this);
 
-                if (fun == 1){
-                    localBroadcastManager = LocalBroadcastManager.getInstance(MyApplication.getContext());
-                    Intent intent = new Intent("searchIbZong");
-                    intent.putExtra("id",-2);
-                    intent.putExtra("blockname",mSearchMessage.getText().toString().trim());
-                    localBroadcastManager.sendBroadcast(intent);
+                    if (fun == 1){
+                        localBroadcastManager = LocalBroadcastManager.getInstance(MyApplication.getContext());
+                        Intent intent = new Intent("searchIbZong");
+                        intent.putExtra("id",-2);
+                        intent.putExtra("blockname",mSearchMessage.getText().toString().trim());
+                        localBroadcastManager.sendBroadcast(intent);
+                    }
+
+                    if (fun == 2){
+                        localBroadcastManager = LocalBroadcastManager.getInstance(MyApplication.getContext());
+                        Intent intent = new Intent("searchIbMy");
+                        intent.putExtra("id",-2);
+                        intent.putExtra("blockname",mSearchMessage.getText().toString().trim());
+                        localBroadcastManager.sendBroadcast(intent);
+                    }
                 }
-
-                if (fun == 2){
-                    localBroadcastManager = LocalBroadcastManager.getInstance(MyApplication.getContext());
-                    Intent intent = new Intent("searchIbMy");
-                    intent.putExtra("id",-2);
-                    intent.putExtra("blockname",mSearchMessage.getText().toString().trim());
-                    localBroadcastManager.sendBroadcast(intent);
-                }
-
-            }
         });
         return view;
     }

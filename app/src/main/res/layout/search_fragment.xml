@@ -15,7 +15,7 @@
         android:layout_centerInParent="true"
         android:background="@drawable/search_bg"
         android:layout_width="match_parent"
-        android:layout_height="30dp">
+        android:layout_height="35dp">
 
         <ImageView
             android:id="@+id/search_image"
@@ -27,7 +27,7 @@
 
         <EditText
             android:id="@+id/search_message"
-            android:textSize="@dimen/biaotilan_chaoxiao"
+            android:textSize="@dimen/biaotilan_xiaozi"
             android:hint="请搜索街区"
             android:maxLines="1"
             android:maxLength="25"

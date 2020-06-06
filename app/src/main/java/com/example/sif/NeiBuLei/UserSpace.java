@@ -7,6 +7,7 @@ import java.io.Serializable;
 public class UserSpace extends LitePalSupport implements Serializable {
     private int id;
     private String user_dynamic_id;
+    private String user_place;
     private String user_shijian;
     private String user_xinxi;
     private String user_image_url;
@@ -23,6 +24,14 @@ public class UserSpace extends LitePalSupport implements Serializable {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getUser_place() {
+        return user_place;
+    }
+
+    public void setUser_place(String user_place) {
+        this.user_place = user_place;
     }
 
     public String getUser_shijian() {

@@ -5,6 +5,7 @@ import org.litepal.crud.LitePalSupport;
 public class GuangChangUserXinXi extends LitePalSupport{
     private int id;
     private String gc_user_name;
+    private String gc_user_place;
     private String gc_user_shijian;
     private String gc_user_xinxi;
     private String gc_user_xuehao;
@@ -30,6 +31,14 @@ public class GuangChangUserXinXi extends LitePalSupport{
 
     public void setGc_user_name(String gc_user_name) {
         this.gc_user_name = gc_user_name;
+    }
+
+    public String getGc_user_place() {
+        return gc_user_place;
+    }
+
+    public void setGc_user_place(String gc_user_place) {
+        this.gc_user_place = gc_user_place;
     }
 
     public String getGc_user_shijian() {

@@ -104,7 +104,7 @@
         <com.zhy.view.flowlayout.TagFlowLayout
             android:id="@+id/toshop_label"
             android:layout_width="wrap_content"
-            android:layout_height="27dp"
+            android:layout_height="30dp"
             android:layout_below="@+id/toshop_notice"
             android:layout_marginTop="110dp" />
 

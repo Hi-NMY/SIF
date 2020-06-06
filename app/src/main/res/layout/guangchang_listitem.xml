@@ -103,6 +103,34 @@
 
             </com.zhy.view.flowlayout.TagFlowLayout>
 
+            <LinearLayout
+                    android:id="@+id/guangchang_place_llt"
+                    android:visibility="visible"
+                    android:layout_marginTop="10dp"
+                    android:layout_alignLeft="@id/gc_llt"
+                    android:layout_below="@+id/guangchang_ib"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                <ImageView
+                        android:background="@drawable/gps"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"/>
+
+                <TextView
+                        android:id="@+id/guangchang_place"
+                        android:gravity="center"
+                        android:textSize="@dimen/biaotilan_xiaozi"
+                        android:textStyle="bold"
+                        android:textColor="@color/navyblue"
+                        android:text=""
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"/>
+
+            </LinearLayout>
+
+
         </RelativeLayout>
 
         <RelativeLayout

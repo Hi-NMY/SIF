@@ -27,45 +27,28 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.sif.Lei.LianJie.HttpUtil;
-import com.example.sif.Lei.MyToolClass.IbClass;
-import com.example.sif.Lei.MyToolClass.IbFollow;
-import com.example.sif.Lei.MyToolClass.MyNetChange;
-import com.example.sif.Lei.MyToolClass.ShowDiaLog;
-import com.example.sif.Lei.MyToolClass.ToastZong;
-import com.example.sif.Lei.MyToolClass.UserDynamicComment;
-import com.example.sif.Lei.MyToolClass.UserDynamicThumb;
-import com.example.sif.Lei.MyToolClass.UserFollow;
-import com.example.sif.Lei.MyToolClass.UserFollowList;
-import com.example.sif.Lei.MyToolClass.UserFollowToMe;
+import com.example.sif.Lei.MyToolClass.*;
 import com.example.sif.Lei.ShowActivityBar.FragmentActivityBar;
 import com.example.sif.Lei.ZhuangTaiLan.StatusBarUtil;
-import com.example.sif.NeiBuLei.GuangChangUserXinXi;
-import com.example.sif.NeiBuLei.MyThumb;
-import com.example.sif.NeiBuLei.User;
-import com.example.sif.NeiBuLei.UserSchool;
-import com.example.sif.NeiBuLei.UserSpace;
+import com.example.sif.NeiBuLei.*;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.igexin.sdk.PushManager;
-
+import okhttp3.Call;
+import okhttp3.Response;
 import org.jetbrains.annotations.NotNull;
 import org.litepal.LitePal;
+import pl.droidsonroids.gif.GifImageView;
 
 import java.io.IOException;
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.List;
-
-import okhttp3.Call;
-import okhttp3.Response;
-import pl.droidsonroids.gif.GifImageView;
 
 
 public class BaseActivity extends AppCompatActivity {
@@ -162,6 +145,7 @@ public class BaseActivity extends AppCompatActivity {
                                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                                         requestPermissions(permissionsList.toArray(new String[permissionsList.size()]),
                                                 REQUEST_PHONE_PERMISSIONS);
+                                        t = 0;
                                     }
                                 }
                             })
@@ -177,7 +161,6 @@ public class BaseActivity extends AppCompatActivity {
             }
         }
     }
-
 
     private static float MINALPHA = 0.3f;
     private static float MAXALPHA = 1.0f;

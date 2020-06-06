@@ -15,17 +15,12 @@ import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.MenuItem;
-import android.view.View;
+import android.view.*;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -33,15 +28,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.signature.MediaStoreSignature;
 import com.example.sif.Lei.MyBroadcastReceiver.BroadcastRec;
-import com.example.sif.Lei.MyToolClass.DataEncryption;
-import com.example.sif.Lei.MyToolClass.MyDateClass;
-import com.example.sif.Lei.MyToolClass.ObtainUser;
-import com.example.sif.Lei.MyToolClass.ShowDiaLog;
-import com.example.sif.Lei.MyToolClass.ToastZong;
+import com.example.sif.Lei.MyToolClass.*;
 import com.example.sif.Lei.NewAppDownLoad.NewVersion;
 import com.example.sif.Lei.NewAppDownLoad.ObtainVersion;
 import com.example.sif.Lei.NiceImageView.CircleImageView;
@@ -53,13 +43,11 @@ import com.example.sif.ui.notifications.NotificationsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
+import io.rong.imlib.RongIMClient;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
-import io.rong.imlib.RongIMClient;
 
 public class MyZhuYe extends BaseActivity implements View.OnClickListener {
 
@@ -687,8 +675,7 @@ public class MyZhuYe extends BaseActivity implements View.OnClickListener {
         @Override
         public void onReceive(Context context, Intent intent) {
             String path = "http://nmy1206.natapp1.cc/userSpace.php";
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            final String nowTime = simpleDateFormat.format(System.currentTimeMillis());
+            final String nowTime = MyDateClass.showNowDate();
             sendUserSpace(1, path, nowTime, getMyXueHao(), null);
         }
     }

@@ -64,7 +64,6 @@ public class MsgGpsAdapter extends RecyclerView.Adapter<MsgGpsAdapter.ViewHolder
                 BroadcastRec.sendReceiver(activity,"selectPlace",0,msgGpsClasses.get(position).getPlaceName());
             }
         });
-
     }
 
     @Override

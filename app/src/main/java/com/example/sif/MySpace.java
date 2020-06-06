@@ -18,7 +18,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -29,20 +28,13 @@ import androidx.core.content.ContextCompat;
 import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.signature.MediaStoreSignature;
 import com.example.sif.Lei.LianJie.HttpUtil;
 import com.example.sif.Lei.MyBroadcastReceiver.BroadcastRec;
-import com.example.sif.Lei.MyToolClass.MyDateClass;
-import com.example.sif.Lei.MyToolClass.MyVeryDiaLog;
-import com.example.sif.Lei.MyToolClass.SelectImage;
-import com.example.sif.Lei.MyToolClass.SendGeTuiMessage;
-import com.example.sif.Lei.MyToolClass.ShowDiaLog;
-import com.example.sif.Lei.MyToolClass.ToastZong;
-import com.example.sif.Lei.MyToolClass.UserFollow;
+import com.example.sif.Lei.MyToolClass.*;
 import com.example.sif.Lei.NiceImageView.CircleImageView;
 import com.example.sif.Lei.ShiPeiQi.MySpacePack;
 import com.example.sif.NeiBuLei.UserSpace;
@@ -59,25 +51,22 @@ import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.tamsiree.rxui.view.dialog.RxDialog;
 import com.tamsiree.rxui.view.dialog.RxDialogScaleView;
-
-import org.jetbrains.annotations.NotNull;
-import org.litepal.LitePal;
-
-import java.io.File;
-import java.io.IOException;
-import java.net.ConnectException;
-import java.net.SocketTimeoutException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
-
 import io.rong.imkit.RongIM;
 import io.rong.imlib.model.Conversation;
 import io.rong.imlib.model.UserInfo;
 import okhttp3.Call;
 import okhttp3.Response;
+import org.jetbrains.annotations.NotNull;
+import org.litepal.LitePal;
 import top.zibin.luban.Luban;
 import top.zibin.luban.OnCompressListener;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.ConnectException;
+import java.net.SocketTimeoutException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MySpace extends BaseActivity implements View.OnClickListener {
 
@@ -313,8 +302,7 @@ public class MySpace extends BaseActivity implements View.OnClickListener {
         smartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                final String nowTime = simpleDateFormat.format(System.currentTimeMillis());
+                final String nowTime = MyDateClass.showNowDate();
                 sendUserSpace(3,path,nowTime,uXueHao,spacehandler);
             }
         });
@@ -818,6 +806,4 @@ public class MySpace extends BaseActivity implements View.OnClickListener {
             }
         });
     }
-
-
 }

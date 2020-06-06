@@ -1,20 +1,12 @@
 package com.example.sif.Lei.LianJie;
 
 import android.text.TextUtils;
-
 import com.example.sif.NeiBuLei.DouBleImagePath;
+import okhttp3.*;
 
 import java.io.File;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
-import okhttp3.Callback;
-import okhttp3.FormBody;
-import okhttp3.MediaType;
-import okhttp3.MultipartBody;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
 
 public class HttpUtil {
     public static void sendOkHttpPost(String path,String xuehao,okhttp3.Callback callback) {
@@ -32,7 +24,7 @@ public class HttpUtil {
         client.newCall(request).enqueue(callback);
     }
 
-    public static void cunGuangChangMessage(int id, String path, List<DouBleImagePath> imagePath, String userName, String messageShiJian, String message, String xuehao, int thumb, int comment, StringBuffer block, String ip, okhttp3.Callback callback){
+    public static void cunGuangChangMessage(int id, String path, List<DouBleImagePath> imagePath, String userName, String messageShiJian, String message, String xuehao, int thumb, int comment, StringBuffer block,String place,String ip, okhttp3.Callback callback){
         RequestBody requestBody = null;
         if (id == 1){
 //           File file = new File(imagePath);
@@ -46,6 +38,7 @@ public class HttpUtil {
                    .addFormDataPart("thumb",String.valueOf(thumb))
                    .addFormDataPart("comment",String.valueOf(comment))
                    .addFormDataPart("xuehao",xuehao)
+                    .addFormDataPart("place",place)
                    .addFormDataPart("block",String.valueOf(block));
             for(DouBleImagePath d : imagePath){
                 File file = new File(d.getMinPath());
@@ -62,6 +55,7 @@ public class HttpUtil {
                    .add("messageTime",messageShiJian)
                    .add("messageContent",message)
                    .add("xuehao",xuehao)
+                   .add("place",place)
                    .add("thumb", String.valueOf(thumb))
                    .add("comment",String.valueOf(comment))
                    .add("block",String.valueOf(block))

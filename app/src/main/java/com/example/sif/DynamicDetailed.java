@@ -17,30 +17,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-
+import android.widget.*;
 import androidx.annotation.NonNull;
 import androidx.core.widget.NestedScrollView;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
-import com.example.sif.Lei.MyToolClass.GuangChangImageToClass;
-import com.example.sif.Lei.MyToolClass.MyDateClass;
-import com.example.sif.Lei.MyToolClass.ObtainUser;
-import com.example.sif.Lei.MyToolClass.SendGeTuiMessage;
-import com.example.sif.Lei.MyToolClass.ToastZong;
-import com.example.sif.Lei.MyToolClass.UserDynamicCollection;
-import com.example.sif.Lei.MyToolClass.UserDynamicComment;
-import com.example.sif.Lei.MyToolClass.UserDynamicThumb;
+import com.example.sif.Lei.MyToolClass.*;
 import com.example.sif.Lei.NiceImageView.CircleImageView;
 import com.example.sif.Lei.ShiPeiQi.CommentList;
 import com.example.sif.Lei.ShiPeiQi.GuangChangImageAdapter;
@@ -100,6 +87,8 @@ public class DynamicDetailed extends BaseActivity implements View.OnClickListene
     private LocalBroadcastManager localBroadcastManager;
     private TagFlowLayout mDynamicDetailedIb;
     private RecyclerView mDynamicDetailedMessageimagelist;
+    private LinearLayout mDynamicDetailedPlaceLlt;
+    private TextView mDynamicDetailedPlace;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -328,6 +317,14 @@ public class DynamicDetailed extends BaseActivity implements View.OnClickListene
         } else {
             mDynamicDetailedThumb.setImageResource(R.drawable.weidianzan);
         }
+
+        if (!userSpace.getUser_place().equals("")) {
+            mDynamicDetailedPlace.setText(userSpace.getUser_place());
+            mDynamicDetailedPlaceLlt.setVisibility(View.VISIBLE);
+        } else {
+            mDynamicDetailedPlaceLlt.setVisibility(View.GONE);
+        }
+
         uheadImage = "http://nmy1206.natapp1.cc/UserImageServer/" + uxuehao + "/HeadImage/myHeadImage.png";
         Glide.with(DynamicDetailed.this)
                 .load("http://nmy1206.natapp1.cc/UserImageServer/" + uxuehao + "/HeadImage/myHeadImage.png")
@@ -385,7 +382,7 @@ public class DynamicDetailed extends BaseActivity implements View.OnClickListene
             mDynamicDetailedMessageimagelist.setVisibility(View.VISIBLE);
             GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
             mDynamicDetailedMessageimagelist.setLayoutManager(gridLayoutManager);
-            GuangChangImageAdapter guangChangImageAdapter = new GuangChangImageAdapter(this, GuangChangImageToClass.imageToClass(userSpace.getUser_image_url(),userSpace.getUser_xuehao()));
+            GuangChangImageAdapter guangChangImageAdapter = new GuangChangImageAdapter(this, GuangChangImageToClass.imageToClass(userSpace.getUser_image_url(), userSpace.getUser_xuehao()));
             mDynamicDetailedMessageimagelist.setAdapter(guangChangImageAdapter);
         }
 
@@ -461,6 +458,10 @@ public class DynamicDetailed extends BaseActivity implements View.OnClickListene
 
         mDynamicDetailedMessageimagelist = (RecyclerView) findViewById(R.id.dynamic_detailed_messageimagelist);
         mDynamicDetailedMessageimagelist.setOnClickListener(this);
+        mDynamicDetailedPlaceLlt = (LinearLayout) findViewById(R.id.dynamic_detailed_place_llt);
+        mDynamicDetailedPlaceLlt.setOnClickListener(this);
+        mDynamicDetailedPlace = (TextView) findViewById(R.id.dynamic_detailed_place);
+        mDynamicDetailedPlace.setOnClickListener(this);
     }
 
     private Handler thumbHandler = new Handler() {

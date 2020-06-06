@@ -18,42 +18,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-
-import com.example.sif.BaseActivity;
-import com.example.sif.BaseFragment;
-import com.example.sif.ChangeInformation;
-import com.example.sif.GuangChangMessage;
+import com.example.sif.*;
 import com.example.sif.Lei.LianJie.HttpUtil;
 import com.example.sif.Lei.MyToolClass.MyDateClass;
 import com.example.sif.Lei.MyToolClass.SchoolShopPopupWindow;
 import com.example.sif.Lei.MyToolClass.SelectImage;
 import com.example.sif.Lei.MyToolClass.ToastZong;
-import com.example.sif.MessageNotice;
-import com.example.sif.MyApplication;
-import com.example.sif.MyCalendar;
-import com.example.sif.MyZhuYe;
-import com.example.sif.PersonalInformation;
-import com.example.sif.QRactivity;
-import com.example.sif.R;
-import com.example.sif.SchoolShop;
-import com.example.sif.UserHomeShop;
-
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;
 import java.text.SimpleDateFormat;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
 
 public class FragmentActivityBar extends BaseFragment {
     private View view;
@@ -232,7 +216,7 @@ public class FragmentActivityBar extends BaseFragment {
                             i = 0;
                         }
                         if (mingzi != null && shijian != null && (!TextUtils.isEmpty(M) || i != 0) && xuehao != null) {
-                            HttpUtil.cunGuangChangMessage(i, path, message1.ds, mingzi, shijian, gcMessage, xuehao, 0, 0, stringBuffer, null, new Callback() {
+                            HttpUtil.cunGuangChangMessage(i, path, message1.ds, mingzi, shijian, gcMessage, xuehao, 0, 0, stringBuffer,message1.placeString, null, new Callback() {
                                 @Override
                                 public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                                     String a = response.body().string();

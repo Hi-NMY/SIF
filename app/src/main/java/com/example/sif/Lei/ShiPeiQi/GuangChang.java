@@ -12,15 +12,10 @@ import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-
+import android.widget.*;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.signature.MediaStoreSignature;
@@ -28,15 +23,7 @@ import com.example.sif.DynamicDetailed;
 import com.example.sif.IbDetailed;
 import com.example.sif.Lei.LianJie.HttpUtil;
 import com.example.sif.Lei.MyBroadcastReceiver.BroadcastRec;
-import com.example.sif.Lei.MyToolClass.DynamicMessageDetailed;
-import com.example.sif.Lei.MyToolClass.GuangChangImageToClass;
-import com.example.sif.Lei.MyToolClass.MyDateClass;
-import com.example.sif.Lei.MyToolClass.ObtainUser;
-import com.example.sif.Lei.MyToolClass.SendGeTuiMessage;
-import com.example.sif.Lei.MyToolClass.ShowDiaLog;
-import com.example.sif.Lei.MyToolClass.ToastZong;
-import com.example.sif.Lei.MyToolClass.UserDynamicThumb;
-import com.example.sif.Lei.MyToolClass.UserFollow;
+import com.example.sif.Lei.MyToolClass.*;
 import com.example.sif.Lei.NiceImageView.CircleImageView;
 import com.example.sif.MyApplication;
 import com.example.sif.NeiBuLei.GuangChangUserXinXi;
@@ -45,7 +32,9 @@ import com.example.sif.R;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
 import com.zhy.view.flowlayout.TagFlowLayout;
-
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 import org.jetbrains.annotations.NotNull;
 import org.litepal.LitePal;
 
@@ -53,10 +42,6 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
 
 public class GuangChang extends RecyclerView.Adapter<GuangChang.ViewHolder> {
     private List<GuangChangUserXinXi> guangChangUserXinXis;
@@ -93,6 +78,8 @@ public class GuangChang extends RecyclerView.Adapter<GuangChang.ViewHolder> {
         TagFlowLayout mGuangchangIb;
         ImageButton mGuangchangUsesGengduo;
         RecyclerView mGuangchangUserMessageimagelist;
+        TextView mGuangchangPlace;
+        LinearLayout mGuangchangPlaceLlt;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -108,6 +95,8 @@ public class GuangChang extends RecyclerView.Adapter<GuangChang.ViewHolder> {
             mGuangchangIb = (TagFlowLayout) itemView.findViewById(R.id.guangchang_ib);
             mGuangchangUsesGengduo = (ImageButton) itemView.findViewById(R.id.guangchang_uses_gengduo);
             mGuangchangUserMessageimagelist = (RecyclerView) itemView.findViewById(R.id.guangchang_user_messageimagelist);
+            mGuangchangPlace = (TextView)itemView.findViewById(R.id.guangchang_place);
+            mGuangchangPlaceLlt = (LinearLayout)itemView.findViewById(R.id.guangchang_place_llt);
         }
     }
 
@@ -192,6 +181,13 @@ public class GuangChang extends RecyclerView.Adapter<GuangChang.ViewHolder> {
         holder.gcUserName.setText(guangChangUserXinXi.getGc_user_name());
         holder.gcUserShiJian.setText(MyDateClass.showDateClass(guangChangUserXinXi.getGc_user_shijian()));
 
+        if (!guangChangUserXinXi.getGc_user_place().equals("")) {
+            holder.mGuangchangPlaceLlt.setVisibility(View.VISIBLE);
+            holder.mGuangchangPlace.setText(guangChangUserXinXi.getGc_user_place());
+        }else {
+            holder.mGuangchangPlaceLlt.setVisibility(View.GONE);
+        }
+
         LayoutInflater layoutInflater = LayoutInflater.from(activity);
         if (guangChangUserXinXis.get(position).getBlock() != null && !guangChangUserXinXis.get(position).getBlock().equals("")) {
             List<String> strings = new ArrayList<>();
@@ -249,8 +245,8 @@ public class GuangChang extends RecyclerView.Adapter<GuangChang.ViewHolder> {
 
             if (!guangChangUserXinXis.get(position).getGc_user_image_url().equals("")) {
                 holder.mGuangchangUserMessageimagelist.setVisibility(View.VISIBLE);
-                holder.mGuangchangUserMessageimagelist.setLayoutManager(GuangChangImageToClass.newView(activity,guangChangUserXinXi.getGc_user_image_url(),guangChangUserXinXi.getGc_user_xuehao()));
-                GuangChangImageAdapter guangChangImageAdapter = new GuangChangImageAdapter(activity, GuangChangImageToClass.imageToClass(guangChangUserXinXi.getGc_user_image_url(),guangChangUserXinXi.getGc_user_xuehao()));
+                holder.mGuangchangUserMessageimagelist.setLayoutManager(GuangChangImageToClass.newView(activity, guangChangUserXinXi.getGc_user_image_url(), guangChangUserXinXi.getGc_user_xuehao()));
+                GuangChangImageAdapter guangChangImageAdapter = new GuangChangImageAdapter(activity, GuangChangImageToClass.imageToClass(guangChangUserXinXi.getGc_user_image_url(), guangChangUserXinXi.getGc_user_xuehao()));
                 holder.mGuangchangUserMessageimagelist.setAdapter(guangChangImageAdapter);
             }
 
@@ -271,8 +267,8 @@ public class GuangChang extends RecyclerView.Adapter<GuangChang.ViewHolder> {
 
             if (!guangChangUserXinXis.get(position).getGc_user_image_url().equals("")) {
                 holder.mGuangchangUserMessageimagelist.setVisibility(View.VISIBLE);
-                holder.mGuangchangUserMessageimagelist.setLayoutManager(GuangChangImageToClass.newView(activity,guangChangUserXinXi.getGc_user_image_url(),guangChangUserXinXi.getGc_user_xuehao()));
-                GuangChangImageAdapter guangChangImageAdapter = new GuangChangImageAdapter(activity, GuangChangImageToClass.imageToClass(guangChangUserXinXi.getGc_user_image_url(),guangChangUserXinXi.getGc_user_xuehao()));
+                holder.mGuangchangUserMessageimagelist.setLayoutManager(GuangChangImageToClass.newView(activity, guangChangUserXinXi.getGc_user_image_url(), guangChangUserXinXi.getGc_user_xuehao()));
+                GuangChangImageAdapter guangChangImageAdapter = new GuangChangImageAdapter(activity, GuangChangImageToClass.imageToClass(guangChangUserXinXi.getGc_user_image_url(), guangChangUserXinXi.getGc_user_xuehao()));
                 holder.mGuangchangUserMessageimagelist.setAdapter(guangChangImageAdapter);
             }
         }

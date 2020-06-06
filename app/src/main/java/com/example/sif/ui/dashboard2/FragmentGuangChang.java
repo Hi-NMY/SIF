@@ -14,14 +14,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
 import com.example.sif.BaseFragment;
 import com.example.sif.Lei.MyBroadcastReceiver.BroadcastRec;
@@ -38,12 +36,10 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
-
 import org.litepal.LitePal;
+import pl.droidsonroids.gif.GifImageView;
 
 import java.util.List;
-
-import pl.droidsonroids.gif.GifImageView;
 
 public class FragmentGuangChang extends BaseFragment {
 
@@ -201,6 +197,7 @@ public class FragmentGuangChang extends BaseFragment {
     }
 
     private void newMessage(){
+        BroadcastRec.sendReceiver(myZhuYe,"refreshMySpace",0,"");
         guangChang.addGuangChangList(newguangchang);
         recyclerView.setAdapter(guangChang);
     }
@@ -217,15 +214,16 @@ public class FragmentGuangChang extends BaseFragment {
             String[] s = newString.split("&");
             newguangchang = new GuangChangUserXinXi();
             newguangchang.setGc_user_name(s[0]);
-            newguangchang.setGc_user_shijian(s[1]);
-            newguangchang.setGc_user_xinxi(s[2]);
-            newguangchang.setGc_user_xuehao(s[3]);
-            newguangchang.setGc_user_image_url(s[4]);
-            newguangchang.setGc_user_dynamic_id(s[5]);
-            newguangchang.setGc_user_dynamic_thumb(Integer.parseInt(s[6]));
-            newguangchang.setGc_user_dynamic_comment(Integer.parseInt(s[7]));
-            if (s.length > 8){
-                newguangchang.setBlock(s[8]);
+            newguangchang.setGc_user_place(s[1]);
+            newguangchang.setGc_user_shijian(s[2]);
+            newguangchang.setGc_user_xinxi(s[3]);
+            newguangchang.setGc_user_xuehao(s[4]);
+            newguangchang.setGc_user_image_url(s[5]);
+            newguangchang.setGc_user_dynamic_id(s[6]);
+            newguangchang.setGc_user_dynamic_thumb(Integer.parseInt(s[7]));
+            newguangchang.setGc_user_dynamic_comment(Integer.parseInt(s[8]));
+            if (s.length > 9){
+                newguangchang.setBlock(s[9]);
             }
             newMessage();
         }

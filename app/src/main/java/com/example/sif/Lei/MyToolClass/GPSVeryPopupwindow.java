@@ -44,7 +44,7 @@ public class GPSVeryPopupwindow extends PopupWindow implements View.OnClickListe
         initGps();
     }
 
-    private void initGps() {
+    public void initGps() {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -63,7 +63,7 @@ public class GPSVeryPopupwindow extends PopupWindow implements View.OnClickListe
             @Override
             public void run() {
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(500);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -113,6 +113,7 @@ public class GPSVeryPopupwindow extends PopupWindow implements View.OnClickListe
     }
 
     public void dismissWindow(){
+        stopToGps();
         this.dismiss();
     }
 

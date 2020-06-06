@@ -102,10 +102,37 @@
 
             </com.zhy.view.flowlayout.TagFlowLayout>
 
+            <LinearLayout
+                    android:id="@+id/dynamic_detailed_place_llt"
+                    android:visibility="gone"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@+id/dynamic_detailed_ib"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                <ImageView
+                        android:background="@drawable/gps"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"/>
+
+                <TextView
+                        android:id="@+id/dynamic_detailed_place"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/biaotilan_xiaozi"
+                        android:textColor="@color/navyblue"
+                        android:text=""
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"/>
+
+            </LinearLayout>
+
+
             <RelativeLayout
                 android:id="@+id/RRRR"
                 android:layout_marginTop="5dp"
-                android:layout_below="@+id/dynamic_detailed_ib"
+                android:layout_below="@+id/dynamic_detailed_place_llt"
                 android:layout_width="match_parent"
                 android:layout_height="45dp">
 

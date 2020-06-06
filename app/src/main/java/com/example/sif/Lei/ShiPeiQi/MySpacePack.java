@@ -11,31 +11,23 @@ import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-
+import android.widget.*;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.sif.DynamicDetailed;
 import com.example.sif.IbDetailed;
 import com.example.sif.Lei.LianJie.HttpUtil;
 import com.example.sif.Lei.MyBroadcastReceiver.BroadcastRec;
-import com.example.sif.Lei.MyToolClass.DynamicMessageDetailed;
-import com.example.sif.Lei.MyToolClass.GuangChangImageToClass;
-import com.example.sif.Lei.MyToolClass.SendGeTuiMessage;
-import com.example.sif.Lei.MyToolClass.ShowDiaLog;
-import com.example.sif.Lei.MyToolClass.ToastZong;
-import com.example.sif.Lei.MyToolClass.UserDynamicThumb;
+import com.example.sif.Lei.MyToolClass.*;
 import com.example.sif.MyApplication;
 import com.example.sif.NeiBuLei.UserSpace;
 import com.example.sif.R;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
 import com.zhy.view.flowlayout.TagFlowLayout;
-
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 import org.jetbrains.annotations.NotNull;
 import org.litepal.LitePal;
 
@@ -43,10 +35,6 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
 
 public class MySpacePack extends RecyclerView.Adapter<MySpacePack.ViewHolder> {
     private List<UserSpace> userSpaces;
@@ -63,6 +51,7 @@ public class MySpacePack extends RecyclerView.Adapter<MySpacePack.ViewHolder> {
     private UserSpace userSpace;
     private DynamicMessageDetailed dynamicMessageDetailed;
 
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView time;
         TextView message;
@@ -74,7 +63,8 @@ public class MySpacePack extends RecyclerView.Adapter<MySpacePack.ViewHolder> {
         ImageButton myC;
         TagFlowLayout mUserspaceIb;
         RecyclerView mUserspaceMessageimagelist;
-
+        TextView mUserspacePlace;
+        LinearLayout mUserspacePlaceLlt;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -87,7 +77,9 @@ public class MySpacePack extends RecyclerView.Adapter<MySpacePack.ViewHolder> {
             Rzong = (RelativeLayout) itemView.findViewById(R.id.myspace_RZong);
             myC = (ImageButton) itemView.findViewById(R.id.MySpace_List_pinglun);
             mUserspaceIb = (TagFlowLayout) itemView.findViewById(R.id.userspace_ib);
-            mUserspaceMessageimagelist = (RecyclerView)itemView.findViewById(R.id.userspace_messageimagelist);
+            mUserspaceMessageimagelist = (RecyclerView) itemView.findViewById(R.id.userspace_messageimagelist);
+            mUserspacePlace = (TextView)itemView.findViewById(R.id.userspace_place);
+            mUserspacePlaceLlt = (LinearLayout) itemView.findViewById(R.id.userspace_place_llt);
         }
     }
 
@@ -148,6 +140,13 @@ public class MySpacePack extends RecyclerView.Adapter<MySpacePack.ViewHolder> {
         holder.message.setText(userSpace.getUser_xinxi());
         holder.time.setText(userSpace.getUser_shijian());
 
+        if (!userSpace.getUser_place().equals("")){
+            holder.mUserspacePlaceLlt.setVisibility(View.VISIBLE);
+            holder.mUserspacePlace.setText(userSpace.getUser_place());
+        }else {
+            holder.mUserspacePlaceLlt.setVisibility(View.GONE);
+        }
+
         if (userSpace.getUser_xinxi() != null) {
             holder.message.setText(userSpace.getUser_xinxi());
             holder.message.setVisibility(View.VISIBLE);
@@ -184,14 +183,14 @@ public class MySpacePack extends RecyclerView.Adapter<MySpacePack.ViewHolder> {
         if (frush == 1) {
             if (!userSpace.getUser_image_url().equals("")) {
                 holder.mUserspaceMessageimagelist.setVisibility(View.VISIBLE);
-                holder.mUserspaceMessageimagelist.setLayoutManager(GuangChangImageToClass.newView(activity,userSpace.getUser_image_url(),userSpace.getUser_xuehao()));
+                holder.mUserspaceMessageimagelist.setLayoutManager(GuangChangImageToClass.newView(activity, userSpace.getUser_image_url(), userSpace.getUser_xuehao()));
                 GuangChangImageAdapter guangChangImageAdapter = new GuangChangImageAdapter(activity, GuangChangImageToClass.imageToClass(userSpace.getUser_image_url(), userSpace.getUser_xuehao()));
                 holder.mUserspaceMessageimagelist.setAdapter(guangChangImageAdapter);
             }
         } else {
             if (!userSpace.getUser_image_url().equals("")) {
                 holder.mUserspaceMessageimagelist.setVisibility(View.VISIBLE);
-                holder.mUserspaceMessageimagelist.setLayoutManager(GuangChangImageToClass.newView(activity,userSpace.getUser_image_url(),userSpace.getUser_xuehao()));
+                holder.mUserspaceMessageimagelist.setLayoutManager(GuangChangImageToClass.newView(activity, userSpace.getUser_image_url(), userSpace.getUser_xuehao()));
                 GuangChangImageAdapter guangChangImageAdapter = new GuangChangImageAdapter(activity, GuangChangImageToClass.imageToClass(userSpace.getUser_image_url(), userSpace.getUser_xuehao()));
                 holder.mUserspaceMessageimagelist.setAdapter(guangChangImageAdapter);
             }

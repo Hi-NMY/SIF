@@ -13,10 +13,7 @@ import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.*;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -91,6 +88,8 @@ public class FollowDynamic extends RecyclerView.Adapter<FollowDynamic.ViewHolder
         TagFlowLayout mGuangchangIb;
         ImageButton mGuangchangUsesGengduo;
         RecyclerView mGuangchangUserMessageimagelist;
+        TextView mGuangchangPlace;
+        LinearLayout mGuangchangPlaceLlt;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -106,6 +105,8 @@ public class FollowDynamic extends RecyclerView.Adapter<FollowDynamic.ViewHolder
             mGuangchangIb = (TagFlowLayout)itemView.findViewById(R.id.guangchang_ib);
             mGuangchangUsesGengduo = (ImageButton)itemView.findViewById(R.id.guangchang_uses_gengduo);
             mGuangchangUserMessageimagelist = (RecyclerView) itemView.findViewById(R.id.guangchang_user_messageimagelist);
+            mGuangchangPlace = (TextView)itemView.findViewById(R.id.guangchang_place);
+            mGuangchangPlaceLlt = (LinearLayout)itemView.findViewById(R.id.guangchang_place_llt);
         }
     }
 
@@ -191,6 +192,13 @@ public class FollowDynamic extends RecyclerView.Adapter<FollowDynamic.ViewHolder
         userSpace = userSpaces.get(position);
         holder.gcUserName.setText(userSpace.getUser_name());
         holder.gcUserShiJian.setText(MyDateClass.showDateClass(userSpace.getUser_shijian()));
+
+        if (!userSpace.getUser_place().equals("")) {
+            holder.mGuangchangPlaceLlt.setVisibility(View.VISIBLE);
+            holder.mGuangchangPlace.setText(userSpace.getUser_place());
+        }else {
+            holder.mGuangchangPlaceLlt.setVisibility(View.GONE);
+        }
 
         LayoutInflater layoutInflater = LayoutInflater.from(activity);
         if (userSpaces.get(position).getBlock() != null && !userSpaces.get(position).getBlock().equals("")){

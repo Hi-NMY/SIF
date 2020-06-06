@@ -3,10 +3,9 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:paddingTop="50dp"
+        android:paddingTop="150dp"
         android:clipChildren="false"
         android:clipToPadding="false"
-        android:background="@color/blue_baby"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -74,7 +73,7 @@
 
             <EditText
                     android:id="@+id/search_message"
-                    android:textSize="@dimen/biaotilan_chaoxiao"
+                    android:textSize="@dimen/biaotilan_xiaozi"
                     android:hint="点击搜索地点"
                     android:maxLines="1"
                     android:maxLength="25"
