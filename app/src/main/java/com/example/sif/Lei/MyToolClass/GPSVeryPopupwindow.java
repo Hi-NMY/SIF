@@ -3,6 +3,9 @@ package com.example.sif.Lei.MyToolClass;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -44,6 +47,14 @@ public class GPSVeryPopupwindow extends PopupWindow implements View.OnClickListe
         initGps();
     }
 
+    private Handler gpsHandler = new Handler(Looper.myLooper()){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            myGpsClient = new MyGpsClient(MyApplication.getContext());
+        }
+    };
+
     public void initGps() {
         new Thread(new Runnable() {
             @Override
@@ -67,7 +78,7 @@ public class GPSVeryPopupwindow extends PopupWindow implements View.OnClickListe
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                myGpsClient = new MyGpsClient(MyApplication.getContext());
+                gpsHandler.sendMessage(new Message());
             }
         }).start();
 

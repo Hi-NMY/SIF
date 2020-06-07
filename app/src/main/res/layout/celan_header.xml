@@ -4,7 +4,7 @@
     android:id="@+id/celan_R1"
     android:layout_width="match_parent"
     android:layout_height="@dimen/celan_geren"
-    android:background="@drawable/celan_geren">
+    android:background="@drawable/celan_bg">
 
     <ImageView
         android:id="@+id/celan_guanbi"

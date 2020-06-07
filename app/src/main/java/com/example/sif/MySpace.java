@@ -677,8 +677,8 @@ public class MySpace extends BaseActivity implements View.OnClickListener {
                                 .load("http://nmy1206.natapp1.cc/UserImageServer/"+getMyXueHao()+"/BackgroundImage/myBackgroundImage.png")
                                 .signature(new MediaStoreSignature(userImageHeadDate,1,1))
                                 .placeholder(R.drawable.nostartimage)
-                                .fallback(R.drawable.nostartimage)
-                                .error(R.drawable.nostartimage)
+                                .fallback(R.drawable.celan_bg)
+                                .error(R.drawable.celan_bg)
                                 .into(mMySpaceImage);
                         ToastZong.ShowToast(MySpace.this,"保存成功");
                     }

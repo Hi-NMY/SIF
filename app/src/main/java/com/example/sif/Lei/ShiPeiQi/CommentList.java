@@ -17,10 +17,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.example.sif.Lei.MyBroadcastReceiver.BroadcastRec;
-import com.example.sif.Lei.MyToolClass.MyDateClass;
-import com.example.sif.Lei.MyToolClass.MyPopuoWindow;
-import com.example.sif.Lei.MyToolClass.ObtainUser;
-import com.example.sif.Lei.MyToolClass.ToastZong;
+import com.example.sif.Lei.MyToolClass.*;
 import com.example.sif.Lei.NiceImageView.CircleImageView;
 import com.example.sif.MyApplication;
 import com.example.sif.NeiBuLei.CommentMessage;
@@ -140,12 +137,12 @@ public class CommentList extends RecyclerView.Adapter<CommentList.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         commentMessage = commentMessages.get(position);
-        holder.mDynamicCommentName.setText(commentMessage.getComment_username());
+        holder.mDynamicCommentName.setText(UserNameJudge.judgeName(holder.mDynamicCommentName,commentMessage.getComment_username(),commentMessage.getComment_xuehao(),xuehao));
         holder.mDynamicCommentTime.setText(MyDateClass.showDateClass(commentMessage.getComment_time()));
         if (!commentMessage.getTo_username().equals("")){
             RxTextTool.getBuilder("")
                     .append("回复")
-                    .append(commentMessage.getTo_username().substring(9))
+                    .append(UserNameJudge.judgeName(commentMessage.getTo_username(),xuehao))
                     .setForegroundColor(activity.getColor(R.color.bilan))
                     .append(":" + commentMessage.getDynamic_comment())
                     .into(holder.mDynamicCommentMessage);

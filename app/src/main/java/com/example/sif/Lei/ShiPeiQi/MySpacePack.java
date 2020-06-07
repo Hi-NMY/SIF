@@ -130,7 +130,6 @@ public class MySpacePack extends RecyclerView.Adapter<MySpacePack.ViewHolder> {
     }
 
     private String udynamicid;
-    private String updateTime;
     private UserDynamicThumb userDynamicThumb;
     private int key;
 
@@ -240,8 +239,6 @@ public class MySpacePack extends RecyclerView.Adapter<MySpacePack.ViewHolder> {
             holder.myComment.setVisibility(View.VISIBLE);
         }
 
-        final String path = "http://nmy1206.natapp1.cc/gcThumb.php";
-        final String path1 = "http://nmy1206.natapp1.cc/myThumb.php";
         holder.myZan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
