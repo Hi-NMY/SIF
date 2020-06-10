@@ -10,29 +10,15 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-
+import android.widget.*;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.signature.MediaStoreSignature;
 import com.example.sif.Lei.LianJie.HttpUtil;
-import com.example.sif.Lei.MyToolClass.AddRadioImage;
-import com.example.sif.Lei.MyToolClass.MyDateClass;
-import com.example.sif.Lei.MyToolClass.MyVeryDiaLog;
-import com.example.sif.Lei.MyToolClass.SelectImage;
-import com.example.sif.Lei.MyToolClass.ShowDiaLog;
-import com.example.sif.Lei.MyToolClass.ToastZong;
-import com.example.sif.Lei.MyToolClass.WholeDeleteDiary;
+import com.example.sif.Lei.MyToolClass.*;
 import com.example.sif.Lei.ShiPeiQi.UserDiaryAdapter;
 import com.example.sif.Lei.ShowActivityBar.FragmentActivityBar;
 import com.luck.picture.lib.PictureSelector;
@@ -41,18 +27,16 @@ import com.luck.picture.lib.entity.LocalMedia;
 import com.melnykov.fab.FloatingActionButton;
 import com.tamsiree.rxui.view.dialog.RxDialog;
 import com.tamsiree.rxui.view.dialog.RxDialogScaleView;
-
+import okhttp3.Call;
+import okhttp3.Response;
 import org.jetbrains.annotations.NotNull;
+import top.zibin.luban.Luban;
+import top.zibin.luban.OnCompressListener;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import okhttp3.Call;
-import okhttp3.Response;
-import top.zibin.luban.Luban;
-import top.zibin.luban.OnCompressListener;
 
 public class MyDiary extends BaseActivity implements View.OnClickListener {
 
@@ -164,7 +148,7 @@ public class MyDiary extends BaseActivity implements View.OnClickListener {
                 });
                 initDialogView(view);
                 diaryDate.setText(MyDateClass.showYearMonthDay());
-                diaryWeek.setText("星期" + MyDateClass.showWeekTable(MyDateClass.showYearMonthDay()));
+                diaryWeek.setText("星期" + MyDateClass.showWeekTable(MyDateClass.showYearMonthDay(),0));
                 mWeatherGroup.setOnCheckedChangeListener(new OnOneWeatherGroupListener());
                 mWeatherGroup1.setOnCheckedChangeListener(new OnTwoWeatherGroupListener());
                 mWeatherGroup2.setOnCheckedChangeListener(new OnThreeWeatherGroupListener());

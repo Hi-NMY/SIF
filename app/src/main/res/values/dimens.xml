@@ -17,5 +17,7 @@
 
     <dimen name="search_height">40dp</dimen>
 
+    <dimen name="corner_value">7dp</dimen>
+
 
 </resources>

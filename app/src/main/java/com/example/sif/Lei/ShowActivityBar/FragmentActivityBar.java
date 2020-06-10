@@ -95,7 +95,7 @@ public class FragmentActivityBar extends BaseFragment {
         functionLeft(leftFunction);
         functionTitle(titleFunction);
         functionTitle1(title1Function);
-        functionTitle2(title1Function);
+        functionTitle2(title2Function);
         functionRight(rightFunction);
         functionRight1(right1Function);
         functionTextRight(textright);
@@ -412,6 +412,7 @@ public class FragmentActivityBar extends BaseFragment {
             public void onClick(View v) {
                 switch (titleFunction) {
                     case 1:
+                        mActivitybarTitle2.setTextColor(activity.getColor(R.color.beijing));
                         break;
                     case 2:
 

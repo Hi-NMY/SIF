@@ -127,7 +127,7 @@ public class UserDiaryAdapter extends RecyclerView.Adapter<UserDiaryAdapter.View
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         userDiaryClass = userDiaryClasses.get(position);
         holder.mDiaryItemDate.setText(userDiaryClass.getDiarydate());
-        holder.mDiaryItemWeek.setText("星期" + MyDateClass.showWeekTable(userDiaryClass.getDiarydate()));
+        holder.mDiaryItemWeek.setText("星期" + MyDateClass.showWeekTable(userDiaryClass.getDiarydate(),0));
         switch (userDiaryClass.getWeathernum()){
             case 0:
                 holder.mDiaryItemWeather.setBackgroundResource(R.drawable.weather_sun);

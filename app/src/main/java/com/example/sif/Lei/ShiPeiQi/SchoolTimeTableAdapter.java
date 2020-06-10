@@ -101,7 +101,7 @@ public class SchoolTimeTableAdapter extends RecyclerView.Adapter<SchoolTimeTable
         holder.mClassTime.setText(schoolTable.getClass_time_start());
         holder.mTableMonth.setText(schoolTable.getClass_date().substring(5, 7) + "月");
         holder.mTableDay.setText(schoolTable.getClass_date().substring(8, 10) + "日");
-        holder.mTableWeek.setText("星期" + MyDateClass.showWeekTable(schoolTable.getClass_date()));
+        holder.mTableWeek.setText("星期" + MyDateClass.showWeekTable(schoolTable.getClass_date(),0));
         if (integers.contains(position)) {
             holder.mCircleItem.setVisibility(View.VISIBLE);
             holder.mTableDate.setVisibility(View.VISIBLE);

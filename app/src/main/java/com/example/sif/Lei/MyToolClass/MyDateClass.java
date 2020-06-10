@@ -58,26 +58,28 @@ public class MyDateClass {
         return nowTime;
     }
 
-    public static String showWeekTable(String date){
+    public static String showWeekTable(String date,int f){
         try {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
             Calendar c = Calendar.getInstance();
             c.setTime(simpleDateFormat.parse(date));
             String mWay = String.valueOf(c.get(Calendar.DAY_OF_WEEK));
-            if ("1".equals(mWay)) {
-                mWay = "天";
-            } else if ("2".equals(mWay)) {
-                mWay = "一";
-            } else if ("3".equals(mWay)) {
-                mWay = "二";
-            } else if ("4".equals(mWay)) {
-                mWay = "三";
-            } else if ("5".equals(mWay)) {
-                mWay = "四";
-            } else if ("6".equals(mWay)) {
-                mWay = "五";
-            } else if ("7".equals(mWay)) {
-                mWay = "六";
+            if (f == 0){
+                if ("1".equals(mWay)) {
+                    mWay = "天";
+                } else if ("2".equals(mWay)) {
+                    mWay = "一";
+                } else if ("3".equals(mWay)) {
+                    mWay = "二";
+                } else if ("4".equals(mWay)) {
+                    mWay = "三";
+                } else if ("5".equals(mWay)) {
+                    mWay = "四";
+                } else if ("6".equals(mWay)) {
+                    mWay = "五";
+                } else if ("7".equals(mWay)) {
+                    mWay = "六";
+                }
             }
             return mWay;
         } catch (ParseException e) {
