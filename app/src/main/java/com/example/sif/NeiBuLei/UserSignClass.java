@@ -6,6 +6,7 @@ public class UserSignClass extends LitePalSupport{
     private int id;
     private int longday;
     private int signday;
+    private int coin;
     private String xuehao;
 
     public int getId() {
@@ -30,6 +31,14 @@ public class UserSignClass extends LitePalSupport{
 
     public void setSignday(int signday) {
         this.signday = signday;
+    }
+
+    public int getCoin() {
+        return coin;
+    }
+
+    public void setCoin(int coin) {
+        this.coin = coin;
     }
 
     public String getXuehao() {

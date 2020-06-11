@@ -22,7 +22,7 @@
                     android:layout_marginTop="20dp"
                     android:textColor="@color/gray"
                     android:layout_marginLeft="@dimen/guangchangimage_top"
-                    android:text="45123"
+                    android:text=""
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
@@ -72,6 +72,7 @@
                                 android:layout_centerInParent="true"
                                 android:textSize="@dimen/biaotilan_chaoxiao"
                                 android:text="打卡"
+                                android:textStyle="bold"
                                 android:textColor="@color/beijing"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"/>
@@ -79,6 +80,7 @@
                     </RelativeLayout>
 
                     <TextView
+                            android:id="@+id/txt_tip"
                             android:layout_marginTop="5dp"
                             android:layout_gravity="center"
                             android:textSize="10sp"
@@ -124,6 +126,7 @@
                                 android:layout_centerInParent="true"
                                 android:textSize="@dimen/biaotilan_chaoxiao"
                                 android:text="打卡"
+                                android:textStyle="bold"
                                 android:textColor="@color/beijing"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"/>
@@ -131,6 +134,7 @@
                     </RelativeLayout>
 
                     <TextView
+                            android:id="@+id/txt_tip1"
                             android:layout_marginTop="5dp"
                             android:layout_gravity="center"
                             android:textSize="10sp"
@@ -176,6 +180,7 @@
                                 android:layout_centerInParent="true"
                                 android:textSize="@dimen/biaotilan_chaoxiao"
                                 android:text="打卡"
+                                android:textStyle="bold"
                                 android:textColor="@color/beijing"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"/>
@@ -183,6 +188,7 @@
                     </RelativeLayout>
 
                     <TextView
+                            android:id="@+id/txt_tip2"
                             android:layout_marginTop="5dp"
                             android:layout_gravity="center"
                             android:textSize="10sp"
@@ -228,6 +234,7 @@
                                 android:layout_centerInParent="true"
                                 android:textSize="@dimen/biaotilan_chaoxiao"
                                 android:text="打卡"
+                                android:textStyle="bold"
                                 android:textColor="@color/beijing"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"/>
@@ -235,6 +242,7 @@
                     </RelativeLayout>
 
                     <TextView
+                            android:id="@+id/txt_tip3"
                             android:layout_marginTop="5dp"
                             android:layout_gravity="center"
                             android:textSize="10sp"
@@ -280,6 +288,7 @@
                                 android:layout_centerInParent="true"
                                 android:textSize="@dimen/biaotilan_chaoxiao"
                                 android:text="打卡"
+                                android:textStyle="bold"
                                 android:textColor="@color/beijing"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"/>
@@ -287,6 +296,7 @@
                     </RelativeLayout>
 
                     <TextView
+                            android:id="@+id/txt_tip4"
                             android:layout_marginTop="5dp"
                             android:layout_gravity="center"
                             android:textSize="10sp"
@@ -332,6 +342,7 @@
                                 android:layout_centerInParent="true"
                                 android:textSize="@dimen/biaotilan_chaoxiao"
                                 android:text="打卡"
+                                android:textStyle="bold"
                                 android:textColor="@color/beijing"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"/>
@@ -339,6 +350,7 @@
                     </RelativeLayout>
 
                     <TextView
+                            android:id="@+id/txt_tip5"
                             android:layout_marginTop="5dp"
                             android:layout_gravity="center"
                             android:textSize="10sp"
@@ -384,6 +396,7 @@
                                 android:layout_centerInParent="true"
                                 android:textSize="@dimen/biaotilan_chaoxiao"
                                 android:text="打卡"
+                                android:textStyle="bold"
                                 android:textColor="@color/beijing"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"/>
@@ -391,6 +404,7 @@
                     </RelativeLayout>
 
                     <TextView
+                            android:id="@+id/txt_tip6"
                             android:layout_marginTop="5dp"
                             android:layout_gravity="center"
                             android:textSize="10sp"

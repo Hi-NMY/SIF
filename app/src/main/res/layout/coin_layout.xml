@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:background="@drawable/coin_dialog_bg"
+        android:paddingLeft="@dimen/margin_very"
+        android:paddingTop="@dimen/margin_very"
+        android:paddingBottom="@dimen/margin_very"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    <ImageView
+            android:id="@+id/coin_image"
+            android:background="@drawable/glod_coin"
+            android:layout_width="100dp"
+            android:layout_height="100dp"/>
+
+    <ImageView
+            android:id="@+id/close"
+            android:layout_marginTop="-15dp"
+            android:paddingLeft="-5dp"
+            android:layout_toRightOf="@+id/coin_image"
+            android:src="@drawable/close_white"
+            android:layout_width="20dp"
+            android:layout_height="20dp"/>
+
+    <TextView
+            android:id="@+id/coin_size"
+            android:textColor="@color/yanghong"
+            android:layout_marginTop="5dp"
+            android:textSize="@dimen/biaotilan_dazi"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/coin_image"
+            android:text="+2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    <TextView
+            android:textColor="@color/beijing"
+            android:layout_marginTop="10dp"
+            android:textSize="@dimen/biaotilan_title"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/coin_size"
+            android:text="已打卡"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+</RelativeLayout>

@@ -30,10 +30,15 @@ public class MyCalendar extends BaseActivity implements View.OnClickListener {
     private SignInFragment signInFragment;
     private StartAnimation startAnimation;
     private RelativeLayout mSignR;
+    private TextView mCoinSizeText;
     private static Animation animation;
+    private ObtainCoin obtainCoin;
+
     static {
         setAnimation();
     }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +46,9 @@ public class MyCalendar extends BaseActivity implements View.OnClickListener {
         setContentView(R.layout.activity_my_calendar);
         initView();
         startAnimation = new StartAnimation();
+        obtainCoin = new ObtainCoin();
         BroadcastRec.obtainRecriver(this, "startAnimation", startAnimation);
+        BroadcastRec.obtainRecriver(this, "obtainCoin", obtainCoin);
         ObtainServerTime.obtainTime();
         ObtainUserSign.obtainSign(getMyXueHao());
 
@@ -70,6 +77,7 @@ public class MyCalendar extends BaseActivity implements View.OnClickListener {
 
     private void initView() {
         signInFragment = (SignInFragment) getSupportFragmentManager().findFragmentById(R.id.sign_signin_frag);
+        signInFragment.setActivity(this, this);
         mSignUserimage = (CircleImageView) findViewById(R.id.sign_userimage);
         mSignUserimage.setOnClickListener(this);
         mSignUsername = (TextView) findViewById(R.id.sign_username);
@@ -90,6 +98,8 @@ public class MyCalendar extends BaseActivity implements View.OnClickListener {
         mCalendarBar.setOnClickListener(this);
         mSignR = (RelativeLayout) findViewById(R.id.sign_r);
         mSignR.setOnClickListener(this);
+        mCoinSizeText = (TextView) findViewById(R.id.coin_size_text);
+        mCoinSizeText.setOnClickListener(this);
     }
 
     @Override
@@ -101,7 +111,7 @@ public class MyCalendar extends BaseActivity implements View.OnClickListener {
         }
     }
 
-    private static void setAnimation(){
+    private static void setAnimation() {
         animation = new AlphaAnimation(0.0f, 1.0f);
         animation.setDuration(600);
         animation.setFillAfter(true);
@@ -110,8 +120,22 @@ public class MyCalendar extends BaseActivity implements View.OnClickListener {
     class StartAnimation extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
+            mCoinSizeText.setText(String.valueOf(signInFragment.userSignClass.getCoin()));
+            mCoinSizeText.postInvalidate();
             mSignR.setVisibility(View.VISIBLE);
             mSignR.startAnimation(animation);
+        }
+    }
+
+    class ObtainCoin extends BroadcastReceiver{
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            int a = intent.getIntExtra("textone",-1);
+            if (a != -1){
+                signInFragment.userSignClass.setCoin(a);
+                mCoinSizeText.setText(String.valueOf(a));
+                mCoinSizeText.postInvalidate();
+            }
         }
     }
 }

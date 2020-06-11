@@ -42,9 +42,34 @@
                     android:textSize="@dimen/biaotilan_teshu"
                     android:text=""
                     android:gravity="center"
+                    android:textStyle="bold"
                     android:layout_alignBottom="@id/sign_userimage"
                     android:layout_toRightOf="@id/sign_userimage"
                     android:layout_alignTop="@id/sign_userimage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <ImageView
+                    android:id="@+id/iiii"
+                    android:layout_marginRight="@dimen/guangchangimage_left"
+                    android:layout_alignBottom="@+id/sign_userimage"
+                    android:layout_alignTop="@+id/sign_userimage"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/glod_coin"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"/>
+
+            <TextView
+                    android:id="@+id/coin_size_text"
+                    android:textColor="@color/beijing"
+                    android:layout_marginRight="5dp"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/biaotilan_xiaozi"
+                    android:gravity="center"
+                    android:layout_alignBottom="@+id/sign_userimage"
+                    android:layout_alignTop="@+id/sign_userimage"
+                    android:layout_toLeftOf="@+id/iiii"
+                    android:text=""
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
