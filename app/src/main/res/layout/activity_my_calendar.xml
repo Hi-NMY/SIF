@@ -17,6 +17,7 @@
         android:layout_height="@dimen/biaotilan_gaodu"/>
 
     <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollview"
             android:layout_below="@id/calendar_bar"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -90,6 +91,21 @@
 
             </RelativeLayout>
 
+            <RelativeLayout
+                    android:id="@+id/sign_r1"
+                    android:visibility="invisible"
+                    android:layout_below="@+id/sign_r"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <fragment
+                        android:id="@+id/sign_task_frag"
+                        android:name="com.example.sif.ui.sign.TaskFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        tools:layout="@layout/sign_task_card_fragment"/>
+
+            </RelativeLayout>
 
 
         </RelativeLayout>

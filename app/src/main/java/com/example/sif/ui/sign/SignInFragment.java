@@ -190,6 +190,7 @@ public class SignInFragment extends BaseFragment {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
+            dissmissLoading();
             obtainUserCoin();
             mLongSginDay = view.findViewById(R.id.long_sgin_day);
             RxTextTool.getBuilder("")
@@ -230,6 +231,7 @@ public class SignInFragment extends BaseFragment {
     }
 
     private ShowDiaLog patchDialog;
+    private RxDialog signLoaging;
     private void clickSign() {
         for (int i = 1; i < mapRelative.size() + 1; i++) {
             RelativeLayout rel = mapRelative.get(i);
@@ -238,6 +240,7 @@ public class SignInFragment extends BaseFragment {
                 @Override
                 public void onClick(View v) {
                     if ((Integer) mapImage.get((Integer) rel.getTag()).getTag() == 1) {
+                        startLoading();
                         ObtainUserSign.updateSign(myXueHao, setSign((Integer) rel.getTag()),(Integer) rel.getTag(), newSignHanlder);
                         startSign((Integer) rel.getTag());
                     } else if ((Integer) mapImage.get((Integer) rel.getTag()).getTag() == 3) {
@@ -248,10 +251,22 @@ public class SignInFragment extends BaseFragment {
         }
     }
 
+    private void startLoading(){
+        signLoaging = new RxDialog(context,R.style.tran_dialog);
+        View loading = LayoutInflater.from(context).inflate(R.layout.sign_loading_lay,null);
+        signLoaging.setContentView(loading);
+        signLoaging.show();
+    }
+
+    private void dissmissLoading(){
+        signLoaging.dismiss();
+    }
+
     private Handler patchHanlder = new Handler(){
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
+            dissmissLoading();
             patchDialog.closeMyDiaLog();
             startSign(a);
             obtainUserCoin();
@@ -275,9 +290,11 @@ public class SignInFragment extends BaseFragment {
         determine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startLoading();
                 if (userSignClass.getCoin() >= 50){
                     ObtainUserSign.PatchSign(myXueHao,setSign(num),num,patchHanlder);
                 }else {
+                    dissmissLoading();
                     ToastZong.ShowToast(MyApplication.getContext(),"金币不足,快去做任务获取金币吧");
                 }
             }

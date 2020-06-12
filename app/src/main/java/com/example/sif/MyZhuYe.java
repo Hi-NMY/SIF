@@ -69,6 +69,7 @@ public class MyZhuYe extends BaseActivity implements View.OnClickListener {
     private View mViewNoticemessage;
     private View mViewUserprotection;
     private NewUserProtection newUserProtection;
+    private GoToGuangChang goToGuangChang;
 
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -78,13 +79,7 @@ public class MyZhuYe extends BaseActivity implements View.OnClickListener {
         setContentView(R.layout.activity_my_zhu_ye);
 
         initView();
-
-        refreshMySpace = new RefreshMySpace();
-        newMessageNotice = new NewMessageNotice();
-        newUserProtection = new NewUserProtection();
-        BroadcastRec.obtainRecriver(MyApplication.getContext(), "refreshMySpace", refreshMySpace);
-        BroadcastRec.obtainRecriver(MyApplication.getContext(), "newNotice", newMessageNotice);
-        BroadcastRec.obtainRecriver(MyApplication.getContext(), "newUserProtection", newUserProtection);
+        setBroadcast();
 
         NewVersion.inspectVerSion(MyZhuYe.this);
 
@@ -110,6 +105,17 @@ public class MyZhuYe extends BaseActivity implements View.OnClickListener {
             startActivity(intent);
         }
 
+    }
+
+    private void setBroadcast(){
+        refreshMySpace = new RefreshMySpace();
+        newMessageNotice = new NewMessageNotice();
+        newUserProtection = new NewUserProtection();
+        goToGuangChang = new GoToGuangChang();
+        BroadcastRec.obtainRecriver(MyApplication.getContext(), "refreshMySpace", refreshMySpace);
+        BroadcastRec.obtainRecriver(MyApplication.getContext(), "newNotice", newMessageNotice);
+        BroadcastRec.obtainRecriver(MyApplication.getContext(), "newUserProtection", newUserProtection);
+        BroadcastRec.obtainRecriver(MyApplication.getContext(), "taskGoTo", goToGuangChang);
     }
 
 
@@ -178,7 +184,7 @@ public class MyZhuYe extends BaseActivity implements View.OnClickListener {
                 }
                 break;
         }
-        fragmentTransaction.commit();
+        fragmentTransaction.commitAllowingStateLoss();
     }
 
     private void hideFragments(FragmentTransaction transaction) {
@@ -715,6 +721,18 @@ public class MyZhuYe extends BaseActivity implements View.OnClickListener {
                 mViewUserprotection.setVisibility(View.INVISIBLE);
             }else {
                 mViewUserprotection.setVisibility(View.VISIBLE);
+            }
+        }
+    }
+
+    class GoToGuangChang extends BroadcastReceiver{
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            int gotoFun = intent.getIntExtra("textone",-1);
+            if (gotoFun != -1){
+                if (gotoFun == 0){
+                    bottomNavigationView.setSelectedItemId(R.id.navigation_dashboard);
+                }
             }
         }
     }

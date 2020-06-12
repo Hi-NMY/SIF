@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+            app:cardElevation="0dp"
+            android:layout_margin="@dimen/guangchangimage_left"
+            app:cardCornerRadius="@dimen/corner_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <TextView
+                    android:id="@+id/ttt1"
+                    android:textColor="@color/ziti"
+                    android:layout_marginTop="@dimen/margin_very"
+                    android:layout_marginLeft="@dimen/guangchangimage_top"
+                    android:textSize="@dimen/biaotilan_dazi"
+                    android:textStyle="bold"
+                    android:text="今日任务"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <TextView
+                    android:id="@+id/ttt2"
+                    android:layout_alignLeft="@id/ttt1"
+                    android:layout_below="@id/ttt1"
+                    android:textColor="@color/darkgray"
+                    android:text="完成任务，获得额外奖励"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <View
+                    android:id="@+id/vvv1"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="@dimen/guangchangimage_left"
+                    android:layout_marginLeft="@dimen/guangchangimage_left"
+                    android:alpha="0.4"
+                    android:layout_below="@id/ttt2"
+                    android:background="@color/lightgray"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"/>
+
+            <RelativeLayout
+                    android:id="@+id/task_r"
+                    android:layout_marginRight="@dimen/guangchangimage_top"
+                    android:layout_marginLeft="@dimen/guangchangimage_top"
+                    android:layout_marginTop="@dimen/guangchangimage_top"
+                    android:layout_below="@+id/vvv1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                        android:id="@+id/task_text"
+                        android:textSize="@dimen/biaotilan_title"
+                        android:textColor="@color/ziti"
+                        android:text="每日签到"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <ImageView
+                        android:id="@+id/ccc"
+                        android:layout_marginTop="5dp"
+                        android:layout_below="@id/task_text"
+                        android:background="@drawable/glod_coin"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"/>
+
+                <TextView
+                        android:layout_marginLeft="2dp"
+                        android:textColor="@color/darkgray"
+                        android:textSize="@dimen/biaotilan_chaoxiao"
+                        android:textStyle="bold"
+                        android:text="+10"
+                        android:gravity="center"
+                        android:layout_alignBottom="@id/ccc"
+                        android:layout_alignTop="@id/ccc"
+                        android:layout_toRightOf="@id/ccc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <Button
+                        android:id="@+id/tostart"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/beijing"
+                        android:text="去完成"
+                        android:textSize="@dimen/biaotilan_xiaozi"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:background="@drawable/task_bg"
+                        android:layout_weight="1"
+                        android:layout_width="80dp"
+                        android:layout_height="35dp"/>
+
+                <View
+                        android:layout_marginTop="20dp"
+                        android:alpha="0.4"
+                        android:layout_below="@id/ccc"
+                        android:background="@color/lightgray"
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:id="@+id/task_r1"
+                    android:layout_marginRight="@dimen/guangchangimage_top"
+                    android:layout_marginLeft="@dimen/guangchangimage_top"
+                    android:layout_marginTop="@dimen/guangchangimage_top"
+                    android:layout_below="@+id/task_r"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                        android:id="@+id/task_text1"
+                        android:textSize="@dimen/biaotilan_title"
+                        android:textColor="@color/ziti"
+                        android:text="发布一条动态"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <ImageView
+                        android:id="@+id/ccc1"
+                        android:layout_marginTop="5dp"
+                        android:layout_below="@id/task_text1"
+                        android:background="@drawable/glod_coin"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"/>
+
+                <TextView
+                        android:layout_marginLeft="2dp"
+                        android:textColor="@color/darkgray"
+                        android:textSize="@dimen/biaotilan_chaoxiao"
+                        android:textStyle="bold"
+                        android:text="+10"
+                        android:gravity="center"
+                        android:layout_alignBottom="@id/ccc1"
+                        android:layout_alignTop="@id/ccc1"
+                        android:layout_toRightOf="@id/ccc1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <Button
+                        android:id="@+id/tostart1"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/beijing"
+                        android:text="去完成"
+                        android:textSize="@dimen/biaotilan_xiaozi"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:background="@drawable/task_bg"
+                        android:layout_weight="1"
+                        android:layout_width="80dp"
+                        android:layout_height="35dp"/>
+
+                <View
+                        android:layout_marginTop="20dp"
+                        android:alpha="0.4"
+                        android:layout_below="@id/ccc1"
+                        android:background="@color/lightgray"
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:id="@+id/task_r2"
+                    android:layout_marginRight="@dimen/guangchangimage_top"
+                    android:layout_marginLeft="@dimen/guangchangimage_top"
+                    android:layout_marginTop="@dimen/guangchangimage_top"
+                    android:layout_below="@+id/task_r1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                        android:id="@+id/task_text2"
+                        android:textSize="@dimen/biaotilan_title"
+                        android:textColor="@color/ziti"
+                        android:text="点赞10条动态"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <ImageView
+                        android:id="@+id/ccc2"
+                        android:layout_marginTop="5dp"
+                        android:layout_below="@id/task_text2"
+                        android:background="@drawable/glod_coin"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"/>
+
+                <TextView
+                        android:layout_marginLeft="2dp"
+                        android:textColor="@color/darkgray"
+                        android:textSize="@dimen/biaotilan_chaoxiao"
+                        android:textStyle="bold"
+                        android:text="+10"
+                        android:gravity="center"
+                        android:layout_alignBottom="@id/ccc2"
+                        android:layout_alignTop="@id/ccc2"
+                        android:layout_toRightOf="@id/ccc2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <Button
+                        android:id="@+id/tostart2"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/beijing"
+                        android:text="去完成"
+                        android:textSize="@dimen/biaotilan_xiaozi"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:background="@drawable/task_bg"
+                        android:layout_weight="1"
+                        android:layout_width="80dp"
+                        android:layout_height="35dp"/>
+
+                <View
+                        android:layout_marginTop="20dp"
+                        android:alpha="0.4"
+                        android:layout_below="@id/ccc2"
+                        android:background="@color/lightgray"
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:id="@+id/task_r3"
+                    android:layout_marginRight="@dimen/guangchangimage_top"
+                    android:layout_marginLeft="@dimen/guangchangimage_top"
+                    android:layout_marginTop="@dimen/guangchangimage_top"
+                    android:layout_below="@+id/task_r2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                        android:id="@+id/task_text3"
+                        android:textSize="@dimen/biaotilan_title"
+                        android:textColor="@color/ziti"
+                        android:text="发布一条美一声"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <ImageView
+                        android:id="@+id/ccc3"
+                        android:layout_marginTop="5dp"
+                        android:layout_below="@id/task_text3"
+                        android:background="@drawable/glod_coin"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"/>
+
+                <TextView
+                        android:layout_marginLeft="2dp"
+                        android:textColor="@color/darkgray"
+                        android:textSize="@dimen/biaotilan_chaoxiao"
+                        android:textStyle="bold"
+                        android:text="+10"
+                        android:gravity="center"
+                        android:layout_alignBottom="@id/ccc3"
+                        android:layout_alignTop="@id/ccc3"
+                        android:layout_toRightOf="@id/ccc3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <Button
+                        android:id="@+id/tostart3"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/beijing"
+                        android:text="去完成"
+                        android:textSize="@dimen/biaotilan_xiaozi"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:background="@drawable/task_bg"
+                        android:layout_weight="1"
+                        android:layout_width="80dp"
+                        android:layout_height="35dp"/>
+
+                <View
+                        android:layout_marginTop="20dp"
+                        android:alpha="0.4"
+                        android:layout_below="@id/ccc3"
+                        android:background="@color/lightgray"
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:id="@+id/task_r4"
+                    android:layout_marginRight="@dimen/guangchangimage_top"
+                    android:layout_marginLeft="@dimen/guangchangimage_top"
+                    android:layout_marginTop="@dimen/guangchangimage_top"
+                    android:layout_below="@+id/task_r3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                        android:id="@+id/task_text4"
+                        android:textSize="@dimen/biaotilan_title"
+                        android:textColor="@color/ziti"
+                        android:text="随机拜访10次"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <ImageView
+                        android:id="@+id/ccc4"
+                        android:layout_marginTop="5dp"
+                        android:layout_below="@id/task_text4"
+                        android:background="@drawable/glod_coin"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"/>
+
+                <TextView
+                        android:layout_marginLeft="2dp"
+                        android:textColor="@color/darkgray"
+                        android:textSize="@dimen/biaotilan_chaoxiao"
+                        android:textStyle="bold"
+                        android:text="+10"
+                        android:gravity="center"
+                        android:layout_alignBottom="@id/ccc4"
+                        android:layout_alignTop="@id/ccc4"
+                        android:layout_toRightOf="@id/ccc4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <Button
+                        android:id="@+id/tostart4"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/beijing"
+                        android:text="去完成"
+                        android:textSize="@dimen/biaotilan_xiaozi"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:background="@drawable/task_bg"
+                        android:layout_weight="1"
+                        android:layout_width="80dp"
+                        android:layout_height="35dp"/>
+
+                <View
+                        android:layout_marginTop="20dp"
+                        android:alpha="0.4"
+                        android:layout_below="@id/ccc4"
+                        android:background="@color/lightgray"
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"/>
+            </RelativeLayout>
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

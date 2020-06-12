@@ -13,6 +13,7 @@ import android.view.animation.Animation;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.RequiresApi;
+import androidx.core.widget.NestedScrollView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.signature.MediaStoreSignature;
 import com.example.sif.Lei.MyBroadcastReceiver.BroadcastRec;
@@ -21,6 +22,7 @@ import com.example.sif.Lei.MyToolClass.ObtainUserSign;
 import com.example.sif.Lei.NiceImageView.CircleImageView;
 import com.example.sif.Lei.ShowActivityBar.FragmentActivityBar;
 import com.example.sif.ui.sign.SignInFragment;
+import com.example.sif.ui.sign.TaskFragment;
 
 public class MyCalendar extends BaseActivity implements View.OnClickListener {
 
@@ -28,16 +30,19 @@ public class MyCalendar extends BaseActivity implements View.OnClickListener {
     private TextView mSignUsername;
     private View mCalendarBar;
     private SignInFragment signInFragment;
+    private TaskFragment taskFragment;
     private StartAnimation startAnimation;
     private RelativeLayout mSignR;
     private TextView mCoinSizeText;
+    private NestedScrollView mScrollview;
+    private RelativeLayout mSignR1;
     private static Animation animation;
     private ObtainCoin obtainCoin;
+    private GoToTop goToTop;
 
     static {
         setAnimation();
     }
-
 
 
     @Override
@@ -45,10 +50,7 @@ public class MyCalendar extends BaseActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_calendar);
         initView();
-        startAnimation = new StartAnimation();
-        obtainCoin = new ObtainCoin();
-        BroadcastRec.obtainRecriver(this, "startAnimation", startAnimation);
-        BroadcastRec.obtainRecriver(this, "obtainCoin", obtainCoin);
+        setBroadcast();
         ObtainServerTime.obtainTime();
         ObtainUserSign.obtainSign(getMyXueHao());
 
@@ -63,14 +65,23 @@ public class MyCalendar extends BaseActivity implements View.OnClickListener {
 
     }
 
+    private void setBroadcast() {
+        startAnimation = new StartAnimation();
+        obtainCoin = new ObtainCoin();
+        goToTop = new GoToTop();
+        BroadcastRec.obtainRecriver(this, "startAnimation", startAnimation);
+        BroadcastRec.obtainRecriver(this, "obtainCoin", obtainCoin);
+        BroadcastRec.obtainRecriver(this, "GoToTop", goToTop);
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private void showActivityBar() {
         FragmentActivityBar fragmentActivityBar = (FragmentActivityBar) getSupportFragmentManager().findFragmentById(R.id.calendar_bar);
         mCalendarBar.bringToFront();
         ShowActivityBars showActivityBars = new ShowActivityBars(this, fragmentActivityBar);
-        showActivityBars.showKongJian(true, false, true, false, false, false, false);
-        showActivityBars.showUI(R.drawable.zuo_white, null, "每日任务", null, 0, 0);
-        showActivityBars.uiFunction(1, 0, 0, 0, 0, 0, 0);
+        showActivityBars.showKongJian(true, false, true, false, false, true, false);
+        showActivityBars.showUI(R.drawable.zuo_white, null, "每日任务", null, R.drawable.question_mark_white, 0);
+        showActivityBars.uiFunction(1, 0, 0, 0, 0, 4, 0);
         showActivityBars.barBackground1(Color.TRANSPARENT);
         showActivityBars.fontColor1(getColor(R.color.beijing));
     }
@@ -78,6 +89,8 @@ public class MyCalendar extends BaseActivity implements View.OnClickListener {
     private void initView() {
         signInFragment = (SignInFragment) getSupportFragmentManager().findFragmentById(R.id.sign_signin_frag);
         signInFragment.setActivity(this, this);
+        taskFragment = (TaskFragment) getSupportFragmentManager().findFragmentById(R.id.sign_task_frag);
+        taskFragment.setActivity(this, this);
         mSignUserimage = (CircleImageView) findViewById(R.id.sign_userimage);
         mSignUserimage.setOnClickListener(this);
         mSignUsername = (TextView) findViewById(R.id.sign_username);
@@ -100,6 +113,10 @@ public class MyCalendar extends BaseActivity implements View.OnClickListener {
         mSignR.setOnClickListener(this);
         mCoinSizeText = (TextView) findViewById(R.id.coin_size_text);
         mCoinSizeText.setOnClickListener(this);
+        mScrollview = (NestedScrollView) findViewById(R.id.scrollview);
+        mScrollview.setOnClickListener(this);
+        mSignR1 = (RelativeLayout) findViewById(R.id.sign_r1);
+        mSignR1.setOnClickListener(this);
     }
 
     @Override
@@ -124,18 +141,28 @@ public class MyCalendar extends BaseActivity implements View.OnClickListener {
             mCoinSizeText.postInvalidate();
             mSignR.setVisibility(View.VISIBLE);
             mSignR.startAnimation(animation);
+            mSignR1.setVisibility(View.VISIBLE);
+            mSignR1.startAnimation(animation);
         }
     }
 
-    class ObtainCoin extends BroadcastReceiver{
+    class ObtainCoin extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
-            int a = intent.getIntExtra("textone",-1);
-            if (a != -1){
+            int a = intent.getIntExtra("textone", -1);
+            if (a != -1) {
                 signInFragment.userSignClass.setCoin(a);
                 mCoinSizeText.setText(String.valueOf(a));
                 mCoinSizeText.postInvalidate();
             }
+        }
+    }
+
+    class GoToTop extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            mScrollview.fling(0);
+            mScrollview.smoothScrollTo(0, 0);
         }
     }
 }

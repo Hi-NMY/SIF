@@ -467,6 +467,9 @@ public class FragmentActivityBar extends BaseFragment {
                         schoolShop.setPopupWindow(schoolShopPopupWindow);
                         schoolShopPopupWindow.showAtLocation(activity.findViewById(R.id.schoolshop_bar), Gravity.CENTER, 0, 0);
                         break;
+                    case 4:
+                        ToastZong.ShowToast(MyApplication.getContext(),"问题");
+                        break;
                     default:
                         break;
                 }
