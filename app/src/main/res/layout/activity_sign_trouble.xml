@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/trouble_r"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".SignTrouble">
+
+    <fragment
+            android:id="@+id/trouble_bar"
+            android:name="com.example.sif.Lei.ShowActivityBar.FragmentActivityBar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/biaotilan_gaodu"/>
+
+    <RelativeLayout
+            android:layout_marginRight="@dimen/guangchangimage_top"
+            android:layout_marginLeft="@dimen/guangchangimage_top"
+            android:layout_marginTop="25dp"
+            android:layout_below="@id/trouble_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TextView
+                android:id="@+id/t1"
+                android:textSize="@dimen/biaotilan_dazi"
+                android:textStyle="bold"
+                android:textColor="@color/ziti"
+                android:text="签到："
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <ImageView
+                android:id="@+id/i1"
+                android:layout_marginTop="@dimen/guangchangimage_top"
+                android:layout_below="@id/t1"
+                android:background="@drawable/num_one"
+                android:layout_width="20dp"
+                android:layout_height="20dp"/>
+
+        <TextView
+                android:id="@+id/v1"
+                android:textColor="@color/darkgray"
+                android:textSize="@dimen/biaotilan_teshu"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:layout_alignBottom="@id/i1"
+                android:text="在每日任务中，点击打卡，即可完成今日打卡。"
+                android:layout_alignTop="@id/i1"
+                android:layout_toRightOf="@id/i1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <ImageView
+                android:id="@+id/i2"
+                android:layout_marginTop="@dimen/guangchangimage_top"
+                android:layout_below="@id/v1"
+                android:background="@drawable/num_two"
+                android:layout_width="20dp"
+                android:layout_height="20dp"/>
+
+        <TextView
+                android:id="@+id/v2"
+                android:textColor="@color/darkgray"
+                android:lineSpacingMultiplier="1.3"
+                android:textSize="@dimen/biaotilan_teshu"
+                android:layout_marginLeft="10dp"
+                android:gravity="center|left"
+                android:text="如果漏打卡了，你可以通过补打卡进行打卡哦，补打卡是需要花费金币的。"
+                android:layout_alignTop="@id/i2"
+                android:layout_toRightOf="@id/i2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <ImageView
+                android:id="@+id/i3"
+                android:layout_marginTop="@dimen/guangchangimage_top"
+                android:layout_below="@id/v2"
+                android:background="@drawable/num_three"
+                android:layout_width="20dp"
+                android:layout_height="20dp"/>
+
+        <TextView
+                android:id="@+id/v3"
+                android:textColor="@color/darkgray"
+                android:lineSpacingMultiplier="1.2"
+                android:textSize="@dimen/biaotilan_teshu"
+                android:layout_marginLeft="10dp"
+                android:gravity="center|left"
+                android:layout_alignBottom="@id/i3"
+                android:text="每天打卡，就能获得与这天天数相应的金币哦。"
+                android:layout_alignTop="@id/i3"
+                android:layout_toRightOf="@id/i3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:id="@+id/t2"
+                android:layout_marginTop="@dimen/guangchangimage_top"
+                android:layout_below="@+id/v3"
+                android:textSize="@dimen/biaotilan_dazi"
+                android:textStyle="bold"
+                android:textColor="@color/ziti"
+                android:text="任务："
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <ImageView
+                android:id="@+id/i4"
+                android:layout_marginTop="@dimen/guangchangimage_top"
+                android:layout_below="@id/t2"
+                android:background="@drawable/num_one"
+                android:layout_width="20dp"
+                android:layout_height="20dp"/>
+
+        <TextView
+                android:id="@+id/v4"
+                android:textColor="@color/darkgray"
+                android:lineSpacingMultiplier="1.3"
+                android:textSize="@dimen/biaotilan_teshu"
+                android:layout_marginLeft="10dp"
+                android:gravity="center|left"
+                android:text="点击去完成，即可跳转到相应界面；或者直接完成任务。"
+                android:layout_alignTop="@id/i4"
+                android:layout_toRightOf="@id/i4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <ImageView
+                android:id="@+id/i5"
+                android:layout_marginTop="@dimen/guangchangimage_top"
+                android:layout_below="@id/v4"
+                android:background="@drawable/num_two"
+                android:layout_width="20dp"
+                android:layout_height="20dp"/>
+
+        <TextView
+                android:id="@+id/v5"
+                android:textColor="@color/darkgray"
+                android:lineSpacingMultiplier="1.2"
+                android:textSize="@dimen/biaotilan_teshu"
+                android:layout_marginLeft="10dp"
+                android:gravity="center|left"
+                android:text="任务完成后点击“待领取”即可领取相应奖励。"
+                android:layout_alignTop="@id/i5"
+                android:layout_toRightOf="@id/i5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <ImageView
+                android:id="@+id/i6"
+                android:layout_marginTop="@dimen/guangchangimage_top"
+                android:layout_below="@id/v5"
+                android:background="@drawable/num_three"
+                android:layout_width="20dp"
+                android:layout_height="20dp"/>
+
+        <TextView
+                android:id="@+id/v6"
+                android:textColor="@color/darkgray"
+                android:lineSpacingMultiplier="1.3"
+                android:textSize="@dimen/biaotilan_teshu"
+                android:layout_marginLeft="10dp"
+                android:gravity="center|left"
+                android:text="任务会在每天的0时清空哦，如果还有未被领取的奖励，此时都会失效呦。"
+                android:layout_alignTop="@id/i6"
+                android:layout_toRightOf="@id/i6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <ImageView
+                android:id="@+id/i7"
+                android:layout_marginTop="@dimen/guangchangimage_top"
+                android:layout_below="@id/v6"
+                android:layout_width="20dp"
+                android:layout_height="20dp"/>
+
+        <TextView
+                android:id="@+id/v7"
+                android:textColor="@color/darkgray"
+                android:lineSpacingMultiplier="1.2"
+                android:textSize="@dimen/biaotilan_teshu"
+                android:layout_marginLeft="10dp"
+                android:gravity="center|left"
+                android:text=""
+                android:layout_alignTop="@id/i7"
+                android:layout_toRightOf="@id/i7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

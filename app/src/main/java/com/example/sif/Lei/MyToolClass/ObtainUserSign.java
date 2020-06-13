@@ -28,6 +28,7 @@ public class ObtainUserSign {
     private static String path = "http://nmy1206.natapp1.cc/ObtainSign.php";
     private static String path1 = "http://nmy1206.natapp1.cc/StartSign.php";
     private static String path2 = "http://nmy1206.natapp1.cc/PatchSign.php";
+    private static String path3 = "http://nmy1206.natapp1.cc/TaskAddSign.php";
     public static UserSignClass userSignClass;
     public static int keySign = -1;
 
@@ -77,6 +78,27 @@ public class ObtainUserSign {
 
     public static void PatchSign(String xuehao, int startSign,int coinSize,Handler handler){
         HttpUtil.patchSign(path2,startSign,xuehao,coinSize, new okhttp3.Callback() {
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                try {
+                    String a = response.body().string();
+                    if (a.equals("0") && handler != null){
+                        handler.sendMessage(new Message());
+                    }
+                }catch (Exception e){
+                    errorHanlder.sendMessage(new Message());
+                }
+            }
+
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                errorHanlder.sendMessage(new Message());
+            }
+        });
+    }
+
+    public static void updateTaskCoin(String xuehao,int coinSize, Handler handler){
+        HttpUtil.updateTaskCoin(path3,xuehao,coinSize, new okhttp3.Callback() {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 try {

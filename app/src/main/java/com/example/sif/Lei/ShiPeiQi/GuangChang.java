@@ -156,7 +156,7 @@ public class GuangChang extends RecyclerView.Adapter<GuangChang.ViewHolder> {
         for (GuangChangUserXinXi g : guangChangUserXinXis) {
             if (g.getGc_user_dynamic_id().equals(id)) {
                 guangChangUserXinXis.remove(g);
-                notifyItemRangeChanged(a, guangChangUserXinXis.size() + 1);
+              //  notifyItemRangeChanged(a + 1, guangChangUserXinXis.size() + 2);
                 notifyItemInserted(a);
                 return;
             }
