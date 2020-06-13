@@ -1,138 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.sif">
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.example.sif">
 
-    <uses-sdk tools:overrideLibrary="org.litepal" />
+    <uses-sdk tools:overrideLibrary="org.litepal"/>
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 这个权限用于访问GPS定位 -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.GET_TASKS" />
-    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" /> <!-- 录音 -->
-    <uses-permission android:name="android.permission.RECORD_AUDIO" /> <!-- 播音 -->
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/> <!-- 这个权限用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/> <!-- 录音 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/> <!-- 播音 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
 
     <application
-        android:name=".MyApplication"
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true">
-        <activity android:name=".UserHomeShop"></activity>
-        <activity android:name=".SchoolShop" />
+            android:name=".MyApplication"
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme"
+            android:usesCleartextTraffic="true">
+        <activity android:name=".SignTrouble">
+        </activity>
+        <activity android:name=".UserHomeShop"/>
+        <activity android:name=".SchoolShop"/>
         <activity
-            android:name=".PrivateUserMessage"
-            android:windowSoftInputMode="adjustResize">
+                android:name=".PrivateUserMessage"
+                android:windowSoftInputMode="adjustResize">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.VIEW"/>
 
-                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT"/>
 
                 <data
-                    android:host="com.example.sif"
-                    android:pathPrefix="/conversation"
-                    android:scheme="rong" />
+                        android:host="com.example.sif"
+                        android:pathPrefix="/conversation"
+                        android:scheme="rong"/>
             </intent-filter>
         </activity>
-        <activity android:name=".MyDiary" />
-        <activity android:name=".SchoolTimeTable" />
-        <activity android:name=".RecretProtection" />
-        <activity android:name=".NewPassword" />
-        <activity android:name=".SettingAccountSafe" />
-        <activity android:name=".SettingPrivacy" />
-        <activity android:name=".SettingMessageNotification" />
-        <activity android:name=".SettingHelp" />
-        <activity android:name=".OfficialNotice" />
+        <activity android:name=".MyDiary"/>
+        <activity android:name=".SchoolTimeTable"/>
+        <activity android:name=".RecretProtection"/>
+        <activity android:name=".NewPassword"/>
+        <activity android:name=".SettingAccountSafe"/>
+        <activity android:name=".SettingPrivacy"/>
+        <activity android:name=".SettingMessageNotification"/>
+        <activity android:name=".SettingHelp"/>
+        <activity android:name=".OfficialNotice"/>
         <activity
-            android:name=".MessageNotice"
-            android:launchMode="singleTask" />
-        <activity android:name=".GoodVoice" />
+                android:name=".MessageNotice"
+                android:launchMode="singleTask"/>
+        <activity android:name=".GoodVoice"/>
 
         <provider
-            android:name="androidx.core.content.FileProvider"
-            android:authorities="com.example.sif.fileprovider"
-            android:exported="false"
-            android:grantUriPermissions="true">
+                android:name="androidx.core.content.FileProvider"
+                android:authorities="com.example.sif.fileprovider"
+                android:exported="false"
+                android:grantUriPermissions="true">
             <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/filepaths"
-                tools:replace="android:resource" />
+                    android:name="android.support.FILE_PROVIDER_PATHS"
+                    android:resource="@xml/filepaths"
+                    tools:replace="android:resource"/>
         </provider>
 
-        <activity android:name=".IbDetailed" />
-        <activity android:name=".InterestingBlock" />
-        <activity android:name=".SchoolEducationalAdministration" />
-        <activity android:name=".MyCalendar" />
-        <activity android:name=".QRactivity" />
-        <activity android:name=".MyCollection" />
+        <activity android:name=".IbDetailed"/>
+        <activity android:name=".InterestingBlock"/>
+        <activity android:name=".SchoolEducationalAdministration"/>
+        <activity android:name=".MyCalendar"/>
+        <activity android:name=".QRactivity"/>
+        <activity android:name=".MyCollection"/>
         <activity
-            android:name=".DynamicDetailed"
-            android:theme="@style/FruitActivityTheme"
-            android:windowSoftInputMode="adjustResize" />
+                android:name=".DynamicDetailed"
+                android:theme="@style/FruitActivityTheme"
+                android:windowSoftInputMode="adjustResize"/>
         <activity
-            android:name=".MySpace"
-            android:launchMode="singleTask" />
-        <activity android:name=".ChangeInformation" />
-        <activity android:name=".PersonalInformation" />
+                android:name=".MySpace"
+                android:launchMode="singleTask"/>
+        <activity android:name=".ChangeInformation"/>
+        <activity android:name=".PersonalInformation"/>
         <activity
-            android:name=".GuangChangMessage"
-            android:theme="@style/FruitActivityTheme"
-            android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".SheZhi" />
-        <activity android:name=".MyDengLu2" />
+                android:name=".GuangChangMessage"
+                android:theme="@style/FruitActivityTheme"
+                android:windowSoftInputMode="adjustResize"/>
+        <activity android:name=".SheZhi"/>
+        <activity android:name=".MyDengLu2"/>
         <activity
-            android:name=".MyZhuYe"
-            android:label="@string/title_activity_my_zhu_ye">
+                android:name=".MyZhuYe"
+                android:label="@string/title_activity_my_zhu_ye">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.VIEW"/>
 
-                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT"/>
 
                 <data
-                    android:host="com.example.sif"
-                    android:pathPrefix="/conversationlist"
-                    android:scheme="rong" />
+                        android:host="com.example.sif"
+                        android:pathPrefix="/conversationlist"
+                        android:scheme="rong"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ZhuCe" />
-        <activity android:name=".MyDengLu" />
+        <activity android:name=".ZhuCe"/>
+        <activity android:name=".MyDengLu"/>
         <activity android:name=".JinRuYe">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
         <meta-data
-            android:name="com.baidu.lbsapi.API_KEY"
-            android:value="niF5BlXjRSvguMbNX29C1jooj9c4xaar" />
+                android:name="com.baidu.lbsapi.API_KEY"
+                android:value="niF5BlXjRSvguMbNX29C1jooj9c4xaar"/>
 
         <service
-            android:name=".Lei.GeTuiServer.DemoPushService"
-            android:exported="true"
-            android:label="PushService"
-            android:process=":pushservice" />
+                android:name=".Lei.GeTuiServer.DemoPushService"
+                android:exported="true"
+                android:label="PushService"
+                android:process=":pushservice"/>
         <service
-            android:name=".Lei.GeTuiServer.DemoIntentService"
-            android:permission="android.permission.BIND_JOB_SERVICE" />
+                android:name=".Lei.GeTuiServer.DemoIntentService"
+                android:permission="android.permission.BIND_JOB_SERVICE"/>
         <service
-            android:name=".Lei.GPSServer.MyGpsServer"
-            android:enabled="true"
-            android:process=":remote" />
+                android:name=".Lei.GPSServer.MyGpsServer"
+                android:enabled="true"
+                android:process=":remote"/>
     </application>
 
 </manifest>

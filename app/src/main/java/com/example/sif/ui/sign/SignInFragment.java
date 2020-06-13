@@ -24,6 +24,7 @@ import com.example.sif.Lei.MyBroadcastReceiver.BroadcastRec;
 import com.example.sif.Lei.MyToolClass.ObtainUserSign;
 import com.example.sif.Lei.MyToolClass.ShowDiaLog;
 import com.example.sif.Lei.MyToolClass.ToastZong;
+import com.example.sif.Lei.MyToolClass.UpdateShareTask;
 import com.example.sif.MyApplication;
 import com.example.sif.NeiBuLei.UserSignClass;
 import com.example.sif.R;
@@ -192,6 +193,8 @@ public class SignInFragment extends BaseFragment {
             super.handleMessage(msg);
             dissmissLoading();
             obtainUserCoin();
+            UpdateShareTask.updateTask(1);
+            BroadcastRec.sendReceiver(MyApplication.getContext(),"obtainTask",0,"");
             mLongSginDay = view.findViewById(R.id.long_sgin_day);
             RxTextTool.getBuilder("")
                     .append("已连续打卡")

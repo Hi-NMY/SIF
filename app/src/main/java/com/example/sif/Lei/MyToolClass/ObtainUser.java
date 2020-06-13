@@ -6,14 +6,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Message;
-
 import com.example.sif.Lei.LianJie.HttpUtil;
 import com.example.sif.MyApplication;
 import com.example.sif.MySpace;
 import com.example.sif.NeiBuLei.User;
 import com.example.sif.NeiBuLei.UserSchool;
 import com.google.gson.Gson;
-
+import okhttp3.Call;
+import okhttp3.Response;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
@@ -21,9 +21,6 @@ import java.net.ConnectException;
 import java.net.SocketTimeoutException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
-import okhttp3.Call;
-import okhttp3.Response;
 
 public class ObtainUser {
     private static Activity activity;
@@ -60,6 +57,7 @@ public class ObtainUser {
                         intent.putExtra("id",2);
                         intent.putExtra("uXueHao",xuehao);
                         activity.startActivity(intent);
+                        UpdateShareTask.updateTask(5);
                         break;
                     }catch (Exception e) {
                         ToastZong.ShowToast(activity,"连接错误,请重试");

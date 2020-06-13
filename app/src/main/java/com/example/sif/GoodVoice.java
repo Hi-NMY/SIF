@@ -13,20 +13,15 @@ import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.view.animation.ScaleAnimation;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-
+import android.widget.*;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.sif.Lei.MyToolClass.CenterLayoutManager;
 import com.example.sif.Lei.MyToolClass.ShowDiaLog;
 import com.example.sif.Lei.MyToolClass.ToastZong;
+import com.example.sif.Lei.MyToolClass.UpdateShareTask;
 import com.example.sif.Lei.MyVoice.SendVoice;
 import com.example.sif.Lei.MyVoice.VoiceObtain;
 import com.example.sif.Lei.NiceImageView.CircleImageView;
@@ -40,11 +35,10 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
 import com.yarolegovich.discretescrollview.transform.Pivot;
 import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
+import pl.droidsonroids.gif.GifImageView;
 
 import java.io.IOException;
 import java.util.List;
-
-import pl.droidsonroids.gif.GifImageView;
 
 public class GoodVoice extends BaseActivity implements View.OnClickListener {
 
@@ -100,6 +94,7 @@ public class GoodVoice extends BaseActivity implements View.OnClickListener {
                 showDiaLog.closeMyDiaLog();
                 goodVoiceAdapter.addNewVociceMy(newMyVoice);
                 mGvList.setAdapter(goodVoiceAdapter);
+                UpdateShareTask.updateTask(4);
             }catch (Exception e){
                 ToastZong.ShowToast(MyApplication.getContext(),"阿欧，出错了，请重试");
             }

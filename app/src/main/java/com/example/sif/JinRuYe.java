@@ -16,18 +16,15 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.example.sif.Lei.MyToolClass.MyDateClass;
 import com.example.sif.Lei.MyToolClass.ToastZong;
-
+import io.rong.imkit.RongIM;
+import io.rong.imlib.RongIMClient;
+import io.rong.imlib.model.UserInfo;
 import org.litepal.LitePal;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
-import io.rong.imkit.RongIM;
-import io.rong.imlib.RongIMClient;
-import io.rong.imlib.model.UserInfo;
 
 public class JinRuYe extends BaseActivity {
     private RelativeLayout mRL;
@@ -71,6 +68,30 @@ public class JinRuYe extends BaseActivity {
             editor.putBoolean("mYuanxiSwitch",true);
             editor.putBoolean("mZhuanyeSwitch",true);
             editor.putBoolean("mNianjiSwitch",true);
+            editor.commit();
+        }
+
+        SharedPreferences sharedPreferences3 = getSharedPreferences("todayDate",MODE_PRIVATE);
+        boolean a2 = sharedPreferences3.getBoolean("key",false);
+        if (!a2){
+           // SharedPreferences sharedPreferences1 = getSharedPreferences("todayDate",MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences3.edit();
+            editor.putBoolean("key",true);
+            editor.putString("Date","2020-01-01");
+            editor.commit();
+        }
+
+        SharedPreferences sharedPreferences4 = getSharedPreferences("taskNum",MODE_PRIVATE);
+        boolean a3 = sharedPreferences4.getBoolean("key",false);
+        if (!a3){
+            // SharedPreferences sharedPreferences1 = getSharedPreferences("todayDate",MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences4.edit();
+            editor.putBoolean("key",true);
+            editor.putInt("sign",0);
+            editor.putInt("oneDynamic",0);
+            editor.putInt("thumbDynamic",0);
+            editor.putInt("goodVoice",0);
+            editor.putInt("goToSpace",0);
             editor.commit();
         }
 

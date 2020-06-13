@@ -1,10 +1,15 @@
 package com.example.sif.Lei.MyToolClass;
 
+import android.content.SharedPreferences;
+import com.example.sif.MyApplication;
+
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class MyDateClass {
 
@@ -148,5 +153,29 @@ public class MyDateClass {
             num = String.valueOf(i);
         }
         return num;
+    }
+
+    public static boolean compareDate(String date){
+        String nowDate = date.substring(0,10);
+        SharedPreferences sharedPreferences3 = MyApplication.getContext().getSharedPreferences("todayDate",MODE_PRIVATE);
+        String oldDate = sharedPreferences3.getString("Date","");
+        try {
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Calendar c = Calendar.getInstance();
+            c.setTime(simpleDateFormat.parse(nowDate));
+            SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("yyyy-MM-dd");
+            Calendar c1 = Calendar.getInstance();
+            c1.setTime(simpleDateFormat1.parse(oldDate));
+            if (c.equals(c1)){
+                return true;
+            }else {
+                SharedPreferences.Editor editor = sharedPreferences3.edit();
+                editor.putString("Date", nowDate);
+                editor.commit();
+                return false;
+            }
+        } catch (ParseException e) {
+            return true;
+        }
     }
 }

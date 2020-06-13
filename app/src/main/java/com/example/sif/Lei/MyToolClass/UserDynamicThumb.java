@@ -2,19 +2,16 @@ package com.example.sif.Lei.MyToolClass;
 
 import android.os.Handler;
 import android.os.Message;
-
 import com.example.sif.Lei.LianJie.HttpUtil;
 import com.example.sif.NeiBuLei.MyThumb;
-
+import okhttp3.Call;
+import okhttp3.Response;
 import org.jetbrains.annotations.NotNull;
 import org.litepal.LitePal;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
-
-import okhttp3.Call;
-import okhttp3.Response;
 
 public class UserDynamicThumb {
 
@@ -62,6 +59,9 @@ public class UserDynamicThumb {
                 message.what = 1;
                 message.obj = a;
                 handler.sendMessage(message);
+                if (id == 0){
+                    UpdateShareTask.updateTask(3);
+                }
             }
 
             @Override

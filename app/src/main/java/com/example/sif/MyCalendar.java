@@ -53,6 +53,7 @@ public class MyCalendar extends BaseActivity implements View.OnClickListener {
         setBroadcast();
         ObtainServerTime.obtainTime();
         ObtainUserSign.obtainSign(getMyXueHao());
+        ObtainServerTime.compareDate();
 
         //设置状态栏
         ZTL();

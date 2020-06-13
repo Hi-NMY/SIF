@@ -25,10 +25,7 @@ import androidx.core.content.ContextCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import com.example.sif.*;
 import com.example.sif.Lei.LianJie.HttpUtil;
-import com.example.sif.Lei.MyToolClass.MyDateClass;
-import com.example.sif.Lei.MyToolClass.SchoolShopPopupWindow;
-import com.example.sif.Lei.MyToolClass.SelectImage;
-import com.example.sif.Lei.MyToolClass.ToastZong;
+import com.example.sif.Lei.MyToolClass.*;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
@@ -112,6 +109,7 @@ public class FragmentActivityBar extends BaseFragment {
             switch (msg.what) {
                 case 0:
                     if (!msg.obj.equals("1")) {
+                        UpdateShareTask.updateTask(2);
                         localBroadcastManager = LocalBroadcastManager.getInstance(activity);
                         Intent intent = new Intent("shuaG");
                         intent.putExtra("NEW", String.valueOf(msg.obj));
@@ -468,7 +466,8 @@ public class FragmentActivityBar extends BaseFragment {
                         schoolShopPopupWindow.showAtLocation(activity.findViewById(R.id.schoolshop_bar), Gravity.CENTER, 0, 0);
                         break;
                     case 4:
-                        ToastZong.ShowToast(MyApplication.getContext(),"问题");
+                        Intent intent2 = new Intent(activity,SignTrouble.class);
+                        activity.startActivity(intent2);
                         break;
                     default:
                         break;
