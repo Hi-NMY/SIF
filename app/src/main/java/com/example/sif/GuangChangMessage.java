@@ -391,12 +391,14 @@ public class GuangChangMessage extends BaseActivity implements View.OnLayoutChan
         @Override
         public void onReceive(Context context, Intent intent) {
             int a = intent.getIntExtra("textone",0);
-            if (a == 1){
-                myLocationListener = gpsVeryPopupwindow.myGpsClient.obtainListener();
-                gpsVeryPopupwindow.addPlaceList(myLocationListener.msgGpsClasses);
-            }
-            if (a != 1){
-                gpsVeryPopupwindow.errorPlace();
+            if (gpsVeryPopupwindow != null){
+                if (a == 1){
+                    myLocationListener = gpsVeryPopupwindow.myGpsClient.obtainListener();
+                    gpsVeryPopupwindow.addPlaceList(myLocationListener.msgGpsClasses);
+                }
+                if (a != 1){
+                    gpsVeryPopupwindow.errorPlace();
+                }
             }
         }
     }

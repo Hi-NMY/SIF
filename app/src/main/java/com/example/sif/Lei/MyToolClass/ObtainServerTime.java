@@ -19,6 +19,19 @@ import static android.content.Context.MODE_PRIVATE;
 public class ObtainServerTime {
 
     public static ServerTimeNow serverTimeNow;
+
+    static {
+        obtainIsMonday();
+    }
+
+    private static SharedPreferences sharedPreferences;
+    private static SharedPreferences.Editor editor;
+
+    private static void obtainIsMonday() {
+        sharedPreferences = MyApplication.getContext().getSharedPreferences("isMonday",MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+    }
+
     public static void obtainTime(){
         OkHttpClient client = new OkHttpClient.Builder()
                 .connectTimeout(20, TimeUnit.SECONDS)
@@ -33,6 +46,14 @@ public class ObtainServerTime {
                 String a = response.body().string();
                 serverTimeNow = new Gson().fromJson(a,ServerTimeNow.class);
                 int week = Integer.parseInt(MyDateClass.showWeekTable(serverTimeNow.getSysTime2(),1));
+                boolean firstKey = sharedPreferences.getBoolean("firstKey",false);
+                if (week == 2 && !firstKey){
+                    editor.putBoolean("Monday",true);
+                    editor.commit();
+                }else {
+                    editor.putBoolean("Monday",false);
+                    editor.commit();
+                }
                 BroadcastRec.sendReceiver(MyApplication.getContext(),"obtainWeek",week,"");
             }
 

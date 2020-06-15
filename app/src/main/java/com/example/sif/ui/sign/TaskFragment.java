@@ -138,9 +138,7 @@ public class TaskFragment extends BaseFragment {
     private void startFun(int fun,int num){
         switch (num){
             case 1:
-                if (fun == 0){
-
-                }else if (fun == 1){
+                if (fun == 1){
                     clickName = "sign";
                     ObtainUserSign.updateTaskCoin(myXueHao,10,rightStartHanlder);
                     startLoading();
@@ -149,9 +147,7 @@ public class TaskFragment extends BaseFragment {
                 }
                 break;
             case 2:
-                if (fun == 0){
-
-                }else if (fun == 1){
+                if (fun == 1){
                     clickName = "oneDynamic";
                     ObtainUserSign.updateTaskCoin(myXueHao,10,rightStartHanlder);
                     startLoading();
@@ -160,9 +156,7 @@ public class TaskFragment extends BaseFragment {
                 }
                 break;
             case 3:
-                if (fun == 0){
-
-                }else if (fun == 1){
+                if (fun == 1){
                     clickName = "thumbDynamic";
                     ObtainUserSign.updateTaskCoin(myXueHao,10,rightStartHanlder);
                     startLoading();
@@ -171,9 +165,7 @@ public class TaskFragment extends BaseFragment {
                 }
                 break;
             case 4:
-                if (fun == 0){
-
-                }else if (fun == 1){
+                if (fun == 1){
                     clickName = "goodVoice";
                     ObtainUserSign.updateTaskCoin(myXueHao,10,rightStartHanlder);
                     startLoading();
@@ -184,9 +176,7 @@ public class TaskFragment extends BaseFragment {
                 }
                 break;
             case 5:
-                if (fun == 0){
-
-                }else if (fun == 1){
+                if (fun == 1){
                     clickName = "goToSpace";
                     ObtainUserSign.updateTaskCoin(myXueHao,10,rightStartHanlder);
                     startLoading();

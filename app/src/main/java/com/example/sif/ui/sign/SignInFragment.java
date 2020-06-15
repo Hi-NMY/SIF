@@ -38,6 +38,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class SignInFragment extends BaseFragment {
 
     private View view;
@@ -86,6 +88,18 @@ public class SignInFragment extends BaseFragment {
     private String myXueHao;
     private Context context;
     private Activity activity;
+
+    static {
+        obtainIsMonday();
+    }
+
+    private static SharedPreferences sharedPreferences;
+    private static SharedPreferences.Editor editor;
+
+    private static void obtainIsMonday() {
+        sharedPreferences = MyApplication.getContext().getSharedPreferences("isMonday",MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+    }
 
 
     @Nullable
@@ -306,9 +320,13 @@ public class SignInFragment extends BaseFragment {
     }
 
     private int setSign(int a) {
-        String keySign = String.valueOf(ObtainUserSign.keySign);
-        keySign = keySign + a;
-        return Integer.valueOf(keySign);
+        if (!sharedPreferences.getBoolean("Monday",true)){
+            String keySign = String.valueOf(ObtainUserSign.keySign);
+            keySign = keySign + a;
+            return Integer.valueOf(keySign);
+        }else {
+            return a;
+        }
     }
 
     public void changeSignView() {
@@ -336,7 +354,10 @@ public class SignInFragment extends BaseFragment {
                 .append("天")
                 .into(mLongSginDay);
         mLongSginDay.postInvalidate();
-        alreadySign(String.valueOf(userSignClass.getSignday()));
+
+        if (!sharedPreferences.getBoolean("Monday",true)){
+            alreadySign(String.valueOf(userSignClass.getSignday()));
+        }
     }
 
     private void alreadySign(String s) {
@@ -388,6 +409,8 @@ public class SignInFragment extends BaseFragment {
     }
 
     private void showCoinDialog(int i) {
+        editor.putBoolean("firstKey",true);
+        editor.commit();
         RxDialog rxDialog = new RxDialog(context,R.style.tran_dialog);
         View log = LayoutInflater.from(context).inflate(R.layout.coin_layout,null);
         TextView text = log.findViewById(R.id.coin_size);

@@ -47,55 +47,7 @@ public class JinRuYe extends BaseActivity {
         //父类状态栏方法
         ZTL();
 
-        SharedPreferences sharedPreferences = getSharedPreferences("settingMessage",MODE_PRIVATE);
-        boolean a = sharedPreferences.getBoolean("key",false);
-        if (!a){
-            SharedPreferences sharedPreferences1 = getSharedPreferences("settingMessage",MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences1.edit();
-            editor.putBoolean("key",true);
-            editor.putBoolean("thumb",true);
-            editor.putBoolean("comment",true);
-            editor.putBoolean("follow",true);
-            editor.putBoolean("sound",true);
-            editor.commit();
-        }
-        SharedPreferences sharedPreferences2 = getSharedPreferences("privacySetting",MODE_PRIVATE);
-        boolean a1 = sharedPreferences2.getBoolean("key",false);
-        if (!a1){
-            SharedPreferences sharedPreferences1 = getSharedPreferences("privacySetting",MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences1.edit();
-            editor.putBoolean("key",true);
-            editor.putBoolean("mYuanxiSwitch",true);
-            editor.putBoolean("mZhuanyeSwitch",true);
-            editor.putBoolean("mNianjiSwitch",true);
-            editor.commit();
-        }
-
-        SharedPreferences sharedPreferences3 = getSharedPreferences("todayDate",MODE_PRIVATE);
-        boolean a2 = sharedPreferences3.getBoolean("key",false);
-        if (!a2){
-           // SharedPreferences sharedPreferences1 = getSharedPreferences("todayDate",MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences3.edit();
-            editor.putBoolean("key",true);
-            editor.putString("Date","2020-01-01");
-            editor.commit();
-        }
-
-        SharedPreferences sharedPreferences4 = getSharedPreferences("taskNum",MODE_PRIVATE);
-        boolean a3 = sharedPreferences4.getBoolean("key",false);
-        if (!a3){
-            // SharedPreferences sharedPreferences1 = getSharedPreferences("todayDate",MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences4.edit();
-            editor.putBoolean("key",true);
-            editor.putInt("sign",0);
-            editor.putInt("oneDynamic",0);
-            editor.putInt("thumbDynamic",0);
-            editor.putInt("goodVoice",0);
-            editor.putInt("goToSpace",0);
-            editor.commit();
-        }
-
-
+        setShare();
 
         int key = getIntent().getIntExtra("key",1);
 
@@ -260,6 +212,63 @@ public class JinRuYe extends BaseActivity {
             }
         };
         thread.start();
+
+    }
+
+    private void setShare(){
+        SharedPreferences sharedPreferences = getSharedPreferences("settingMessage",MODE_PRIVATE);
+        boolean a = sharedPreferences.getBoolean("key",false);
+        if (!a){
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("key",true);
+            editor.putBoolean("thumb",true);
+            editor.putBoolean("comment",true);
+            editor.putBoolean("follow",true);
+            editor.putBoolean("sound",true);
+            editor.commit();
+        }
+        SharedPreferences sharedPreferences2 = getSharedPreferences("privacySetting",MODE_PRIVATE);
+        boolean a1 = sharedPreferences2.getBoolean("key",false);
+        if (!a1){
+            SharedPreferences.Editor editor = sharedPreferences2.edit();
+            editor.putBoolean("key",true);
+            editor.putBoolean("mYuanxiSwitch",true);
+            editor.putBoolean("mZhuanyeSwitch",true);
+            editor.putBoolean("mNianjiSwitch",true);
+            editor.commit();
+        }
+
+        SharedPreferences sharedPreferences3 = getSharedPreferences("todayDate",MODE_PRIVATE);
+        boolean a2 = sharedPreferences3.getBoolean("key",false);
+        if (!a2){
+            SharedPreferences.Editor editor = sharedPreferences3.edit();
+            editor.putBoolean("key",true);
+            editor.putString("Date","2020-01-01");
+            editor.commit();
+        }
+
+        SharedPreferences sharedPreferences4 = getSharedPreferences("taskNum",MODE_PRIVATE);
+        boolean a3 = sharedPreferences4.getBoolean("key",false);
+        if (!a3){
+            SharedPreferences.Editor editor = sharedPreferences4.edit();
+            editor.putBoolean("key",true);
+            editor.putInt("sign",0);
+            editor.putInt("oneDynamic",0);
+            editor.putInt("thumbDynamic",0);
+            editor.putInt("goodVoice",0);
+            editor.putInt("goToSpace",0);
+            editor.commit();
+        }
+
+        SharedPreferences sharedPreferences5 = getSharedPreferences("isMonday",MODE_PRIVATE);
+        boolean a5 = sharedPreferences5.getBoolean("key",false);
+        if (!a5){
+            SharedPreferences.Editor editor = sharedPreferences5.edit();
+            editor.putBoolean("key",true);
+            editor.putBoolean("Monday",false);
+            editor.putBoolean("firstKey",false);
+            editor.commit();
+        }
 
     }
 
