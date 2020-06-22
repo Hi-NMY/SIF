@@ -26,6 +26,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.sif.Lei.GPSServer.MyLocationListener;
+import com.example.sif.Lei.GPSServer.SearchGps;
 import com.example.sif.Lei.MyBroadcastReceiver.BroadcastRec;
 import com.example.sif.Lei.MyToolClass.*;
 import com.example.sif.Lei.ShiPeiQi.GuangChangMessageImageList;
@@ -395,8 +396,9 @@ public class GuangChangMessage extends BaseActivity implements View.OnLayoutChan
                 if (a == 1){
                     myLocationListener = gpsVeryPopupwindow.myGpsClient.obtainListener();
                     gpsVeryPopupwindow.addPlaceList(myLocationListener.msgGpsClasses);
-                }
-                if (a != 1){
+                }else if (a == 2){
+                    gpsVeryPopupwindow.addPlaceList(SearchGps.searchMsgGps);
+                }else if (a != 1 && a!= 2){
                     gpsVeryPopupwindow.errorPlace();
                 }
             }

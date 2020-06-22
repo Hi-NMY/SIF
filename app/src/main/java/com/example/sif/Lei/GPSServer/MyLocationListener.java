@@ -16,6 +16,7 @@ public class MyLocationListener extends BDAbstractLocationListener {
     private String name = "";
     public List<MsgGpsClass> msgGpsClasses;
     private MsgGpsClass msgGpsClass;
+    public String nowCity;
 
     @Override
     public void onReceiveLocation(BDLocation bdLocation) {
@@ -70,6 +71,7 @@ public class MyLocationListener extends BDAbstractLocationListener {
                 msgGpsClasses.add(msgGpsClass);
             }else if (i == 1){
                 msgGpsClass = new MsgGpsClass();
+                nowCity = bdLocation.getCity();
                 msgGpsClass.setPlaceName(bdLocation.getCity());
                 msgGpsClass.setPlaceDetailed("");
                 msgGpsClasses.add(msgGpsClass);

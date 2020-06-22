@@ -11,15 +11,9 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.PopupWindow;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-
+import android.widget.*;
 import androidx.core.content.ContextCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-
 import com.example.sif.Lei.LianJie.HttpUtil;
 import com.example.sif.NeiBuLei.BlockLabel;
 import com.example.sif.R;
@@ -28,20 +22,14 @@ import com.google.gson.reflect.TypeToken;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
 import com.zhy.view.flowlayout.TagFlowLayout;
-
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
+import java.util.*;
 
 public class VeryPopupWindow extends PopupWindow implements View.OnClickListener {
     private Context context;
@@ -148,7 +136,6 @@ public class VeryPopupWindow extends PopupWindow implements View.OnClickListener
         }else {
             editor.putString("b", String.valueOf(stringBuffer)+s);
         }
-
         editor.commit();
     }
 

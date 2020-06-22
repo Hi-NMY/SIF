@@ -30,4 +30,8 @@ public class MyGpsClient {
         return locationListener;
     }
 
+    public String obtainNowCity(){
+        return locationListener.nowCity;
+    }
+
 }

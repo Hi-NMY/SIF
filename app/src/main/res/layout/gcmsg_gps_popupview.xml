@@ -54,39 +54,53 @@
 
         <RelativeLayout
                 android:id="@+id/gps_search"
+                android:background="@color/beijing"
+                android:paddingTop="15dp"
+                android:paddingBottom="5dp"
+                android:layout_marginLeft="-20dp"
+                android:layout_marginRight="-20dp"
                 android:layout_below="@id/r"
-                android:focusable="true"
-                android:layout_marginTop="15dp"
-                android:focusableInTouchMode="true"
-                android:layout_centerInParent="true"
-                android:background="@drawable/search_bg"
                 android:layout_width="match_parent"
-                android:layout_height="35dp">
+                android:layout_height="wrap_content">
 
-            <ImageView
-                    android:id="@+id/search_image"
-                    android:layout_marginLeft="5dp"
-                    android:layout_centerVertical="true"
-                    android:background="@drawable/search"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"/>
-
-            <EditText
-                    android:id="@+id/search_message"
-                    android:textSize="@dimen/biaotilan_xiaozi"
-                    android:hint="点击搜索地点"
-                    android:maxLines="1"
-                    android:maxLength="25"
-                    android:inputType="text"
-                    android:textColor="@color/ziti"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_toRightOf="@id/search_image"
-                    android:background="@null"
+            <RelativeLayout
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_centerHorizontal="true"
+                    android:focusableInTouchMode="true"
+                    android:background="@drawable/search_bg"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="35dp">
+
+                <ImageView
+                        android:id="@+id/search_image"
+                        android:layout_marginLeft="5dp"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/search"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"/>
+
+                <EditText
+                        android:id="@+id/search_message"
+                        android:textSize="@dimen/biaotilan_xiaozi"
+                        android:hint="点击搜索地点"
+                        android:maxLines="1"
+                        android:maxLength="20"
+                        android:maxEms="20"
+                        android:inputType="text"
+                        android:focusable="false"
+                        android:textColor="@color/ziti"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_toRightOf="@id/search_image"
+                        android:background="@null"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+
+            </RelativeLayout>
 
         </RelativeLayout>
+
 
         <pl.droidsonroids.gif.GifImageView
                 android:id="@+id/loaging_gps"
