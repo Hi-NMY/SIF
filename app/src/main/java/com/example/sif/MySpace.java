@@ -96,6 +96,7 @@ public class MySpace extends BaseActivity implements View.OnClickListener {
     private RelativeLayout privacyNian;
     private RelativeLayout privater;
     private Button privateUserButton;
+    private TextView mlongDayText;
 
     private String uName;
     private String uXingBie;
@@ -168,7 +169,6 @@ public class MySpace extends BaseActivity implements View.OnClickListener {
         //增加padding  避免状态栏遮挡
         setPadding(this, mMySpaceCoor);
 
-//
         //移动监听
         moveListener(mAppBarLayout);
 
@@ -324,6 +324,15 @@ public class MySpace extends BaseActivity implements View.OnClickListener {
         N = (privacy.substring(2,3).equals("0"))? true : false;
     }
 
+    private Handler newLongDayHanlder = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            mlongDayText.setVisibility(View.VISIBLE);
+            mlongDayText.setText(longDay+"天");
+        }
+    };
+    private String longDay;
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void xieru() {
         mMySpaceUserName.setText(uName);
@@ -349,6 +358,20 @@ public class MySpace extends BaseActivity implements View.OnClickListener {
             privacyNian.setVisibility(View.VISIBLE);
             textUserBan.setText(uNianJi);
         }
+
+        HttpUtil.obtainUserLongDay("http://nmy1206.natapp1.cc/ObtainUserLongDay.php",uXueHao, new okhttp3.Callback() {
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                longDay = response.body().string();
+                newLongDayHanlder.sendMessage(new Message());
+            }
+
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+
+            }
+        });
+
 
         mMySpaceUserZhaoHu.setText(uGeQian);
         mMySpaceUserName.postInvalidate();
@@ -388,6 +411,7 @@ public class MySpace extends BaseActivity implements View.OnClickListener {
         privacyZhuan = (RelativeLayout)findViewById(R.id.privacy_zhuan);
         privater = (RelativeLayout)findViewById(R.id.private_r);
         privateUserButton = (Button) findViewById(R.id.private_user_button);
+        mlongDayText = (TextView)findViewById(R.id.longDay_text);
 
         privateUserButton.setOnClickListener(this);
         imageFollow.setOnClickListener(this);

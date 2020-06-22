@@ -88,6 +88,58 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <RelativeLayout
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                    <TextView
+                            android:id="@+id/longDay_text"
+                            android:visibility="invisible"
+                            android:layout_centerHorizontal="true"
+                            android:paddingTop="1dp"
+                            android:paddingBottom="1dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:gravity="center"
+                            android:background="@drawable/myspace_day_bg"
+                            android:text="120天"
+                            android:textSize="@dimen/biaotilan_chaoxiao"
+                            android:textColor="@color/beijing"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                    <TextView
+                            android:layout_centerHorizontal="true"
+                            android:paddingTop="1dp"
+                            android:paddingBottom="1dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:gravity="center"
+                            android:text=""
+                            android:textSize="@dimen/biaotilan_chaoxiao"
+                            android:textColor="@color/beijing"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                </RelativeLayout>
+
+
+
+            </LinearLayout>
+
             <RelativeLayout
                 android:id="@+id/R"
                 android:layout_marginTop="60dp"

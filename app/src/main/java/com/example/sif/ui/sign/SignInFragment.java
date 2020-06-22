@@ -211,7 +211,7 @@ public class SignInFragment extends BaseFragment {
             BroadcastRec.sendReceiver(MyApplication.getContext(),"obtainTask",0,"");
             mLongSginDay = view.findViewById(R.id.long_sgin_day);
             RxTextTool.getBuilder("")
-                    .append("已连续打卡")
+                    .append("已累计在线")
                     .append(String.valueOf(nowLongDay + 1))
                     .setForegroundColor(MyApplication.getContext().getColor(R.color.yanghong))
                     .append("天")
@@ -348,7 +348,7 @@ public class SignInFragment extends BaseFragment {
         mLongSginDay = view.findViewById(R.id.long_sgin_day);
         nowLongDay = userSignClass.getLongday();
         RxTextTool.getBuilder("")
-                .append("已连续打卡")
+                .append("已累计在线")
                 .append(String.valueOf(userSignClass.getLongday()))
                 .setForegroundColor(MyApplication.getContext().getColor(R.color.yanghong))
                 .append("天")
@@ -436,6 +436,8 @@ public class SignInFragment extends BaseFragment {
             if (nowWeek != -1) {
                 if (nowWeek == 1) {
                     nowWeek = 7;
+                    editor.putBoolean("firstKey",true);
+                    editor.commit();
                 } else if (nowWeek > 1) {
                     nowWeek -= 1;
                 }

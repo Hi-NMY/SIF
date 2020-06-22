@@ -47,7 +47,7 @@ public class ObtainServerTime {
                 serverTimeNow = new Gson().fromJson(a,ServerTimeNow.class);
                 int week = Integer.parseInt(MyDateClass.showWeekTable(serverTimeNow.getSysTime2(),1));
                 boolean firstKey = sharedPreferences.getBoolean("firstKey",false);
-                if (week == 2 && !firstKey){
+                if (week >= 2 && !firstKey){
                     editor.putBoolean("Monday",true);
                     editor.commit();
                 }else {

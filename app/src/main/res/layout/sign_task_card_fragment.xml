@@ -60,7 +60,7 @@
                         android:id="@+id/task_text"
                         android:textSize="@dimen/biaotilan_title"
                         android:textColor="@color/ziti"
-                        android:text="每日签到"
+                        android:text="每日打卡"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
