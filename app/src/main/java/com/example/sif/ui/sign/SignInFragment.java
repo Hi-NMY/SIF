@@ -217,6 +217,7 @@ public class SignInFragment extends BaseFragment {
                     .append("天")
                     .into(mLongSginDay);
             mLongSginDay.postInvalidate();
+            nowLongDay += 1;
         }
     };
 
@@ -287,6 +288,15 @@ public class SignInFragment extends BaseFragment {
             patchDialog.closeMyDiaLog();
             startSign(a);
             obtainUserCoin();
+            mLongSginDay = view.findViewById(R.id.long_sgin_day);
+            RxTextTool.getBuilder("")
+                    .append("已累计在线")
+                    .append(String.valueOf(nowLongDay + 1))
+                    .setForegroundColor(MyApplication.getContext().getColor(R.color.yanghong))
+                    .append("天")
+                    .into(mLongSginDay);
+            mLongSginDay.postInvalidate();
+            nowLongDay += 1;
         }
     };
 
