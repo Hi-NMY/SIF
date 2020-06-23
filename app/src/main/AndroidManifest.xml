@@ -31,6 +31,8 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             android:usesCleartextTraffic="true">
+        <activity android:name=".SearchNewUser">
+        </activity>
         <activity android:name=".SignTrouble">
         </activity>
         <activity android:name=".UserHomeShop"/>

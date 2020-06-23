@@ -6,16 +6,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Point;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextPaint;
 import android.text.TextUtils;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -469,12 +467,31 @@ public class FragmentActivityBar extends BaseFragment {
                         Intent intent2 = new Intent(activity,SignTrouble.class);
                         activity.startActivity(intent2);
                         break;
+                    case 5:
+                        MessageAddDialog messageAddDialog = new MessageAddDialog(getActivity(), R.layout.message_add_dialog);
+                        Window dialogWindow = messageAddDialog.getWindow();
+                        WindowManager.LayoutParams lp = dialogWindow.getAttributes();
+                        dialogWindow.setGravity(Gravity.LEFT | Gravity.TOP);
+                        lp.x = getScreenWidth(getActivity()) - 402;// dialog窗口 X坐标
+                        lp.y = 120; // dialog窗口 Y坐标
+                        dialogWindow.setAttributes(lp);
+                        messageAddDialog.showDialog();
+                        break;
                     default:
                         break;
                 }
             }
         });
 
+    }
+
+    public static int getScreenWidth(Activity context){
+        Display defaultDisplay = context.getWindowManager().getDefaultDisplay();
+        Point point = new Point();
+        defaultDisplay.getSize(point);
+        int x = point.x;
+        int y = point.y;
+        return x;
     }
 
     private int REQUEST_CODE = 1000;

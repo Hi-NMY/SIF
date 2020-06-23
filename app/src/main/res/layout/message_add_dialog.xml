@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    <RelativeLayout
+            android:paddingTop="30dp"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:paddingBottom="20dp"
+            android:background="@drawable/add_dialog_gb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        <RelativeLayout
+                android:id="@+id/add_fun_one"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            <ImageView
+                    android:id="@+id/img1"
+                    android:background="@drawable/add_user"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"/>
+
+            <TextView
+                    android:gravity="center"
+                    android:layout_alignBottom="@id/img1"
+                    android:layout_alignTop="@id/img1"
+                    android:layout_toRightOf="@+id/img1"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="@dimen/biaotilan_xiaozi"
+                    android:textColor="@color/ziti"
+                    android:text="加关注"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

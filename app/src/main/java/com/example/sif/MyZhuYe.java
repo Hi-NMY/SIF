@@ -242,7 +242,7 @@ public class MyZhuYe extends BaseActivity implements View.OnClickListener {
         biaoTi(fragmentActivityBar, this, "fonts/impact.ttf", FONTSIZE1);
         fragmentActivityBar.showZuJian(this, true, false, true, false, false, true, true);
         fragmentActivityBar.showZuJianUI(R.drawable.wode_blue, null, "消息", null, R.drawable.jiahao_black, R.drawable.saoma);
-        fragmentActivityBar.showUiFunction(2, 0, 0, 0, 0, 0, 1);
+        fragmentActivityBar.showUiFunction(2, 0, 0, 0, 0, 5, 1);
         fragmentActivityBar.barBackground(R.color.beijing);
         fragmentKey = 3;
         fragmentActivityBar.messageNotice(false);

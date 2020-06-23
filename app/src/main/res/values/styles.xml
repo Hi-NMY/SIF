@@ -37,6 +37,18 @@
         <item name="android:windowExitAnimation">@anim/verypop</item>
     </style>
 
+    <style name="adddialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item><!--边框 -->
+        <item name="android:windowIsFloating">true</item><!--是否浮现在activity之上 -->
+        <item name="android:windowIsTranslucent">true</item><!--半透明 -->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowAnimationStyle">@style/MyPopuoWindow</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:backgroundDimAmount">0.4</item>
+        <item name="android:windowBackground">@color/transparent</item>
+    </style>
+
 <style name="FruitActivityTheme" parent="AppTheme">
 
 </style>
