@@ -950,6 +950,22 @@ public class HttpUtil {
         client.newCall(request).enqueue(callback);
     }
 
+    public static void obtainUser(String path,String key, okhttp3.Callback callback){
+        RequestBody requestBody = new FormBody.Builder()
+                .add("key", key)
+                .build();
+        OkHttpClient client = new OkHttpClient.Builder()
+                .retryOnConnectionFailure(true)
+                .connectTimeout(20, TimeUnit.SECONDS)
+                .readTimeout(20,TimeUnit.SECONDS)
+                .build();
+        Request request = new Request.Builder()
+                .url(path)
+                .post(requestBody)
+                .build();
+        client.newCall(request).enqueue(callback);
+    }
+
     private void sendOutInternet(String path){
 
     }
