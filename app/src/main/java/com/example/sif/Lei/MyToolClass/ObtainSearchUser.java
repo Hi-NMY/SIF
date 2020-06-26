@@ -4,6 +4,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import com.example.sif.Lei.LianJie.HttpUtil;
+import com.example.sif.Lei.MyBroadcastReceiver.BroadcastRec;
 import com.example.sif.MyApplication;
 import com.example.sif.NeiBuLei.FollowList;
 import com.google.gson.Gson;
@@ -35,7 +36,7 @@ public class ObtainSearchUser {
                     String a = response.body().string();
                     followLists = new Gson().fromJson(a,new TypeToken<List<FollowList>>()
                     {}.getType());
-                    handler.sendMessage(new Message());
+                    BroadcastRec.sendReceiver(MyApplication.getContext(),"searchNewUser",0,"");
                 }catch (Exception e){
                     handler.sendMessage(new Message());
                 }

@@ -329,7 +329,11 @@ public class MySpace extends BaseActivity implements View.OnClickListener {
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             mlongDayText.setVisibility(View.VISIBLE);
-            mlongDayText.setText(longDay+"天");
+            if (longDay.equals("") || longDay.equals("0")){
+                mlongDayText.setVisibility(View.INVISIBLE);
+            }else {
+                mlongDayText.setText(longDay+"天");
+            }
         }
     };
     private String longDay;

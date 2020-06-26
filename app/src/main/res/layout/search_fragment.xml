@@ -27,6 +27,7 @@
 
         <EditText
             android:id="@+id/search_message"
+            android:imeOptions="actionSearch"
             android:textSize="@dimen/biaotilan_xiaozi"
             android:hint="请搜索街区"
             android:maxLines="1"

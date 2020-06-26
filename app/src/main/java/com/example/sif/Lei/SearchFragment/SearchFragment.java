@@ -1,15 +1,20 @@
 package com.example.sif.Lei.SearchFragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -61,7 +66,15 @@ public class SearchFragment extends BaseFragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                if (s.toString().contains(" ")) {
+                    String[] str = s.toString().split(" ");
+                    StringBuffer sb = new StringBuffer();
+                    for (int i = 0; i < str.length; i++) {
+                        sb.append(str[i]);
+                    }
+                    mSearchMessage.setText(sb.toString());
+                    mSearchMessage.setSelection(start);
+                }
             }
 
             @Override
@@ -71,24 +84,42 @@ public class SearchFragment extends BaseFragment {
                     mSearchMessage.setSelection(mSearchMessage.getText().length());
                     mSearchMessage.addTextChangedListener(this);
 
-                    if (fun == 1){
-                        localBroadcastManager = LocalBroadcastManager.getInstance(MyApplication.getContext());
-                        Intent intent = new Intent("searchIbZong");
-                        intent.putExtra("id",-2);
-                        intent.putExtra("blockname",mSearchMessage.getText().toString().trim());
-                        localBroadcastManager.sendBroadcast(intent);
-                    }
-
-                    if (fun == 2){
-                        localBroadcastManager = LocalBroadcastManager.getInstance(MyApplication.getContext());
-                        Intent intent = new Intent("searchIbMy");
-                        intent.putExtra("id",-2);
-                        intent.putExtra("blockname",mSearchMessage.getText().toString().trim());
-                        localBroadcastManager.sendBroadcast(intent);
+                    if (mSearchMessage.getText().toString().trim().equals("")){
+                        hideKeyboard(mSearchMessage,1);
+                        sendMessage();
                     }
                 }
         });
+
+        mSearchMessage.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    hideKeyboard(mSearchMessage,1);
+                    sendMessage();
+                }
+                return false;
+            }
+        });
         return view;
+    }
+
+    private void sendMessage(){
+        if (fun == 1){
+            localBroadcastManager = LocalBroadcastManager.getInstance(MyApplication.getContext());
+            Intent intent = new Intent("searchIbZong");
+            intent.putExtra("id",-2);
+            intent.putExtra("blockname",mSearchMessage.getText().toString().trim());
+            localBroadcastManager.sendBroadcast(intent);
+        }
+
+        if (fun == 2){
+            localBroadcastManager = LocalBroadcastManager.getInstance(MyApplication.getContext());
+            Intent intent = new Intent("searchIbMy");
+            intent.putExtra("id",-2);
+            intent.putExtra("blockname",mSearchMessage.getText().toString().trim());
+            localBroadcastManager.sendBroadcast(intent);
+        }
     }
 
     private void thisFun(){
@@ -97,6 +128,15 @@ public class SearchFragment extends BaseFragment {
         }
         if (fragment instanceof FragmentIbMe){
             fun = 2;
+        }
+    }
+
+    private void hideKeyboard(View v, int i) {
+        InputMethodManager inputMethodManager = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (i == 1) {
+            inputMethodManager.hideSoftInputFromWindow(v.getApplicationWindowToken(), 0);
+        } else {
+            inputMethodManager.showSoftInput(v, 0);
         }
     }
 
