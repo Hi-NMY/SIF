@@ -8,11 +8,12 @@
 
     <RelativeLayout
         android:layout_centerHorizontal="true"
-        android:layout_width="330dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/activitybar_left"
+            android:layout_marginLeft="@dimen/guangchangimage_left"
             android:layout_width= "25dp"
             android:layout_height="25dp"
             android:layout_centerVertical="true"
@@ -20,6 +21,7 @@
 
         <TextView
             android:id="@+id/activitybar_right"
+            android:layout_marginRight="@dimen/guangchangimage_left"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_alignParentRight="true"
@@ -30,6 +32,7 @@
 
         <View
             android:id="@+id/view_noticemessage"
+            android:layout_marginRight="@dimen/guangchangimage_left"
             android:visibility="invisible"
             android:layout_marginTop="10dp"
             android:layout_alignParentRight="true"
@@ -39,6 +42,7 @@
 
         <TextView
             android:id="@+id/activitybar_textright"
+            android:layout_marginRight="@dimen/guangchangimage_left"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
             android:layout_alignParentRight="true"

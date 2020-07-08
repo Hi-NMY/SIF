@@ -90,6 +90,7 @@
         android:layout_height="60dp"
         android:layout_below="@id/celan_R"
         android:gravity="center"
+        android:textColor="@color/ziti"
         android:text="Hello SIF Welcome欢迎来到SIF"
         android:textSize="@dimen/biaotilan_title" />
 

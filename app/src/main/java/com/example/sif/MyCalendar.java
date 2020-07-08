@@ -80,7 +80,7 @@ public class MyCalendar extends BaseActivity implements View.OnClickListener {
         FragmentActivityBar fragmentActivityBar = (FragmentActivityBar) getSupportFragmentManager().findFragmentById(R.id.calendar_bar);
         mCalendarBar.bringToFront();
         ShowActivityBars showActivityBars = new ShowActivityBars(this, fragmentActivityBar);
-        showActivityBars.showKongJian(true, false, true, false, false, true, false);
+        showActivityBars.showKongJian(true, false, true,false, false, true, false);
         showActivityBars.showUI(R.drawable.zuo_white, null, "每日任务", null, R.drawable.question_mark_white, 0);
         showActivityBars.uiFunction(1, 0, 0, 0, 0, 4, 0);
         showActivityBars.barBackground1(Color.TRANSPARENT);

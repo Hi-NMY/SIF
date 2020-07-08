@@ -472,7 +472,7 @@ public class FragmentActivityBar extends BaseFragment {
                         Window dialogWindow = messageAddDialog.getWindow();
                         WindowManager.LayoutParams lp = dialogWindow.getAttributes();
                         dialogWindow.setGravity(Gravity.LEFT | Gravity.TOP);
-                        lp.x = getScreenWidth(getActivity()) - 402;// dialog窗口 X坐标
+                        lp.x = getScreenWidth(getActivity()) - lp.width - 330;// dialog窗口 X坐标
                         lp.y = 120; // dialog窗口 Y坐标
                         dialogWindow.setAttributes(lp);
                         messageAddDialog.showDialog();

@@ -1,26 +1,34 @@
 package com.example.sif.Lei.MyToolClass;
 
-import android.util.Base64;
+import com.example.sif.Lei.sun.misc.BASE64Decoder;
+import com.example.sif.Lei.sun.misc.BASE64Encoder;
 
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.DESedeKeySpec;
+import javax.crypto.spec.DESKeySpec;
+import java.security.SecureRandom;
 
 public class DataEncryption {
 
-    private static final String PASSWORD_ENC_SECRET = "usermessage";
+    private static final byte[] DES_KEY = { 19, 99, -12, -6, -126, -126, 126, 06 };
+    private static boolean[] bcdLookup;
 
     //加密
     public static String encryptString(String s){
         try {
-            DESedeKeySpec keySpec = new DESedeKeySpec(PASSWORD_ENC_SECRET.getBytes("UTF-8"));
+            // 创建随机数源
+            SecureRandom sr = new SecureRandom();
+            DESKeySpec deskey = new DESKeySpec(DES_KEY);
+            // 创建密钥工厂，并转化为对象
             SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES");
-            SecretKey secretKey = keyFactory.generateSecret(keySpec);
+            SecretKey key = keyFactory.generateSecret(deskey);
+            // 加密
             Cipher cipher = Cipher.getInstance("DES");
-            cipher.init(Cipher.ENCRYPT_MODE,secretKey);
-            String encrypedPwd = Base64.encodeToString(cipher.doFinal(s.getBytes("UTF-8")),Base64.DEFAULT);
-            return encrypedPwd;
+            cipher.init(Cipher.ENCRYPT_MODE, key, sr);
+            // 加密，并把字节数组编码成字符串
+            String encryptedData = new BASE64Encoder().encode(cipher.doFinal(s.getBytes()));
+            return encryptedData;
         } catch (Exception e) {
 
         }
@@ -30,19 +38,22 @@ public class DataEncryption {
     //解密
     public static String decryptString(String s){
         try {
-            DESedeKeySpec keySpec = new DESedeKeySpec(PASSWORD_ENC_SECRET.getBytes("UTF-8"));
+            String decryptedData = null;
+            // 创建随机数源
+            SecureRandom sr = new SecureRandom();
+            DESKeySpec deskey = new DESKeySpec(DES_KEY);
+            // 创建密钥工厂，并转化为对象
             SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES");
-            SecretKey secretKey = keyFactory.generateSecret(keySpec);
-
-            byte[] encryptedWithoutB64 = Base64.decode(s,Base64.DEFAULT);
+            SecretKey key = keyFactory.generateSecret(deskey);
+            // 进行解密
             Cipher cipher = Cipher.getInstance("DES");
-            cipher.init(Cipher.ENCRYPT_MODE,secretKey);
-            byte[] plainTextPwdBytes = cipher.doFinal(encryptedWithoutB64);
-            return new String(plainTextPwdBytes);
+            cipher.init(Cipher.DECRYPT_MODE, key, sr);
+            decryptedData = new String(cipher.doFinal(new BASE64Decoder().decodeBuffer(s)));
+            return decryptedData;
         } catch (Exception e) {
 
         }
-        return s;
+        return "";
     }
 
 }
