@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.example.sif.Lei.MyToolClass.InValues;
 import com.example.sif.Lei.MyToolClass.ObtainUser;
 import com.example.sif.Lei.MyToolClass.ToastZong;
 import com.example.sif.Lei.NiceImageView.CircleImageView;
@@ -112,7 +113,7 @@ public class UFollowAdapter extends RecyclerView.Adapter<UFollowAdapter.ViewHold
         }
 
         Glide.with(activity)
-                .load("http://nmy1206.natapp1.cc/UserImageServer/"+followList.getXuehao()+"/HeadImage/myHeadImage.png")
+                .load(InValues.send(R.string.httpHeader) +"/UserImageServer/"+followList.getXuehao()+"/HeadImage/myHeadImage.png")
                 .placeholder(R.drawable.nostartimage_three)
                 .fallback(R.drawable.defaultheadimage)
                 .error(R.drawable.defaultheadimage)

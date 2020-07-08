@@ -18,6 +18,7 @@ import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 import com.example.sif.Lei.LianJie.HttpUtil;
 import com.example.sif.Lei.LianJie.ShuJuLianJie;
+import com.example.sif.Lei.MyToolClass.InValues;
 import com.example.sif.Lei.MyToolClass.SendUserIp;
 import com.example.sif.Lei.MyToolClass.ToastZong;
 import com.example.sif.Lei.ShowActivityBar.FragmentActivityBar;
@@ -76,7 +77,7 @@ public class MyDengLu2 extends BaseActivity implements View.OnClickListener {
                                     editor.putString("userId",getMyXueHao());
                                     editor.putString("token",getMyToken());
                                     editor.commit();
-                                    UserInfo userInfo = new UserInfo(getMyXueHao(), getMyUserName(), Uri.parse("http://nmy1206.natapp1.cc/UserImageServer/"+getMyXueHao()+"/HeadImage/myHeadImage.png"));
+                                    UserInfo userInfo = new UserInfo(getMyXueHao(), getMyUserName(), Uri.parse(InValues.send(R.string.httpHeader) +"/UserImageServer/"+getMyXueHao()+"/HeadImage/myHeadImage.png"));
                                     RongIM.getInstance().setCurrentUserInfo(userInfo);
 //                                    RongIM.setUserInfoProvider(new RongIM.UserInfoProvider() {
 //                                        @Override
@@ -185,7 +186,7 @@ public class MyDengLu2 extends BaseActivity implements View.OnClickListener {
                     }
                     if (userMima != null) {
                         showDiaLog(this, R.drawable.loading2);
-                        ShuJuLianJie shuJuLianJie = new ShuJuLianJie(MyDengLu2.this, path, "POST", handler);
+                        ShuJuLianJie shuJuLianJie = new ShuJuLianJie(MyDengLu2.this, InValues.send(R.string.XueSheng_YanZheng2), "POST", handler);
                         ExecutorService executorService = Executors.newFixedThreadPool(15);
                         executorService.execute(new Runnable() {
                             @Override
@@ -195,7 +196,7 @@ public class MyDengLu2 extends BaseActivity implements View.OnClickListener {
                                 sendUserFollow(1, zhanghao);
                                 sendUserFollowList(1, zhanghao);
                                 sendUserFollowToMe(1, zhanghao);
-                                HttpUtil.myFollow(path2, 0, getMyXueHao(), "", new Callback() {
+                                HttpUtil.myFollow(InValues.send(R.string.UserFollowToMe), 0, getMyXueHao(), "", new Callback() {
                                     @Override
                                     public void onFailure(@NotNull Call call, @NotNull IOException e) {
 

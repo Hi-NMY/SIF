@@ -11,6 +11,7 @@ import com.example.sif.MyApplication;
 import com.example.sif.MySpace;
 import com.example.sif.NeiBuLei.User;
 import com.example.sif.NeiBuLei.UserSchool;
+import com.example.sif.R;
 import com.google.gson.Gson;
 import okhttp3.Call;
 import okhttp3.Response;
@@ -77,7 +78,7 @@ public class ObtainUser {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
         String path2 = "http://nmy1206.natapp1.cc/User.php";
-        HttpUtil.sendOkHttpPost(path2,xuehao, new okhttp3.Callback() {
+        HttpUtil.sendOkHttpPost(InValues.send(R.string.User),xuehao, new okhttp3.Callback() {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 String a = response.body().string();
@@ -105,7 +106,7 @@ public class ObtainUser {
         });
 
         String path3 = "http://nmy1206.natapp1.cc/UserSchool.php";
-        HttpUtil.sendOkHttpPost(path3,xuehao, new okhttp3.Callback() {
+        HttpUtil.sendOkHttpPost(InValues.send(R.string.UserSchool),xuehao, new okhttp3.Callback() {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 String a = response.body().string();

@@ -10,17 +10,18 @@ import android.os.Message;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-
 import com.bigkoo.pickerview.builder.TimePickerBuilder;
 import com.bigkoo.pickerview.listener.OnTimeSelectListener;
 import com.bigkoo.pickerview.view.TimePickerView;
 import com.example.sif.Lei.LianJie.HttpUtil;
-import com.example.sif.Lei.ShowActivityBar.FragmentActivityBar;
+import com.example.sif.Lei.MyToolClass.InValues;
 import com.example.sif.Lei.MyToolClass.ToastZong;
-
+import com.example.sif.Lei.ShowActivityBar.FragmentActivityBar;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
@@ -29,10 +30,6 @@ import java.net.SocketTimeoutException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
 
 public class PersonalInformation extends BaseActivity implements View.OnClickListener {
 
@@ -152,7 +149,7 @@ public class PersonalInformation extends BaseActivity implements View.OnClickLis
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
                 String datebirth = simpleDateFormat.format(date);
                 cunshareUser("user", "user_birth", datebirth);
-                changeInternetInformation(path, 2, datebirth, null, getMyXueHao());
+                changeInternetInformation(InValues.send(R.string.userXinXiXiuGai), 2, datebirth, null, getMyXueHao());
                 mChangeUserBirthText.setText(datebirth);
             }
         }).setType(new boolean[]{true, true, true, false, false, false})

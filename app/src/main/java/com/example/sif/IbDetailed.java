@@ -19,12 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.example.sif.Lei.MyBroadcastReceiver.BroadcastRec;
-import com.example.sif.Lei.MyToolClass.BlockDetailedSend;
-import com.example.sif.Lei.MyToolClass.GlideRoundTransform;
-import com.example.sif.Lei.MyToolClass.IbFollow;
-import com.example.sif.Lei.MyToolClass.MyDateClass;
-import com.example.sif.Lei.MyToolClass.ToastZong;
-import com.example.sif.Lei.MyToolClass.UserDynamicThumb;
+import com.example.sif.Lei.MyToolClass.*;
 import com.example.sif.Lei.ShiPeiQi.GuangChang;
 import com.example.sif.Lei.ShowActivityBar.FragmentActivityBar;
 import com.example.sif.NeiBuLei.GuangChangUserXinXi;
@@ -124,7 +119,7 @@ public class IbDetailed extends BaseActivity implements View.OnClickListener {
             mSlogan.setText(interestingBlockClass.getSlogan());
         }
         Glide.with(this)
-                .load("http://nmy1206.natapp1.cc/"+interestingBlockClass.getBgimage())
+                .load(InValues.send(R.string.httpHeadert) + interestingBlockClass.getBgimage())
                 .placeholder(R.drawable.nullblock)
                 .fallback(R.drawable.nullblock)
                 .error(R.drawable.nullblock)

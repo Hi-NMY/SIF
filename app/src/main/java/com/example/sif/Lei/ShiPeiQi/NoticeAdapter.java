@@ -19,6 +19,7 @@ import com.bumptech.glide.signature.MediaStoreSignature;
 import com.example.sif.DynamicDetailed;
 import com.example.sif.Lei.MyBroadcastReceiver.BroadcastRec;
 import com.example.sif.Lei.MyToolClass.DynamicMessageDetailed;
+import com.example.sif.Lei.MyToolClass.InValues;
 import com.example.sif.Lei.MyToolClass.ObtainUser;
 import com.example.sif.Lei.MyToolClass.ToastZong;
 import com.example.sif.Lei.NiceImageView.CircleImageView;
@@ -159,7 +160,7 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.ViewHolder
         if (!noticeClasses.get(position).getSendXueHao().equals(holder.mNoticeUserimage.getTag())) {
             holder.mNoticeUserimage.setTag(null);
             Glide.with(activity)
-                    .load("http://nmy1206.natapp1.cc/UserImageServer/" + noticeClass.getSendXueHao() + "/HeadImage/myHeadImage.png")
+                    .load(InValues.send(R.string.httpHeader) +"/UserImageServer/" + noticeClass.getSendXueHao() + "/HeadImage/myHeadImage.png")
                     .signature(new MediaStoreSignature(updateTime, 1, 1))
                     .placeholder(R.drawable.nostartimage_three)
                     .fallback(R.drawable.defaultheadimage)

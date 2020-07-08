@@ -25,15 +25,7 @@ import com.bumptech.glide.signature.MediaStoreSignature;
 import com.example.sif.DynamicDetailed;
 import com.example.sif.IbDetailed;
 import com.example.sif.Lei.MyBroadcastReceiver.BroadcastRec;
-import com.example.sif.Lei.MyToolClass.DynamicMessageDetailed;
-import com.example.sif.Lei.MyToolClass.GuangChangImageToClass;
-import com.example.sif.Lei.MyToolClass.MyDateClass;
-import com.example.sif.Lei.MyToolClass.ObtainUser;
-import com.example.sif.Lei.MyToolClass.SendGeTuiMessage;
-import com.example.sif.Lei.MyToolClass.ShowDiaLog;
-import com.example.sif.Lei.MyToolClass.ToastZong;
-import com.example.sif.Lei.MyToolClass.UserDynamicThumb;
-import com.example.sif.Lei.MyToolClass.UserFollow;
+import com.example.sif.Lei.MyToolClass.*;
 import com.example.sif.Lei.NiceImageView.CircleImageView;
 import com.example.sif.MyApplication;
 import com.example.sif.NeiBuLei.UserSpace;
@@ -244,7 +236,7 @@ public class FollowDynamic extends RecyclerView.Adapter<FollowDynamic.ViewHolder
             if (!userSpaces.get(position).getUser_xuehao().equals(holder.gcUserImage.getTag())){
                 holder.gcUserImage.setTag(null);
                 Glide.with(activity)
-                        .load("http://nmy1206.natapp1.cc/UserImageServer/"+userSpace.getUser_xuehao()+"/HeadImage/myHeadImage.png")
+                        .load(InValues.send(R.string.httpHeader) +"/UserImageServer/"+userSpace.getUser_xuehao()+"/HeadImage/myHeadImage.png")
                         .signature(new MediaStoreSignature(updateTime,1,1))
                         .placeholder(R.drawable.nostartimage_three)
                         .fallback(R.drawable.defaultheadimage)
@@ -267,7 +259,7 @@ public class FollowDynamic extends RecyclerView.Adapter<FollowDynamic.ViewHolder
             if (!userSpace.getUser_image_url().equals(holder.gcUserImage.getTag())){
                 holder.gcUserImage.setTag(null);
                 Glide.with(activity)
-                        .load("http://nmy1206.natapp1.cc/UserImageServer/"+userSpace.getUser_xuehao()+"/HeadImage/myHeadImage.png")
+                        .load(InValues.send(R.string.httpHeader) +"/UserImageServer/"+userSpace.getUser_xuehao()+"/HeadImage/myHeadImage.png")
                         .signature(new MediaStoreSignature(updateTime,1,1))
                         .transition(DrawableTransitionOptions.withCrossFade())
                         .placeholder(R.drawable.nostartimage_three)

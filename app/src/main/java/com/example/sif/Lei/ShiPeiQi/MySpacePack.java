@@ -339,7 +339,7 @@ public class MySpacePack extends RecyclerView.Adapter<MySpacePack.ViewHolder> {
                 deleteDynamic.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        HttpUtil.deleteDynamic(path, udynamicid, xuehao, new Callback() {
+                        HttpUtil.deleteDynamic(InValues.send(R.string.deleteDynamic), udynamicid, xuehao, new Callback() {
                             @Override
                             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                                 String a = response.body().string();

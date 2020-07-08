@@ -232,7 +232,7 @@ public class GuangChang extends RecyclerView.Adapter<GuangChang.ViewHolder> {
             if (!guangChangUserXinXis.get(position).getGc_user_xuehao().equals(holder.gcUserImage.getTag())) {
                 holder.gcUserImage.setTag(null);
                 Glide.with(activity)
-                        .load("http://nmy1206.natapp1.cc/UserImageServer/" + guangChangUserXinXi.getGc_user_xuehao() + "/HeadImage/myHeadImage.png")
+                        .load(InValues.send(R.string.httpHeader) +"/UserImageServer/" + guangChangUserXinXi.getGc_user_xuehao() + "/HeadImage/myHeadImage.png")
                         .signature(new MediaStoreSignature(updateTime, 1, 1))
                         .placeholder(R.drawable.nostartimage_three)
                         .fallback(R.drawable.defaultheadimage)
@@ -254,7 +254,7 @@ public class GuangChang extends RecyclerView.Adapter<GuangChang.ViewHolder> {
             if (!guangChangUserXinXi.getGc_user_image_url().equals(holder.gcUserImage.getTag())) {
                 holder.gcUserImage.setTag(null);
                 Glide.with(activity)
-                        .load("http://nmy1206.natapp1.cc/UserImageServer/" + guangChangUserXinXi.getGc_user_xuehao() + "/HeadImage/myHeadImage.png")
+                        .load(InValues.send(R.string.httpHeader) +"/UserImageServer/" + guangChangUserXinXi.getGc_user_xuehao() + "/HeadImage/myHeadImage.png")
                         .signature(new MediaStoreSignature(updateTime, 1, 1))
                         .transition(DrawableTransitionOptions.withCrossFade())
                         .placeholder(R.drawable.nostartimage_three)
@@ -498,7 +498,7 @@ public class GuangChang extends RecyclerView.Adapter<GuangChang.ViewHolder> {
         if (deleteId != null) {
             deleteDynamicMy(deleteId);
             BroadcastRec.sendReceiver(MyApplication.getContext(), "refreshMySpace", 0, null);
-            HttpUtil.deleteDynamic(path, deleteId, myXueHao, new Callback() {
+            HttpUtil.deleteDynamic(InValues.send(R.string.deleteDynamic), deleteId, myXueHao, new Callback() {
                 @Override
                 public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                     String a = response.body().string();

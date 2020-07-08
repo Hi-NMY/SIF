@@ -328,9 +328,9 @@ public class DynamicDetailed extends BaseActivity implements View.OnClickListene
             mDynamicDetailedPlaceLlt.setVisibility(View.GONE);
         }
 
-        uheadImage = "http://nmy1206.natapp1.cc/UserImageServer/" + uxuehao + "/HeadImage/myHeadImage.png";
+        uheadImage = InValues.send(R.string.httpHeader) +"/UserImageServer/" + uxuehao + "/HeadImage/myHeadImage.png";
         Glide.with(DynamicDetailed.this)
-                .load("http://nmy1206.natapp1.cc/UserImageServer/" + uxuehao + "/HeadImage/myHeadImage.png")
+                .load(InValues.send(R.string.httpHeader) +"/UserImageServer/" + uxuehao + "/HeadImage/myHeadImage.png")
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .placeholder(R.drawable.nostartimage_three)
                 .fallback(R.drawable.defaultheadimage)

@@ -2,26 +2,24 @@ package com.example.sif.Lei.MyToolClass;
 
 import android.os.Handler;
 import android.os.Message;
-
 import com.example.sif.Lei.LianJie.HttpUtil;
 import com.example.sif.NeiBuLei.SchoolShopClass;
+import com.example.sif.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
+import okhttp3.Call;
+import okhttp3.Response;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.util.List;
-
-import okhttp3.Call;
-import okhttp3.Response;
 
 public class ObtainShopList {
 
     private static String path = "http://nmy1206.natapp1.cc/ObtainSchoolShop.php";
     public static List<SchoolShopClass> schoolShopClasses;
     public static void obtainMoreShop(String nowTiem, Handler handler){
-        HttpUtil.obtainSchoolShop(path,nowTiem, new okhttp3.Callback() {
+        HttpUtil.obtainSchoolShop(InValues.send(R.string.ObtainSchoolShop),nowTiem, new okhttp3.Callback() {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 String a = response.body().string();

@@ -19,6 +19,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.signature.MediaStoreSignature;
 import com.example.sif.IbDetailed;
 import com.example.sif.Lei.MyToolClass.GlideRoundTransform;
+import com.example.sif.Lei.MyToolClass.InValues;
 import com.example.sif.Lei.MyToolClass.MyDateClass;
 import com.example.sif.Lei.MyToolClass.ToastZong;
 import com.example.sif.Lei.NiceImageView.SolidImageView;
@@ -113,7 +114,7 @@ public class IbClassList extends RecyclerView.Adapter<IbClassList.ViewHolder> {
                 if (!interestingBlockClasses.get(position).getBgimage().equals(holder.mIbListImage.getTag())){
                     holder.mIbListImage.setTag(null);
                     Glide.with(activity)
-                            .load("http://nmy1206.natapp1.cc/"+interestingBlockClass.getBgimage())
+                            .load(InValues.send(R.string.httpHeadert) + interestingBlockClass.getBgimage())
                             .signature(new MediaStoreSignature(updateTime,1,1))
                             .placeholder(R.drawable.nullblock)
                             .fallback(R.drawable.nullblock)

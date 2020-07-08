@@ -21,12 +21,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.signature.MediaStoreSignature;
-import com.example.sif.Lei.MyToolClass.GlideRoundTransform;
-import com.example.sif.Lei.MyToolClass.MyDateClass;
-import com.example.sif.Lei.MyToolClass.MyVeryDiaLog;
-import com.example.sif.Lei.MyToolClass.ShowDiaLog;
-import com.example.sif.Lei.MyToolClass.ToastZong;
-import com.example.sif.Lei.MyToolClass.WholeDeleteDiary;
+import com.example.sif.Lei.MyToolClass.*;
 import com.example.sif.MyApplication;
 import com.example.sif.NeiBuLei.UserDiaryClass;
 import com.example.sif.R;
@@ -156,7 +151,7 @@ public class UserDiaryAdapter extends RecyclerView.Adapter<UserDiaryAdapter.View
             if (!userDiaryClasses.get(position).getImagepath().equals("")) {
                 holder.mDiaryItemImage.setVisibility(View.VISIBLE);
                 Glide.with(activity)
-                        .load("http://nmy1206.natapp1.cc/" + userDiaryClass.getImagepath())
+                        .load(InValues.send(R.string.httpHeadert) + userDiaryClass.getImagepath())
                         .signature(new MediaStoreSignature(nowTime, 1, 1))
                         .placeholder(R.drawable.nostartimage_two)
                         .fallback(R.drawable.nostartimage_two)
@@ -178,8 +173,8 @@ public class UserDiaryAdapter extends RecyclerView.Adapter<UserDiaryAdapter.View
                 rxDialog = new RxDialog(activity, R.style.tran_dialog);
                 rxDialog.setCanceledOnTouchOutside(false);
                 String name = String.valueOf(userDiaryClasses.get(position).getImagepath()).substring(String.valueOf(userDiaryClasses.get(position).getImagepath()).lastIndexOf("/"));
-                String NewName = "http://nmy1206.natapp1.cc/UserImageServer/" + myXuehao + "/ADiary/" + name;
-                String path1 = "http://nmy1206.natapp1.cc/" + userDiaryClasses.get(position).getImagepath();
+                String NewName = InValues.send(R.string.httpHeader) +"/UserImageServer/" + myXuehao + "/ADiary/" + name;
+                String path1 = InValues.send(R.string.httpHeadert) + userDiaryClasses.get(position).getImagepath();
                 MyVeryDiaLog.veryImageDiaLog(rxDialogScaleView, NewName, path1, bitMapHandler);
                 MyVeryDiaLog.transparentDiaLog(activity, rxDialog);
             }

@@ -13,28 +13,20 @@ import android.os.Message;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-
 import androidx.core.content.FileProvider;
-
+import com.example.sif.Lei.MyToolClass.InValues;
 import com.example.sif.Lei.MyToolClass.ShowDiaLog;
 import com.example.sif.Lei.MyToolClass.ToastZong;
 import com.example.sif.R;
 import com.example.sif.SheZhi;
 import com.tamsiree.rxui.view.RxProgressBar;
 import com.tamsiree.rxui.view.dialog.RxDialogSureCancel;
-
+import okhttp3.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
-
-import okhttp3.Call;
-import okhttp3.FormBody;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
 
 public class NewVersion{
 
@@ -78,7 +70,7 @@ public class NewVersion{
                         showDiaLog.logWindow(new ColorDrawable(Color.TRANSPARENT));
                         showDiaLog.Cancelable(false);
                         showDiaLog.showMyDiaLog();
-                        DownLoadNewApp.get().downLoad(url, "download", new DownLoadNewApp.OnDownloadListener() {
+                        DownLoadNewApp.get().downLoad(InValues.send(R.string.SIFAPK), "download", new DownLoadNewApp.OnDownloadListener() {
                             @Override
                             public void onDownloadSuccess(File file) {
                                 showDiaLog.closeMyDiaLog();
@@ -136,7 +128,7 @@ public class NewVersion{
                 .readTimeout(20, TimeUnit.SECONDS)
                 .build();
         Request request = new Request.Builder()
-                .url(path)
+                .url(InValues.send(R.string.MyAppVersion))
                 .post(requestBody)
                 .build();
         client.newCall(request).enqueue(new okhttp3.Callback() {

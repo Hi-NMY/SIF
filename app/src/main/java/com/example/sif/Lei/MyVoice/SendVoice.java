@@ -3,22 +3,21 @@ package com.example.sif.Lei.MyVoice;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-
 import com.example.sif.Lei.LianJie.HttpUtil;
+import com.example.sif.Lei.MyToolClass.InValues;
 import com.example.sif.Lei.MyToolClass.ToastZong;
 import com.example.sif.MyApplication;
 import com.example.sif.NeiBuLei.NiceVoice;
+import com.example.sif.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-
+import okhttp3.Call;
+import okhttp3.Response;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.util.List;
-
-import okhttp3.Call;
-import okhttp3.Response;
 
 public class SendVoice {
 
@@ -72,7 +71,7 @@ public class SendVoice {
     }
 
     public void sendMyVoice(String v,String n,String s,String l,String x){
-        HttpUtil.sendVoice(path,v,n,s,l,x, new okhttp3.Callback() {
+        HttpUtil.sendVoice(InValues.send(R.string.MyVoice),v,n,s,l,x, new okhttp3.Callback() {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 String a = response.body().string();
@@ -89,7 +88,7 @@ public class SendVoice {
     }
 
     public void sendMyVoice(String v,String n,String s,String l,String x,LongTime longTime){
-        HttpUtil.sendVoice(path,v,n,s,l,x, new okhttp3.Callback() {
+        HttpUtil.sendVoice(InValues.send(R.string.MyVoice),v,n,s,l,x, new okhttp3.Callback() {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 String a = response.body().string();
@@ -108,7 +107,7 @@ public class SendVoice {
 
     public List<NiceVoice> niceVoices;
     public void obtainListVoice(int f,int i){
-        HttpUtil.obtainVoice(path1,f,i, new okhttp3.Callback() {
+        HttpUtil.obtainVoice(InValues.send(R.string.ObtainVoice),f,i, new okhttp3.Callback() {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response){
                 try {

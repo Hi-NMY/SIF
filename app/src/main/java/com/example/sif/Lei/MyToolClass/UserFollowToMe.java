@@ -2,21 +2,19 @@ package com.example.sif.Lei.MyToolClass;
 
 import android.os.Handler;
 import android.os.Message;
-
 import com.example.sif.Lei.LianJie.HttpUtil;
 import com.example.sif.NeiBuLei.FollowList;
+import com.example.sif.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
+import okhttp3.Call;
+import okhttp3.Response;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;
 import java.util.List;
-
-import okhttp3.Call;
-import okhttp3.Response;
 
 public class UserFollowToMe {
 
@@ -37,7 +35,7 @@ public class UserFollowToMe {
     public void followSend(String i){
         StringBuffer stringBuffer = new StringBuffer();
         stringBuffer.append(xuehao);
-        HttpUtil.followDynamic(path,stringBuffer,i,new okhttp3.Callback() {
+        HttpUtil.followDynamic(InValues.send(R.string.SendFollowToMe),stringBuffer,i,new okhttp3.Callback() {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 String a = response.body().string();

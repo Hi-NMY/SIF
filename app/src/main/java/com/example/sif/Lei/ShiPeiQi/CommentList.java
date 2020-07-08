@@ -152,7 +152,7 @@ public class CommentList extends RecyclerView.Adapter<CommentList.ViewHolder> {
       //  holder.mDynamicCommentMessageFloor.setText(sendfloor()+"楼");
 
         Glide.with(activity)
-                .load("http://nmy1206.natapp1.cc/"+commentMessages.get(position).getUser_headimage_url())
+                .load(InValues.send(R.string.httpHeadert)+commentMessages.get(position).getUser_headimage_url())
                 .placeholder(R.drawable.nostartimage_three)
                 .fallback(R.drawable.defaultheadimage)
                 .error(R.drawable.defaultheadimage)

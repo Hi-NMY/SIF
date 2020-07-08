@@ -16,6 +16,7 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.example.sif.Lei.MyToolClass.InValues;
 import com.example.sif.Lei.MyToolClass.MyDateClass;
 import com.example.sif.Lei.MyToolClass.ToastZong;
 import io.rong.imkit.RongIM;
@@ -138,15 +139,15 @@ public class JinRuYe extends BaseActivity {
                         executorService.execute(new Runnable() {
                             @Override
                             public void run() {
-                                huoQuGeRenXinXi(JinRuYe.this,path3,path4,xuehao,handler1);
+                                huoQuGeRenXinXi(JinRuYe.this,InValues.send(R.string.UserSchool),InValues.send(R.string.User),xuehao,handler1);
                                 try {
                                     Thread.sleep(100);
                                 } catch (InterruptedException e) {
                                     e.printStackTrace();
                                 }
-                                shuaXinGuangChang(path,null,nowDate,1);
-                                sendUserSpace(1,path1,nowDate,xuehao,null);
-                                huoquThumb(path2,xuehao);
+                                shuaXinGuangChang(InValues.send(R.string.shuaXinGuangChang),null,nowDate,1);
+                                sendUserSpace(1,InValues.send(R.string.userSpace),nowDate,xuehao,null);
+                                huoquThumb(InValues.send(R.string.Thumb),xuehao);
                                 sendUserFollow(1,xuehao);
                                 Thread.yield();
                                 sendUserThumb(1);
@@ -167,7 +168,7 @@ public class JinRuYe extends BaseActivity {
                                     //回调成功
                                     @Override
                                     public void onSuccess(String s) {
-                                        UserInfo userInfo = new UserInfo(getMyXueHao(), getMyUserName(), Uri.parse("http://nmy1206.natapp1.cc/UserImageServer/"+getMyXueHao()+"/HeadImage/myHeadImage.png"));
+                                        UserInfo userInfo = new UserInfo(getMyXueHao(), getMyUserName(), Uri.parse(InValues.send(R.string.httpHeader) +"/UserImageServer/"+getMyXueHao()+"/HeadImage/myHeadImage.png"));
                                         RongIM.getInstance().setCurrentUserInfo(userInfo);
 //                                        RongIM.setUserInfoProvider(new RongIM.UserInfoProvider() {
 //                                            @Override

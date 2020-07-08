@@ -177,7 +177,7 @@ public class MyDiary extends BaseActivity implements View.OnClickListener {
                         }else if (weatherKey == -1){
                             ToastZong.ShowToast(MyApplication.getContext(),"请选择今日天气");
                         }else if (imagepath != null){
-                            HttpUtil.sendUserDiary(1,path,getMyXueHao(),weatherKey,message.getText().toString(),diaryDate.getText().toString()
+                            HttpUtil.sendUserDiary(1,InValues.send(R.string.AddUserDiary),getMyXueHao(),weatherKey,message.getText().toString(),diaryDate.getText().toString()
                                     ,imagepath,imageApath, new okhttp3.Callback() {
                                         @Override
                                         public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
@@ -191,7 +191,7 @@ public class MyDiary extends BaseActivity implements View.OnClickListener {
                                         }
                                     });
                         }else {
-                            HttpUtil.sendUserDiary(0,path,getMyXueHao(),weatherKey,message.getText().toString(),diaryDate.getText().toString()
+                            HttpUtil.sendUserDiary(0,InValues.send(R.string.AddUserDiary),getMyXueHao(),weatherKey,message.getText().toString(),diaryDate.getText().toString()
                                     ,"","", new okhttp3.Callback() {
                                         @Override
                                         public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {

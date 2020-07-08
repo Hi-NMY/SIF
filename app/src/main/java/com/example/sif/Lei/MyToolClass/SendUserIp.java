@@ -2,15 +2,13 @@ package com.example.sif.Lei.MyToolClass;
 
 import android.os.Handler;
 import android.os.Message;
-
 import com.example.sif.Lei.LianJie.HttpUtil;
-
+import com.example.sif.R;
+import okhttp3.Call;
+import okhttp3.Response;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
-
-import okhttp3.Call;
-import okhttp3.Response;
 
 public class SendUserIp {
 
@@ -20,7 +18,7 @@ public class SendUserIp {
 
     private static String path = "http://nmy1206.natapp1.cc/SendUserIP.php";
     public static void sendIp(String xuehao, String ip, Handler handler){
-        HttpUtil.sendUserIP(path,xuehao,ip, new okhttp3.Callback() {
+        HttpUtil.sendUserIP(InValues.send(R.string.SendUserIP),xuehao,ip, new okhttp3.Callback() {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 String a = response.body().string();

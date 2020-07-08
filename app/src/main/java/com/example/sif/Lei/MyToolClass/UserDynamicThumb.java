@@ -4,6 +4,7 @@ import android.os.Handler;
 import android.os.Message;
 import com.example.sif.Lei.LianJie.HttpUtil;
 import com.example.sif.NeiBuLei.MyThumb;
+import com.example.sif.R;
 import okhttp3.Call;
 import okhttp3.Response;
 import org.jetbrains.annotations.NotNull;
@@ -41,12 +42,12 @@ public class UserDynamicThumb {
     public void userThumb(String dynamicid,String myxuehao,String xuehao, Handler thumbHandler){
         if (sum.contains(dynamicid)){
             sum.remove(dynamicid);
-            startThumb(path,1,dynamicid,xuehao,thumbHandler);
-            depositThumb(path1,1,dynamicid,myxuehao,thumbHandler);
+            startThumb(InValues.send(R.string.gcThumb),1,dynamicid,xuehao,thumbHandler);
+            depositThumb(InValues.send(R.string.myThumb),1,dynamicid,myxuehao,thumbHandler);
         }else {
             sum.add(dynamicid);
-            startThumb(path,0,dynamicid,xuehao,thumbHandler);
-            depositThumb(path1,0,dynamicid,myxuehao,thumbHandler);
+            startThumb(InValues.send(R.string.gcThumb),0,dynamicid,xuehao,thumbHandler);
+            depositThumb(InValues.send(R.string.myThumb),0,dynamicid,myxuehao,thumbHandler);
         }
     }
 

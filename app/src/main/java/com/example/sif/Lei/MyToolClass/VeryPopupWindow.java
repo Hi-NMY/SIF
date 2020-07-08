@@ -481,7 +481,7 @@ public class VeryPopupWindow extends PopupWindow implements View.OnClickListener
     public List<BlockLabel> blockLabels1;
 
     private void httpSendBlock(int i, String name) {
-        HttpUtil.blockLabel(path, i, name, new Callback() {
+        HttpUtil.blockLabel(InValues.send(R.string.LabelBlock), i, name, new Callback() {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) {
                 try {

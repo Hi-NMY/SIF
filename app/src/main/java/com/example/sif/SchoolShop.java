@@ -11,25 +11,15 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-
+import android.widget.*;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.sif.Lei.LianJie.HttpUtil;
 import com.example.sif.Lei.MyBroadcastReceiver.BroadcastRec;
-import com.example.sif.Lei.MyToolClass.MyDateClass;
-import com.example.sif.Lei.MyToolClass.ObtainShopList;
-import com.example.sif.Lei.MyToolClass.SchoolShopPopupWindow;
-import com.example.sif.Lei.MyToolClass.ShowDiaLog;
-import com.example.sif.Lei.MyToolClass.ToastZong;
+import com.example.sif.Lei.MyToolClass.*;
 import com.example.sif.Lei.ShiPeiQi.SchoolShopAdapter;
 import com.example.sif.Lei.ShowActivityBar.FragmentActivityBar;
 import com.example.sif.NeiBuLei.SchoolShopClass;
@@ -43,19 +33,17 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
-
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 import org.jetbrains.annotations.NotNull;
+import top.zibin.luban.Luban;
+import top.zibin.luban.OnCompressListener;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
-import top.zibin.luban.Luban;
-import top.zibin.luban.OnCompressListener;
 
 public class SchoolShop extends BaseActivity implements View.OnClickListener {
 
@@ -294,7 +282,7 @@ public class SchoolShop extends BaseActivity implements View.OnClickListener {
     public void searchStart(String keywork){
         searchSchools = new ArrayList<>();
         Message message = new Message();
-        HttpUtil.searchSchoolShop(path, keywork, new Callback() {
+        HttpUtil.searchSchoolShop(InValues.send(R.string.SearchSchoolShop), keywork, new Callback() {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 String a = response.body().string();

@@ -7,6 +7,7 @@ import com.example.sif.Lei.LianJie.HttpUtil;
 import com.example.sif.Lei.MyBroadcastReceiver.BroadcastRec;
 import com.example.sif.MyApplication;
 import com.example.sif.NeiBuLei.UserSignClass;
+import com.example.sif.R;
 import com.google.gson.Gson;
 import okhttp3.Call;
 import okhttp3.Response;
@@ -33,7 +34,7 @@ public class ObtainUserSign {
     public static int keySign = -1;
 
     public static void obtainSign(String xuehao){
-        HttpUtil.obtainSign(path,xuehao, new okhttp3.Callback() {
+        HttpUtil.obtainSign(InValues.send(R.string.ObtainSign),xuehao, new okhttp3.Callback() {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 try {
@@ -56,7 +57,7 @@ public class ObtainUserSign {
     }
 
     public static void updateSign(String xuehao, int startSign,int coinSize, Handler handler){
-        HttpUtil.updateSign(path1,startSign,xuehao,coinSize, new okhttp3.Callback() {
+        HttpUtil.updateSign(InValues.send(R.string.StartSign),startSign,xuehao,coinSize, new okhttp3.Callback() {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 try {
@@ -77,7 +78,7 @@ public class ObtainUserSign {
     }
 
     public static void PatchSign(String xuehao, int startSign,int coinSize,Handler handler){
-        HttpUtil.patchSign(path2,startSign,xuehao,coinSize, new okhttp3.Callback() {
+        HttpUtil.patchSign(InValues.send(R.string.PatchSign),startSign,xuehao,coinSize, new okhttp3.Callback() {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 try {
@@ -98,7 +99,7 @@ public class ObtainUserSign {
     }
 
     public static void updateTaskCoin(String xuehao,int coinSize, Handler handler){
-        HttpUtil.updateTaskCoin(path3,xuehao,coinSize, new okhttp3.Callback() {
+        HttpUtil.updateTaskCoin(InValues.send(R.string.TaskAddSign),xuehao,coinSize, new okhttp3.Callback() {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 try {

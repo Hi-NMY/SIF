@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.sif.BaseFragment;
 import com.example.sif.Lei.MyBroadcastReceiver.BroadcastRec;
+import com.example.sif.Lei.MyToolClass.InValues;
 import com.example.sif.Lei.MyToolClass.MyDateClass;
 import com.example.sif.Lei.MyToolClass.ToastZong;
 import com.example.sif.Lei.ShiPeiQi.GuangChang;
@@ -153,7 +154,7 @@ public class FragmentGuangChang extends BaseFragment {
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
                 String nowDate = MyDateClass.showNowDate();
                 if (nowDate!=null){
-                    myZhuYe.shuaXinGuangChang(path1,handler,nowDate,1);
+                    myZhuYe.shuaXinGuangChang(InValues.send(R.string.shuaXinGuangChang),handler,nowDate,1);
                 }else {
                     ToastZong.ShowToast(myZhuYe,"刷新失败!");
                 }
@@ -163,7 +164,7 @@ public class FragmentGuangChang extends BaseFragment {
             @Override
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
                 if (guangChang.date != null){
-                    myZhuYe.shuaXinGuangChang(path1,handler,guangChang.date,2);
+                    myZhuYe.shuaXinGuangChang(InValues.send(R.string.shuaXinGuangChang),handler,guangChang.date,2);
                 }else {
                     mGuangchangFreshLt.finishLoadMore();
                 }

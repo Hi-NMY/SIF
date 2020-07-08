@@ -22,10 +22,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.signature.MediaStoreSignature;
-import com.example.sif.Lei.MyToolClass.CenterLayoutManager;
-import com.example.sif.Lei.MyToolClass.ObtainUser;
-import com.example.sif.Lei.MyToolClass.SendGeTuiMessage;
-import com.example.sif.Lei.MyToolClass.ToastZong;
+import com.example.sif.Lei.MyToolClass.*;
 import com.example.sif.Lei.NiceImageView.CircleImageView;
 import com.example.sif.Lei.NiceImageView.SolidImageView;
 import com.example.sif.MyApplication;
@@ -176,7 +173,7 @@ public class GoodVoiceAdapter extends RecyclerView.Adapter<GoodVoiceAdapter.View
             updateTime = String.valueOf(System.currentTimeMillis());
             holder.usersmallImage.setTag(null);
             Glide.with(activity)
-                    .load("http://nmy1206.natapp1.cc/UserImageServer/" + niceVoice.getGv_userxuehao() + "/HeadImage/myHeadImage.png")
+                    .load(InValues.send(R.string.httpHeader) +"/UserImageServer/" + niceVoice.getGv_userxuehao() + "/HeadImage/myHeadImage.png")
                     .signature(new MediaStoreSignature(updateTime, 1, 1))
                     .placeholder(R.drawable.nostartimage_three)
                     .fallback(R.drawable.defaultheadimage)
@@ -191,7 +188,7 @@ public class GoodVoiceAdapter extends RecyclerView.Adapter<GoodVoiceAdapter.View
             updateTime = String.valueOf(System.currentTimeMillis());
             holder.mVoiceImage.setTag(null);
             Glide.with(activity)
-                    .load("http://nmy1206.natapp1.cc/UserImageServer/" + niceVoice.getGv_userxuehao() + "/HeadImage/myHeadImage.png")
+                    .load(InValues.send(R.string.httpHeader) +"/UserImageServer/" + niceVoice.getGv_userxuehao() + "/HeadImage/myHeadImage.png")
                     .signature(new MediaStoreSignature(updateTime, 1, 1))
                     .placeholder(R.drawable.nostartimage_three)
                     .fallback(R.drawable.defaultheadimage)
@@ -264,7 +261,7 @@ public class GoodVoiceAdapter extends RecyclerView.Adapter<GoodVoiceAdapter.View
         try {
             imageView.setBackgroundResource(R.drawable.voicestop);
             player = new MediaPlayer();
-            player.setDataSource("http://nmy1206.natapp1.cc/"+niceVoices.get(position).getGv_voice());
+            player.setDataSource(InValues.send(R.string.httpHeadert) + niceVoices.get(position).getGv_voice());
             player.prepare();
             player.start();
             player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {

@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import com.example.sif.Lei.MyBroadcastReceiver.BroadcastRec;
 import com.example.sif.MyApplication;
 import com.example.sif.NeiBuLei.ServerTimeNow;
+import com.example.sif.R;
 import com.google.gson.Gson;
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
@@ -38,7 +39,7 @@ public class ObtainServerTime {
                 .readTimeout(20,TimeUnit.SECONDS)
                 .build();
         Request request = new Request.Builder()
-                .url("http://quan.suning.com/getSysTime.do")
+                .url(InValues.send(R.string.getSysTime))
                 .build();
         client.newCall(request).enqueue(new okhttp3.Callback() {
             @Override
@@ -70,7 +71,7 @@ public class ObtainServerTime {
                 .readTimeout(20,TimeUnit.SECONDS)
                 .build();
         Request request = new Request.Builder()
-                .url("http://quan.suning.com/getSysTime.do")
+                .url(InValues.send(R.string.getSysTime))
                 .build();
         client.newCall(request).enqueue(new okhttp3.Callback() {
             @Override

@@ -3,15 +3,16 @@ package com.example.sif.Lei.MyToolClass;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-
 import com.example.sif.Lei.LianJie.HttpUtil;
 import com.example.sif.MyApplication;
 import com.example.sif.NeiBuLei.InterestingBlockClass;
 import com.example.sif.NeiBuLei.UserIbFollow;
+import com.example.sif.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-
+import okhttp3.Call;
+import okhttp3.Response;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
@@ -20,9 +21,6 @@ import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-
-import okhttp3.Call;
-import okhttp3.Response;
 
 public class IbFollow {
     private Handler error = new Handler(Looper.getMainLooper()){
@@ -75,7 +73,7 @@ public class IbFollow {
     public void rightFollow() {
         followList = new ArrayList<>();
         followListList = new ArrayList<>();
-        HttpUtil.myIbFollow(path,0,xuehao,"", new okhttp3.Callback() {
+        HttpUtil.myIbFollow(InValues.send(R.string.FollowIb),0,xuehao,"", new okhttp3.Callback() {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 String a = response.body().string();
@@ -163,7 +161,7 @@ public class IbFollow {
         }
 
 
-        HttpUtil.followIb(path1,stringBuffer,i, new okhttp3.Callback() {
+        HttpUtil.followIb(InValues.send(R.string.MyIbFollow),stringBuffer,i, new okhttp3.Callback() {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 String a = response.body().string();
@@ -219,7 +217,7 @@ public class IbFollow {
 
     public void yesFollow(){
         followList.add(ibname);
-        HttpUtil.myIbFollow(path,1,xuehao,ibname, new okhttp3.Callback() {
+        HttpUtil.myIbFollow(InValues.send(R.string.FollowIb),1,xuehao,ibname, new okhttp3.Callback() {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 String a = response.body().string();
@@ -239,7 +237,7 @@ public class IbFollow {
 
     public void noFollow(){
         followList.remove(ibname);
-        HttpUtil.myIbFollow(path,2,xuehao,ibname, new okhttp3.Callback() {
+        HttpUtil.myIbFollow(InValues.send(R.string.FollowIb),2,xuehao,ibname, new okhttp3.Callback() {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 String a = response.body().string();
@@ -261,7 +259,7 @@ public class IbFollow {
     public void searchMyIbMore(int id,String blockname){
         userIbFollows = new ArrayList<>();
         f2 = new ArrayList<>();
-        HttpUtil.myIbFollow(path,-1,xuehao,blockname, new okhttp3.Callback() {
+        HttpUtil.myIbFollow(InValues.send(R.string.FollowIb),-1,xuehao,blockname, new okhttp3.Callback() {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 String a = response.body().string();

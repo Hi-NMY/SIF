@@ -12,23 +12,20 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import androidx.annotation.RequiresApi;
-
 import com.example.sif.Lei.LianJie.HttpUtil;
 import com.example.sif.Lei.LianJie.ShuJuLianJie;
+import com.example.sif.Lei.MyToolClass.InValues;
 import com.example.sif.Lei.MyToolClass.ToastZong;
 import com.example.sif.Lei.ShowActivityBar.FragmentActivityBar;
 import com.example.sif.NeiBuLei.RongCloudClass;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
-
+import okhttp3.Call;
+import okhttp3.Response;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
-
-import okhttp3.Call;
-import okhttp3.Response;
 
 public class ZhuCe extends BaseActivity implements View.OnClickListener {
 
@@ -168,7 +165,7 @@ public class ZhuCe extends BaseActivity implements View.OnClickListener {
     }
 
     private void obtainUserToken(){
-        HttpUtil.rongCloudServer(path5,userZhangHao,userZhangHao,userName, new okhttp3.Callback() {
+        HttpUtil.rongCloudServer(InValues.send(R.string.RongCloudUser),userZhangHao,userZhangHao,userName, new okhttp3.Callback() {
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
                 error.sendMessage(new Message());
@@ -184,7 +181,7 @@ public class ZhuCe extends BaseActivity implements View.OnClickListener {
                 editor.putString("userId",r.getUserId());
                 editor.putString("token",r.getToken());
                 editor.commit();
-                HttpUtil.sendUserToken(path2,r.getToken(),r.getUserId(), new okhttp3.Callback() {
+                HttpUtil.sendUserToken(InValues.send(R.string.SendToken),r.getToken(),r.getUserId(), new okhttp3.Callback() {
                     @Override
                     public void onFailure(@NotNull Call call, @NotNull IOException e) {
                         error.sendMessage(new Message());
@@ -233,7 +230,7 @@ public class ZhuCe extends BaseActivity implements View.OnClickListener {
                             sleep(100);
                             SharedPreferences sharedPreferences = getSharedPreferences("myid", MODE_PRIVATE);
                             String ip = sharedPreferences.getString("id", "");
-                            ShuJuLianJie shuJuLianJie = new ShuJuLianJie(ZhuCe.this, path, "POST", handler);
+                            ShuJuLianJie shuJuLianJie = new ShuJuLianJie(ZhuCe.this, InValues.send(R.string.YanZheng_ZhangHao), "POST", handler);
                             shuJuLianJie.chuanShu(userName, userZhangHao, userMiMa, ip);
                         } catch (InterruptedException e) {
                             e.printStackTrace();

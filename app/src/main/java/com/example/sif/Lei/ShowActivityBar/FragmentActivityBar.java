@@ -119,8 +119,8 @@ public class FragmentActivityBar extends BaseFragment {
                         String path = "http://nmy1206.natapp1.cc/userSpace.php";
                         String path1 = "http://nmy1206.natapp1.cc/shuaXinGuangChang.php";
                         String nowDate = MyDateClass.showNowDate();
-                        baseActivity.sendUserSpace(1, path, nowDate, xuehao, null);
-                        baseActivity.shuaXinGuangChang(path1, null, nowDate, 1);
+                        baseActivity.sendUserSpace(1, InValues.send(R.string.userSpace), nowDate, xuehao, null);
+                        baseActivity.shuaXinGuangChang(InValues.send(R.string.shuaXinGuangChang), null, nowDate, 1);
                         activity.finish();
                         activity.overridePendingTransition(R.anim.activity_out_bottom, R.anim.activity_main);
                     } else {
@@ -212,7 +212,7 @@ public class FragmentActivityBar extends BaseFragment {
                             i = 0;
                         }
                         if (mingzi != null && shijian != null && (!TextUtils.isEmpty(M) || i != 0) && xuehao != null) {
-                            HttpUtil.cunGuangChangMessage(i, path, message1.ds, mingzi, shijian, gcMessage, xuehao, 0, 0, stringBuffer,message1.placeString, null, new Callback() {
+                            HttpUtil.cunGuangChangMessage(i, InValues.send(R.string.GuangChangMessage), message1.ds, mingzi, shijian, gcMessage, xuehao, 0, 0, stringBuffer,message1.placeString, null, new Callback() {
                                 @Override
                                 public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                                     String a = response.body().string();
@@ -229,7 +229,7 @@ public class FragmentActivityBar extends BaseFragment {
                             });
 
                             if (stringBuffer != null && !stringBuffer.equals("")) {
-                                HttpUtil.blockChange(path2, stringBuffer, new Callback() {
+                                HttpUtil.blockChange(InValues.send(R.string.BlockChange), stringBuffer, new Callback() {
                                     @Override
                                     public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                                         String a = response.body().string();
@@ -254,11 +254,11 @@ public class FragmentActivityBar extends BaseFragment {
                         baseActivity = (BaseActivity) getActivity();
                         if (changeInformation.i == 1 && !changeInformation.text.equals(aa)) {
                             baseActivity.showDiaLog(activity, R.drawable.loading);
-                            changeInternetInformation(path1, 1, 1, aa, changeInformation.text, changeInformation.xuehao1);
+                            changeInternetInformation(InValues.send(R.string.userXinXiXiuGai), 1, 1, aa, changeInformation.text, changeInformation.xuehao1);
                         } else {
                             if (changeInformation.i == 2 && !changeInformation.text.equals(aa)) {
                                 baseActivity.showDiaLog(activity, R.drawable.loading);
-                                changeInternetInformation(path1, 2, 3, aa, null, changeInformation.xuehao1);
+                                changeInternetInformation(InValues.send(R.string.userXinXiXiuGai), 2, 3, aa, null, changeInformation.xuehao1);
                             } else {
                                 activity.finish();
                             }

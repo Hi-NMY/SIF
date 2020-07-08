@@ -10,20 +10,17 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
-
 import androidx.annotation.RequiresApi;
-
 import com.example.sif.Lei.LianJie.HttpUtil;
+import com.example.sif.Lei.MyToolClass.InValues;
 import com.example.sif.Lei.MyToolClass.ToastZong;
 import com.example.sif.Lei.ShowActivityBar.FragmentActivityBar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
+import okhttp3.Call;
+import okhttp3.Response;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
-
-import okhttp3.Call;
-import okhttp3.Response;
 
 public class NewPassword extends BaseActivity implements View.OnClickListener {
 
@@ -152,7 +149,7 @@ public class NewPassword extends BaseActivity implements View.OnClickListener {
                     public void run() {
                         try {
                             sleep(100);
-                            HttpUtil.newPassword(path,getMyXueHao(),"**",userZhangHao, new okhttp3.Callback() {
+                            HttpUtil.newPassword(InValues.send(R.string.NewPassword),getMyXueHao(),"**",userZhangHao, new okhttp3.Callback() {
                                 @Override
                                 public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                                     String a = response.body().string();
@@ -202,7 +199,7 @@ public class NewPassword extends BaseActivity implements View.OnClickListener {
                     public void run() {
                         try {
                             sleep(100);
-                            HttpUtil.newPassword(path,getMyXueHao(),userName,userZhangHao, new okhttp3.Callback() {
+                            HttpUtil.newPassword(InValues.send(R.string.NewPassword),getMyXueHao(),userName,userZhangHao, new okhttp3.Callback() {
                                 @Override
                                 public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                                     String a = response.body().string();

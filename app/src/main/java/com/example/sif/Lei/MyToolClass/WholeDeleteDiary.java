@@ -3,20 +3,18 @@ package com.example.sif.Lei.MyToolClass;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-
 import com.example.sif.Lei.LianJie.HttpUtil;
 import com.example.sif.MyApplication;
 import com.example.sif.NeiBuLei.UserDiaryClass;
+import com.example.sif.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
+import okhttp3.Call;
+import okhttp3.Response;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.util.List;
-
-import okhttp3.Call;
-import okhttp3.Response;
 
 public class WholeDeleteDiary {
 
@@ -32,7 +30,7 @@ public class WholeDeleteDiary {
 
     public static List<UserDiaryClass> userDiaryClasses;
     public static void wholeDiary(int id,String xuehao,String diarydate,Handler handler){
-        HttpUtil.wrightDiary(path,0,id,xuehao,diarydate, new okhttp3.Callback() {
+        HttpUtil.wrightDiary(InValues.send(R.string.UserDiary),0,id,xuehao,diarydate, new okhttp3.Callback() {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 try {
@@ -56,7 +54,7 @@ public class WholeDeleteDiary {
     }
 
     public static void deleteDiary(int id,String xuehao,String diarydate,Handler handler){
-        HttpUtil.wrightDiary(path,1,id,xuehao,diarydate, new okhttp3.Callback() {
+        HttpUtil.wrightDiary(InValues.send(R.string.UserDiary),1,id,xuehao,diarydate, new okhttp3.Callback() {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 String a = response.body().string();

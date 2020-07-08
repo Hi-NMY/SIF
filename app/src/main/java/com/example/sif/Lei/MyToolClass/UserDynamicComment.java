@@ -2,19 +2,17 @@ package com.example.sif.Lei.MyToolClass;
 
 import android.os.Handler;
 import android.os.Message;
-
 import com.example.sif.Lei.LianJie.HttpUtil;
 import com.example.sif.NeiBuLei.CommentMessage;
+import com.example.sif.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
+import okhttp3.Call;
+import okhttp3.Response;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.util.List;
-
-import okhttp3.Call;
-import okhttp3.Response;
 
 public class UserDynamicComment {
 
@@ -36,7 +34,7 @@ public class UserDynamicComment {
     public void detailedComment(Handler h,int id,String nowTime){
         this.handler = h;
         if (commentNumber != 0){
-            HttpUtil.dynamicDetailedComment(path,id,dynamicid,nowTime, new okhttp3.Callback() {
+            HttpUtil.dynamicDetailedComment(InValues.send(R.string.CommentDetailed),id,dynamicid,nowTime, new okhttp3.Callback() {
                 @Override
                 public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                     String a = response.body().string();
@@ -57,7 +55,7 @@ public class UserDynamicComment {
     String path1 = "http://nmy1206.natapp1.cc/SendComment.php";
     public void sendComment(int i,String dynamicId,String dynamiccomment,String commenttime,String commentusername,String tousername,String userheadimageurl,String commentxuehao,String userxuehao,int userid,Handler h){
         this.handler = h;
-        HttpUtil.sendComment(path1,i,dynamicId,dynamiccomment,commenttime,commentusername,tousername,userheadimageurl,commentxuehao,null,userxuehao,userid, new okhttp3.Callback() {
+        HttpUtil.sendComment(InValues.send(R.string.SendComment),i,dynamicId,dynamiccomment,commenttime,commentusername,tousername,userheadimageurl,commentxuehao,null,userxuehao,userid, new okhttp3.Callback() {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 String a = response.body().string();

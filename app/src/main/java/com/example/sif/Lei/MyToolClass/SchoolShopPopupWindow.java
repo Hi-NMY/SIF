@@ -11,17 +11,10 @@ import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.EditText;
-import android.widget.PopupWindow;
-import android.widget.TextView;
-
+import android.widget.*;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.sif.BaseActivity;
 import com.example.sif.Lei.LianJie.HttpUtil;
 import com.example.sif.Lei.MyBroadcastReceiver.BroadcastRec;
@@ -35,16 +28,14 @@ import com.tamsiree.rxui.view.dialog.RxDialogScaleView;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
 import com.zhy.view.flowlayout.TagFlowLayout;
-
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
 
 public class SchoolShopPopupWindow extends PopupWindow implements View.OnClickListener{
 
@@ -299,7 +290,7 @@ public class SchoolShopPopupWindow extends PopupWindow implements View.OnClickLi
 
     private String newShop;
     private void sendNewShop() {
-        HttpUtil.sendAddNewShop(path, ds, baseActivity.getMyXueHao(), MyDateClass.showNowDate(), stringLabels, mToshopNotice.getText().toString(), shopstate, new Callback() {
+        HttpUtil.sendAddNewShop(InValues.send(R.string.NewSchoolShop), ds, baseActivity.getMyXueHao(), MyDateClass.showNowDate(), stringLabels, mToshopNotice.getText().toString(), shopstate, new Callback() {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 newShop = response.body().string();

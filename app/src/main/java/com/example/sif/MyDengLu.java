@@ -15,6 +15,7 @@ import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 
 import com.example.sif.Lei.LianJie.ShuJuLianJie;
+import com.example.sif.Lei.MyToolClass.InValues;
 import com.example.sif.Lei.MyToolClass.MyDateClass;
 import com.example.sif.Lei.MyToolClass.ToastZong;
 import com.example.sif.Lei.ShowActivityBar.FragmentActivityBar;
@@ -42,15 +43,15 @@ public class MyDengLu extends BaseActivity implements View.OnClickListener {
                     String I = (String)msg.obj;
                     switch (I){
                         case "0":
-                            huoQuGeRenXinXi(MyDengLu.this,path1,path2,userZhangHao,handler);
+                            huoQuGeRenXinXi(MyDengLu.this,InValues.send(R.string.UserSchool),InValues.send(R.string.User),userZhangHao,handler);
                             closeDiaLog();
                             String nowDate = MyDateClass.showNowDate();
                             String path3="http://nmy1206.natapp1.cc/shuaXinGuangChang.php";
-                            shuaXinGuangChang(path3,null,nowDate,1);
+                            shuaXinGuangChang(InValues.send(R.string.shuaXinGuangChang),null,nowDate,1);
                             String path4 = "http://nmy1206.natapp1.cc/userSpace.php";
-                            sendUserSpace(1,path4,nowDate,userZhangHao,null);
+                            sendUserSpace(1,InValues.send(R.string.userSpace),nowDate,userZhangHao,null);
                             String path5 = "http://nmy1206.natapp1.cc/Thumb.php";
-                            huoquThumb(path5,userZhangHao);
+                            huoquThumb(InValues.send(R.string.Thumb),userZhangHao);
                             Intent intent = new Intent(MyDengLu.this,MyDengLu2.class);
                             intent.putExtra("zhanghao",mDengluXueHao.getText().toString().trim());
                             setMyXueHao(mDengluXueHao.getText().toString().trim());
@@ -129,7 +130,7 @@ public class MyDengLu extends BaseActivity implements View.OnClickListener {
                             public void run() {
                                 try {
                                     sleep(100);
-                                    ShuJuLianJie shuJuLianJie = new ShuJuLianJie(MyDengLu.this, path, "POST", handler);
+                                    ShuJuLianJie shuJuLianJie = new ShuJuLianJie(MyDengLu.this, InValues.send(R.string.XueSheng_YanZheng), "POST", handler);
                                     shuJuLianJie.chuanShu(userZhangHao);
                                 } catch (InterruptedException e) {
                                     e.printStackTrace();

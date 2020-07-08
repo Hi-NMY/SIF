@@ -14,14 +14,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.sif.BaseActivity;
 import com.example.sif.Lei.LianJie.HttpUtil;
 import com.example.sif.Lei.MyToolClass.GuangChangImageToClass;
+import com.example.sif.Lei.MyToolClass.InValues;
 import com.example.sif.Lei.MyToolClass.ShowDiaLog;
 import com.example.sif.Lei.MyToolClass.ToastZong;
 import com.example.sif.MyApplication;
@@ -30,15 +29,13 @@ import com.example.sif.R;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
 import com.zhy.view.flowlayout.TagFlowLayout;
-
+import okhttp3.Call;
+import okhttp3.Response;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import okhttp3.Call;
-import okhttp3.Response;
 
 public class UserShopAdapter extends RecyclerView.Adapter<UserShopAdapter.ViewHolder> {
 
@@ -240,7 +237,7 @@ public class UserShopAdapter extends RecyclerView.Adapter<UserShopAdapter.ViewHo
             public void onClick(View v) {
                 if (oldState != newState) {
                     Message message = new Message();
-                    HttpUtil.updateShopState(path,id,myXueHao,newState, new okhttp3.Callback() {
+                    HttpUtil.updateShopState(InValues.send(R.string.UpdateSchoolShop),id,myXueHao,newState, new okhttp3.Callback() {
                         @Override
                         public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                             String a = response.body().string();

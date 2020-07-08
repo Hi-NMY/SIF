@@ -21,10 +21,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.example.sif.BaseFragment;
 import com.example.sif.Lei.MyBroadcastReceiver.BroadcastRec;
-import com.example.sif.Lei.MyToolClass.ObtainUserSign;
-import com.example.sif.Lei.MyToolClass.ShowDiaLog;
-import com.example.sif.Lei.MyToolClass.ToastZong;
-import com.example.sif.Lei.MyToolClass.UpdateShareTask;
+import com.example.sif.Lei.MyToolClass.*;
 import com.example.sif.MyApplication;
 import com.example.sif.NeiBuLei.UserSignClass;
 import com.example.sif.R;
@@ -231,7 +228,7 @@ public class SignInFragment extends BaseFragment {
                 .readTimeout(20,TimeUnit.SECONDS)
                 .build();
         Request request = new Request.Builder()
-                .url("http://nmy1206.natapp1.cc/ObtainUserCoin.php")
+                .url(InValues.send(R.string.ObtainUserCoin))
                 .post(requestBody)
                 .build();
         client.newCall(request).enqueue(new okhttp3.Callback() {

@@ -2,21 +2,19 @@ package com.example.sif.Lei.MyToolClass;
 
 import android.os.Handler;
 import android.os.Message;
-
 import com.example.sif.Lei.LianJie.HttpUtil;
-
+import com.example.sif.R;
+import okhttp3.Call;
+import okhttp3.Response;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
-
-import okhttp3.Call;
-import okhttp3.Response;
 
 public class SendUserPrivacy {
     private static String path = "http://nmy1206.natapp1.cc/ModifyPrivacy.php";
 
     public static void userPrivacy(String xuehao,String privacy,Handler handler){
-        HttpUtil.myPrivacy(path,xuehao,privacy, new okhttp3.Callback() {
+        HttpUtil.myPrivacy(InValues.send(R.string.ModifyPrivacy),xuehao,privacy, new okhttp3.Callback() {
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
                 Message message = new Message();

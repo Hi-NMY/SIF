@@ -202,7 +202,7 @@ public class MySpace extends BaseActivity implements View.OnClickListener {
             }
                 String nowTime = MyDateClass.showNowDate();
                 String pathSpace = "http://nmy1206.natapp1.cc/userSpace.php";
-                HttpUtil.addUserSpace(pathSpace,nowTime,uXueHao, new okhttp3.Callback() {
+                HttpUtil.addUserSpace(InValues.send(R.string.userSpace),nowTime,uXueHao, new okhttp3.Callback() {
                     @Override
                     public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                         String a = response.body().string();
@@ -233,7 +233,7 @@ public class MySpace extends BaseActivity implements View.OnClickListener {
         //xieru();
         updateTime = String.valueOf(System.currentTimeMillis());
         Glide.with(MyApplication.getContext())
-                .load("http://nmy1206.natapp1.cc/UserImageServer/"+uXueHao+"/HeadImage/myHeadImage.png")
+                .load(InValues.send(R.string.httpHeader) +"/UserImageServer/"+uXueHao+"/HeadImage/myHeadImage.png")
                 .signature(new MediaStoreSignature(updateTime,1,1))
                 .placeholder(R.drawable.nostartimage_three)
                 .fallback(R.drawable.defaultheadimage)
@@ -243,7 +243,7 @@ public class MySpace extends BaseActivity implements View.OnClickListener {
                 .circleCrop()
                 .into(mMySpaceUserImage);
         Glide.with(MyApplication.getContext())
-                .load("http://nmy1206.natapp1.cc/UserImageServer/"+uXueHao+"/BackgroundImage/myBackgroundImage.png")
+                .load(InValues.send(R.string.httpHeader) +"/UserImageServer/"+uXueHao+"/BackgroundImage/myBackgroundImage.png")
                 .signature(new MediaStoreSignature(updateTime,1,1))
                 .placeholder(R.drawable.nostartimage)
                 .fallback(R.drawable.celan_geren)
@@ -303,14 +303,14 @@ public class MySpace extends BaseActivity implements View.OnClickListener {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
                 final String nowTime = MyDateClass.showNowDate();
-                sendUserSpace(3,path,nowTime,uXueHao,spacehandler);
+                sendUserSpace(3,InValues.send(R.string.userSpace),nowTime,uXueHao,spacehandler);
             }
         });
 
         smartRefreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
             public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-                sendUserSpace(2,path,mySpacePack.date,uXueHao,spacehandler);
+                sendUserSpace(2,InValues.send(R.string.userSpace),mySpacePack.date,uXueHao,spacehandler);
             }
         });
     }
@@ -363,7 +363,7 @@ public class MySpace extends BaseActivity implements View.OnClickListener {
             textUserBan.setText(uNianJi);
         }
 
-        HttpUtil.obtainUserLongDay("http://nmy1206.natapp1.cc/ObtainUserLongDay.php",uXueHao, new okhttp3.Callback() {
+        HttpUtil.obtainUserLongDay(InValues.send(R.string.ObtainUserLongDay),uXueHao, new okhttp3.Callback() {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 longDay = response.body().string();
@@ -555,7 +555,7 @@ public class MySpace extends BaseActivity implements View.OnClickListener {
                     rxDialogScaleView = new RxDialogScaleView(this);
                     rxDialog = new RxDialog(this,R.style.tran_dialog);
                     rxDialog.setCanceledOnTouchOutside(false);
-                    String NewName = "http://nmy1206.natapp1.cc/UserImageServer/"+uXueHao+"/HeadImage/myHeadImage.png";
+                    String NewName = InValues.send(R.string.httpHeader) +"/UserImageServer/"+uXueHao+"/HeadImage/myHeadImage.png";
                     MyVeryDiaLog.veryImageDiaLog(rxDialogScaleView,NewName,null,bitMapHandler);
                     MyVeryDiaLog.transparentDiaLog(this,rxDialog);
                 }
@@ -580,7 +580,7 @@ public class MySpace extends BaseActivity implements View.OnClickListener {
                 break;
             case R.id.Mypace_null:
                 final String nowTime = MyDateClass.showNowDate();
-                sendUserSpace(3,path,nowTime,uXueHao,spacehandler);
+                sendUserSpace(3,InValues.send(R.string.userSpace),nowTime,uXueHao,spacehandler);
                 break;
             case R.id.private_user_button:
                 if (uXueHao.equals("") || uName.equals("")){
@@ -694,7 +694,7 @@ public class MySpace extends BaseActivity implements View.OnClickListener {
                         editor.putString("a",userImageHeadDate);
                         editor.commit();
                         Glide.with(MyApplication.getContext())
-                                .load("http://nmy1206.natapp1.cc/UserImageServer/"+getMyXueHao()+"/HeadImage/myHeadImage.png")
+                                .load(InValues.send(R.string.httpHeader) +"/UserImageServer/"+getMyXueHao()+"/HeadImage/myHeadImage.png")
                                 .signature(new MediaStoreSignature(userImageHeadDate,1,1))
                                 .placeholder(R.drawable.nostartimage_three)
                                 .fallback(R.drawable.defaultheadimage)
@@ -702,7 +702,7 @@ public class MySpace extends BaseActivity implements View.OnClickListener {
                                 .circleCrop()
                                 .into(mMySpaceUserImage);
                         Glide.with(MyApplication.getContext())
-                                .load("http://nmy1206.natapp1.cc/UserImageServer/"+getMyXueHao()+"/BackgroundImage/myBackgroundImage.png")
+                                .load(InValues.send(R.string.httpHeader) +"/UserImageServer/"+getMyXueHao()+"/BackgroundImage/myBackgroundImage.png")
                                 .signature(new MediaStoreSignature(userImageHeadDate,1,1))
                                 .placeholder(R.drawable.nostartimage)
                                 .fallback(R.drawable.celan_bg)
@@ -776,7 +776,7 @@ public class MySpace extends BaseActivity implements View.OnClickListener {
         showDiaLog.closeMyDiaLog();
         showDiaLog(this,R.drawable.loading2);
         if (urlPath!=null){
-            HttpUtil.sendMyHeadImage(pathimage,function,getMyXueHao(),urlPath, new okhttp3.Callback() {
+            HttpUtil.sendMyHeadImage(InValues.send(R.string.KeepImage),function,getMyXueHao(),urlPath, new okhttp3.Callback() {
                 @Override
                 public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                     String a = response.body().string();

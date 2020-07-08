@@ -3,14 +3,15 @@ package com.example.sif.Lei.MyToolClass;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-
 import com.example.sif.Lei.LianJie.HttpUtil;
 import com.example.sif.MyApplication;
 import com.example.sif.NeiBuLei.UserFollowPeople;
 import com.example.sif.NeiBuLei.UserSpace;
+import com.example.sif.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
+import okhttp3.Call;
+import okhttp3.Response;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
@@ -19,9 +20,6 @@ import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-
-import okhttp3.Call;
-import okhttp3.Response;
 
 public class UserFollow {
 
@@ -38,7 +36,7 @@ public class UserFollow {
     private String path = "http://nmy1206.natapp1.cc/UserFollow.php";
     public void rightFollow() {
         followList = new ArrayList<>();
-        HttpUtil.myFollow(path,0,xuehao,"", new okhttp3.Callback() {
+        HttpUtil.myFollow(InValues.send(R.string.UserFollow),0,xuehao,"", new okhttp3.Callback() {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 String a = response.body().string();
@@ -128,7 +126,7 @@ public class UserFollow {
     private String pathto = "http://nmy1206.natapp1.cc/UserFollowToMe.php";
     public void yesFollow(){
         followList.add(userxuehao);
-        HttpUtil.myFollow(path,1,xuehao,userxuehao, new okhttp3.Callback() {
+        HttpUtil.myFollow(InValues.send(R.string.UserFollow),1,xuehao,userxuehao, new okhttp3.Callback() {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 String a = response.body().string();
@@ -145,7 +143,7 @@ public class UserFollow {
             }
         });
 
-        HttpUtil.myFollow(pathto,1,userxuehao,xuehao, new okhttp3.Callback() {
+        HttpUtil.myFollow(InValues.send(R.string.UserFollowToMe),1,userxuehao,xuehao, new okhttp3.Callback() {
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
 
@@ -160,7 +158,7 @@ public class UserFollow {
 
     public void noFollow(){
         followList.remove(userxuehao);
-        HttpUtil.myFollow(path,2,xuehao,userxuehao, new okhttp3.Callback() {
+        HttpUtil.myFollow(InValues.send(R.string.UserFollow),2,xuehao,userxuehao, new okhttp3.Callback() {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 String a = response.body().string();
@@ -177,7 +175,7 @@ public class UserFollow {
             }
         });
 
-        HttpUtil.myFollow(pathto,2,userxuehao,xuehao, new okhttp3.Callback() {
+        HttpUtil.myFollow(InValues.send(R.string.UserFollowToMe),2,userxuehao,xuehao, new okhttp3.Callback() {
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
 
@@ -204,7 +202,7 @@ public class UserFollow {
                 stringBuffer.append(String.valueOf(","+f));
             }
         }
-        HttpUtil.followDynamic(path1,stringBuffer,nowTime, new okhttp3.Callback() {
+        HttpUtil.followDynamic(InValues.send(R.string.MyFollow),stringBuffer,nowTime, new okhttp3.Callback() {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 String a = response.body().string();

@@ -399,7 +399,7 @@ public class MyZhuYe extends BaseActivity implements View.OnClickListener {
             SharedPreferences sharedPreferences = getSharedPreferences("userImageHeadDate", MODE_PRIVATE);
             userImageHeadDate = sharedPreferences.getString("userImageHeadDate", String.valueOf(System.currentTimeMillis()));
             Glide.with(MyApplication.getContext())
-                    .load("http://nmy1206.natapp1.cc/UserImageServer/" + getMyXueHao() + "/HeadImage/myHeadImage.png")
+                    .load(InValues.send(R.string.httpHeader) +"/UserImageServer/" + getMyXueHao() + "/HeadImage/myHeadImage.png")
                     .signature(new MediaStoreSignature(userImageHeadDate, 1, 1))
                     .placeholder(R.drawable.nostartimage_three)
                     .fallback(R.drawable.defaultheadimage)
@@ -444,7 +444,7 @@ public class MyZhuYe extends BaseActivity implements View.OnClickListener {
     protected void onResume() {
         super.onResume();
         Glide.with(MyApplication.getContext())
-                .load("http://nmy1206.natapp1.cc/UserImageServer/" + getMyXueHao() + "/HeadImage/myHeadImage.png")
+                .load(InValues.send(R.string.httpHeader) +"/UserImageServer/" + getMyXueHao() + "/HeadImage/myHeadImage.png")
                 .signature(new MediaStoreSignature(userImageHeadDate, 1, 1))
                 .placeholder(R.drawable.nostartimage_three)
                 .fallback(R.drawable.defaultheadimage)
@@ -682,7 +682,7 @@ public class MyZhuYe extends BaseActivity implements View.OnClickListener {
         public void onReceive(Context context, Intent intent) {
             String path = "http://nmy1206.natapp1.cc/userSpace.php";
             final String nowTime = MyDateClass.showNowDate();
-            sendUserSpace(1, path, nowTime, getMyXueHao(), null);
+            sendUserSpace(1, InValues.send(R.string.userSpace), nowTime, getMyXueHao(), null);
         }
     }
 

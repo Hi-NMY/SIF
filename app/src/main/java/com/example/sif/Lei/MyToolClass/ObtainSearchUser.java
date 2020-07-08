@@ -7,6 +7,7 @@ import com.example.sif.Lei.LianJie.HttpUtil;
 import com.example.sif.Lei.MyBroadcastReceiver.BroadcastRec;
 import com.example.sif.MyApplication;
 import com.example.sif.NeiBuLei.FollowList;
+import com.example.sif.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import okhttp3.Call;
@@ -29,7 +30,7 @@ public class ObtainSearchUser {
     private static String path = "http://nmy1206.natapp1.cc/SearchUser.php";
     public static List<FollowList> followLists;
     public static void obtainUser(String key, Handler handler){
-        HttpUtil.obtainUser(path,key, new okhttp3.Callback() {
+        HttpUtil.obtainUser(InValues.send(R.string.SearchUser),key, new okhttp3.Callback() {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response){
                 try {

@@ -17,6 +17,7 @@ import androidx.core.widget.NestedScrollView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.signature.MediaStoreSignature;
 import com.example.sif.Lei.MyBroadcastReceiver.BroadcastRec;
+import com.example.sif.Lei.MyToolClass.InValues;
 import com.example.sif.Lei.MyToolClass.ObtainServerTime;
 import com.example.sif.Lei.MyToolClass.ObtainUserSign;
 import com.example.sif.Lei.NiceImageView.CircleImageView;
@@ -99,7 +100,7 @@ public class MyCalendar extends BaseActivity implements View.OnClickListener {
         SharedPreferences sharedPreferences = getSharedPreferences("userImageHeadDate", MODE_PRIVATE);
         userImageHeadDate = sharedPreferences.getString("userImageHeadDate", String.valueOf(System.currentTimeMillis()));
         Glide.with(MyApplication.getContext())
-                .load("http://nmy1206.natapp1.cc/UserImageServer/" + getMyXueHao() + "/HeadImage/myHeadImage.png")
+                .load(InValues.send(R.string.httpHeader) +"/UserImageServer/" + getMyXueHao() + "/HeadImage/myHeadImage.png")
                 .signature(new MediaStoreSignature(userImageHeadDate, 1, 1))
                 .placeholder(R.drawable.nostartimage_three)
                 .fallback(R.drawable.defaultheadimage)

@@ -4,22 +4,19 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-
 import com.example.sif.Lei.LianJie.HttpUtil;
 import com.example.sif.MyApplication;
 import com.example.sif.NeiBuLei.InterestingBlockClass;
+import com.example.sif.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
+import okhttp3.Call;
+import okhttp3.Response;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.util.List;
-
-import okhttp3.Call;
-import okhttp3.Response;
 
 public class IbClass {
 
@@ -46,7 +43,7 @@ public class IbClass {
     public List<InterestingBlockClass> interestingBlockClasses;
     private String path = "http://nmy1206.natapp1.cc/InterestingBlockMore.php";
     public void sendIbMessage(int id){
-        HttpUtil.ibsend(path,id,"",new okhttp3.Callback() {
+        HttpUtil.ibsend(InValues.send(R.string.InterestingBlockMore),id,"",new okhttp3.Callback() {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 String a = response.body().string();
@@ -75,7 +72,7 @@ public class IbClass {
     }
 
     public void searchIbMore(int id,String name){
-        HttpUtil.ibsend(path,id,name,new okhttp3.Callback() {
+        HttpUtil.ibsend(InValues.send(R.string.InterestingBlockMore),id,name,new okhttp3.Callback() {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 String a = response.body().string();

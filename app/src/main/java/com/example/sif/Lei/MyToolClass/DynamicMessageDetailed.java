@@ -4,20 +4,18 @@ import android.app.Activity;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-
 import com.example.sif.Lei.LianJie.HttpUtil;
 import com.example.sif.MyApplication;
 import com.example.sif.NeiBuLei.UserSpace;
+import com.example.sif.R;
 import com.google.gson.Gson;
-
+import okhttp3.Call;
+import okhttp3.Response;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;
-
-import okhttp3.Call;
-import okhttp3.Response;
 
 public class DynamicMessageDetailed {
     private Activity activity;
@@ -43,7 +41,7 @@ public class DynamicMessageDetailed {
 
     public UserSpace userSpace;
     public void obtainDynamic(){
-        HttpUtil.dynamicDetailedObtain(path,xuehao,dynamicid, new okhttp3.Callback() {
+        HttpUtil.dynamicDetailedObtain(InValues.send(R.string.DynamicDetailed),xuehao,dynamicid, new okhttp3.Callback() {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 String a = response.body().string();

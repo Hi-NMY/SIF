@@ -5,6 +5,7 @@ import android.app.Activity;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.example.sif.NeiBuLei.DouBleImagePath;
+import com.example.sif.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,8 +37,8 @@ public class GuangChangImageToClass {
         List<DouBleImagePath> douBleImagePaths = new ArrayList<>();
         for (String s : ss){
             DouBleImagePath douBleImagePath = new DouBleImagePath();
-            douBleImagePath.setMinPath("http://nmy1206.natapp1.cc/" + s);
-            douBleImagePath.setMaxPath("http://nmy1206.natapp1.cc/UserImageServer/" + xuehao + "/ADynamicImage/" + s.substring(39));
+            douBleImagePath.setMinPath(InValues.send(R.string.httpHeadert) + s);
+            douBleImagePath.setMaxPath(InValues.send(R.string.httpHeader) +"/UserImageServer/" + xuehao + "/ADynamicImage/" + s.substring(39));
             douBleImagePaths.add(douBleImagePath);
         }
         return douBleImagePaths;
@@ -48,8 +49,8 @@ public class GuangChangImageToClass {
         List<DouBleImagePath> douBleImagePaths = new ArrayList<>();
         for (String s : ss){
             DouBleImagePath douBleImagePath = new DouBleImagePath();
-            douBleImagePath.setMinPath("http://nmy1206.natapp1.cc/" + s);
-            douBleImagePath.setMaxPath("http://nmy1206.natapp1.cc/UserImageServer/" + xuehao + "/ASchoolShop/" + s.substring(39));
+            douBleImagePath.setMinPath(InValues.send(R.string.httpHeadert) + s);
+            douBleImagePath.setMaxPath(InValues.send(R.string.httpHeader) + "/UserImageServer/" + xuehao + "/ASchoolShop/" + s.substring(39));
             douBleImagePaths.add(douBleImagePath);
         }
         return douBleImagePaths;

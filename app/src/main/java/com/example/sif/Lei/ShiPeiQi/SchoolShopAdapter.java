@@ -11,15 +11,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.signature.MediaStoreSignature;
 import com.example.sif.Lei.LianJie.HttpUtil;
 import com.example.sif.Lei.MyToolClass.GuangChangImageToClass;
+import com.example.sif.Lei.MyToolClass.InValues;
 import com.example.sif.Lei.MyToolClass.ObtainUser;
 import com.example.sif.Lei.MyToolClass.ToastZong;
 import com.example.sif.Lei.NiceImageView.CircleImageView;
@@ -31,17 +30,15 @@ import com.google.gson.Gson;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
 import com.zhy.view.flowlayout.TagFlowLayout;
-
+import io.rong.imkit.RongIM;
+import io.rong.imlib.model.Conversation;
+import okhttp3.Call;
+import okhttp3.Response;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import io.rong.imkit.RongIM;
-import io.rong.imlib.model.Conversation;
-import okhttp3.Call;
-import okhttp3.Response;
 
 public class SchoolShopAdapter extends RecyclerView.Adapter<SchoolShopAdapter.ViewHolder> {
 
@@ -156,7 +153,7 @@ public class SchoolShopAdapter extends RecyclerView.Adapter<SchoolShopAdapter.Vi
             }
         };
 
-        HttpUtil.obtainUserName(obtainnamePath,schoolShopClass.getXuehao(), new okhttp3.Callback() {
+        HttpUtil.obtainUserName(InValues.send(R.string.ObtainUserName),schoolShopClass.getXuehao(), new okhttp3.Callback() {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 String a = response.body().string();
@@ -232,7 +229,7 @@ public class SchoolShopAdapter extends RecyclerView.Adapter<SchoolShopAdapter.Vi
         if (!schoolShopClasses.get(position).getXuehao().equals(holder.mShopUserimage.getTag())) {
             holder.mShopUserimage.setTag(null);
             Glide.with(activity)
-                    .load("http://nmy1206.natapp1.cc/UserImageServer/" + schoolShopClass.getXuehao() + "/HeadImage/myHeadImage.png")
+                    .load(InValues.send(R.string.httpHeader) +"/UserImageServer/" + schoolShopClass.getXuehao() + "/HeadImage/myHeadImage.png")
                     .signature(new MediaStoreSignature(updateTime, 1, 1))
                     .placeholder(R.drawable.nostartimage_three)
                     .fallback(R.drawable.defaultheadimage)
