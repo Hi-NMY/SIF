@@ -7,7 +7,6 @@ import android.graphics.drawable.Drawable;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
-
 import com.example.sif.R;
 
 public class ShowDiaLog extends AlertDialog {
@@ -21,11 +20,6 @@ public class ShowDiaLog extends AlertDialog {
         alertDialog = builder.create();
     }
 
-    public void logWindow(Drawable color){
-        window = alertDialog.getWindow();
-        window.setBackgroundDrawable(color);
-    }
-
     public void showMyDiaLog(){
         alertDialog.show();
     }
@@ -34,16 +28,6 @@ public class ShowDiaLog extends AlertDialog {
         if (alertDialog != null){
             alertDialog.dismiss();
         }
-    }
-
-    public void bottomrView(){
-        Window window = alertDialog.getWindow();
-        window.setGravity(Gravity.BOTTOM);
-        window.setWindowAnimations(R.style.verypopupview);
-    }
-
-    public void Cancelable(boolean a){
-        alertDialog.setCancelable(a);
     }
 
     public void dismissListener(Dismiss dismiss){
@@ -58,4 +42,22 @@ public class ShowDiaLog extends AlertDialog {
     public interface Dismiss{
         void dismiss();
     }
+
+    public void logWindow(Drawable color){
+        window = alertDialog.getWindow();
+        window.setBackgroundDrawable(color);
+    }
+
+
+
+    public void bottomrView(){
+        Window window = alertDialog.getWindow();
+        window.setGravity(Gravity.BOTTOM);
+        window.setWindowAnimations(R.style.verypopupview);
+    }
+
+    public void Cancelable(boolean a){
+        alertDialog.setCancelable(a);
+    }
+
 }

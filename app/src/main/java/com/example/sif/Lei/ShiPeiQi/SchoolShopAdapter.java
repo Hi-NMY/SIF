@@ -131,6 +131,7 @@ public class SchoolShopAdapter extends RecyclerView.Adapter<SchoolShopAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         schoolShopClass = schoolShopClasses.get(position);
+        holder.mShopUsername.setTag(position);
 
         if (schoolShopClass.getXuehao().equals(myXueHao)){
             holder.mShopTomessage.setVisibility(View.INVISIBLE);
@@ -153,29 +154,30 @@ public class SchoolShopAdapter extends RecyclerView.Adapter<SchoolShopAdapter.Vi
             }
         };
 
-        HttpUtil.obtainUserName(InValues.send(R.string.ObtainUserName),schoolShopClass.getXuehao(), new okhttp3.Callback() {
+        HttpUtil.obtainUserName(InValues.send(R.string.ObtainUserName), schoolShopClass.getXuehao(), new okhttp3.Callback() {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 String a = response.body().string();
                 try {
-                    userNameClass = new Gson().fromJson(a,UserNameClass.class);
+                    userNameClass = new Gson().fromJson(a, UserNameClass.class);
                     Message message = new Message();
                     message.what = 0;
                     userNameHanlder.sendMessage(message);
-                }catch (Exception e){
-                    Message message = new Message();
-                    message.what = 1;
-                    userNameHanlder.sendMessage(message);
+                } catch (Exception e) {
+//                    Message message = new Message();
+//                    message.what = 1;
+//                    userNameHanlder.sendMessage(message);
                 }
             }
 
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                Message message = new Message();
-                message.what = 1;
-                userNameHanlder.sendMessage(message);
+//                Message message = new Message();
+//                message.what = 1;
+//                userNameHanlder.sendMessage(message);
             }
         });
+
         holder.mShopNotice.setText(schoolShopClass.getNotice());
         holder.mShopTime.setText(schoolShopClass.getSendtime());
         switch (schoolShopClass.getShopstate()) {

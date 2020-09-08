@@ -8,11 +8,11 @@ import android.content.IntentFilter;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 public class BroadcastRec {
-    public static void sendReceiver(Context c,String intentName,int text1,String text2){
+    public static void sendReceiver(Context c,String intentName,int textone,String texttwo){
         LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.getInstance(c);
         Intent intent = new Intent(intentName);
-        intent.putExtra("textone",text1);
-        intent.putExtra("texttwo",text2);
+        intent.putExtra("textone",textone);
+        intent.putExtra("texttwo",texttwo);
         localBroadcastManager.sendBroadcast(intent);
     }
 

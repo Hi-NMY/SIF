@@ -20,6 +20,7 @@ import com.example.sif.Lei.MyBroadcastReceiver.BroadcastRec;
 import com.example.sif.Lei.MyToolClass.InValues;
 import com.example.sif.Lei.MyToolClass.ObtainServerTime;
 import com.example.sif.Lei.MyToolClass.ObtainUserSign;
+import com.example.sif.Lei.MyToolClass.ToastZong;
 import com.example.sif.Lei.NiceImageView.CircleImageView;
 import com.example.sif.Lei.ShowActivityBar.FragmentActivityBar;
 import com.example.sif.ui.sign.SignInFragment;
@@ -139,12 +140,16 @@ public class MyCalendar extends BaseActivity implements View.OnClickListener {
     class StartAnimation extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
-            mCoinSizeText.setText(String.valueOf(signInFragment.userSignClass.getCoin()));
-            mCoinSizeText.postInvalidate();
-            mSignR.setVisibility(View.VISIBLE);
-            mSignR.startAnimation(animation);
-            mSignR1.setVisibility(View.VISIBLE);
-            mSignR1.startAnimation(animation);
+            try {
+                mCoinSizeText.setText(String.valueOf(signInFragment.userSignClass.getCoin()));
+                mCoinSizeText.postInvalidate();
+                mSignR.setVisibility(View.VISIBLE);
+                mSignR.startAnimation(animation);
+                mSignR1.setVisibility(View.VISIBLE);
+                mSignR1.startAnimation(animation);
+            }catch (Exception e){
+                ToastZong.ShowToast(MyApplication.getContext(),"阿欧，出错了");
+            }
         }
     }
 

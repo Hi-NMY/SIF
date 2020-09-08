@@ -89,7 +89,9 @@ public class SearchNewUser extends BaseActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
             EasyLoading.dissmissLoading();
-            sendUserList();
+            if(intent.getIntExtra("textone",0) == 1000){
+                sendUserList();
+            }
         }
     }
 

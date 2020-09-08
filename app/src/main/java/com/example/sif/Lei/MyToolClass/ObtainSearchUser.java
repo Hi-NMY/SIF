@@ -37,9 +37,10 @@ public class ObtainSearchUser {
                     String a = response.body().string();
                     followLists = new Gson().fromJson(a,new TypeToken<List<FollowList>>()
                     {}.getType());
-                    BroadcastRec.sendReceiver(MyApplication.getContext(),"searchNewUser",0,"");
+                    BroadcastRec.sendReceiver(MyApplication.getContext(),"searchNewUser",1000,"");
                 }catch (Exception e){
                     handler.sendMessage(new Message());
+                    BroadcastRec.sendReceiver(MyApplication.getContext(),"searchNewUser",0,"");
                 }
             }
 

@@ -9,12 +9,10 @@
 </style>
 
     <style name="AlertDialog" parent="@android:style/Theme.DeviceDefault.Dialog">
-        <!--该行代码就是设置AlertDialog的背景-->
         <item name="android:background">@drawable/alertdialog_background</item>
     </style>
 
     <style name="AlertDialog_Function" parent="@android:style/Theme.DeviceDefault.Dialog">
-        <!--该行代码就是设置AlertDialog的背景-->
         <item name="android:paddingTop">10dp</item>
         <item name="android:paddingBottom">10dp</item>
         <item name="android:layout_gravity">center_vertical</item>
@@ -22,7 +20,6 @@
     </style>
 
     <style name="AlertDialog_qr" parent="@android:style/Theme.DeviceDefault.Dialog">
-        <!--该行代码就是设置AlertDialog的背景-->
         <item name="android:layout_gravity">center_vertical</item>
         <item name="android:background">@drawable/alertdialog_function_background</item>
     </style>

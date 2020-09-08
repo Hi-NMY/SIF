@@ -81,7 +81,7 @@ public class SignInFragment extends BaseFragment {
     private Map<Integer, View> mapView;
     private Map<Integer, TextView> mapTextView;
     private Map<Integer, RelativeLayout> mapRelative;
-    private Map<Integer,TextView> mapTipText;
+    private Map<Integer, TextView> mapTipText;
     private String myXueHao;
     private Context context;
     private Activity activity;

@@ -33,7 +33,6 @@ public class StatusBarUtil {
     /**
      * 修改状态栏颜色，支持4.4以上版本
      *
-     * @param colorId 颜色
      */
     public static void setStatusBarColor(Activity activity, int colorId) {
 
@@ -81,7 +80,6 @@ public class StatusBarUtil {
     /**
      *  代码实现android:fitsSystemWindows
      *
-     * @param activity
      */
     public static void setRootViewFitsSystemWindows(Activity activity, boolean fitSystemWindows) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {

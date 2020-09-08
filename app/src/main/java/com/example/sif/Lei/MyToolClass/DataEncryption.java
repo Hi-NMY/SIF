@@ -10,23 +10,17 @@ import javax.crypto.spec.DESKeySpec;
 import java.security.SecureRandom;
 
 public class DataEncryption {
-
-    private static final byte[] DES_KEY = { 19, 99, -12, -6, -126, -126, 126, 06 };
     private static boolean[] bcdLookup;
-
+    private static final byte[] DES_KEY = { 19, 99, -12, -6, -126, -126, 126, 06 };
     //加密
     public static String encryptString(String s){
         try {
-            // 创建随机数源
             SecureRandom sr = new SecureRandom();
             DESKeySpec deskey = new DESKeySpec(DES_KEY);
-            // 创建密钥工厂，并转化为对象
             SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES");
             SecretKey key = keyFactory.generateSecret(deskey);
-            // 加密
             Cipher cipher = Cipher.getInstance("DES");
             cipher.init(Cipher.ENCRYPT_MODE, key, sr);
-            // 加密，并把字节数组编码成字符串
             String encryptedData = new BASE64Encoder().encode(cipher.doFinal(s.getBytes()));
             return encryptedData;
         } catch (Exception e) {

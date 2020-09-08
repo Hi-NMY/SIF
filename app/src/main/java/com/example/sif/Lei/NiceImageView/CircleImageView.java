@@ -2,32 +2,15 @@ package com.example.sif.Lei.NiceImageView;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Bitmap;
-import android.graphics.BitmapShader;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.Path;
-import android.graphics.Rect;
-import android.graphics.Shader;
+import android.graphics.*;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-
-import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageView;
-
 import com.example.sif.R;
 
-/**
- * 功能描述：一个简洁而高效的圆形ImageView
- *
- * @author (作者) edward（冯丰枫）
- * @link http://www.jianshu.com/u/f7176d6d53d2
- * 创建时间： 2018/4/17 0017
- */
+
 public class CircleImageView extends AppCompatImageView {
     private Paint mPaintBitmap = new Paint(Paint.ANTI_ALIAS_FLAG);
     private Paint mPaintBorder = new Paint(Paint.ANTI_ALIAS_FLAG);
