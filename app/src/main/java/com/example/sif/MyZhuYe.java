@@ -342,7 +342,7 @@ public class MyZhuYe extends BaseActivity implements View.OnClickListener {
         headerFriendMa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String message = DataEncryption.encryptString("2" + getMyXueHao() + MyDateClass.showNowDate());
+                String message = DataEncryption.encrypt("2" + getMyXueHao() + MyDateClass.showNowDate());
                 myQrImage = CodeUtils.createImage(message, 400, 400, null);
                 View qr = LayoutInflater.from(MyApplication.getContext()).inflate(R.layout.qrcode_dialog, null);
                 qrdialog = new ShowDiaLog(MyZhuYe.this, R.style.AlertDialog_qr, qr);
@@ -498,7 +498,7 @@ public class MyZhuYe extends BaseActivity implements View.OnClickListener {
                 if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_SUCCESS) {
                     try {
                         String message = bundle.getString(CodeUtils.RESULT_STRING);
-                        String msg = DataEncryption.decryptString(message);
+                        String msg = DataEncryption.decrypt(message);
                         String fun = msg.substring(0, 1);
                         String x = msg.substring(1, 10);
                         ObtainUser.obtainUser(this, x, qrHander);

@@ -11,41 +11,36 @@ import java.security.SecureRandom;
 
 public class DataEncryption {
     private static boolean[] bcdLookup;
-    private static final byte[] DES_KEY = { 19, 99, -12, -6, -126, -126, 126, 06 };
+    private static final byte[] KEY = { 19, 99, -12, -6, -126, -126, 126, 06 };
     //加密
-    public static String encryptString(String s){
+    public static String encrypt(String string){
         try {
-            SecureRandom sr = new SecureRandom();
-            DESKeySpec deskey = new DESKeySpec(DES_KEY);
-            SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES");
-            SecretKey key = keyFactory.generateSecret(deskey);
-            Cipher cipher = Cipher.getInstance("DES");
-            cipher.init(Cipher.ENCRYPT_MODE, key, sr);
-            String encryptedData = new BASE64Encoder().encode(cipher.doFinal(s.getBytes()));
-            return encryptedData;
+            SecureRandom secure = new SecureRandom();
+            DESKeySpec Key = new DESKeySpec(KEY);
+            SecretKeyFactory secret = SecretKeyFactory.getInstance("DES");
+            SecretKey secretKey = secret.generateSecret(Key);
+            Cipher c = Cipher.getInstance("DES");
+            c.init(Cipher.ENCRYPT_MODE, secretKey, secure);
+            String encrypted = new BASE64Encoder().encode(c.doFinal(string.getBytes()));
+            return encrypted;
         } catch (Exception e) {
-
         }
-        return s;
+        return string;
     }
 
     //解密
-    public static String decryptString(String s){
+    public static String decrypt(String s){
         try {
-            String decryptedData = null;
-            // 创建随机数源
-            SecureRandom sr = new SecureRandom();
-            DESKeySpec deskey = new DESKeySpec(DES_KEY);
-            // 创建密钥工厂，并转化为对象
-            SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES");
-            SecretKey key = keyFactory.generateSecret(deskey);
-            // 进行解密
-            Cipher cipher = Cipher.getInstance("DES");
-            cipher.init(Cipher.DECRYPT_MODE, key, sr);
-            decryptedData = new String(cipher.doFinal(new BASE64Decoder().decodeBuffer(s)));
-            return decryptedData;
+            String decrypted = null;
+            SecureRandom secure = new SecureRandom();
+            DESKeySpec KeySpec = new DESKeySpec(KEY);
+            SecretKeyFactory secretKey1 = SecretKeyFactory.getInstance("DES");
+            SecretKey secretKey = secretKey1.generateSecret(KeySpec);
+            Cipher c = Cipher.getInstance("DES");
+            c.init(Cipher.DECRYPT_MODE, secretKey, secure);
+            decrypted = new String(c.doFinal(new BASE64Decoder().decodeBuffer(s)));
+            return decrypted;
         } catch (Exception e) {
-
         }
         return "";
     }

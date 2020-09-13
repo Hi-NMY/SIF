@@ -93,7 +93,7 @@ public class QRactivity extends BaseActivity {
                 CodeUtils.analyzeBitmap(String.valueOf(file), new CodeUtils.AnalyzeCallback() {
                     @Override
                     public void onAnalyzeSuccess(Bitmap mBitmap, String result) {
-                        String msg = DataEncryption.decryptString(result);
+                        String msg = DataEncryption.decrypt(result);
                         String fun = msg.substring(0, 1);
                         String x = msg.substring(1, 10);
                         ObtainUser.obtainUser(QRactivity.this,x,qrHander);
