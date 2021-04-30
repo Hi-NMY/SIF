@@ -37,8 +37,8 @@ public class UserDynamicThumb {
         }
     }
 
-    final String path = "http://nmy1206.natapp1.cc/gcThumb.php";
-    final String path1 = "http://nmy1206.natapp1.cc/myThumb.php";
+    final String path = "";
+    final String path1 = "";
     public void userThumb(String dynamicid,String myxuehao,String xuehao, Handler thumbHandler){
         if (sum.contains(dynamicid)){
             sum.remove(dynamicid);
