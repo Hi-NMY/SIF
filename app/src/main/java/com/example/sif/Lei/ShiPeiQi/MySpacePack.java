@@ -324,7 +324,7 @@ public class MySpacePack extends RecyclerView.Adapter<MySpacePack.ViewHolder> {
 
 
     private ShowDiaLog showDiaLog;
-    private String path = "http://nmy1206.natapp1.cc/deleteDynamic.php";
+    private String path = "";
 
     private void showmoreFunction(int function1, final String udynamicid, final int position1) {
         View view = LayoutInflater.from(activity).inflate(R.layout.dialog_two, null);
