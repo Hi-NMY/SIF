@@ -21,8 +21,8 @@ import java.util.List;
 
 public class SendVoice {
 
-    private String path = "http://nmy1206.natapp1.cc/MyVoice.php";
-    private String path1 = "http://nmy1206.natapp1.cc/ObtainVoice.php";
+    private String path = "";
+    private String path1 = "";
 
     private Handler error = new Handler(Looper.getMainLooper()){
         @Override
