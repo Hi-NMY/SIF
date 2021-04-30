@@ -14,7 +14,7 @@ public class SendGeTuiMessage {
 
     }
 
-    private static String path = "http://nmy1206.natapp1.cc/getuiServer.php";
+    private static String path = "";
     public static void sendGeTuiMessage(int i,String xuehao,String sendxuehao,String ip,String dynamicid,int fun){
         HttpUtil.sendGeTuiMessage(InValues.send(R.string.getuiServer),i,xuehao,sendxuehao,ip,dynamicid,fun,new okhttp3.Callback() {
             @Override
