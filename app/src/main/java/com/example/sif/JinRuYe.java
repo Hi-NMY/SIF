@@ -111,11 +111,11 @@ public class JinRuYe extends BaseActivity {
                 }
             }
         };
-        String path = "http://nmy1206.natapp1.cc/shuaXinGuangChang.php";
-        String path1 = "http://nmy1206.natapp1.cc/userSpace.php";
-        String path2 = "http://nmy1206.natapp1.cc/Thumb.php";
-        String path3 = "http://nmy1206.natapp1.cc/UserSchool.php";
-        String path4 = "http://nmy1206.natapp1.cc/User.php";
+        String path = "http://.natapp1.cc/shuaXinGuangChang.php";
+        String path1 = "http://.natapp1.cc/userSpace.php";
+        String path2 = "http://.natapp1.cc/Thumb.php";
+        String path3 = "http://.natapp1.cc/UserSchool.php";
+        String path4 = "http://.natapp1.cc/User.php";
         final Thread thread = new Thread() {
             @Override
             public void run() {
@@ -173,7 +173,7 @@ public class JinRuYe extends BaseActivity {
 //                                        RongIM.setUserInfoProvider(new RongIM.UserInfoProvider() {
 //                                            @Override
 //                                            public UserInfo getUserInfo(String s) {
-//                                                UserInfo userInfo = new UserInfo(getMyXueHao(), getMyUserName(), Uri.parse("http://nmy1206.natapp1.cc/UserImageServer/"+getMyXueHao()+"/HeadImage/myHeadImage.png"));
+//                                                UserInfo userInfo = new UserInfo(getMyXueHao(), getMyUserName(), Uri.parse("http://.natapp1.cc/UserImageServer/"+getMyXueHao()+"/HeadImage/myHeadImage.png"));
 //                                                RongIM.getInstance().refreshUserInfoCache(userInfo);
 //
 //                                                return userInfo;
