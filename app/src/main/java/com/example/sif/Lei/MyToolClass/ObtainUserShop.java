@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ObtainUserShop {
-    private static String path = "http://nmy1206.natapp1.cc/ObtainUserShop.php";
+    private static String path = "";
     public static List<SchoolShopClass> schoolShopClasses;
     public static void obtainUserShop(String xuehao, Handler handler){
         schoolShopClasses = new ArrayList<>();
