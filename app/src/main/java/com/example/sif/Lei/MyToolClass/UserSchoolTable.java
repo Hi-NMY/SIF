@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class UserSchoolTable {
-    private static String path = "http://nmy1206.natapp1.cc/UserSchoolTable.php";
+    private static String path = "";
 
     private static Handler errorHandler = new Handler(Looper.getMainLooper()){
         @Override
