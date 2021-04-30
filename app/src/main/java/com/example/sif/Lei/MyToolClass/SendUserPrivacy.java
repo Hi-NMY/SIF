@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import java.io.IOException;
 
 public class SendUserPrivacy {
-    private static String path = "http://nmy1206.natapp1.cc/ModifyPrivacy.php";
+    private static String path = "";
 
     public static void userPrivacy(String xuehao,String privacy,Handler handler){
         HttpUtil.myPrivacy(InValues.send(R.string.ModifyPrivacy),xuehao,privacy, new okhttp3.Callback() {
