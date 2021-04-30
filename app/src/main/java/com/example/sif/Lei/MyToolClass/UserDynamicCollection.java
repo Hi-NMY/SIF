@@ -22,7 +22,7 @@ public class UserDynamicCollection {
     }
 
     public static List<UserCollection> userCollections;
-    private static String path1 = "http://nmy1206.natapp1.cc/InquireCollection.php";
+    private static String path1 = "";
     public static void Collection(String xuehao,int id,Handler handler){
         HttpUtil.inquireCollection(InValues.send(R.string.InquireCollection),xuehao,id, new okhttp3.Callback() {
             @Override
@@ -76,7 +76,7 @@ public class UserDynamicCollection {
     }
 
 
-    private static String path = "http://nmy1206.natapp1.cc/UserCollection.php";
+    private static String path = "";
     public static void detailedCollection(int id,String dynamicid,String headimage,String xuehao,String username,String message,String image,String myxuehao,Handler handler){
         HttpUtil.dynamicCollection(InValues.send(R.string.UserCollection),id,dynamicid,headimage,xuehao,username,message,image,myxuehao, new okhttp3.Callback() {
             @Override
