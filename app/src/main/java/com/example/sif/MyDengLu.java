@@ -31,7 +31,7 @@ public class MyDengLu extends BaseActivity implements View.OnClickListener {
     protected static final int ERROR = 2;
     protected static final int SUCCESS = 1;
 
-    private String path = "http://nmy1206.natapp1.cc/XueSheng_YanZheng.php";
+    private String path = "";
 
 
     private Handler handler = new Handler(){
@@ -46,11 +46,11 @@ public class MyDengLu extends BaseActivity implements View.OnClickListener {
                             huoQuGeRenXinXi(MyDengLu.this,InValues.send(R.string.UserSchool),InValues.send(R.string.User),userZhangHao,handler);
                             closeDiaLog();
                             String nowDate = MyDateClass.showNowDate();
-                            String path3="http://nmy1206.natapp1.cc/shuaXinGuangChang.php";
+                            String path3="";
                             shuaXinGuangChang(InValues.send(R.string.shuaXinGuangChang),null,nowDate,1);
-                            String path4 = "http://nmy1206.natapp1.cc/userSpace.php";
+                            String path4 = "";
                             sendUserSpace(1,InValues.send(R.string.userSpace),nowDate,userZhangHao,null);
-                            String path5 = "http://nmy1206.natapp1.cc/Thumb.php";
+                            String path5 = "";
                             huoquThumb(InValues.send(R.string.Thumb),userZhangHao);
                             Intent intent = new Intent(MyDengLu.this,MyDengLu2.class);
                             intent.putExtra("zhanghao",mDengluXueHao.getText().toString().trim());
@@ -109,8 +109,8 @@ public class MyDengLu extends BaseActivity implements View.OnClickListener {
 
     }
 
-    private String path1 = "http://nmy1206.natapp1.cc/UserSchool.php";
-    private String path2 = "http://nmy1206.natapp1.cc/User.php";
+    private String path1 = "";
+    private String path2 = "";
     private String userZhangHao;
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
