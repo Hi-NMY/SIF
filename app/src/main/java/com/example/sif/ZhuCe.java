@@ -40,9 +40,9 @@ public class ZhuCe extends BaseActivity implements View.OnClickListener {
 
     private boolean key = true;
 
-    private String path = "http://nmy1206.natapp1.cc/YanZheng_ZhangHao.php";
-    private String path5 = "http://nmy1206.natapp1.cc/RongCloudServer/RongCloud/SIFServer/User.php";
-    private String path2 = "http://nmy1206.natapp1.cc/SendToken.php";
+    private String path = "";
+    private String path5 = "";
+    private String path2 = "";
 
     private Handler error = new Handler(){
         @Override
