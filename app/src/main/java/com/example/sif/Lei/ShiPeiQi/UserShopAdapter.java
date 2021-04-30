@@ -181,7 +181,7 @@ public class UserShopAdapter extends RecyclerView.Adapter<UserShopAdapter.ViewHo
     private int oldState = -1;
     private int newState = -1;
     private int updatePosition = -1;
-    private String path = "http://nmy1206.natapp1.cc/UpdateSchoolShop.php";
+    private String path = "";
     private Handler updateHanlder;
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void initShopView(View view1, int state,int id) {
