@@ -41,7 +41,7 @@ public class IbClass {
     private LocalBroadcastManager localBroadcastManager;
 
     public List<InterestingBlockClass> interestingBlockClasses;
-    private String path = "http://nmy1206.natapp1.cc/InterestingBlockMore.php";
+    private String path = "";
     public void sendIbMessage(int id){
         HttpUtil.ibsend(InValues.send(R.string.InterestingBlockMore),id,"",new okhttp3.Callback() {
             @Override
