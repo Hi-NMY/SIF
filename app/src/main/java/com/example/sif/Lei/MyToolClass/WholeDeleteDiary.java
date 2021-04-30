@@ -18,7 +18,7 @@ import java.util.List;
 
 public class WholeDeleteDiary {
 
-    private static String path = "http://nmy1206.natapp1.cc/UserDiary.php";
+    private static String path = "";
     private static Handler errorHanlder = new Handler(Looper.getMainLooper()){
         @Override
         public void handleMessage(Message msg) {
