@@ -492,7 +492,7 @@ public class GuangChang extends RecyclerView.Adapter<GuangChang.ViewHolder> {
     };
 
     private String deleteId;
-    private String path = "http://nmy1206.natapp1.cc/deleteDynamic.php";
+    private String path = "";
 
     private void deleteMyDynamic() {
         if (deleteId != null) {
