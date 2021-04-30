@@ -476,7 +476,7 @@ public class VeryPopupWindow extends PopupWindow implements View.OnClickListener
         }
     };
 
-    private String path = "http://nmy1206.natapp1.cc/LabelBlock.php";
+    private String path = "";
     public List<BlockLabel> blockLabels;
     public List<BlockLabel> blockLabels1;
 
