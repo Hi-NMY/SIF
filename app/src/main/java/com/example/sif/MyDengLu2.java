@@ -48,8 +48,8 @@ public class MyDengLu2 extends BaseActivity implements View.OnClickListener {
     protected static final int SUCCESS = 1;
     protected static boolean SHOUDENG = false;
 
-    private String path = "http://nmy1206.natapp1.cc/XueSheng_YanZheng2.php";
-    private String path2 = "http://nmy1206.natapp1.cc/UserFollowToMe.php";
+    private String path = "";
+    private String path2 = "";
 
 
     private Handler handler = new Handler() {
@@ -153,7 +153,7 @@ public class MyDengLu2 extends BaseActivity implements View.OnClickListener {
 
         RxDialogSure rxDialogSure = new RxDialogSure(this);
         rxDialogSure.setTitle("产品声明");
-        rxDialogSure.setContent("此APP目前未完工，为测试版本，有任何问题请联系：\nQQ：944273286\nWeChat：18736423860\n版权声明：内部UI图标以及部分样式素材均为百度收集\n盗版必究！请使用正版软件！");
+        rxDialogSure.setContent("此APP目前未完工，为测试版本，有任何问题请联系：\nQQ：\nWeChat：\n版权声明：内部UI图标以及部分样式素材均为百度收集\n盗版必究！请使用正版软件！");
         rxDialogSure.setSureListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
