@@ -27,7 +27,7 @@ public class ObtainSearchUser {
         }
     };
 
-    private static String path = "http://nmy1206.natapp1.cc/SearchUser.php";
+    private static String path = "";
     public static List<FollowList> followLists;
     public static void obtainUser(String key, Handler handler){
         HttpUtil.obtainUser(InValues.send(R.string.SearchUser),key, new okhttp3.Callback() {
