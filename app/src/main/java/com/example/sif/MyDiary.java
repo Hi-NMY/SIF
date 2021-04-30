@@ -107,7 +107,7 @@ public class MyDiary extends BaseActivity implements View.OnClickListener {
 
     private int weatherKey = -1;
     private String imageName = getMyXueHao() + "Diary.png";
-    private String path = "http://nmy1206.natapp1.cc/AddUserDiary.php";
+    private String path = "";
     private Handler longTimeHanlder = new Handler(){
         @Override
         public void handleMessage(Message msg) {
