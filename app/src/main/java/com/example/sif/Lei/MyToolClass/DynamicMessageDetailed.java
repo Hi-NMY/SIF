@@ -22,7 +22,7 @@ public class DynamicMessageDetailed {
     private String xuehao;
     private String dynamicid;
     private Handler handler;
-    private String path = "http://nmy1206.natapp1.cc/DynamicDetailed.php";
+    private String path = "";
 
     private Handler error = new Handler(Looper.getMainLooper()){
         @Override
