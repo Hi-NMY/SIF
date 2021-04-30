@@ -21,7 +21,7 @@ import java.util.List;
 
 public class BlockDetailedSend {
 
-    private static String path = "http://nmy1206.natapp1.cc/BlockDetailed.php";
+    private static String path = "";
     private static InterestingBlockClass interestingBlockClass;
     private static List<GuangChangUserXinXi> guangChangUserXinXis;
 
