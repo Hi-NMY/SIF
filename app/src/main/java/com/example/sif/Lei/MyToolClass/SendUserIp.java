@@ -16,7 +16,7 @@ public class SendUserIp {
 
     }
 
-    private static String path = "http://nmy1206.natapp1.cc/SendUserIP.php";
+    private static String path = "";
     public static void sendIp(String xuehao, String ip, Handler handler){
         HttpUtil.sendUserIP(InValues.send(R.string.SendUserIP),xuehao,ip, new okhttp3.Callback() {
             @Override
