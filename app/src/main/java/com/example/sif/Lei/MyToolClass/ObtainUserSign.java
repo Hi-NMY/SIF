@@ -26,10 +26,10 @@ public class ObtainUserSign {
         }
     };
 
-    private static String path = "http://nmy1206.natapp1.cc/ObtainSign.php";
-    private static String path1 = "http://nmy1206.natapp1.cc/StartSign.php";
-    private static String path2 = "http://nmy1206.natapp1.cc/PatchSign.php";
-    private static String path3 = "http://nmy1206.natapp1.cc/TaskAddSign.php";
+    private static String path = "";
+    private static String path1 = "";
+    private static String path2 = "";
+    private static String path3 = "";
     public static UserSignClass userSignClass;
     public static int keySign = -1;
 
