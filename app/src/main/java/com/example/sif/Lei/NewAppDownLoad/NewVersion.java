@@ -30,8 +30,8 @@ import java.util.concurrent.TimeUnit;
 
 public class NewVersion{
 
-    private static String path = "http://nmy1206.natapp1.cc/MyAppVersion.php";
-    private static String url = "http://nmy1206.natapp1.cc/appDownLoad/SIF.apk";
+    private static String path = "";
+    private static String url = "";
     private static Context context;
     private static ShowDiaLog showDiaLog;
 
@@ -39,7 +39,7 @@ public class NewVersion{
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            if (msg.obj != null && !msg.obj.equals("0") && !msg.obj.equals("Tunnel nmy1206.natapp1.cc not found\n")){
+            if (msg.obj != null && !msg.obj.equals("0") && !msg.obj.equals("Tunnelnot found\n")){
                 RxDialogSureCancel rxDialogSureCancel = new RxDialogSureCancel(context);
                 rxDialogSureCancel.setTitle("检测到有新的版本,是否更新?\n此次版本更新内容如下");
                 rxDialogSureCancel.getTitleView().setGravity(Gravity.CENTER);
