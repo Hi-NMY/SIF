@@ -46,8 +46,8 @@ public class IbFollow {
         }
     };
 
-    private String path = "http://nmy1206.natapp1.cc/FollowIb.php";
-    private String path1 = "http://nmy1206.natapp1.cc/MyIbFollow.php";
+    private String path = "";
+    private String path1 = "";
     public Collection<UserIbFollow> userIbFollows;
     public List<String> followList;
     private SmartRefreshLayout smartRefreshLayout;
