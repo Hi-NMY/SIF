@@ -29,7 +29,7 @@ public class UserFollowList {
         this.handler = h;
     }
 
-    private static String path = "http://nmy1206.natapp1.cc/UserFollowMe.php";
+    private static String path = "";
     public List<FollowList> followLists;
 
     public void followSend(String i){
