@@ -201,7 +201,7 @@ public class MySpace extends BaseActivity implements View.OnClickListener {
                 }
             }
                 String nowTime = MyDateClass.showNowDate();
-                String pathSpace = "http://nmy1206.natapp1.cc/userSpace.php";
+                String pathSpace = "93";
                 HttpUtil.addUserSpace(InValues.send(R.string.userSpace),nowTime,uXueHao, new okhttp3.Callback() {
                     @Override
                     public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
@@ -297,7 +297,7 @@ public class MySpace extends BaseActivity implements View.OnClickListener {
         }
     };
 
-    private String path = "http://nmy1206.natapp1.cc/userSpace.php";
+    private String path = "";
     private void startrefresh(SmartRefreshLayout smartRefreshLayout) {
         smartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
@@ -589,7 +589,7 @@ public class MySpace extends BaseActivity implements View.OnClickListener {
 //                    RongIM.setUserInfoProvider(new RongIM.UserInfoProvider() {
 //                        @Override
 //                        public UserInfo getUserInfo(String s) {
-//                            userInfo = new UserInfo(uXueHao, uName, Uri.parse("http://nmy1206.natapp1.cc/UserImageServer/"+uXueHao+"/HeadImage/myHeadImage.png"));
+//                            userInfo = new UserInfo(uXueHao, uName, Uri.parse("http://natapp1.cc/UserImageServer/"+uXueHao+"/HeadImage/myHeadImage.png"));
 //                            return userInfo;
 //                        }
 //                    },false);
@@ -719,7 +719,7 @@ public class MySpace extends BaseActivity implements View.OnClickListener {
         }
     };
 
-    private String pathimage = "http://nmy1206.natapp1.cc/KeepImage.php";
+    private String pathimage = "";
     private void sendUrlImage(Intent data,int i){
         localMedia = PictureSelector.obtainMultipleResult(data);
         for (LocalMedia m:localMedia){
