@@ -127,7 +127,7 @@ public class SchoolShopAdapter extends RecyclerView.Adapter<SchoolShopAdapter.Vi
     private SchoolShopClass schoolShopClass;
     private String updateTime;
     private UserNameClass userNameClass;
-    private String obtainnamePath = "http://nmy1206.natapp1.cc/ObtainUserName.php";
+    private String obtainnamePath = "";
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         schoolShopClass = schoolShopClasses.get(position);
