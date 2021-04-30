@@ -77,7 +77,7 @@ public class ObtainUser {
         SharedPreferences sharedPreferences = MyApplication.getContext().getSharedPreferences("userSpaceZ", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
-        String path2 = "http://nmy1206.natapp1.cc/User.php";
+        String path2 = "";
         HttpUtil.sendOkHttpPost(InValues.send(R.string.User),xuehao, new okhttp3.Callback() {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
@@ -105,7 +105,7 @@ public class ObtainUser {
 
         });
 
-        String path3 = "http://nmy1206.natapp1.cc/UserSchool.php";
+        String path3 = "";
         HttpUtil.sendOkHttpPost(InValues.send(R.string.UserSchool),xuehao, new okhttp3.Callback() {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
