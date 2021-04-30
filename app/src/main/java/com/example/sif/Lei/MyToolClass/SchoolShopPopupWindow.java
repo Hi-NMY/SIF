@@ -277,7 +277,7 @@ public class SchoolShopPopupWindow extends PopupWindow implements View.OnClickLi
         this.dismiss();
     }
 
-    private String path = "http://nmy1206.natapp1.cc/NewSchoolShop.php";
+    private String path = "";
     private Handler newShopHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
