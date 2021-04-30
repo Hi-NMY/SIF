@@ -33,7 +33,7 @@ public class UserFollow {
 
     public Collection<UserFollowPeople> userFollowPeople;
     public Collection<String> followList;
-    private String path = "http://nmy1206.natapp1.cc/UserFollow.php";
+    private String path = "";
     public void rightFollow() {
         followList = new ArrayList<>();
         HttpUtil.myFollow(InValues.send(R.string.UserFollow),0,xuehao,"", new okhttp3.Callback() {
@@ -123,7 +123,7 @@ public class UserFollow {
 
     }
 
-    private String pathto = "http://nmy1206.natapp1.cc/UserFollowToMe.php";
+    private String pathto = "";
     public void yesFollow(){
         followList.add(userxuehao);
         HttpUtil.myFollow(InValues.send(R.string.UserFollow),1,xuehao,userxuehao, new okhttp3.Callback() {
@@ -188,7 +188,7 @@ public class UserFollow {
         });
     }
 
-    private String path1 = "http://nmy1206.natapp1.cc/MyFollow.php";
+    private String path1 = "";
     private StringBuffer stringBuffer;
     public List<UserSpace> userSpaces;
     public void moreFollow(String nowTime){
