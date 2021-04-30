@@ -108,7 +108,7 @@ public class UFollowToMeAdapter extends RecyclerView.Adapter<UFollowToMeAdapter.
         }
 
         Glide.with(activity)
-                .load("http://nmy1206.natapp1.cc/UserImageServer/"+followList.getXuehao()+"/HeadImage/myHeadImage.png")
+                .load(""+followList.getXuehao()+"/HeadImage/myHeadImage.png")
                 .placeholder(R.drawable.nostartimage_three)
                 .fallback(R.drawable.defaultheadimage)
                 .error(R.drawable.defaultheadimage)
