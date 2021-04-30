@@ -16,7 +16,7 @@ import java.util.List;
 
 public class ObtainShopList {
 
-    private static String path = "http://nmy1206.natapp1.cc/ObtainSchoolShop.php";
+    private static String path = "";
     public static List<SchoolShopClass> schoolShopClasses;
     public static void obtainMoreShop(String nowTiem, Handler handler){
         HttpUtil.obtainSchoolShop(InValues.send(R.string.ObtainSchoolShop),nowTiem, new okhttp3.Callback() {
