@@ -147,7 +147,7 @@ public class FragmentGuangChang extends BaseFragment {
         return view;
     }
 
-    private String path1 = "http://nmy1206.natapp1.cc/shuaXinGuangChang.php";
+    private String path1 = "";
     private void xiaLaShuaXin(SmartRefreshLayout mGuangchangFreshLt) {
         mGuangchangFreshLt.setOnRefreshListener(new OnRefreshListener() {
             @Override
