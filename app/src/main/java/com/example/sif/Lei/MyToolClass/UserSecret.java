@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import java.io.IOException;
 
 public class UserSecret {
-    private static String path = "http://nmy1206.natapp1.cc/SecretProtection.php";
+    private static String path = "";
     public static void sendSecred(int fun, String xuehao, String secret, Handler handler){
         HttpUtil.sendSecret(InValues.send(R.string.SecretProtection),fun,xuehao,secret, new okhttp3.Callback() {
             @Override
