@@ -28,7 +28,7 @@ public class UserDynamicComment {
         this.commentNumber = c;
     }
 
-    String path = "http://nmy1206.natapp1.cc/CommentDetailed.php";
+    String path = "";
     private Handler handler;
     public List<CommentMessage> commentMessages;
     public void detailedComment(Handler h,int id,String nowTime){
@@ -52,7 +52,7 @@ public class UserDynamicComment {
     }
 
 
-    String path1 = "http://nmy1206.natapp1.cc/SendComment.php";
+    String path1 = "";
     public void sendComment(int i,String dynamicId,String dynamiccomment,String commenttime,String commentusername,String tousername,String userheadimageurl,String commentxuehao,String userxuehao,int userid,Handler h){
         this.handler = h;
         HttpUtil.sendComment(InValues.send(R.string.SendComment),i,dynamicId,dynamiccomment,commenttime,commentusername,tousername,userheadimageurl,commentxuehao,null,userxuehao,userid, new okhttp3.Callback() {
