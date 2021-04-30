@@ -96,9 +96,9 @@ public class FragmentActivityBar extends BaseFragment {
         functionTextRight(textright);
     }
 
-    private String path = "http://nmy1206.natapp1.cc/GuangChangMessage.php";
-    private String path1 = "http://nmy1206.natapp1.cc/userXinXiXiuGai.php";
-    private String path2 = "http://nmy1206.natapp1.cc/BlockChange.php";
+    private String path = "";
+    private String path1 = "";
+    private String path2 = "";
     private LocalBroadcastManager localBroadcastManager;
     private Handler handler = new Handler() {
         @Override
@@ -116,8 +116,8 @@ public class FragmentActivityBar extends BaseFragment {
                         baseActivity.closeDiaLog();
                         BaseActivity baseActivity = (BaseActivity) getActivity();
                         mActivitybarTextright.setClickable(true);
-                        String path = "http://nmy1206.natapp1.cc/userSpace.php";
-                        String path1 = "http://nmy1206.natapp1.cc/shuaXinGuangChang.php";
+                        String path = "";
+                        String path1 = "";
                         String nowDate = MyDateClass.showNowDate();
                         baseActivity.sendUserSpace(1, InValues.send(R.string.userSpace), nowDate, xuehao, null);
                         baseActivity.shuaXinGuangChang(InValues.send(R.string.shuaXinGuangChang), null, nowDate, 1);
